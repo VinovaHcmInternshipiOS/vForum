@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E8B7EF4250B5E9100B20722 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8B7EF3250B5E9000B20722 /* TokenManager.swift */; };
 		FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F1250B547C0070DD4A /* AppDelegate.swift */; };
 		FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F3250B547C0070DD4A /* SceneDelegate.swift */; };
 		FA8D33F6250B547C0070DD4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F5250B547C0070DD4A /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E8B7EF3250B5E9000B20722 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		FA8D33EE250B547C0070DD4A /* vForum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vForum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8D33F1250B547C0070DD4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8D33F3250B547C0070DD4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		3E777D3C250B586A003F07E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3E8B7EF2250B5E8200B20722 /* Token */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +111,14 @@
 				FA8D33FA250B54910070DD4A /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3E8B7EF2250B5E8200B20722 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				3E8B7EF3250B5E9000B20722 /* TokenManager.swift */,
+			);
+			path = Token;
 			sourceTree = "<group>";
 		};
 		FA8D33E5250B547C0070DD4A = {
@@ -292,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8D33F6250B547C0070DD4A /* ViewController.swift in Sources */,
+				3E8B7EF4250B5E9100B20722 /* TokenManager.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
 			);

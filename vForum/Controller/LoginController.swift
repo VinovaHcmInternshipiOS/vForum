@@ -11,6 +11,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Username: UITextField!
     @IBOutlet weak var Password: UITextField!
     
+    @IBOutlet weak var SignUpButton: UIButton!
     @IBOutlet weak var LoginButton: UIButton!
 
     @IBAction func PressLogin(_ sender: UIButton) {
@@ -25,7 +26,11 @@ class LoginController: UIViewController, UITextFieldDelegate {
         
         Username.layer.cornerRadius = 10
         Password.layer.cornerRadius = 10
-        LoginButton.layer.cornerRadius = 30
+        LoginButton.layer.cornerRadius = 25
+        SignUpButton.layer.cornerRadius = 25
+        
+        SignUpButton.layer.borderWidth = 2
+        SignUpButton.layer.borderColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00).cgColor
         
         Username.leftViewMode = .always
         Username.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
@@ -48,14 +53,20 @@ class LoginController: UIViewController, UITextFieldDelegate {
         Password.snp.makeConstraints{ (make)->Void in
             make.left.equalTo(MainView.snp_left).offset(off)
             make.right.equalTo(MainView.snp_right).offset(-off)
-            make.top.equalTo(Username.snp_bottom).offset(20)
+            make.top.equalTo(Username.snp_bottom).offset(15)
+            make.height.equalTo(CGFloat(50))
+        }
+        SignUpButton.snp.makeConstraints{ (make)->Void in
+            make.bottom.equalToSuperview().offset(-50)
+            make.left.equalTo(MainView.snp_left).offset(off+30)
+            make.right.equalTo(MainView.snp_right).offset(-off-30)
             make.height.equalTo(CGFloat(50))
         }
         LoginButton.snp.makeConstraints{ (make)->Void in
-            make.bottom.equalToSuperview().offset(-off-50)
+            make.top.equalTo(Password.snp_bottom).offset(off-25)
             make.left.equalTo(MainView.snp_left).offset(off+30)
             make.right.equalTo(MainView.snp_right).offset(-off-30)
-            make.height.equalTo(CGFloat(60))
+            make.height.equalTo(CGFloat(50))
         }
     }
 

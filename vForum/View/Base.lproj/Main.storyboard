@@ -11,9 +11,8 @@
         <!--Navigation Controller-->
         <scene sceneID="i2i-IZ-z51">
             <objects>
-                <navigationController id="3N8-NO-qEX" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="3N8-NO-qEX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p50-bo-Z3h">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -75,7 +74,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1DT-cB-Zaj"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="1DT-cB-Zaj"/>
                     <connections>
                         <outlet property="LoginButton" destination="4ps-IL-6W4" id="Qyc-gd-ve9"/>
                         <outlet property="Logo" destination="03K-eM-Yh4" id="RNU-OB-zgB"/>

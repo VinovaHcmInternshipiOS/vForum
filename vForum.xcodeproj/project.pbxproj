@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2CD87803D65A6D403F19CCEA /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
+		3E193227250B72C2004A1C4F /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E193226250B72C2004A1C4F /* TokenManager.swift */; };
+		3E7C0FD3250B758C00891980 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7C0FD2250B758C00891980 /* User.swift */; };
+		3E7C0FD5250B768400891980 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7C0FD4250B768400891980 /* TokenResponse.swift */; };
 		8B9383A0B1EB3F4E03939A8D /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
 		F05EE5DEE01D7E30956A7B02 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F1250B547C0070DD4A /* AppDelegate.swift */; };
@@ -40,6 +43,9 @@
 /* Begin PBXFileReference section */
 		1B52730352233632F6981E74 /* Pods_vForumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
+		3E193226250B72C2004A1C4F /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		3E7C0FD2250B758C00891980 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3E7C0FD4250B768400891980 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum.debug.xcconfig"; path = "Target Support Files/Pods-vForum/Pods-vForum.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,9 +97,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E193225250B72B0004A1C4F /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				3E193226250B72C2004A1C4F /* TokenManager.swift */,
+				3E7C0FD4250B768400891980 /* TokenResponse.swift */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
 		3E777D3C250B586A003F07E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3E7C0FD1250B758100891980 /* User */,
+				3E193225250B72B0004A1C4F /* Token */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +142,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		3E7C0FD1250B758100891980 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3E7C0FD2250B758C00891980 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		65CB0726D28C86AE768C5998 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +170,6 @@
 				70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */,
 				296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -441,7 +465,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
+				3E193227250B72C2004A1C4F /* TokenManager.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
+				3E7C0FD3250B758C00891980 /* User.swift in Sources */,
+				3E7C0FD5250B768400891980 /* TokenResponse.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,14 +644,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GQFN859H4Q;
+				DEVELOPMENT_TEAM = VXWH8X93WN;
 				INFOPLIST_FILE = vForum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = trucdongtxtv.vForum;
+				PRODUCT_BUNDLE_IDENTIFIER = phucly.com.vForum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -637,14 +664,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GQFN859H4Q;
+				DEVELOPMENT_TEAM = VXWH8X93WN;
 				INFOPLIST_FILE = vForum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = trucdongtxtv.vForum;
+				PRODUCT_BUNDLE_IDENTIFIER = phucly.com.vForum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -23,6 +23,12 @@ class LoginController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func PressSignUp(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "SignUpView", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpController")
+        
+        navigationController!.pushViewController(vc, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,8 +102,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        Username.endEditing(true)
-        Password.endEditing(true)
+        textField.endEditing(true)
         
         UIView.animate(withDuration: 0.5, animations: {
             self.Logo.snp.updateConstraints{ (make)->Void in

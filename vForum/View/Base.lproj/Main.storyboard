@@ -78,7 +78,7 @@
                                     <color key="titleColor" red="0.1529411765" green="0.36470588240000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="iSS-W5-7A7" kind="show" id="xRH-3Q-QEy"/>
+                                    <action selector="PressSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gWF-JJ-4el"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ps-IL-6W4">
@@ -114,35 +114,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="76.339285714285708"/>
-        </scene>
-        <!--Sign Up Controller-->
-        <scene sceneID="5qL-sL-Hgd">
-            <objects>
-                <viewController id="iSS-W5-7A7" customClass="SignUpController" customModule="vForum" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H01-qf-KS0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glQ-bs-El8">
-                                <rect key="frame" x="20" y="43" width="46" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="goBack:" destination="iSS-W5-7A7" eventType="touchUpInside" id="ZBT-cH-GQ7"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="hfR-iM-cUE"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="IYV-LW-0ea"/>
-                    <connections>
-                        <outlet property="BackButton" destination="glQ-bs-El8" id="IOk-MH-hzL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ehc-aQ-Zuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1024.6376811594205" y="75.669642857142847"/>
         </scene>
     </scenes>
     <resources>

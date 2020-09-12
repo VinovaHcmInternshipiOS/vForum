@@ -42,13 +42,13 @@ class TokenManager {
         return false
     }
     
-    func getTokenFromServer(url: String, user: User) -> String? {
+    func getTokenFromServer(url: String, params: [String: Any]) -> String? {
         // Properties
         var token: String?
         let rawUrl = URL(string: url)
         
         // Un-wrap
-        guard let url = rawUrl, let email = user.email, let password = user.password else {
+        guard let url = rawUrl else {
             return nil
         }
         
@@ -56,7 +56,7 @@ class TokenManager {
         let semaphore = DispatchSemaphore(value: 0)
         
         // Request
-        AF.request(url, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default, headers: nil).response{
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).response{
             response in
             // Get data from response of server
             if let data = response.data {

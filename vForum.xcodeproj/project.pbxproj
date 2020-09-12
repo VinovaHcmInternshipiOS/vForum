@@ -107,7 +107,6 @@
 		3E777D3C250B586A003F07E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3E7C0FD1250B758100891980 /* User */,
 				3E193225250B72B0004A1C4F /* Token */,
 			);
 			path = Model;
@@ -138,13 +137,6 @@
 				FA8D33FA250B54910070DD4A /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		3E7C0FD1250B758100891980 /* User */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		65CB0726D28C86AE768C5998 /* Frameworks */ = {

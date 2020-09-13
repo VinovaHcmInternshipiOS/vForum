@@ -39,7 +39,7 @@
                                         <rect key="frame" x="56" y="0.0" width="218" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" textContentType="username"/>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="username" translatesAutoresizingMaskIntoConstraints="NO" id="jMP-cF-2IB">
                                         <rect key="frame" x="8" y="0.0" width="25" height="47"/>
@@ -56,7 +56,7 @@
                                         <rect key="frame" x="52" y="0.0" width="222" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" smartDashesType="yes" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" secureTextEntry="YES" smartDashesType="yes" textContentType="password"/>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="z8J-FA-Rw8">
                                         <rect key="frame" x="8" y="0.0" width="25" height="47"/>

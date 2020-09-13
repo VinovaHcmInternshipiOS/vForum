@@ -6,6 +6,7 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var JoinLabel: UILabel!
     @IBOutlet weak var BackButton: UIButton!
     @IBOutlet weak var SignUpForm: UICollectionView!
+    @IBOutlet weak var CreateButton: UIButton!
     
     @IBAction func goBack(_ sender: UIButton) {
         navigationController!.popViewController(animated: true)
@@ -20,8 +21,13 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppear(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         SignUpForm.delegate = self
         SignUpForm.dataSource = self
+        
+        CreateButton.layer.cornerRadius = CGFloat(25)
         
         JoinLabel.snp.makeConstraints{ (make)->Void in
             make.centerX.equalToSuperview()
@@ -31,8 +37,8 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         SignUpForm.snp.makeConstraints{ (make)->Void in
             make.centerX.equalToSuperview()
             make.width.equalTo(CGFloat(400))
-            make.top.equalTo(JoinLabel.snp_bottom).offset(20)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(JoinLabel.snp_bottom).offset(25)
+            make.height.equalTo(CGFloat(500))
         }
         
         BackButton.snp.makeConstraints{ (make)->Void in
@@ -40,6 +46,12 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
             make.top.equalTo(JoinLabel).offset(-5)
             make.width.equalTo(CGFloat(40))
             make.height.equalTo(CGFloat(42))
+        }
+        CreateButton.snp.makeConstraints{ (make)->Void in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
+            make.width.equalTo(CGFloat(250))
+            make.height.equalTo(CGFloat(50))
         }
     }
     
@@ -90,7 +102,18 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         else {
             fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
         }
-        
         return true
     }
+    
+    @objc func keyboardAppear(notification: NSNotification) {
+        SignUpForm.snp.updateConstraints{ (make)->Void in
+            make.height.equalTo(CGFloat(UIScreen.main.bounds.height-405))
+        }
+    }
+
+    @objc func keyboardHide(notification: NSNotification) {
+        SignUpForm.snp.updateConstraints{ (make)->Void in
+            make.height.equalTo(CGFloat(500))
+        }
+     }
 }

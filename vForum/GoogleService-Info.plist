@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>51045063456-6e48u4fof18nbrlp6sjup1u03rt9oidd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.51045063456-6e48u4fof18nbrlp6sjup1u03rt9oidd</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAnQnf50JR9y5d0M3uOdsf9MQFALJDQKqw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>51045063456</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>trucdongtxtv.vForum</string>
+	<key>PROJECT_ID</key>
+	<string>vforum-a5848</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vforum-a5848.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:51045063456:ios:d1ec55b5f41c30edb35545</string>
+	<key>DATABASE_URL</key>
+	<string>https://vforum-a5848.firebaseio.com</string>
+</dict>
+</plist>

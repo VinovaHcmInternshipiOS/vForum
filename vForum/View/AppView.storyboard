@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Forum-->
+        <scene sceneID="rqy-Sc-SiS">
+            <objects>
+                <viewController title="Forum" id="TAz-61-UAD" customClass="ForumTab" customModule="vForum" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2I7-4N-1p7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="MgP-6U-yvg"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="vForum" id="UyT-fk-EhT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7T-ZS-UKy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585.50724637681162" y="-402.45535714285711"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="iwU-A2-adj">
+            <objects>
+                <viewController title="Feed" id="zCx-Kk-ojf" customClass="FeedTab" customModule="vForum" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6TK-Nv-89t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="hw9-3m-YOv"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="vMemory" id="6tX-2g-pas"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9t-DK-01j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585.50724637681162" y="262.5"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="dtU-Mh-aZr">
+            <objects>
+                <tabBarController storyboardIdentifier="AppController" id="Hw2-B0-cbx" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oSG-M9-N9A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="zCx-Kk-ojf" kind="relationship" relationship="viewControllers" id="Pio-D7-qHH"/>
+                        <segue destination="TAz-61-UAD" kind="relationship" relationship="viewControllers" id="FRk-KB-WUd"/>
+                        <segue destination="Rv0-Yh-4ZZ" kind="relationship" relationship="viewControllers" id="DHe-SR-gZh"/>
+                        <segue destination="KtH-N8-dPe" kind="relationship" relationship="viewControllers" id="T5u-b3-Xv3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HMx-CY-o0y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-525" y="681"/>
+        </scene>
+        <!--vEvents-->
+        <scene sceneID="C6l-eb-xQO">
+            <objects>
+                <viewController id="Rv0-Yh-4ZZ" customClass="EventTab" customModule="vForum" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rrh-Qx-h6L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="GiL-mO-QGW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="vEvents" id="3X3-7Q-2JB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7P-SR-V5W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="586" y="950"/>
+        </scene>
+        <!--vNotifications-->
+        <scene sceneID="IdN-T2-wPj">
+            <objects>
+                <viewController id="KtH-N8-dPe" customClass="NotificationTab" customModule="vForum" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DAF-4Z-hlX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2Ok-gi-aG6"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="vNotifications" id="Elu-Wt-Q2g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wep-SW-J3l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="586" y="1631"/>
+        </scene>
+    </scenes>
+</document>

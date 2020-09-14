@@ -3,12 +3,13 @@ import UIKit
 import SnapKit
 
 class SignUpController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
+    
     @IBOutlet weak var JoinLabel: UILabel!
     @IBOutlet weak var BackButton: UIButton!
     @IBOutlet weak var SignUpForm: UICollectionView!
     @IBOutlet weak var CreateButton: UIButton!
     
-    @IBAction func goBack(_ sender: UIButton) {
+    @IBAction func goBack() {
         navigationController!.popViewController(animated: true)
     }
     
@@ -21,6 +22,9 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SignUpForm.register(UINib(nibName: "SignUpField", bundle: nil), forCellWithReuseIdentifier: "SignUpField")
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppear(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -53,6 +57,7 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
             make.width.equalTo(CGFloat(250))
             make.height.equalTo(CGFloat(50))
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,10 +66,13 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let field = collectionView.dequeueReusableCell(withReuseIdentifier: "SignUpField", for: indexPath) as! SignUpField
+
         let tag = indexPath.row
         
         field.TextField.delegate = self
         field.TextField.tag = tag
+        field.TextField.isEnabled = true
+        
         field.TextField.isSecureTextEntry = passwordFieldTag.contains(tag)
         
         field.Label.text! = fieldTitles[tag]
@@ -77,10 +85,32 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         return field
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("tapped")
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
-        let row = textField.tag
-        fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
+        for row in 0..<fieldTitles.count {
+            if fields[row].TextField.text! == "" && fields[row].required {
+                fields[row].RequiredFieldLabel.alpha = 1
+                fields[row].Underline.backgroundColor = UIColor.systemRed
+            }
+            else if row == 4 { // needs fix
+                if fields[3].TextField.text! != fields[4].TextField.text! {
+                    fields[4].RequiredFieldLabel.text! = "Incorrect password"
+                    fields[4].RequiredFieldLabel.alpha = 1
+                    fields[4].Underline.backgroundColor = UIColor.systemRed
+                } else {
+                    fields[4].RequiredFieldLabel.text! = "Required field"
+                    fields[row].RequiredFieldLabel.alpha = 0
+                    fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
+                }
+            }
+            else {
+                fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
+            }
+        }
         
         return false
     }
@@ -98,6 +128,17 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         if fields[row].TextField.text! == "" && fields[row].required {
             fields[row].RequiredFieldLabel.alpha = 1
             fields[row].Underline.backgroundColor = UIColor.systemRed
+        }
+        else if row == 4 { // needs fix
+            if fields[3].TextField.text! != fields[4].TextField.text! {
+                fields[4].RequiredFieldLabel.text! = "Incorrect password"
+                fields[4].RequiredFieldLabel.alpha = 1
+                fields[4].Underline.backgroundColor = UIColor.systemRed
+            } else {
+                fields[4].RequiredFieldLabel.text! = "Required field"
+                fields[row].RequiredFieldLabel.alpha = 0
+                fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
+            }
         }
         else {
             fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)

@@ -18,8 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="M8L-jv-3bl">
-                    <rect key="frame" x="142" y="370" width="130" height="90"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="M8L-jv-3bl">
+                    <rect key="frame" x="142" y="408" width="130" height="90"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQ0-S8-rdH">
                             <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
@@ -43,6 +43,10 @@
                 </stackView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="M8L-jv-3bl" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="kL1-16-JYf"/>
+                <constraint firstItem="M8L-jv-3bl" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="mXx-eV-6Ig"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="88"/>
         </view>

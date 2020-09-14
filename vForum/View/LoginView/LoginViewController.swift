@@ -63,6 +63,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate, GIDSignInDeleg
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         print("Google Sing In didSignInForUser")
+        
         if let error = error {
           print(error.localizedDescription)
           return

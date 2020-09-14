@@ -20,9 +20,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var LoginButton: UIButton!
 
     @IBAction func PressLogin(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "AppView", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AppController")
-        
+        let vc = AppController()
         navigationController!.pushViewController(vc, animated: false)
     }
     

@@ -17,13 +17,15 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     var fieldTitles: [String] = ["Username","Display name","Email","Password","Re-enter your password"]
     var fieldsRequired: [Bool] = [true, false, true, true, true]
     
+    let usernameFieldTag = 0
     let passwordFieldTag = [3,4]
+    
     let width = UIDevice.current.userInterfaceIdiom == .pad ? 550: 400
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SignUpForm.register(UINib(nibName: "SignUpField", bundle: nil), forCellWithReuseIdentifier: "SignUpField")
+        SignUpForm.register(UINib(nibName: "SignUpFieldView", bundle: nil), forCellWithReuseIdentifier: "SignUpField")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppear(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -73,6 +75,8 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         field.TextField.tag = tag
         field.TextField.isEnabled = true
         
+        field.contentView.isUserInteractionEnabled = false
+        
         field.TextField.isSecureTextEntry = passwordFieldTag.contains(tag)
         
         field.Label.text! = fieldTitles[tag]
@@ -85,31 +89,10 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         return field
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("tapped")
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         for row in 0..<fieldTitles.count {
-            if fields[row].TextField.text! == "" && fields[row].required {
-                fields[row].RequiredFieldLabel.alpha = 1
-                fields[row].Underline.backgroundColor = UIColor.systemRed
-            }
-            else if row == 4 { // needs fix
-                if fields[3].TextField.text! != fields[4].TextField.text! {
-                    fields[4].RequiredFieldLabel.text! = "Incorrect password"
-                    fields[4].RequiredFieldLabel.alpha = 1
-                    fields[4].Underline.backgroundColor = UIColor.systemRed
-                } else {
-                    fields[4].RequiredFieldLabel.text! = "Required field"
-                    fields[row].RequiredFieldLabel.alpha = 0
-                    fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
-                }
-            }
-            else {
-                fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
-            }
+            resetIndicator(row)
         }
         
         return false
@@ -125,17 +108,35 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         let row = textField.tag
+        resetIndicator(row)
+        
+        return true
+    }
+    
+    func resetIndicator(_ row: Int) {
         if fields[row].TextField.text! == "" && fields[row].required {
+            fields[row].RequiredFieldLabel.text! = "Required field"
             fields[row].RequiredFieldLabel.alpha = 1
             fields[row].Underline.backgroundColor = UIColor.systemRed
         }
+        
+        else if row == usernameFieldTag { // needs fix
+            if isUsernameExist(fields[row].TextField.text!) {
+                fields[row].RequiredFieldLabel.alpha = 1
+                fields[row].Underline.backgroundColor = UIColor.systemRed
+                fields[row].RequiredFieldLabel.text! = "Username is taken"
+            } else {
+                fields[row].RequiredFieldLabel.alpha = 0
+                fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
+            }
+        }
+            
         else if row == 4 { // needs fix
             if fields[3].TextField.text! != fields[4].TextField.text! {
                 fields[4].RequiredFieldLabel.text! = "Incorrect password"
                 fields[4].RequiredFieldLabel.alpha = 1
                 fields[4].Underline.backgroundColor = UIColor.systemRed
             } else {
-                fields[4].RequiredFieldLabel.text! = "Required field"
                 fields[row].RequiredFieldLabel.alpha = 0
                 fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
             }
@@ -143,7 +144,6 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         else {
             fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
         }
-        return true
     }
     
     @objc func keyboardAppear(notification: NSNotification) {
@@ -157,4 +157,11 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
             make.height.equalTo(CGFloat(500))
         }
      }
+}
+
+// PLACEHOLDER
+extension SignUpController {
+    func isUsernameExist(_ str: String)->Bool {
+        return false
+    }
 }

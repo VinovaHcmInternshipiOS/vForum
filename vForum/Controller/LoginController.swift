@@ -18,11 +18,6 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var SignUpButton: UIButton!
     @IBOutlet weak var LoginButton: UIButton!
-
-    @IBAction func PressLogin(_ sender: UIButton) {
-        let vc = AppController()
-        navigationController!.pushViewController(vc, animated: false)
-    }
     
     @IBAction func PressSignUp(_ sender: UIButton) {
         let vc = SignUpController(nibName: "SignUpView", bundle: nil)
@@ -138,3 +133,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
     }
 }
 
+// PLACEHOLDER FUNCTIONS
+extension LoginController {
+    @IBAction func PressLogin(_ sender: UIButton) {
+        let vc = AppController()
+        navigationController!.pushViewController(vc, animated: false)
+    }
+}

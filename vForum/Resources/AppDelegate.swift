@@ -8,6 +8,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //IQKeyboardManager.shared.enable = true
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let rootVc = UINavigationController()
+        let firstVc = LoginController(nibName: "LoginView", bundle: nil)
+        rootVc.viewControllers = [firstVc]
+        rootVc.isNavigationBarHidden = true
+        
+        window?.rootViewController = rootVc
+        window?.makeKeyAndVisible()
         return true
     }
 

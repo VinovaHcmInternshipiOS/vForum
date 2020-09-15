@@ -10,6 +10,7 @@
 		2CD87803D65A6D403F19CCEA /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		8B9383A0B1EB3F4E03939A8D /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
+		FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2102002510ACCC0003CC42 /* LoginView.xib */; };
 		FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */; };
 		FA697CE2250F105500AF9717 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA697CE1250F105500AF9717 /* AppController.swift */; };
 		FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA697CE5250F167900AF9717 /* SignUpView.xib */; };
@@ -19,7 +20,6 @@
 		FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F1250B547C0070DD4A /* AppDelegate.swift */; };
 		FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F3250B547C0070DD4A /* SceneDelegate.swift */; };
 		FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F5250B547C0070DD4A /* LoginController.swift */; };
-		FA8D33F9250B547C0070DD4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8D33F7250B547C0070DD4A /* Main.storyboard */; };
 		FA8D33FB250B54910070DD4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8D33FA250B54910070DD4A /* Assets.xcassets */; };
 		FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8D33FC250B54910070DD4A /* LaunchScreen.storyboard */; };
 		FA8D3409250B54910070DD4A /* vForumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D3408250B54910070DD4A /* vForumTests.swift */; };
@@ -114,6 +114,7 @@
 		A149E7CADE49BDFE86757CD9 /* Pods-vForum-vForumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.debug.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39D8E1484572BF5B5837F04 /* Pods-vForum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum.release.xcconfig"; path = "Target Support Files/Pods-vForum/Pods-vForum.release.xcconfig"; sourceTree = "<group>"; };
+		FA2102002510ACCC0003CC42 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpField.swift; sourceTree = "<group>"; };
 		FA697CE1250F105500AF9717 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		FA697CE5250F167900AF9717 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
@@ -123,7 +124,6 @@
 		FA8D33F1250B547C0070DD4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8D33F3250B547C0070DD4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FA8D33F5250B547C0070DD4A /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		FA8D33F8250B547C0070DD4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA8D33FA250B54910070DD4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA8D33FD250B54910070DD4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8D33FF250B54910070DD4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8D33FC250B54910070DD4A /* LaunchScreen.storyboard */,
-				FA8D33F7250B547C0070DD4A /* Main.storyboard */,
+				FA2102002510ACCC0003CC42 /* LoginView.xib */,
 				FA697CE5250F167900AF9717 /* SignUpView.xib */,
 				FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */,
 				FABF857A250F8C63000B20B6 /* ForumView.xib */,
@@ -472,11 +472,11 @@
 			files = (
 				FABF857B250F8C63000B20B6 /* ForumView.xib in Resources */,
 				FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */,
+				FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */,
 				FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */,
 				FA8D33FB250B54910070DD4A /* Assets.xcassets in Resources */,
 				FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */,
 				FABF857F250F94D4000B20B6 /* ForumItemView.xib in Resources */,
-				FA8D33F9250B547C0070DD4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,14 +647,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FA8D33F7250B547C0070DD4A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA8D33F8250B547C0070DD4A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FA8D33FC250B54910070DD4A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

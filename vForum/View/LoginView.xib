@@ -20,6 +20,8 @@
                 <outlet property="Username" destination="0Ar-Pt-PUr" id="tJU-jh-ogd"/>
                 <outlet property="UsernameFrame" destination="Gfm-bl-sTN" id="rcN-CG-JtA"/>
                 <outlet property="UsernameIcon" destination="GG4-e6-2S4" id="Cga-9q-yiW"/>
+                <outlet property="btnLoginFacebook" destination="Skt-id-TmP" id="u2T-6Q-1J3"/>
+                <outlet property="btnLoginGg" destination="Vk9-eR-ghd" id="9dP-Xi-LFu"/>
                 <outlet property="view" destination="iN0-l3-epB" id="qQC-om-egd"/>
             </connections>
         </placeholder>
@@ -88,6 +90,28 @@
                     </state>
                     <connections>
                         <action selector="PressLogin:" destination="-1" eventType="touchUpInside" id="BaS-bV-RS5"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skt-id-TmP">
+                    <rect key="frame" x="142" y="604" width="130" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Login By Facebook">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="LOGINFACEBOOK:" destination="-1" eventType="touchUpInside" id="Mth-9E-D0X"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vk9-eR-ghd">
+                    <rect key="frame" x="148" y="649" width="119" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Login By Google">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="LOGINGOOGLE:" destination="-1" eventType="touchUpInside" id="Eez-0F-wWu"/>
                     </connections>
                 </button>
             </subviews>

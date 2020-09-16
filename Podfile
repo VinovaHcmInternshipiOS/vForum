@@ -7,6 +7,10 @@ target 'vForum' do
   pod 'SnapKit', '~> 4.0'
   pod 'IQKeyboardManagerSwift'
   pod 'Alamofire', '~> 5.2'
+  pod 'FBSDKLoginKit'
+  pod 'GoogleSignIn'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
 
   target 'vForumTests' do
     inherit! :search_paths

@@ -1,5 +1,10 @@
 import UIKit
 import SnapKit
+import FBSDKLoginKit
+import Firebase
+import GoogleSignIn
+import GoogleDataTransport
+import GoogleUtilities
 
 class LoginController: UIViewController, UITextFieldDelegate {
     
@@ -18,6 +23,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var SignUpButton: UIButton!
     @IBOutlet weak var LoginButton: UIButton!
+    
+    @IBOutlet weak var btnLoginFacebook: UIButton!
+    @IBOutlet weak var btnLoginGg: UIButton!
     
     @IBAction func PressSignUp(_ sender: UIButton) {
         let vc = SignUpController(nibName: "SignUpView", bundle: nil)
@@ -38,6 +46,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
         SignUpButton.layer.borderWidth = 2
         SignUpButton.layer.borderColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00).cgColor
         
+        setConstraints()
+    }
+
+    func setConstraints() {
         Logo.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview().offset(off+50)
             make.left.equalTo(MainView.snp_left)
@@ -94,7 +106,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
             make.height.equalTo(CGFloat(50))
         }
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         
@@ -133,10 +145,90 @@ class LoginController: UIViewController, UITextFieldDelegate {
     }
 }
 
+
+
+
+
+
 // PLACEHOLDER FUNCTIONS
 extension LoginController {
     @IBAction func PressLogin(_ sender: UIButton) {
         let vc = AppController()
         navigationController!.pushViewController(vc, animated: false)
+    }
+}
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////
+// FACEBOOK/GOOGLE
+extension LoginController {
+    @IBAction func LOGINFACEBOOK(_ sender: Any) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: [], from: self) { [weak self] (result, error) in
+            print("login success")
+            let token = result?.token?.tokenString
+            let request = FBSDKCoreKit.GraphRequest(graphPath: "me", parameters: ["fields":"id, name, email"], tokenString: token, version: nil, httpMethod: .get)
+            request.start(completionHandler: { connection, result, error in
+                print("\(String(describing: result))")
+            })
+            guard error == nil else {
+                    // Error occurred
+                print(error!.localizedDescription)
+                return
+            }
+            guard let result = result, !result.isCancelled else {
+                print("User cancelled login")
+                return
+            }
+            print(AccessToken.current?.tokenString ?? "Print fail")
+            self?.navigationController?.pushViewController(AppController(), animated: true)
+        }
+    }
+    
+    @IBAction func LOGINGOOGLE(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        let token = result?.token?.tokenString
+        let request = FBSDKCoreKit.GraphRequest(graphPath: "me", parameters: ["fields":"id, name, email"], tokenString: token, version: nil, httpMethod: .get)
+        request.start(completionHandler: { connection, result, error in
+            print("\(String(describing: result))")
+        })
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("Log out")
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        print("Google Sing In didSignInForUser")
+        if let error = error {
+          print(error.localizedDescription)
+          return
+        }
+        print("\(String(describing: user.profile.name)) \n")
+        print("\(String(describing: user.profile.email)) \n")
+        self.navigationController?.pushViewController(AppController(), animated: true)
+      }
+    
+          // Start Google OAuth2 Authentication
+    func sign(_ signIn: GIDSignIn?, present viewController: UIViewController?) {
+        // Showing OAuth2 authentication window
+        if let aController = viewController {
+          present(aController, animated: true) {() -> Void in }
+        }
+    }
+    
+      // After Google OAuth2 authentication
+    func sign(_ signIn: GIDSignIn?, dismiss viewController: UIViewController?) {
+        // Close OAuth2 authentication window
+        dismiss(animated: true) {() -> Void in }
     }
 }

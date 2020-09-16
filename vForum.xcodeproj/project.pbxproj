@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		2CD87803D65A6D403F19CCEA /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
 		3E193227250B72C2004A1C4F /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E193226250B72C2004A1C4F /* TokenManager.swift */; };
+		3E525A792511963200562455 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E525A782511963200562455 /* LoginResponse.swift */; };
+		3E525A7C2511979E00562455 /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E525A7B2511979E00562455 /* RegisterManager.swift */; };
+		3E525A7E251197AA00562455 /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E525A7D251197AA00562455 /* RegisterResponse.swift */; };
 		3E7C0FD5250B768400891980 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7C0FD4250B768400891980 /* TokenResponse.swift */; };
+		3EBD943B251194A900F9EA97 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD943A251194A900F9EA97 /* LoginManager.swift */; };
 		8B9383A0B1EB3F4E03939A8D /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
 		F05EE5DEE01D7E30956A7B02 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D33F1250B547C0070DD4A /* AppDelegate.swift */; };
@@ -43,7 +47,11 @@
 		1B52730352233632F6981E74 /* Pods_vForumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
 		3E193226250B72C2004A1C4F /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		3E525A782511963200562455 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		3E525A7B2511979E00562455 /* RegisterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
+		3E525A7D251197AA00562455 /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		3E7C0FD4250B768400891980 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		3EBD943A251194A900F9EA97 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum.debug.xcconfig"; path = "Target Support Files/Pods-vForum/Pods-vForum.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,9 +112,20 @@
 			path = Token;
 			sourceTree = "<group>";
 		};
+		3E525A7A2511977300562455 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				3E525A7B2511979E00562455 /* RegisterManager.swift */,
+				3E525A7D251197AA00562455 /* RegisterResponse.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		3E777D3C250B586A003F07E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3E525A7A2511977300562455 /* Register */,
+				3EBD94392511947500F9EA97 /* Login */,
 				3E193225250B72B0004A1C4F /* Token */,
 			);
 			path = Model;
@@ -137,6 +156,15 @@
 				FA8D33FA250B54910070DD4A /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3EBD94392511947500F9EA97 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3EBD943A251194A900F9EA97 /* LoginManager.swift */,
+				3E525A782511963200562455 /* LoginResponse.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		65CB0726D28C86AE768C5998 /* Frameworks */ = {
@@ -453,11 +481,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E525A7E251197AA00562455 /* RegisterResponse.swift in Sources */,
+				3E525A7C2511979E00562455 /* RegisterManager.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
+				3EBD943B251194A900F9EA97 /* LoginManager.swift in Sources */,
 				3E193227250B72C2004A1C4F /* TokenManager.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
 				3E7C0FD5250B768400891980 /* TokenResponse.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
+				3E525A792511963200562455 /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

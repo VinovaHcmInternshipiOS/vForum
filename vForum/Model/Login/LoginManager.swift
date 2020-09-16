@@ -32,7 +32,15 @@ class LoginManager {
                     
                     if let success = loginResponse.success {
                         result = success
+                        
+                        if let accessToken = loginResponse.result?.accessToken {
+                            TokenManager.shared.updateAccessTokenIntoLocal(accessToken: accessToken)
+                        }
+                        if let refreshToken = loginResponse.result?.refreshToken {
+                            TokenManager.shared.updateRefreshTokenIntoLocal(refreshToken: refreshToken)
+                        }
                     }
+                    
                     
                     semaphore.signal()
                 } catch {

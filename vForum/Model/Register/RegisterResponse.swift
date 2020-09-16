@@ -18,7 +18,7 @@ struct RegisterResponse: Codable {
     var success: Bool?
     var result: RegisterResult?
     var message: String?
-    var code: Int8?
+    var code: Int?
     var options: String?
     var error: String?
 }

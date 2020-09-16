@@ -21,10 +21,10 @@ class TokenManager {
         return refreshToken
     }
     
-    func updateAccessTokenIntoLocal(token: String) {
-        UserDefaults.standard.set(token, forKey: "accessToken")
+    func updateAccessTokenIntoLocal(accessToken: String) {
+        UserDefaults.standard.set(accessToken, forKey: "accessToken")
     }
-    func updateRefreshTokenIntoLocal(token: String) {
-        UserDefaults.standard.set(token, forKey: "refreshToken")
+    func updateRefreshTokenIntoLocal(refreshToken: String) {
+        UserDefaults.standard.set(refreshToken, forKey: "refreshToken")
     }
 }

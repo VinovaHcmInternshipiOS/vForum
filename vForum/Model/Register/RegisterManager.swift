@@ -32,6 +32,13 @@ class RegisterManager {
                     
                     if let success = registerResponse.success {
                         result = success
+                        
+                        if let accessToken = registerResponse.result?.accessToken {
+                            TokenManager.shared.updateAccessTokenIntoLocal(accessToken: accessToken)
+                        }
+                        if let refreshToken = registerResponse.result?.refreshToken {
+                            TokenManager.shared.updateRefreshTokenIntoLocal(refreshToken: refreshToken)
+                        }
                     }
                     
                     semaphore.signal()

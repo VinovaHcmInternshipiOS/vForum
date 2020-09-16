@@ -6,7 +6,7 @@ import GoogleSignIn
 import GoogleDataTransport
 import GoogleUtilities
 
-class LoginController: UIViewController, UITextFieldDelegate {
+class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     
     let off = UIDevice.current.userInterfaceIdiom == .pad ? 250: 50
     
@@ -34,9 +34,19 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().presentingViewController = self
+        
         Username.delegate = self
         Password.delegate = self
         
+        setCornerRadius()
+        setConstraints()
+    }
+
+    func setCornerRadius() {
         UsernameFrame.layer.cornerRadius = 10
         PasswordFrame.layer.cornerRadius = 10
         
@@ -46,9 +56,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
         SignUpButton.layer.borderWidth = 2
         SignUpButton.layer.borderColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00).cgColor
         
-        setConstraints()
+        btnLoginFacebook.layer.cornerRadius = 20
+        btnLoginGg.layer.cornerRadius = 20
     }
-
+    
     func setConstraints() {
         Logo.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview().offset(off+50)
@@ -104,6 +115,19 @@ class LoginController: UIViewController, UITextFieldDelegate {
             make.left.equalTo(MainView.snp_left).offset(off+30)
             make.right.equalTo(MainView.snp_right).offset(-off-30)
             make.height.equalTo(CGFloat(50))
+        }
+        btnLoginFacebook.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(LoginButton.snp_bottom).offset(off-30)
+            make.left.equalTo(MainView.snp_left).offset(off+30)
+            make.right.equalTo(MainView.snp_right).offset(-off-30)
+            make.height.equalTo(CGFloat(40))
+        }
+        
+        btnLoginGg.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(btnLoginFacebook.snp_bottom).offset(off-30)
+            make.left.equalTo(MainView.snp_left).offset(off+30)
+            make.right.equalTo(MainView.snp_right).offset(-off-30)
+            make.height.equalTo(CGFloat(40))
         }
     }
     

@@ -24,6 +24,7 @@
 		FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8D33FC250B54910070DD4A /* LaunchScreen.storyboard */; };
 		FA8D3409250B54910070DD4A /* vForumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D3408250B54910070DD4A /* vForumTests.swift */; };
 		FA8D3414250B54910070DD4A /* vForumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D3413250B54910070DD4A /* vForumUITests.swift */; };
+		FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB631AB2511B33100F603BE /* GoogleService-Info.plist */; };
 		FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */; };
 		FABF857B250F8C63000B20B6 /* ForumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF857A250F8C63000B20B6 /* ForumView.xib */; };
 		FABF857D250F8EC7000B20B6 /* ForumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF857C250F8EC7000B20B6 /* ForumController.swift */; };
@@ -224,6 +225,7 @@
 		FA8D340F250B54910070DD4A /* vForumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vForumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8D3413250B54910070DD4A /* vForumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vForumUITests.swift; sourceTree = "<group>"; };
 		FA8D3415250B54910070DD4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB631AB2511B33100F603BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFieldView.xib; sourceTree = "<group>"; };
 		FABF857A250F8C63000B20B6 /* ForumView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForumView.xib; sourceTree = "<group>"; };
 		FABF857C250F8EC7000B20B6 /* ForumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumController.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				3E777D3D250B587B003F07E9 /* View */,
 				3E777D3C250B586A003F07E9 /* Model */,
 				FA8D33FF250B54910070DD4A /* Info.plist */,
+				FAB631AB2511B33100F603BE /* GoogleService-Info.plist */,
 			);
 			path = vForum;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FABF857B250F8C63000B20B6 /* ForumView.xib in Resources */,
+				FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */,
 				FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */,
 				FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */,
 				FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */,

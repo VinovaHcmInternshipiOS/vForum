@@ -8,6 +8,7 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var BackButton: UIButton!
     @IBOutlet weak var SignUpForm: UICollectionView!
     @IBOutlet weak var CreateButton: UIButton!
+    @IBOutlet weak var alreadyHaveButton: UIButton!
     
     @IBAction func goBack() {
         navigationController!.popViewController(animated: true)
@@ -35,15 +36,19 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         
         CreateButton.layer.cornerRadius = CGFloat(25)
         
+        setConstraints()
+    }
+    
+    func setConstraints() {
         JoinLabel.snp.makeConstraints{ (make)->Void in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(width-335)
+            make.top.equalToSuperview().offset(50)
         }
         
         SignUpForm.snp.makeConstraints{ (make)->Void in
             make.centerX.equalToSuperview()
             make.width.equalTo(CGFloat(400))
-            make.top.equalTo(JoinLabel.snp_bottom).offset(25)
+            make.top.equalTo(JoinLabel.snp_bottom).offset(30)
             make.height.equalTo(CGFloat(500))
         }
         
@@ -55,11 +60,16 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         }
         CreateButton.snp.makeConstraints{ (make)->Void in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-50)
+            make.bottom.equalToSuperview().offset(-60)
             make.width.equalTo(CGFloat(250))
             make.height.equalTo(CGFloat(50))
         }
-        
+        alreadyHaveButton.snp.makeConstraints{ (make)->Void in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-30)
+            make.width.equalTo(CGFloat(250))
+            make.height.equalTo(CGFloat(15))
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -113,7 +123,27 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         return true
     }
     
-    func resetIndicator(_ row: Int) {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let row = textField.tag
+        guard row == 4 else {
+            return true
+        }
+        let pass = fields[3].TextField.text!
+        let retype = fields[4].TextField.text! + string
+        
+        if pass != retype {
+            fields[4].RequiredFieldLabel.text! = "Incorrect password     "
+            fields[4].RequiredFieldLabel.alpha = 1
+            fields[4].Underline.backgroundColor = UIColor.systemRed
+        } else {
+            fields[row].RequiredFieldLabel.alpha = 0
+            fields[row].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
+        }
+        
+        return true
+    }
+    
+    private func resetIndicator(_ row: Int) {
         if fields[row].TextField.text! == "" && fields[row].required {
             fields[row].RequiredFieldLabel.text! = "Required field"
             fields[row].RequiredFieldLabel.alpha = 1
@@ -148,13 +178,19 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     
     @objc func keyboardAppear(notification: NSNotification) {
         SignUpForm.snp.updateConstraints{ (make)->Void in
-            make.height.equalTo(CGFloat(UIScreen.main.bounds.height-405))
+            make.height.equalTo(CGFloat(UIScreen.main.bounds.height-460))
+        }
+        CreateButton.snp.updateConstraints{ (make)->Void in
+            make.bottom.equalToSuperview().offset(-290)
         }
     }
 
     @objc func keyboardHide(notification: NSNotification) {
         SignUpForm.snp.updateConstraints{ (make)->Void in
             make.height.equalTo(CGFloat(500))
+        }
+        CreateButton.snp.updateConstraints{ (make)->Void in
+            make.bottom.equalToSuperview().offset(-60)
         }
      }
 }

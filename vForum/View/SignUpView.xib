@@ -14,6 +14,7 @@
                 <outlet property="CreateButton" destination="a5b-7W-DkC" id="weq-3O-uNT"/>
                 <outlet property="JoinLabel" destination="Q0P-v0-dzP" id="FXj-H8-dfl"/>
                 <outlet property="SignUpForm" destination="1Gq-Aj-01c" id="m4n-Mv-y4k"/>
+                <outlet property="alreadyHaveButton" destination="LuT-j1-X2M" id="cRr-Ez-69z"/>
                 <outlet property="view" destination="iN0-l3-epB" id="cgK-6A-efU"/>
             </connections>
         </placeholder>
@@ -50,7 +51,7 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" id="1Gq-Aj-01c">
                     <rect key="frame" x="36" y="124" width="342" height="594"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gsk-ac-I1I">
                         <size key="itemSize" width="342" height="80"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -59,10 +60,22 @@
                     </collectionViewFlowLayout>
                     <cells/>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuT-j1-X2M">
+                    <rect key="frame" x="112" y="836" width="190" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                    <color key="tintColor" red="0.1529411765" green="0.36470588240000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Already have an account? Sign in">
+                        <color key="titleColor" red="0.1529411765" green="0.36470588240000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="goBack" destination="-1" eventType="touchUpInside" id="owk-TC-uRl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="80" y="72"/>
+            <point key="canvasLocation" x="79.710144927536234" y="71.651785714285708"/>
         </view>
     </objects>
     <resources>

@@ -50,19 +50,19 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
         UsernameFrame.layer.cornerRadius = 10
         PasswordFrame.layer.cornerRadius = 10
         
-        LoginButton.layer.cornerRadius = 25
-        SignUpButton.layer.cornerRadius = 25
+        LoginButton.layer.cornerRadius = 23
+        SignUpButton.layer.cornerRadius = 23
         
         SignUpButton.layer.borderWidth = 2
         SignUpButton.layer.borderColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00).cgColor
         
-        btnLoginFacebook.layer.cornerRadius = 20
-        btnLoginGg.layer.cornerRadius = 20
+        btnLoginFacebook.layer.cornerRadius = 23
+        btnLoginGg.layer.cornerRadius = 23
     }
     
     func setConstraints() {
         Logo.snp.makeConstraints{ (make)->Void in
-            make.top.equalToSuperview().offset(off+50)
+            make.top.equalToSuperview().offset(off+40)
             make.left.equalTo(MainView.snp_left)
             make.right.equalTo(MainView.snp_right)
             make.height.equalTo(CGFloat(120))
@@ -70,7 +70,7 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
         UsernameFrame.snp.makeConstraints{ (make)->Void in
             make.left.equalTo(MainView).offset(off)
             make.right.equalTo(MainView).offset(-off)
-            make.top.equalTo(Logo.snp_bottom).offset(60)
+            make.top.equalTo(Logo.snp_bottom).offset(50)
             make.height.equalTo(CGFloat(50))
         }
         UsernameIcon.snp.makeConstraints{ (make)->Void in
@@ -103,31 +103,29 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
             make.left.equalTo(PasswordIcon.snp_right).offset(10)
             make.right.equalTo(PasswordFrame)
         }
-        
         LoginButton.snp.makeConstraints{ (make)->Void in
-            make.top.equalTo(PasswordFrame.snp_bottom).offset(off-25)
+            make.top.equalTo(PasswordFrame.snp_bottom).offset(off-20)
             make.left.equalTo(MainView.snp_left).offset(off+30)
             make.right.equalTo(MainView.snp_right).offset(-off-30)
-            make.height.equalTo(CGFloat(50))
+            make.height.equalTo(CGFloat(46))
         }
         SignUpButton.snp.makeConstraints{ (make)->Void in
             make.bottom.equalToSuperview().offset(-50)
             make.left.equalTo(MainView.snp_left).offset(off+30)
             make.right.equalTo(MainView.snp_right).offset(-off-30)
-            make.height.equalTo(CGFloat(50))
+            make.height.equalTo(CGFloat(46))
         }
         btnLoginFacebook.snp.makeConstraints{ (make)->Void in
-            make.top.equalTo(LoginButton.snp_bottom).offset(off-30)
+            make.top.equalTo(LoginButton.snp_bottom).offset(off-38)
             make.left.equalTo(MainView.snp_left).offset(off+30)
             make.right.equalTo(MainView.snp_right).offset(-off-30)
-            make.height.equalTo(CGFloat(40))
+            make.height.equalTo(CGFloat(46))
         }
-        
         btnLoginGg.snp.makeConstraints{ (make)->Void in
-            make.top.equalTo(btnLoginFacebook.snp_bottom).offset(off-30)
+            make.top.equalTo(btnLoginFacebook.snp_bottom).offset(off-38)
             make.left.equalTo(MainView.snp_left).offset(off+30)
             make.right.equalTo(MainView.snp_right).offset(-off-30)
-            make.height.equalTo(CGFloat(40))
+            make.height.equalTo(CGFloat(46))
         }
     }
     
@@ -137,6 +135,7 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
         UIView.animate(withDuration: 0.5, animations: {
             self.Logo.snp.updateConstraints{ (make)->Void in
                 make.height.equalTo(CGFloat(120))
+                make.top.equalToSuperview().offset(self.off+40)
             }
             self.UsernameFrame.snp.updateConstraints{ (make)->Void in
                 make.top.equalTo(self.Logo.snp_bottom).offset(60)
@@ -149,7 +148,8 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         UIView.animate(withDuration: 0.5, animations: {
             self.Logo.snp.updateConstraints{ (make)->Void in
-                make.height.equalTo(CGFloat(70))
+                make.height.equalTo(CGFloat(50))
+                make.top.equalToSuperview().offset(self.off+10)
             }
             self.UsernameFrame.snp.updateConstraints{ (make)->Void in
                 make.top.equalTo(self.Logo.snp_bottom).offset(40)
@@ -174,11 +174,15 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
 
 
 
-// PLACEHOLDER FUNCTIONS
+// MARK: - PLACEHOLDER FUNCTIONS
 extension LoginController {
     @IBAction func PressLogin(_ sender: UIButton) {
+        
+        // MARK: - ADD AUTHENTICATION
+        
         let vc = AppController()
         navigationController!.pushViewController(vc, animated: false)
+        
     }
 }
 
@@ -190,7 +194,8 @@ extension LoginController {
 
 
 /////////////////////////////////////////////////////////////
-// FACEBOOK/GOOGLE
+// MARK: - FACEBOOK/GOOGLE
+
 extension LoginController {
     @IBAction func LOGINFACEBOOK(_ sender: Any) {
         let loginManager = LoginManager()
@@ -211,7 +216,7 @@ extension LoginController {
                 return
             }
             print(AccessToken.current?.tokenString ?? "Print fail")
-            self?.navigationController?.pushViewController(AppController(), animated: true)
+            self?.navigationController?.pushViewController(AppController(), animated: false)
         }
     }
     
@@ -239,7 +244,7 @@ extension LoginController {
         }
         print("\(String(describing: user.profile.name)) \n")
         print("\(String(describing: user.profile.email)) \n")
-        self.navigationController?.pushViewController(AppController(), animated: true)
+        self.navigationController?.pushViewController(AppController(), animated: false)
       }
     
           // Start Google OAuth2 Authentication

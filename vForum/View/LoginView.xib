@@ -34,7 +34,7 @@
                     <rect key="frame" x="70" y="291" width="274" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-Pt-PUr">
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-Pt-PUr">
                             <rect key="frame" x="56" y="0.0" width="218" height="47"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
@@ -51,7 +51,7 @@
                     <rect key="frame" x="70" y="363" width="274" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="rMj-Hs-EsH">
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rMj-Hs-EsH">
                             <rect key="frame" x="52" y="0.0" width="222" height="47"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
@@ -81,7 +81,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAC-oS-F0L">
-                    <rect key="frame" x="114" y="522" width="187" height="57"/>
+                    <rect key="frame" x="87" y="522" width="241" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.1529411765" green="0.36470588240000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
@@ -117,7 +117,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" red="0.98823529409999999" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="124.6376811594203" y="89.732142857142847"/>
         </view>

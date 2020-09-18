@@ -150,14 +150,25 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
         return false
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let row = textField.tag
+        guard row != 0 else {
+            if string == " " {
+                return false
+            }
+            return true
+        }
+        return true
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         UIView.animate(withDuration: 0.5, animations: {
             self.Logo.snp.updateConstraints{ (make)->Void in
                 make.height.equalTo(CGFloat(50))
-                make.top.equalToSuperview().offset(self.off+10)
+                make.top.equalToSuperview().offset(self.off)
             }
             self.UsernameFrame.snp.updateConstraints{ (make)->Void in
-                make.top.equalTo(self.Logo.snp_bottom).offset(40)
+                make.top.equalTo(self.Logo.snp_bottom).offset(30)
             }
             self.MainView.layoutIfNeeded()
             textField.superview?.layer.borderWidth = 1

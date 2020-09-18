@@ -131,6 +131,12 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let row = textField.tag
+        guard row != 0 && row != 2 else {
+            if string == " " {
+                return false
+            }
+            return true
+        }
         guard row == 4 else {
             return true
         }

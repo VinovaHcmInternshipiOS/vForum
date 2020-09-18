@@ -130,18 +130,23 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.Logo.snp.updateConstraints{ (make)->Void in
-                make.height.equalTo(CGFloat(120))
-                make.top.equalToSuperview().offset(self.off+40)
-            }
-            self.UsernameFrame.snp.updateConstraints{ (make)->Void in
-                make.top.equalTo(self.Logo.snp_bottom).offset(60)
-            }
-            self.MainView.layoutIfNeeded()
-        })
+        let row = textField.tag
+        if row == 0 {
+            Password.becomeFirstResponder()
+        }
+        else {
+            textField.endEditing(true)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.Logo.snp.updateConstraints{ (make)->Void in
+                    make.height.equalTo(CGFloat(120))
+                    make.top.equalToSuperview().offset(self.off+40)
+                }
+                self.UsernameFrame.snp.updateConstraints{ (make)->Void in
+                    make.top.equalTo(self.Logo.snp_bottom).offset(60)
+                }
+                self.MainView.layoutIfNeeded()
+            })
+        }
         return false
     }
     

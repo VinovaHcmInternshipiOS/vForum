@@ -100,11 +100,17 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        for row in 0..<fieldTitles.count {
-            resetIndicator(row)
+        let row = textField.tag
+        if row < 4 {
+            fields[row+1].TextField.becomeFirstResponder()
+            return false
         }
-        
+        else {
+            textField.endEditing(true)
+            for x in 0..<fieldTitles.count {
+                resetIndicator(x)
+            }
+        }
         return false
     }
     

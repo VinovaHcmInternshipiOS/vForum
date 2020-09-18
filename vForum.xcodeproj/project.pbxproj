@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2CD87803D65A6D403F19CCEA /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
+		224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */; };
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
-		8B9383A0B1EB3F4E03939A8D /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
+		5773BE85DC715A7E062FDD37 /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
+		76525AED92DEEB6D0032E877 /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
 		FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2102002510ACCC0003CC42 /* LoginView.xib */; };
 		FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */; };
 		FA697CE2250F105500AF9717 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA697CE1250F105500AF9717 /* AppController.swift */; };
@@ -199,6 +200,7 @@
 
 /* Begin PBXFileReference section */
 		1B52730352233632F6981E74 /* Pods_vForumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRemoteNetworking.swift; sourceTree = "<group>"; };
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,7 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E51036DBAA855C75CE1BCA9 /* Pods_vForumTests.framework in Frameworks */,
+				5773BE85DC715A7E062FDD37 /* Pods_vForumTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,20 +259,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CC7E2A243C9889E49599D04 /* Pods_vForum_vForumUITests.framework in Frameworks */,
+				76525AED92DEEB6D0032E877 /* Pods_vForum_vForumUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22AF9466250F27AB00CFE0F0 /* LoginView */ = {
+		2247536D2514FD8A002C8C8A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				22AF9467250F281500CFE0F0 /* LoginViewController.swift */,
-				22AF9468250F281500CFE0F0 /* LoginViewController.xib */,
+				224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */,
 			);
-			path = LoginView;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		3E777D3C250B586A003F07E9 /* Model */ = {
@@ -392,7 +393,7 @@
 		FA8D33F0250B547C0070DD4A /* vForum */ = {
 			isa = PBXGroup;
 			children = (
-				22AF946C250F3B8B00CFE0F0 /* GoogleService-Info.plist */,
+				2247536D2514FD8A002C8C8A /* Networking */,
 				3E777D3F250B5895003F07E9 /* Resources */,
 				3E777D3E250B5882003F07E9 /* Controller */,
 				3E777D3D250B587B003F07E9 /* View */,
@@ -428,7 +429,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA8D3418250B54910070DD4A /* Build configuration list for PBXNativeTarget "vForum" */;
 			buildPhases = (
-				0F4C584F1F9FB203F3128346 /* [CP] Check Pods Manifest.lock */,
+				164D20568962E1C1E9D8DCDD /* [CP] Check Pods Manifest.lock */,
 				FA8D33EA250B547C0070DD4A /* Sources */,
 				FA8D33EB250B547C0070DD4A /* Frameworks */,
 				FA8D33EC250B547C0070DD4A /* Resources */,
@@ -472,8 +473,8 @@
 				FA8D340B250B54910070DD4A /* Sources */,
 				FA8D340C250B54910070DD4A /* Frameworks */,
 				FA8D340D250B54910070DD4A /* Resources */,
-				DE54D1DB23033E5C7A6AAE03 /* [CP] Embed Pods Frameworks */,
 				1FC5A40342573CA716AFED5B /* [CP] Copy Pods Resources */,
+				5BFACE2B537301D27751EA15 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -493,7 +494,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1160;
-				ORGANIZATIONNAME = trucdongtxtv;
+				ORGANIZATIONNAME = vinova.internship;
 				TargetAttributes = {
 					FA8D33ED250B547C0070DD4A = {
 						CreatedOnToolsVersion = 11.6;
@@ -703,45 +704,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1FC5A40342573CA716AFED5B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2AC40711E638F13ACFFC2D48 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-vForum-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		10983A33D311A78BB1DC7406 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -764,7 +726,80 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		97D0B51B47B8EAB48061B0D5 /* [CP] Embed Pods Frameworks */ = {
+		164D20568962E1C1E9D8DCDD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-vForum-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1FC5A40342573CA716AFED5B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BFACE2B537301D27751EA15 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F1D6FD88DDABBCD7B8D65B5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92C26C58184D9BA885A8B4CF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -803,74 +838,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F1D6FD88DDABBCD7B8D65B5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		92C26C58184D9BA885A8B4CF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CEC6D862653815EB669EC242 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F93EE828B924F2657050266E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vForum/Pods-vForum-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -878,6 +845,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
 				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,
 				FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */,
@@ -1049,7 +1017,7 @@
 		};
 		FA8D3419250B54910070DD4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D930D4F9822E0F535C36ADA /* Pods-vForum.debug.xcconfig */;
+			baseConfigurationReference = 7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1069,7 +1037,7 @@
 		};
 		FA8D341A250B54910070DD4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B01571D974548D919B4E811 /* Pods-vForum.release.xcconfig */;
+			baseConfigurationReference = E39D8E1484572BF5B5837F04 /* Pods-vForum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1089,7 +1057,7 @@
 		};
 		FA8D341C250B54910070DD4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C5964B58E3E3C1214BB026E /* Pods-vForumTests.debug.xcconfig */;
+			baseConfigurationReference = 70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1112,7 +1080,7 @@
 		};
 		FA8D341D250B54910070DD4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32F4DF6CC5F9CB2A5BC8CD9A /* Pods-vForumTests.release.xcconfig */;
+			baseConfigurationReference = 296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1135,7 +1103,7 @@
 		};
 		FA8D341F250B54910070DD4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C6C85EE6C4F81A85042F7D1 /* Pods-vForum-vForumUITests.debug.xcconfig */;
+			baseConfigurationReference = A149E7CADE49BDFE86757CD9 /* Pods-vForum-vForumUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1156,7 +1124,7 @@
 		};
 		FA8D3420250B54910070DD4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACAEB20CD6BF319EEE06C000 /* Pods-vForum-vForumUITests.release.xcconfig */;
+			baseConfigurationReference = 8EB369C9CCC03712780D89B2 /* Pods-vForum-vForumUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

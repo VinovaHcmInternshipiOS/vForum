@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
+        
+        RemoteAPIProvider.testingMethod()
         return true
     }
 
@@ -63,3 +65,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //}
 
+}

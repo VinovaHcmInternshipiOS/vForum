@@ -1,15 +1,8 @@
-//
-//  AppDelegate.swift
-//  vForum
-//
-//  Created by macbook on 9/11/20.
-//  Copyright © 2020 trucdongtxtv. All rights reserved.
-//
-
 import UIKit
 import FBSDKCoreKit
 import Firebase
 import GoogleSignIn
+//import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,9 +10,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
+        //IQKeyboardManager.shared.enable = true
+        
         FirebaseApp.configure()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let rootVc = UINavigationController()
+        let firstVc = LoginController(nibName: "LoginView", bundle: nil)
+        rootVc.viewControllers = [firstVc]
+        rootVc.isNavigationBarHidden = true
+        
+        window?.rootViewController = rootVc
+        window?.makeKeyAndVisible()
         return true
     }
 
@@ -38,21 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
     func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
         ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
         let handled = GIDSignIn.sharedInstance()?.handle(url) ?? false
         return handled
     }
-    
-//    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-//        let handled = GIDSignIn.sharedInstance().handle(url)
-//      return handled
-//    }
-//    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-//        let handled = GIDSignIn.sharedInstance()?.handle(url) ?? false
-//        return handled
-//    }
-}
 
 
 // Swift // // AppDelegate.swift

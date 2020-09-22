@@ -2,5 +2,5 @@ platform "ios"
 readonly true
 verbose true
 app_identifier          ENV["APP_ID"]
-git_url 				ENV["GIT_CERT_URL"]
+git_url 				"https://github.com/VinovaHcmInternshipiOS/iOS_Cert.git"
 git_branch				ENV["GIT_CERT_BRANCH"]

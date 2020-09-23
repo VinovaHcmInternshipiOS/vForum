@@ -11,11 +11,13 @@ import UIKit
 import DropDown
 
 class ListEventController: UIViewController {
-    
+    var dropDown: DropDown?
+    var isDrop: Bool = false
     var sortTypeBtn: UIButton?
     var sortDateBtn: UIButton?
     var tableView: UITableView?
     var navBarHeight: CGFloat = 70.0
+    var listEvent: [EventCell] = [EventCell(title: "Event 1", startDate: "15 April", endDate: "20 April", banner: "eventBannner")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,13 @@ class ListEventController: UIViewController {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        if isDrop {
+            dropDown?.hide()
+        }
+    }
+    
     func initializeTableView(_ tableView: inout UITableView?) {
         tableView = UITableView(frame: .zero, style: .grouped)
         guard let tableView = tableView else {
@@ -36,6 +45,10 @@ class ListEventController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(EventTableViewCell.self, forCellReuseIdentifier: "eventCell")
+        tableView.rowHeight = 80.0
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.1 + navBarHeight).isActive = true
@@ -85,7 +98,12 @@ class ListEventController: UIViewController {
     }
     
     @objc func sortTypeBtnPressed(_ sender: UIButton) {
-        let dropDown = DropDown()
+        dropDown = DropDown()
+        
+        guard let dropDown = dropDown else {
+            return
+        }
+        isDrop = true
         dropDown.anchorView = sender
         dropDown.dataSource =  ["Passed", "Oldest", "Newest"]
         dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
@@ -93,6 +111,7 @@ class ListEventController: UIViewController {
         dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
           guard let _ = self else { return }
           sender.setTitle(item, for: .normal) //9
+            self?.isDrop = false
         }
     }
     
@@ -100,13 +119,28 @@ class ListEventController: UIViewController {
 
 extension ListEventController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return listEvent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventTableViewCell
+        let event = listEvent[indexPath.row]
+        cell.frame.size.height = tableView.rowHeight
+        cell.initializeContainer()
+        cell.initializeTitle(event.title)
+        cell.initializeDateTime("\(event.startDate) - \(event.endDate)")
+        cell.background = event.banner
+        cell.selectionStyle = .none
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailEvent = DetailEvent()
+        detailEvent.modalPresentationStyle = .popover
+        DispatchQueue.main.async {
+            self.present(detailEvent, animated: true, completion: nil)
+        }
     }
     
     

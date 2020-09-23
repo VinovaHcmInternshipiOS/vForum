@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */; };
+		3E1AC9DA251B1B6800EC96C5 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1AC9D9251B1B6800EC96C5 /* EventCell.swift */; };
+		3E1AC9F4251B1B8900EC96C5 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1AC9F3251B1B8900EC96C5 /* EventTableViewCell.swift */; };
+		3E1AC9F6251B3FBE00EC96C5 /* DetailEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1AC9F5251B3FBE00EC96C5 /* DetailEvent.swift */; };
 		3E5C848D251AFC0D001DBFFA /* ListEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5C848C251AFC0D001DBFFA /* ListEventController.swift */; };
 		3E5C84A9251AFC2C001DBFFA /* DateTimePickerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5C84A8251AFC2C001DBFFA /* DateTimePickerEvent.swift */; };
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
@@ -211,6 +214,9 @@
 		1B52730352233632F6981E74 /* Pods_vForumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRemoteNetworking.swift; sourceTree = "<group>"; };
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
+		3E1AC9D9251B1B6800EC96C5 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventCell.swift; path = vForum/View/EventCell.swift; sourceTree = SOURCE_ROOT; };
+		3E1AC9F3251B1B8900EC96C5 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = vForum/View/EventTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		3E1AC9F5251B3FBE00EC96C5 /* DetailEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailEvent.swift; path = vForum/View/DetailEvent.swift; sourceTree = SOURCE_ROOT; };
 		3E5C848C251AFC0D001DBFFA /* ListEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListEventController.swift; path = vForum/View/ListEventController.swift; sourceTree = SOURCE_ROOT; };
 		3E5C84A8251AFC2C001DBFFA /* DateTimePickerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateTimePickerEvent.swift; path = vForum/View/DateTimePickerEvent.swift; sourceTree = SOURCE_ROOT; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,6 +355,9 @@
 			children = (
 				3E5C848C251AFC0D001DBFFA /* ListEventController.swift */,
 				3E5C84A8251AFC2C001DBFFA /* DateTimePickerEvent.swift */,
+				3E1AC9D9251B1B6800EC96C5 /* EventCell.swift */,
+				3E1AC9F3251B1B8900EC96C5 /* EventTableViewCell.swift */,
+				3E1AC9F5251B3FBE00EC96C5 /* DetailEvent.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -1146,13 +1155,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E1AC9F6251B3FBE00EC96C5 /* DetailEvent.swift in Sources */,
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
 				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,
 				FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */,
+				3E1AC9F4251B1B8900EC96C5 /* EventTableViewCell.swift in Sources */,
 				FABF8581250F9D19000B20B6 /* ForumItem.swift in Sources */,
 				3E5C84A9251AFC2C001DBFFA /* DateTimePickerEvent.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
+				3E1AC9DA251B1B6800EC96C5 /* EventCell.swift in Sources */,
 				FABF857D250F8EC7000B20B6 /* ForumController.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
 				FA85A6B1250BD03D0029A47A /* SignUpController.swift in Sources */,
@@ -1323,18 +1335,18 @@
 			baseConfigurationReference = 7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GU9U74T6LC;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VXWH8X93WN;
 				INFOPLIST_FILE = vForum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinova.internship.vforum;
+				PRODUCT_BUNDLE_IDENTIFIER = phucly.com.vforum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.vinova.internship.vforum";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1345,18 +1357,18 @@
 			baseConfigurationReference = E39D8E1484572BF5B5837F04 /* Pods-vForum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = GU9U74T6LC;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VXWH8X93WN;
 				INFOPLIST_FILE = vForum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinova.internship.vforum;
+				PRODUCT_BUNDLE_IDENTIFIER = phucly.com.vforum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match InHouse com.vinova.internship.vforum";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

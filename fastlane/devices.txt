@@ -1,3 +1,4 @@
 Device ID	Device Name	Device Platform
 00008020000E03041E45002E	Dominic 1	ios
 d950652e91647595bc94284996442fe2dfa9e9b0	Dominic 2	ios
+00008020000205D83605002E	Timon 1	ios

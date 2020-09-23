@@ -10,6 +10,7 @@ import Foundation
 
 struct EventCell: Codable {
     var title: String
+    var description: String
     var startDate: String
     var endDate: String
     var banner: String

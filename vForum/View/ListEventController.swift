@@ -17,7 +17,7 @@ class ListEventController: UIViewController {
     var sortDateBtn: UIButton?
     var tableView: UITableView?
     var navBarHeight: CGFloat = 70.0
-    var listEvent: [EventCell] = [EventCell(title: "Event 1", startDate: "15 April", endDate: "20 April", banner: "eventBannner")]
+    var listEvent: [EventCell] = [EventCell(title: "Event 1", description: "Description1", startDate: "15 April", endDate: "20 April", banner: "eventBannner")]
     
     override func viewDidLoad() {
         super.viewDidLoad()

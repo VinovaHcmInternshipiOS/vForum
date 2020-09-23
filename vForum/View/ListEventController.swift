@@ -23,6 +23,25 @@ class ListEventController: UIViewController {
         
         initializeSortTypeBtn(&sortTypeBtn)
         initializeSortDateBtn(&sortDateBtn)
+        initializeTableView(&tableView)
+        
+    }
+    
+    func initializeTableView(_ tableView: inout UITableView?) {
+        tableView = UITableView(frame: .zero, style: .grouped)
+        guard let tableView = tableView else {
+            return
+        }
+        
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.1 + navBarHeight).isActive = true
+        tableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.9 - navBarHeight).isActive = true
+        tableView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
         
     }
     
@@ -35,6 +54,7 @@ class ListEventController: UIViewController {
         }
         
         sortType.setTitle("Sorting", for: .normal)
+        sortType.titleLabel?.textAlignment = .center
         sortType.setTitleColor(UIColor(red: 171/255, green: 169/255, blue: 195/255, alpha: 1.0), for: .normal)
         sortType.addTarget(self, action: #selector(sortTypeBtnPressed(_:)), for: .touchUpInside)
         
@@ -50,6 +70,7 @@ class ListEventController: UIViewController {
         }
         
         sortDate.setTitle("15 April", for: .normal)
+        sortDate.titleLabel?.textAlignment = .center
         sortDate.setTitleColor(UIColor(red: 171/255, green: 169/255, blue: 195/255, alpha: 1.0), for: .normal)
         sortDate.addTarget(self, action: #selector(sortDateBtnPressed(_:)), for: .touchUpInside)
         
@@ -74,5 +95,19 @@ class ListEventController: UIViewController {
           sender.setTitle(item, for: .normal) //9
         }
     }
+    
+}
+
+extension ListEventController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        return cell
+    }
+    
     
 }

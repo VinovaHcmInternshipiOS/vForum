@@ -101,7 +101,6 @@ class DatePickerEvent: UIViewController {
         label.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.3 * 0.1).isActive = true
         label.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
         label.text = textLabel
-        label.backgroundColor = .yellow
         
         datePicker.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
         

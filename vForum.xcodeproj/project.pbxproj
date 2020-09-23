@@ -8,6 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */; };
+		22A6902225183EBD000CE500 /* ReuseFeedComment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6902125183EBD000CE500 /* ReuseFeedComment.xib */; };
+		22A69024251840EC000CE500 /* ReuseFeedComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A69023251840EC000CE500 /* ReuseFeedComment.swift */; };
+		22A6902B25184857000CE500 /* ReuseFeedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6902A25184857000CE500 /* ReuseFeedCard.swift */; };
+		22A690442518486A000CE500 /* ReuseFeedCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A690432518486A000CE500 /* ReuseFeedCard.xib */; };
+		22A6905F25185B4C000CE500 /* FeedHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6905D25185B4C000CE500 /* FeedHomeViewController.swift */; };
+		22A6906025185B4C000CE500 /* FeedHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6905E25185B4C000CE500 /* FeedHomeViewController.xib */; };
+		22A6906525185D7D000CE500 /* FeedHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6906325185D7D000CE500 /* FeedHomeTableViewCell.swift */; };
+		22A6906625185D7D000CE500 /* FeedHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6906425185D7D000CE500 /* FeedHomeTableViewCell.xib */; };
+		22A6906A251863EE000CE500 /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A69068251863EE000CE500 /* FeedDetailViewController.swift */; };
+		22A6906B251863EE000CE500 /* FeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A69069251863EE000CE500 /* FeedDetailViewController.xib */; };
+		22A6906F25188263000CE500 /* FeedCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6906D25188263000CE500 /* FeedCommentViewController.swift */; };
+		22A6907025188263000CE500 /* FeedCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6906E25188263000CE500 /* FeedCommentViewController.xib */; };
+		22A6907425188555000CE500 /* FeedCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6907225188555000CE500 /* FeedCreateViewController.swift */; };
+		22A6907525188555000CE500 /* FeedCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6907325188555000CE500 /* FeedCreateViewController.xib */; };
+		22A6907925188927000CE500 /* FeedCreateButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6907725188927000CE500 /* FeedCreateButtonCollectionViewCell.swift */; };
+		22A6907A25188927000CE500 /* FeedCreateButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6907825188927000CE500 /* FeedCreateButtonCollectionViewCell.xib */; };
+		22A6907E25188958000CE500 /* FeedLoadImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6907C25188958000CE500 /* FeedLoadImageCollectionViewCell.swift */; };
+		22A6907F25188958000CE500 /* FeedLoadImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6907D25188958000CE500 /* FeedLoadImageCollectionViewCell.xib */; };
+		22A6908325189E33000CE500 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6908125189E33000CE500 /* ShowImageViewController.swift */; };
+		22A6908425189E33000CE500 /* ShowImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6908225189E33000CE500 /* ShowImageViewController.xib */; };
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		5773BE85DC715A7E062FDD37 /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
 		76525AED92DEEB6D0032E877 /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
@@ -201,6 +221,26 @@
 /* Begin PBXFileReference section */
 		1B52730352233632F6981E74 /* Pods_vForumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRemoteNetworking.swift; sourceTree = "<group>"; };
+		22A6902125183EBD000CE500 /* ReuseFeedComment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReuseFeedComment.xib; sourceTree = "<group>"; };
+		22A69023251840EC000CE500 /* ReuseFeedComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseFeedComment.swift; sourceTree = "<group>"; };
+		22A6902A25184857000CE500 /* ReuseFeedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseFeedCard.swift; sourceTree = "<group>"; };
+		22A690432518486A000CE500 /* ReuseFeedCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReuseFeedCard.xib; sourceTree = "<group>"; };
+		22A6905D25185B4C000CE500 /* FeedHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedHomeViewController.swift; path = vForum/Controller/Feed/HomeFeed/FeedHomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		22A6905E25185B4C000CE500 /* FeedHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FeedHomeViewController.xib; path = vForum/Controller/Feed/HomeFeed/FeedHomeViewController.xib; sourceTree = SOURCE_ROOT; };
+		22A6906325185D7D000CE500 /* FeedHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHomeTableViewCell.swift; sourceTree = "<group>"; };
+		22A6906425185D7D000CE500 /* FeedHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedHomeTableViewCell.xib; sourceTree = "<group>"; };
+		22A69068251863EE000CE500 /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
+		22A69069251863EE000CE500 /* FeedDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedDetailViewController.xib; sourceTree = "<group>"; };
+		22A6906D25188263000CE500 /* FeedCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentViewController.swift; sourceTree = "<group>"; };
+		22A6906E25188263000CE500 /* FeedCommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCommentViewController.xib; sourceTree = "<group>"; };
+		22A6907225188555000CE500 /* FeedCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCreateViewController.swift; sourceTree = "<group>"; };
+		22A6907325188555000CE500 /* FeedCreateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCreateViewController.xib; sourceTree = "<group>"; };
+		22A6907725188927000CE500 /* FeedCreateButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCreateButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		22A6907825188927000CE500 /* FeedCreateButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCreateButtonCollectionViewCell.xib; sourceTree = "<group>"; };
+		22A6907C25188958000CE500 /* FeedLoadImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		22A6907D25188958000CE500 /* FeedLoadImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedLoadImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		22A6908125189E33000CE500 /* ShowImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
+		22A6908225189E33000CE500 /* ShowImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowImageViewController.xib; sourceTree = "<group>"; };
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +314,99 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		22A68FEB25183CD1000CE500 /* FeedCard */ = {
+			isa = PBXGroup;
+			children = (
+				22A6902A25184857000CE500 /* ReuseFeedCard.swift */,
+				22A690432518486A000CE500 /* ReuseFeedCard.xib */,
+			);
+			path = FeedCard;
+			sourceTree = "<group>";
+		};
+		22A6902025183EA5000CE500 /* FeedComment */ = {
+			isa = PBXGroup;
+			children = (
+				22A6902125183EBD000CE500 /* ReuseFeedComment.xib */,
+				22A69023251840EC000CE500 /* ReuseFeedComment.swift */,
+			);
+			path = FeedComment;
+			sourceTree = "<group>";
+		};
+		22A6906125185D48000CE500 /* HomeFeed */ = {
+			isa = PBXGroup;
+			children = (
+				22A6906225185D57000CE500 /* FeedHomeTableViewCell */,
+				22A6905D25185B4C000CE500 /* FeedHomeViewController.swift */,
+				22A6905E25185B4C000CE500 /* FeedHomeViewController.xib */,
+			);
+			path = HomeFeed;
+			sourceTree = "<group>";
+		};
+		22A6906225185D57000CE500 /* FeedHomeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				22A6906325185D7D000CE500 /* FeedHomeTableViewCell.swift */,
+				22A6906425185D7D000CE500 /* FeedHomeTableViewCell.xib */,
+			);
+			path = FeedHomeTableViewCell;
+			sourceTree = "<group>";
+		};
+		22A69067251863C5000CE500 /* DetailFeed */ = {
+			isa = PBXGroup;
+			children = (
+				22A69068251863EE000CE500 /* FeedDetailViewController.swift */,
+				22A69069251863EE000CE500 /* FeedDetailViewController.xib */,
+			);
+			path = DetailFeed;
+			sourceTree = "<group>";
+		};
+		22A6906C2518823E000CE500 /* CommentFeed */ = {
+			isa = PBXGroup;
+			children = (
+				22A6906D25188263000CE500 /* FeedCommentViewController.swift */,
+				22A6906E25188263000CE500 /* FeedCommentViewController.xib */,
+			);
+			path = CommentFeed;
+			sourceTree = "<group>";
+		};
+		22A690712518853E000CE500 /* CreateFeed */ = {
+			isa = PBXGroup;
+			children = (
+				22A6907B2518892C000CE500 /* FeedLoadImage */,
+				22A69076251888F1000CE500 /* CreateButtonFeed */,
+				22A6907225188555000CE500 /* FeedCreateViewController.swift */,
+				22A6907325188555000CE500 /* FeedCreateViewController.xib */,
+			);
+			path = CreateFeed;
+			sourceTree = "<group>";
+		};
+		22A69076251888F1000CE500 /* CreateButtonFeed */ = {
+			isa = PBXGroup;
+			children = (
+				22A6907725188927000CE500 /* FeedCreateButtonCollectionViewCell.swift */,
+				22A6907825188927000CE500 /* FeedCreateButtonCollectionViewCell.xib */,
+			);
+			path = CreateButtonFeed;
+			sourceTree = "<group>";
+		};
+		22A6907B2518892C000CE500 /* FeedLoadImage */ = {
+			isa = PBXGroup;
+			children = (
+				22A6907C25188958000CE500 /* FeedLoadImageCollectionViewCell.swift */,
+				22A6907D25188958000CE500 /* FeedLoadImageCollectionViewCell.xib */,
+			);
+			path = FeedLoadImage;
+			sourceTree = "<group>";
+		};
+		22A6908025189DD3000CE500 /* ShowImage */ = {
+			isa = PBXGroup;
+			children = (
+				22A6908125189E33000CE500 /* ShowImageViewController.swift */,
+				22A6908225189E33000CE500 /* ShowImageViewController.xib */,
+			);
+			path = ShowImage;
+			sourceTree = "<group>";
+		};
 		3E32E6632516D26D00CCF3D4 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +417,11 @@
 		3E32E67B2516D27600CCF3D4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				22A6908025189DD3000CE500 /* ShowImage */,
+				22A690712518853E000CE500 /* CreateFeed */,
+				22A6906C2518823E000CE500 /* CommentFeed */,
+				22A69067251863C5000CE500 /* DetailFeed */,
+				22A6906125185D48000CE500 /* HomeFeed */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -364,6 +502,8 @@
 		3E32E6852516D31100CCF3D4 /* ReusableView */ = {
 			isa = PBXGroup;
 			children = (
+				22A6902025183EA5000CE500 /* FeedComment */,
+				22A68FEB25183CD1000CE500 /* FeedCard */,
 				3E32E68F2516D3D900CCF3D4 /* Label */,
 				3E32E68E2516D38B00CCF3D4 /* TextField */,
 				3E32E68D2516D38400CCF3D4 /* Button */,
@@ -957,13 +1097,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FABF857B250F8C63000B20B6 /* ForumView.xib in Resources */,
+				22A6906B251863EE000CE500 /* FeedDetailViewController.xib in Resources */,
+				22A6907A25188927000CE500 /* FeedCreateButtonCollectionViewCell.xib in Resources */,
+				22A6907025188263000CE500 /* FeedCommentViewController.xib in Resources */,
 				FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */,
 				FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */,
 				FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */,
+				22A6907525188555000CE500 /* FeedCreateViewController.xib in Resources */,
 				FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */,
+				22A6906025185B4C000CE500 /* FeedHomeViewController.xib in Resources */,
+				22A6906625185D7D000CE500 /* FeedHomeTableViewCell.xib in Resources */,
 				FA8D33FB250B54910070DD4A /* Assets.xcassets in Resources */,
+				22A6902225183EBD000CE500 /* ReuseFeedComment.xib in Resources */,
 				FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */,
+				22A6907F25188958000CE500 /* FeedLoadImageCollectionViewCell.xib in Resources */,
+				22A690442518486A000CE500 /* ReuseFeedCard.xib in Resources */,
 				FABF857F250F94D4000B20B6 /* ForumItemView.xib in Resources */,
+				22A6908425189E33000CE500 /* ShowImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,16 +1275,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A6907E25188958000CE500 /* FeedLoadImageCollectionViewCell.swift in Sources */,
+				22A6906F25188263000CE500 /* FeedCommentViewController.swift in Sources */,
+				22A6907425188555000CE500 /* FeedCreateViewController.swift in Sources */,
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
+				22A6907925188927000CE500 /* FeedCreateButtonCollectionViewCell.swift in Sources */,
 				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,
+				22A6905F25185B4C000CE500 /* FeedHomeViewController.swift in Sources */,
+				22A6906A251863EE000CE500 /* FeedDetailViewController.swift in Sources */,
 				FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */,
 				FABF8581250F9D19000B20B6 /* ForumItem.swift in Sources */,
+				22A69024251840EC000CE500 /* ReuseFeedComment.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
+				22A6902B25184857000CE500 /* ReuseFeedCard.swift in Sources */,
 				FABF857D250F8EC7000B20B6 /* ForumController.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
 				FA85A6B1250BD03D0029A47A /* SignUpController.swift in Sources */,
+				22A6906525185D7D000CE500 /* FeedHomeTableViewCell.swift in Sources */,
 				FA697CE2250F105500AF9717 /* AppController.swift in Sources */,
+				22A6908325189E33000CE500 /* ShowImageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

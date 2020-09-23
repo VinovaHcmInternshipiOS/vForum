@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: sceneWindow)
-        window?.rootViewController = LoginController(nibName: "LoginView", bundle: nil)
+        //window?.rootViewController = LoginController(nibName: "LoginView", bundle: nil)
+        window?.rootViewController = UINavigationController(rootViewController: FeedHomeViewController())
         window?.makeKeyAndVisible()
     }
 

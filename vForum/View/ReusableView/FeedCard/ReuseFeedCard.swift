@@ -10,7 +10,6 @@ import UIKit
 
 @IBDesignable
 class ReuseFeedCard: UIView {
-    var contentView:UIView?
     @IBOutlet weak var imageAvatar: UIImageView!
     @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var lblTimeCreate: UILabel!
@@ -40,7 +39,6 @@ class ReuseFeedCard: UIView {
         guard let view = loadViewFromNib() else { return }
         view.frame = self.bounds
         self.addSubview(view)
-        contentView = view
     }
     
     func loadViewFromNib() -> UIView? {

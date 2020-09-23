@@ -10,13 +10,12 @@ import UIKit
 
 class FeedHomeViewController: UIViewController {
 
-    @IBOutlet weak var btnCreateFeed: UIButton!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "FeedHomeTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedHomeTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "FeedHomeTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedHomeTableViewCell")
         if #available(iOS 13.0, *) {
             let btnCreate = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(CREATEFEED))
             btnCreate.tintColor = .black
@@ -59,6 +58,8 @@ extension FeedHomeViewController: UITableViewDelegate {
         //TODO:
         return 610
     }
+    
+    
 }
 
 extension FeedHomeViewController {

@@ -23,10 +23,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="JVq-4P-KoA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8vg-S6-JuG"/>
-                    <constraint firstAttribute="trailing" secondItem="JVq-4P-KoA" secondAttribute="trailing" id="9SX-Aa-eeQ"/>
-                    <constraint firstItem="JVq-4P-KoA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iP1-L8-aT6"/>
-                    <constraint firstAttribute="bottom" secondItem="JVq-4P-KoA" secondAttribute="bottom" id="nEY-Vj-ALo"/>
+                    <constraint firstAttribute="trailing" secondItem="JVq-4P-KoA" secondAttribute="trailing" id="YBG-Sl-AeM"/>
+                    <constraint firstItem="JVq-4P-KoA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="m5l-1t-ZsG"/>
+                    <constraint firstItem="JVq-4P-KoA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ob0-7S-BcC"/>
+                    <constraint firstAttribute="bottom" secondItem="JVq-4P-KoA" secondAttribute="bottom" id="ync-FI-Cba"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

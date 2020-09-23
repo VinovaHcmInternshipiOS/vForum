@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedHomeViewController" customModule="vForum" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="L82-o9-Hrp" id="88V-IN-1Uw"/>
+                <outlet property="tableView" destination="L82-o9-Hrp" id="7n9-6M-aig"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,13 +19,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L82-o9-Hrp">
-                    <rect key="frame" x="0.0" y="88" width="414" height="707"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L82-o9-Hrp">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="L82-o9-Hrp" secondAttribute="bottom" id="0fc-IM-JGp"/>
+                <constraint firstItem="L82-o9-Hrp" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="AhQ-gp-OO4"/>
+                <constraint firstItem="L82-o9-Hrp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MaV-wQ-cu5"/>
+                <constraint firstItem="L82-o9-Hrp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="e2A-wm-r4W"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="88.392857142857139"/>
         </view>

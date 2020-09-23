@@ -10,21 +10,52 @@ import UIKit
 
 class FeedCreateViewController: UIViewController {
 
+    @IBOutlet weak var collectionViewAttchment: UICollectionView!
+    @IBOutlet weak var txtViewContent: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        collectionViewAttchment.delegate = self
+        collectionViewAttchment.dataSource = self
+        collectionViewAttchment.register(UINib(nibName: "FeedCreateButtonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeedCreateButtonCollectionViewCell")
+        collectionViewAttchment.register(UINib(nibName: "FeedLoadImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeedLoadImageCollectionViewCell")
+        self.navigationItem.title = "Create"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!]
+        if #available(iOS 13.0, *) {
+            let btnCreate = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(CREATEDONE))
+            self.navigationItem.rightBarButtonItem  = btnCreate
+        } else {
+            // Fallback on earlier versions
+        }
     }
+}
 
+extension FeedCreateViewController: UICollectionViewDelegate {
+    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension FeedCreateViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //TODO:
+        return 3
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionViewAttchment.dequeueReusableCell(withReuseIdentifier: "FeedCreateButtonCollectionViewCell", for: indexPath) as! FeedCreateButtonCollectionViewCell
+            return cell
+        } else {
+            let cell = collectionViewAttchment.dequeueReusableCell(withReuseIdentifier: "FeedLoadImageCollectionViewCell", for: indexPath) as! FeedLoadImageCollectionViewCell
+            return cell
+        }
+        
+    }
+    
+    
+}
 
+extension FeedCreateViewController {
+    @objc func CREATEDONE(sender: UIBarButtonItem) {
+        //TODO:
+        self.navigationController?.pushViewController(FeedCreateViewController(), animated: true)
+    }
 }

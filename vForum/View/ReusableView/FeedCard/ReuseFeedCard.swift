@@ -11,6 +11,20 @@ import UIKit
 @IBDesignable
 class ReuseFeedCard: UIView {
     var contentView:UIView?
+    @IBOutlet weak var imageAvatar: UIImageView!
+    @IBOutlet weak var lblUsername: UILabel!
+    @IBOutlet weak var lblTimeCreate: UILabel!
+    @IBOutlet weak var lblContent: UILabel!
+    @IBOutlet weak var collectionviewImage: UICollectionView!
+    @IBOutlet weak var imageLiked: UIButton!
+    @IBOutlet weak var lblLikeCount: UILabel!
+    @IBOutlet weak var btnComment: UIButton!
+    @IBOutlet weak var lblCommentCount: UILabel!
+    @IBOutlet weak var btnMore: UIButton!
+    @IBAction func LIKEFEED(_ sender: Any) {
+    }
+    @IBAction func COMMENTFEED(_ sender: Any) {
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,6 +48,4 @@ class ReuseFeedCard: UIView {
         let nib = UINib(nibName: "ReuseFeedCard", bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
-
-
 }

@@ -10,21 +10,46 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedDetailViewController" customModule="vForum" customModuleProvider="target">
             <connections>
+                <outlet property="btnShowAllCmt" destination="IeM-T8-DKa" id="S4L-6u-eno"/>
+                <outlet property="reuseFeedCardDetail" destination="xP6-Je-Tvr" id="gKQ-zd-Jcn"/>
+                <outlet property="tableViewSomeComments" destination="5DQ-sH-fQZ" id="sju-vc-Pcg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="1225"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsF-Vo-oSb">
-                    <rect key="frame" x="0.0" y="87" width="414" height="1138"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsF-Vo-oSb">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xP6-Je-Tvr" customClass="ReuseFeedCard" customModule="vForum" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SR1-Yh-4dD">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xP6-Je-Tvr" customClass="ReuseFeedCard" customModule="vForum" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="599"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5DQ-sH-fQZ">
+                                    <rect key="frame" x="0.0" y="607" width="414" height="93"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeM-T8-DKa">
+                                    <rect key="frame" x="23" y="708" width="139" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                    <state key="normal" title="Show all comments">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="SHOWALLCMT:" destination="-1" eventType="touchUpInside" id="0dX-k7-6l8"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
                     </subviews>
@@ -33,9 +58,14 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="xsF-Vo-oSb" secondAttribute="bottom" id="CkA-we-03R"/>
+                <constraint firstItem="xsF-Vo-oSb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XBU-4v-R39"/>
+                <constraint firstItem="xsF-Vo-oSb" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="YIg-w5-pz0"/>
+                <constraint firstItem="xsF-Vo-oSb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nmo-zJ-DlD"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="137.68115942028987" y="198.54910714285714"/>
+            <point key="canvasLocation" x="137.68115942028987" y="198.21428571428569"/>
         </view>
     </objects>
 </document>

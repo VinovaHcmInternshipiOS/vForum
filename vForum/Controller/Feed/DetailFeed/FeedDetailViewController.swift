@@ -10,21 +10,17 @@ import UIKit
 
 class FeedDetailViewController: UIViewController {
 
+    @IBOutlet weak var reuseFeedCardDetail: ReuseFeedCard!
+    @IBOutlet weak var tableViewSomeComments: UITableView!
+    @IBOutlet weak var btnShowAllCmt: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "Detail"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!]
         // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func SHOWALLCMT(_ sender: Any) {
+        self.navigationController?.pushViewController(FeedCommentViewController(), animated: true)
     }
-    */
-
 }

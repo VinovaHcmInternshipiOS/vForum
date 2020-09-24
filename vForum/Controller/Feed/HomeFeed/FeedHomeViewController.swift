@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class FeedHomeViewController: UIViewController {
 
@@ -32,13 +33,14 @@ class FeedHomeViewController: UIViewController {
         leftItem.tintColor = .black
         leftItem.titleTextAttributes(for: .normal)
         self.navigationItem.leftBarButtonItem = leftItem
+        setConstraint()
     }
 }
 
 extension FeedHomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO:
-        return 2
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,16 +56,22 @@ extension FeedHomeViewController: UITableViewDataSource {
 }
 
 extension FeedHomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //TODO:
-        return 610
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
-    
-    
 }
 
 extension FeedHomeViewController {
     @objc func CREATEFEED(sender: UIBarButtonItem) {
         self.navigationController?.pushViewController(FeedCreateViewController(), animated: true)
+    }
+    
+    func setConstraint(){
+        tableView.snp.makeConstraints{ (make)->Void in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
 }

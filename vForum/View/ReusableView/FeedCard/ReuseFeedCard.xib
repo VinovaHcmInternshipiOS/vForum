@@ -20,6 +20,8 @@
                 <outlet property="lblLikeCount" destination="rk5-a0-LZF" id="9Ha-vx-Khc"/>
                 <outlet property="lblTimeCreate" destination="IfX-Ie-dfd" id="0ww-7d-SKD"/>
                 <outlet property="lblUsername" destination="ibU-Nv-NYh" id="Cjt-vY-qd0"/>
+                <outlet property="pageControll" destination="Meg-EV-3vo" id="ge2-s4-CPF"/>
+                <outlet property="viewLine" destination="jfN-B5-4sY" id="EQb-ZY-y7D"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

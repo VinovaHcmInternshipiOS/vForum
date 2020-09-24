@@ -20,11 +20,13 @@ class ReuseFeedComment: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+        setConstraint()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        setConstraint()
     }
     
     func commonInit() {
@@ -38,6 +40,30 @@ class ReuseFeedComment: UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "ReuseFeedComment", bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    func setConstraint() {
+        imageAva.snp.makeConstraints{ (make)->Void in
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(30)
+            make.width.equalTo(CGFloat(50))
+            make.height.equalTo(CGFloat(50))
+        }
+        lblUsername.snp.makeConstraints{ (make)->Void in
+            make.top.equalToSuperview().offset(10)
+            make.left.equalTo(imageAva.snp_right).offset(20)
+        }
+        lblTime.snp.makeConstraints{ (make)->Void in
+            make.top.equalToSuperview().offset(10)
+            make.left.equalTo(lblUsername.snp_right).offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
+        lblContent.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(lblUsername.snp_bottom).offset(10)
+            make.left.equalTo(lblUsername.snp_left)
+            make.right.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(10)
+        }
     }
 
 }

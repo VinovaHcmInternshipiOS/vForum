@@ -52,6 +52,7 @@ class ReuseFeedComment: UIView {
         lblUsername.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview().offset(10)
             make.left.equalTo(imageAva.snp_right).offset(20)
+
         }
         lblTime.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview().offset(10)
@@ -62,7 +63,7 @@ class ReuseFeedComment: UIView {
             make.top.equalTo(lblUsername.snp_bottom).offset(10)
             make.left.equalTo(lblUsername.snp_left)
             make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(30)
         }
     }
 

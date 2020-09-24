@@ -17,12 +17,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="360" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMG-AK-1lx" customClass="ReuseFeedComment" customModule="vForum" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="11" width="291" height="83"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMG-AK-1lx" customClass="ReuseFeedComment" customModule="vForum" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="77"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="tMG-AK-1lx" secondAttribute="trailing" id="DTt-vw-VIO"/>
+                    <constraint firstItem="tMG-AK-1lx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zmt-is-eYw"/>
+                    <constraint firstItem="tMG-AK-1lx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="edH-XF-MZJ"/>
+                    <constraint firstAttribute="bottom" secondItem="tMG-AK-1lx" secondAttribute="bottom" id="iPu-We-6cT"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <point key="canvasLocation" x="166.66666666666669" y="58.59375"/>

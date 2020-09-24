@@ -15,6 +15,7 @@ class FeedDetailViewController: UIViewController {
     @IBOutlet weak var viewContain: UIView!
     @IBOutlet weak var tableViewSomeComments: UITableView!
     @IBOutlet weak var btnShowAllCmt: UIButton!
+    var maxHeight: CGFloat = UIScreen.main.bounds.size.height
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewSomeComments.delegate = self
@@ -25,7 +26,7 @@ class FeedDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         setConstraints()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         
     }
@@ -49,10 +50,9 @@ extension FeedDetailViewController: UITableViewDataSource {
 }
 
 extension FeedDetailViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
 }
 
 extension FeedDetailViewController {
@@ -82,4 +82,10 @@ extension FeedDetailViewController {
             make.bottom.equalTo(viewContain.snp_bottom).offset(-30)
         }
     }
+}
+
+extension FeedDetailViewController {
+    
+    
+    
 }

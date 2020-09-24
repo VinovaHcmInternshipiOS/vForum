@@ -19,6 +19,7 @@ class FeedCommentViewController: UIViewController {
         tableViewCmts.delegate = self
         tableViewCmts.dataSource = self
         tableViewCmts.register(UINib(nibName: "FeedCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCommentTableViewCell")
+        txtviewAddCmt.delegate = self
         self.navigationItem.title = "Comment"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!]
         setConstraint()
@@ -85,5 +86,11 @@ extension FeedCommentViewController {
         viewContain.layer.borderColor = UIColor.gray.cgColor
         viewContain.layer.borderWidth = 1
         //viewContain.dropShadow()
+    }
+}
+
+extension FeedCommentViewController: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        txtviewAddCmt.text = String()
     }
 }

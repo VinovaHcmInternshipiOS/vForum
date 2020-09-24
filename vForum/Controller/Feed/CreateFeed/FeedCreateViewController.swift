@@ -15,6 +15,7 @@ class FeedCreateViewController: UIViewController {
     @IBOutlet weak var txtViewContent: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtViewContent.delegate = self
         collectionViewAttchment.delegate = self
         collectionViewAttchment.dataSource = self
         collectionViewAttchment.register(UINib(nibName: "FeedCreateButtonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeedCreateButtonCollectionViewCell")
@@ -87,8 +88,9 @@ extension FeedCreateViewController {
     
     func setLayer(){
         txtViewContent.layer.borderColor = UIColor.gray.cgColor
-        txtViewContent.layer.borderWidth = 2
+        txtViewContent.layer.borderWidth = 0.5
         txtViewContent.layer.cornerRadius = 3
+        //txtViewContent.dropShadow()
     }
 }
 
@@ -140,5 +142,11 @@ extension FeedCreateViewController: UIImagePickerControllerDelegate, UINavigatio
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FeedCreateViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        txtViewContent.text = String()
     }
 }

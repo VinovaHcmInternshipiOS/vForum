@@ -17,7 +17,7 @@ class ListEventController: UIViewController {
     var sortDateBtn: UIButton?
     var tableView: UITableView?
     var navBarHeight: CGFloat = 70.0
-    var listEvent: [EventCell] = [EventCell(title: "Event 1", description: "Description1", startDate: "15 April", endDate: "20 April", banner: "eventBannner")]
+    var listEvent: [EventCell] = [EventCell(title: "Event 1", description: "Description1", startDate: Date(), endDate: Date(), banner: "eventBanner")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,7 +128,7 @@ extension ListEventController: UITableViewDelegate, UITableViewDataSource {
         cell.frame.size.height = tableView.rowHeight
         cell.initializeContainer()
         cell.initializeTitle(event.title)
-        cell.initializeDateTime("\(event.startDate) - \(event.endDate)")
+        cell.initializeDateTime("\(event.getDate(from: event.startDate, format: "dd-MM-yyyy")) - \(event.getDate(from: event.endDate, format: "dd-MM-yyyy"))")
         cell.background = event.banner
         cell.selectionStyle = .none
         
@@ -138,6 +138,7 @@ extension ListEventController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailEvent = DetailEvent()
         detailEvent.modalPresentationStyle = .popover
+        detailEvent.event = listEvent[indexPath.row]
         DispatchQueue.main.async {
             self.present(detailEvent, animated: true, completion: nil)
         }

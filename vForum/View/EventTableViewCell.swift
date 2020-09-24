@@ -51,7 +51,7 @@ class EventTableViewCell: UITableViewCell {
         
         
         container.translatesAutoresizingMaskIntoConstraints = false
-        container.widthAnchor.constraint(equalToConstant: self.bounds.width * 0.9).isActive = true
+        container.widthAnchor.constraint(equalToConstant: self.bounds.width ).isActive = true
         container.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.9).isActive = true
         container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         container.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

@@ -90,8 +90,10 @@ class DatePickerEvent: UIViewController {
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topConstant).isActive = true
-        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
+//        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        stackView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.bounds.width * 0.05).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant:  -self.view.bounds.width * 0.05).isActive = true
         stackView.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.3).isActive = true
         stackView.alignment = .center
         stackView.axis = .vertical

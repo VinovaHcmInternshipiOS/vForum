@@ -25,6 +25,9 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="reuseComment" destination="DMI-WI-lOx" id="fys-pq-Diq"/>
+            </connections>
             <point key="canvasLocation" x="145.6521739130435" y="98.102678571428569"/>
         </tableViewCell>
     </objects>

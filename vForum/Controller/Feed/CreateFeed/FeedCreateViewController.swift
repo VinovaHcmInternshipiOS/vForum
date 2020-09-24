@@ -10,6 +10,7 @@ import UIKit
 
 class FeedCreateViewController: UIViewController {
 
+    @IBOutlet weak var viewContain: UIView!
     @IBOutlet weak var collectionViewAttchment: UICollectionView!
     @IBOutlet weak var txtViewContent: UITextView!
     override func viewDidLoad() {
@@ -26,17 +27,18 @@ class FeedCreateViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        setContraints()
+        setLayer()
     }
 }
 
 extension FeedCreateViewController: UICollectionViewDelegate {
-    
 }
 
 extension FeedCreateViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //TODO:
-        return 3
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,15 +49,39 @@ extension FeedCreateViewController: UICollectionViewDataSource {
             let cell = collectionViewAttchment.dequeueReusableCell(withReuseIdentifier: "FeedLoadImageCollectionViewCell", for: indexPath) as! FeedLoadImageCollectionViewCell
             return cell
         }
-        
     }
-    
-    
 }
 
 extension FeedCreateViewController {
     @objc func CREATEDONE(sender: UIBarButtonItem) {
         //TODO:
         self.navigationController?.pushViewController(FeedCreateViewController(), animated: true)
+    }
+    
+    func setContraints(){
+        viewContain.snp.makeConstraints{ (make)->Void in
+            make.top.equalToSuperview().offset(50)
+            make.right.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalToSuperview()
+        }
+        txtViewContent.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(viewContain).offset(50)
+            make.right.equalTo(viewContain).offset(-20)
+            make.left.equalTo(viewContain).offset(20)
+            make.height.equalTo(viewContain).multipliedBy(0.5)
+        }
+        collectionViewAttchment.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(txtViewContent.snp_bottom).offset(20)
+            make.left.equalTo(txtViewContent)
+            make.right.equalTo(txtViewContent)
+            make.height.equalTo(txtViewContent).multipliedBy(0.3)
+        }
+    }
+    
+    func setLayer(){
+        txtViewContent.layer.borderColor = UIColor.gray.cgColor
+        txtViewContent.layer.borderWidth = 2
+        txtViewContent.layer.cornerRadius = 3
     }
 }

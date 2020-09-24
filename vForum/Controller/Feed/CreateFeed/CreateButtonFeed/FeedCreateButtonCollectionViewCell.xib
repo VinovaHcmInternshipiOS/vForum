@@ -38,6 +38,11 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="200" height="200"/>
+            <connections>
+                <outlet property="viewContain" destination="jig-V9-UXN" id="cN4-4M-qrj"/>
+                <outlet property="viewDoc" destination="RjE-by-r1X" id="uNL-Ve-dvJ"/>
+                <outlet property="viewNgang" destination="pfh-W4-Tij" id="uAG-zY-l9g"/>
+            </connections>
             <point key="canvasLocation" x="18.840579710144929" y="72.321428571428569"/>
         </collectionViewCell>
     </objects>

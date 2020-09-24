@@ -46,8 +46,8 @@ class ReuseFeedComment: UIView {
         imageAva.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview().offset(10)
             make.left.equalToSuperview().offset(30)
-            make.width.equalTo(CGFloat(50))
-            make.height.equalTo(CGFloat(50))
+            make.width.equalTo(CGFloat(30))
+            make.height.equalTo(CGFloat(30))
         }
         lblUsername.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview().offset(10)

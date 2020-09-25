@@ -17,7 +17,9 @@ class ListEventController: UIViewController {
     var sortDateBtn: UIButton?
     var tableView: UITableView?
     var navBarHeight: CGFloat = 70.0
-    var listEvent: [EventCell] = [EventCell(title: "Event 1", description: "Description1", startDate: Date(), endDate: Date(), banner: "eventBanner")]
+    var refreshControl: UIRefreshControl = UIRefreshControl()
+    
+    var listEvent: [Event] = EventManager.shared.getEvents()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,7 @@ class ListEventController: UIViewController {
         initializeSortTypeBtn(&sortTypeBtn)
         initializeSortDateBtn(&sortDateBtn)
         initializeTableView(&tableView)
+        initializeAddEventBtn()
         
     }
     
@@ -34,6 +37,16 @@ class ListEventController: UIViewController {
         if isDrop {
             dropDown?.hide()
         }
+    }
+    
+    func initializeAddEventBtn() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ListEventController.addEventBtnPressed(_:)))
+    }
+    
+    @objc func addEventBtnPressed(_ sender: UIBarButtonItem) {
+        let creationEvent = CreationEventViewController()
+
+        self.navigationController?.pushViewController(creationEvent, animated: true)
     }
     
     func initializeTableView(_ tableView: inout UITableView?) {
@@ -49,6 +62,8 @@ class ListEventController: UIViewController {
         tableView.rowHeight = 80.0
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
+        refreshControl.addTarget(self, action: #selector(ListEventController.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.1 + navBarHeight).isActive = true
@@ -56,6 +71,17 @@ class ListEventController: UIViewController {
         tableView.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.9 - navBarHeight).isActive = true
         tableView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
         
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl) {
+        
+        
+        DispatchQueue.main.async {
+            self.listEvent.removeAll()
+            self.listEvent = EventManager.shared.getEvents()
+            self.refreshControl.endRefreshing()
+            self.tableView?.reloadData()
+        }
     }
     
     func initializeSortTypeBtn(_ sortType: inout UIButton?) {
@@ -126,10 +152,7 @@ extension ListEventController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventTableViewCell
         let event = listEvent[indexPath.row]
         cell.frame.size.height = tableView.rowHeight
-        cell.initializeContainer()
-        cell.initializeTitle(event.title)
-        cell.initializeDateTime("\(event.getDate(from: event.startDate, format: "dd-MM-yyyy")) - \(event.getDate(from: event.endDate, format: "dd-MM-yyyy"))")
-        cell.background = event.banner
+        cell.event = event
         cell.selectionStyle = .none
         
         return cell

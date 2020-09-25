@@ -15,22 +15,8 @@ class DetailEvent: UIViewController {
         case right, left
     }
     var blueColor: UIColor? = UIColor(red: 39/255, green: 93/255, blue: 173/255, alpha: 1.0)
-    
-    var event: EventCell? {
-        didSet {
-            guard let event = event else {
-                return
-            }
-            initializeBanner(&bannerImgView, event.banner)
-            initializeTitleLbl(&titleLbl, event.title)
-            initializeDescriptionTxtView(&descriptionTxtView, event.description)
-            initializeDateTimeArea(&startStackView, &startDateLbl, &startTimeLbl, "From: ", side: .left)
-            initializeDateTimeArea(&endStackView, &endDateLbl, &endTimeLbl, "End: ", side: .right)
-            initializeRemindArea(&remindBtn)
-            
-            drawLine(startPoint: CGPoint(x: self.view.bounds.width * 0.05, y: self.view.bounds.height * 0.45), endPoint: CGPoint(x: self.view.bounds.width * 0.95, y: self.view.bounds.height * 0.45), color: UIColor.black)
-        }
-    }
+
+    var event: Event?
     var cancelBtn: UIButton?
     var saveBtn: UIButton?
     var bannerImgView: UIImageView?
@@ -43,7 +29,7 @@ class DetailEvent: UIViewController {
     var endDateLbl: UILabel?
     var endTimeLbl: UILabel?
     var remindBtn: UIButton?
-    
+    var remindCell: UITableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +38,7 @@ class DetailEvent: UIViewController {
         
         initializeCancelBtn(&cancelBtn)
         initializeSaveBtn(&saveBtn)
+        initializeViews()
         
     }
     
@@ -65,6 +52,20 @@ class DetailEvent: UIViewController {
         shape.strokeColor = color.cgColor
         shape.lineWidth = UIDevice.current.userInterfaceIdiom == .pad ? 2.0 : 1.0
         self.view.layer.addSublayer(shape)
+    }
+    
+    func initializeViews() {
+        guard let event = event else {
+            return
+        }
+        initializeBanner(&bannerImgView, event.banner)
+        initializeTitleLbl(&titleLbl, event.title)
+        initializeDescriptionTxtView(&descriptionTxtView, event.description)
+        initializeDateTimeArea(&startStackView, &startDateLbl, &startTimeLbl, "From: ", side: .left)
+        initializeDateTimeArea(&endStackView, &endDateLbl, &endTimeLbl, "End: ", side: .right)
+        initializeRemindArea(&remindCell, &remindBtn)
+        
+        drawLine(startPoint: CGPoint(x: self.view.bounds.width * 0.05, y: self.view.bounds.height * 0.45), endPoint: CGPoint(x: self.view.bounds.width * 0.95, y: self.view.bounds.height * 0.45), color: UIColor.black)
     }
     
     func initializeCancelBtn(_ cancelBtn: inout UIButton?) {
@@ -227,14 +228,17 @@ class DetailEvent: UIViewController {
         
     }
     
-    func initializeRemindArea(_ button: inout UIButton?) {
+    func initializeRemindArea(_ cell: inout UITableViewCell?, _ button: inout UIButton?) {
         
         let width = self.view.bounds.width
         let height = self.view.bounds.height * 0.1
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "")
+        cell = nil
+        button = nil
+        
+        cell = UITableViewCell(style: .default, reuseIdentifier: "")
         button = UIButton()
-        guard let button = button else {
+        guard let cell = cell, let button = button else {
             return
         }
         cell.textLabel?.text = event?.repeated.toString()
@@ -256,7 +260,7 @@ class DetailEvent: UIViewController {
         button.heightAnchor.constraint(equalToConstant: height).isActive = true
         button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        button.addTarget(self, action: #selector(repeatedBtnPressed(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(remindBtnPressed(_:)), for: .touchUpInside)
         
     }
     
@@ -269,8 +273,15 @@ class DetailEvent: UIViewController {
         closeVC()
     }
     
-    @objc func repeatedBtnPressed(_ sender: UIButton) {
+    @objc func remindBtnPressed(_ sender: UIButton) {
+        let repeatPicker = RepeatPickerView()
+        repeatPicker.chose = event?.repeated
+        repeatPicker.changeRemindTime = { value in
+            self.event?.repeated = value
+            self.remindCell?.textLabel?.text = self.event?.repeated.toString()
+        }
         
+        present(repeatPicker, animated: true, completion: nil)
     }
     
     func closeVC() {

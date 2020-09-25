@@ -14,6 +14,8 @@ class DatePickerEvent: UIViewController {
     var cancelBtn: UIButton?
     var saveBtn: UIButton?
     
+    var chooseDateTime: ((Date, Date) -> Void)?
+    
     // Start DateTime Area
     var startDateTimeStackView: UIStackView?
     var startDateTimeLabel: UILabel?
@@ -113,7 +115,16 @@ class DatePickerEvent: UIViewController {
     }
     
     @objc func saveBtnPressed(_ sender: UIButton) {
-        closeVC()
+        guard let startDate = startDateTimePicker?.date, let endDate = endDateTimePicker?.date else {
+            return
+        }
+        if let chooseDateTime = chooseDateTime {
+            chooseDateTime(startDate, endDate)
+            
+            DispatchQueue.main.async {
+                self.closeVC()
+            }
+        }
     }
     
     func closeVC() {

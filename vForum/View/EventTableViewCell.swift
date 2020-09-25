@@ -14,13 +14,39 @@ class EventTableViewCell: UITableViewCell {
     var marginSpace: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 20 : 10
     var title: UILabel?
     var dateTime: UILabel?
-    var background: String? {
+//    var background: String? {
+//        didSet {
+//            guard let background = background, let container = container else {
+//                return
+//            }
+//
+//            let _img = UIImage(named: background)
+//
+//            guard let image = _img else {
+//                return
+//            }
+//
+//            container.backgroundColor = UIColor(patternImage: image)
+//            container.alpha = 0.2
+//
+//
+//
+//        }
+//    }
+    
+    var event: Event? {
         didSet {
-            guard let background = background, let container = container else {
+            guard let event = event else {
                 return
             }
             
-            let _img = UIImage(named: background)
+            initializeContainer()
+            
+            guard let container = container else {
+                return
+            }
+            
+            let _img = UIImage(named: event.banner)
             
             guard let image = _img else {
                 return
@@ -29,6 +55,8 @@ class EventTableViewCell: UITableViewCell {
             container.backgroundColor = UIColor(patternImage: image)
             container.alpha = 0.2
             
+            initializeTitle(event.title)
+            initializeDateTime("\(event.getDate(from: event.startDate, format: "dd-MM-yyyy")) - \(event.getDate(from: event.endDate, format: "dd-MM-yyyy"))")
         }
     }
     

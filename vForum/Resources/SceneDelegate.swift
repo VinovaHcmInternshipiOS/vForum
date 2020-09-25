@@ -1,13 +1,7 @@
-//
-//  SceneDelegate.swift
-//  vForum
-//
-//  Created by macbook on 9/11/20.
-//  Copyright © 2020 trucdongtxtv. All rights reserved.
-//
-
 import UIKit
 import FBSDKLoginKit
+import Firebase
+import GoogleSignIn
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -20,9 +14,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let sceneWindow = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: sceneWindow)
-        window?.rootViewController = LoginController(nibName: "LoginView", bundle: nil)
-        window?.makeKeyAndVisible()
+        FirebaseApp.configure()
+        
+        if let windowScene = scene as? UIWindowScene {
+            window = UIWindow(windowScene: windowScene)
+            let rootVc = UINavigationController()
+            let firstVc = LoginController(nibName: "LoginView", bundle: nil)
+            rootVc.viewControllers = [firstVc]
+            rootVc.isNavigationBarHidden = true
+            
+            window?.rootViewController = rootVc
+            window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -11,4 +11,18 @@ class GroupCell: UITableViewCell {
     @IBOutlet weak var BlurLayer: UIView!
     
     @IBOutlet weak var CellEffect: UIImageView!
+    @IBOutlet weak var SelectBackground: UIView!
+    
+    var groupId:Int = -1
+    
+    func initCell() {
+        CellView.layer.cornerRadius = 15
+        CellView.clipsToBounds = true
+        
+        Avatar.layer.cornerRadius = Avatar.frame.width / 2
+        BlurLayer.layer.compositingFilter = "overlayBlendMode"
+        
+        SelectBackground.isHidden = true
+        selectionStyle = .none
+    }
 }

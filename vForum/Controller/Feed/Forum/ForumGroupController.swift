@@ -20,12 +20,37 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 12
     }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as! TopicCell
-        cell.backgroundColor = .clear
-        cell.layer.cornerRadius = 8
+        
+        cell.initCell()
+        cell.setPostCount(12960)
+        cell.setTitle("iOS 14.0")
+        cell.selectionStyle = .none
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TopicCell
+    
+        cell.MainView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TopicCell
+        
+        cell.MainView.backgroundColor = UIColor.white
+        
+    }
+    
 }

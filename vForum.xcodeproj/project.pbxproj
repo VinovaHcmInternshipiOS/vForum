@@ -46,6 +46,12 @@
 		FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2102002510ACCC0003CC42 /* LoginView.xib */; };
 		FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA387F372519AF53006D46B2 /* AppController.swift */; };
 		FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */; };
+		FA5FA7AA251B48D6003F7B5F /* LoginVForumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FA78B251B48D6003F7B5F /* LoginVForumManager.swift */; };
+		FA5FA7AB251B48D6003F7B5F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FA78C251B48D6003F7B5F /* LoginResponse.swift */; };
+		FA5FA7AC251B48D6003F7B5F /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FA7A5251B48D6003F7B5F /* RegisterResponse.swift */; };
+		FA5FA7AD251B48D6003F7B5F /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FA7A6251B48D6003F7B5F /* RegisterManager.swift */; };
+		FA5FA7AE251B48D6003F7B5F /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FA7A8251B48D6003F7B5F /* TokenResponse.swift */; };
+		FA5FA7AF251B48D6003F7B5F /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FA7A9251B48D6003F7B5F /* TokenManager.swift */; };
 		FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA697CE5250F167900AF9717 /* SignUpView.xib */; };
 		FA85A6AB250B76E50029A47A /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA85A69D250B76560029A47A /* Pods_vForum.framework */; };
 		FA85A6AC250B76E50029A47A /* Pods_vForum.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA85A69D250B76560029A47A /* Pods_vForum.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -67,6 +73,26 @@
 		FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB631AB2511B33100F603BE /* GoogleService-Info.plist */; };
 		FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB631AF2511E35B00F603BE /* LoginButton.swift */; };
 		FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */; };
+		FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */; };
+		FAD3DE46251D77AA00578533 /* ForumTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE43251D77AA00578533 /* ForumTopicView.xib */; };
+		FAD3DE47251D77AA00578533 /* PostPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */; };
+		FAD3DE50251DA8E400578533 /* ForumTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE4D251DA8E400578533 /* ForumTopicController.swift */; };
+		FAD3DE51251DA8E400578533 /* ForumGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE4E251DA8E400578533 /* ForumGroupController.swift */; };
+		FAD3DE52251DA8E400578533 /* ForumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE4F251DA8E400578533 /* ForumController.swift */; };
+		FAD3DE55251DC7E300578533 /* PostCmtTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE53251DC7E300578533 /* PostCmtTableViewCell.xib */; };
+		FAD3DE56251DC7E300578533 /* PostCmtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE54251DC7E300578533 /* PostCmtTableViewCell.swift */; };
+		FAD3DE59251DC8B800578533 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE58251DC8B800578533 /* SettingViewController.swift */; };
+		FAD3DE5C251DC8D800578533 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE5B251DC8D800578533 /* SettingTableViewCell.swift */; };
+		FAD3DE5E251DC8DF00578533 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE5D251DC8DE00578533 /* SettingTableViewCell.xib */; };
+		FAD3DE60251DC8E600578533 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE5F251DC8E600578533 /* SettingViewController.xib */; };
+		FAD3DE63251DC8F300578533 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE62251DC8F300578533 /* AddViewController.xib */; };
+		FAD3DE65251DC91A00578533 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE64251DC91900578533 /* AddViewController.swift */; };
+		FAD3DE67251DCBB500578533 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE66251DCBB500578533 /* PostDetailViewController.swift */; };
+		FAD3DE69251DCBD600578533 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */; };
+		FAD3DE72251DD10B00578533 /* CreationEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE6A251DD10700578533 /* CreationEventViewController.swift */; };
+		FAD3DE74251DD10B00578533 /* RepeatPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE6C251DD10800578533 /* RepeatPickerView.swift */; };
+		FAD3DE78251DD10B00578533 /* DateTimePickerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE70251DD10B00578533 /* DateTimePickerEvent.swift */; };
+		FAD3DE79251DD10B00578533 /* DetailEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE71251DD10B00578533 /* DetailEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,6 +312,12 @@
 		FA2102002510ACCC0003CC42 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		FA387F372519AF53006D46B2 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpField.swift; sourceTree = "<group>"; };
+		FA5FA78B251B48D6003F7B5F /* LoginVForumManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVForumManager.swift; sourceTree = "<group>"; };
+		FA5FA78C251B48D6003F7B5F /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		FA5FA7A5251B48D6003F7B5F /* RegisterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		FA5FA7A6251B48D6003F7B5F /* RegisterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
+		FA5FA7A8251B48D6003F7B5F /* TokenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		FA5FA7A9251B48D6003F7B5F /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		FA697CE5250F167900AF9717 /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 		FA85A68F250B76560029A47A /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		FA85A6B0250BD03D0029A47A /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -312,6 +344,26 @@
 		FAB631AB2511B33100F603BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAB631AF2511E35B00F603BE /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFieldView.xib; sourceTree = "<group>"; };
+		FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostPreviewCellView.xib; sourceTree = "<group>"; };
+		FAD3DE43251D77AA00578533 /* ForumTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumTopicView.xib; path = vForum/View/Forum/ForumTopicView.xib; sourceTree = SOURCE_ROOT; };
+		FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostPreviewCell.swift; path = vForum/View/Forum/PostPreviewCell.swift; sourceTree = SOURCE_ROOT; };
+		FAD3DE4D251DA8E400578533 /* ForumTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTopicController.swift; sourceTree = "<group>"; };
+		FAD3DE4E251DA8E400578533 /* ForumGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumGroupController.swift; sourceTree = "<group>"; };
+		FAD3DE4F251DA8E400578533 /* ForumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumController.swift; sourceTree = "<group>"; };
+		FAD3DE53251DC7E300578533 /* PostCmtTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCmtTableViewCell.xib; sourceTree = "<group>"; };
+		FAD3DE54251DC7E300578533 /* PostCmtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCmtTableViewCell.swift; sourceTree = "<group>"; };
+		FAD3DE58251DC8B800578533 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		FAD3DE5B251DC8D800578533 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		FAD3DE5D251DC8DE00578533 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		FAD3DE5F251DC8E600578533 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		FAD3DE62251DC8F300578533 /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		FAD3DE64251DC91900578533 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		FAD3DE66251DCBB500578533 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
+		FAD3DE6A251DD10700578533 /* CreationEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationEventViewController.swift; sourceTree = "<group>"; };
+		FAD3DE6C251DD10800578533 /* RepeatPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatPickerView.swift; sourceTree = "<group>"; };
+		FAD3DE70251DD10B00578533 /* DateTimePickerEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimePickerEvent.swift; sourceTree = "<group>"; };
+		FAD3DE71251DD10B00578533 /* DetailEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -516,25 +568,11 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		3E32E67C2516D28100CCF3D4 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Event;
-			sourceTree = "<group>";
-		};
 		3E32E67D2516D28B00CCF3D4 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Notification;
-			sourceTree = "<group>";
-		};
-		3E32E67E2516D2B900CCF3D4 /* Settting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settting;
 			sourceTree = "<group>";
 		};
 		3E32E67F2516D2C600CCF3D4 /* Authentication */ = {
@@ -552,12 +590,19 @@
 		3E32E6802516D2E700CCF3D4 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
+				FAD3DE61251DC8EE00578533 /* Add */,
 				FAB575482519B0D4004FA45E /* GroupCell.swift */,
 				FAB575462519B0D1004FA45E /* GroupCellView.xib */,
-				FAB5754C2519B0D7004FA45E /* ForumGroupView.xib */,
 				FAB575472519B0D2004FA45E /* ForumView.xib */,
+				FAB5754C2519B0D7004FA45E /* ForumGroupView.xib */,
 				FAB575452519B0CF004FA45E /* TopicCell.swift */,
 				FAB5754B2519B0D5004FA45E /* TopicCellView.xib */,
+				FAD3DE43251D77AA00578533 /* ForumTopicView.xib */,
+				FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */,
+				FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */,
+				FAD3DE54251DC7E300578533 /* PostCmtTableViewCell.swift */,
+				FAD3DE53251DC7E300578533 /* PostCmtTableViewCell.xib */,
+				FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -565,6 +610,10 @@
 		3E32E6812516D2F100CCF3D4 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				FAD3DE6A251DD10700578533 /* CreationEventViewController.swift */,
+				FAD3DE70251DD10B00578533 /* DateTimePickerEvent.swift */,
+				FAD3DE71251DD10B00578533 /* DetailEvent.swift */,
+				FAD3DE6C251DD10800578533 /* RepeatPickerView.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -581,13 +630,6 @@
 			children = (
 			);
 			path = Notification;
-			sourceTree = "<group>";
-		};
-		3E32E6842516D30900CCF3D4 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		3E32E6852516D31100CCF3D4 /* ReusableView */ = {
@@ -673,6 +715,9 @@
 		3E32E6902516D48100CCF3D4 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				FA5FA78A251B48D6003F7B5F /* Login */,
+				FA5FA7A4251B48D6003F7B5F /* Register */,
+				FA5FA7A7251B48D6003F7B5F /* Token */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -793,9 +838,9 @@
 		3E777D3D250B587B003F07E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAD3DE5A251DC8CC00578533 /* Settings */,
 				3E32E68C2516D34E00CCF3D4 /* Authentication */,
 				3E32E6852516D31100CCF3D4 /* ReusableView */,
-				3E32E6842516D30900CCF3D4 /* Setting */,
 				3E32E6832516D30000CCF3D4 /* Notification */,
 				3E32E6812516D2F100CCF3D4 /* Event */,
 				3E32E6822516D2F900CCF3D4 /* Feed */,
@@ -808,13 +853,12 @@
 		3E777D3E250B5882003F07E9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FAD3DE57251DC8A500578533 /* Settings */,
 				FA387F502519AF65006D46B2 /* App */,
 				3E32E67F2516D2C600CCF3D4 /* Authentication */,
-				3E32E67E2516D2B900CCF3D4 /* Settting */,
 				3E32E67D2516D28B00CCF3D4 /* Notification */,
-				3E32E67C2516D28100CCF3D4 /* Event */,
+				FAD3DE4C251DA8E400578533 /* Forum */,
 				3E32E67B2516D27600CCF3D4 /* Feed */,
-				3E32E6632516D26D00CCF3D4 /* Forum */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -860,6 +904,36 @@
 			);
 			path = App;
 			sourceTree = "<group>";
+		};
+		FA5FA78A251B48D6003F7B5F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FA78B251B48D6003F7B5F /* LoginVForumManager.swift */,
+				FA5FA78C251B48D6003F7B5F /* LoginResponse.swift */,
+			);
+			name = Login;
+			path = Authentication/Login;
+			sourceTree = SOURCE_ROOT;
+		};
+		FA5FA7A4251B48D6003F7B5F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FA7A5251B48D6003F7B5F /* RegisterResponse.swift */,
+				FA5FA7A6251B48D6003F7B5F /* RegisterManager.swift */,
+			);
+			name = Register;
+			path = Authentication/Register;
+			sourceTree = SOURCE_ROOT;
+		};
+		FA5FA7A7251B48D6003F7B5F /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				FA5FA7A8251B48D6003F7B5F /* TokenResponse.swift */,
+				FA5FA7A9251B48D6003F7B5F /* TokenManager.swift */,
+			);
+			name = Token;
+			path = Authentication/Token;
+			sourceTree = SOURCE_ROOT;
 		};
 		FA85A690250B76560029A47A /* Products */ = {
 			isa = PBXGroup;
@@ -942,6 +1016,44 @@
 				FA8D3415250B54910070DD4A /* Info.plist */,
 			);
 			path = vForumUITests;
+			sourceTree = "<group>";
+		};
+		FAD3DE4C251DA8E400578533 /* Forum */ = {
+			isa = PBXGroup;
+			children = (
+				FAD3DE4F251DA8E400578533 /* ForumController.swift */,
+				FAD3DE4E251DA8E400578533 /* ForumGroupController.swift */,
+				FAD3DE4D251DA8E400578533 /* ForumTopicController.swift */,
+				FAD3DE64251DC91900578533 /* AddViewController.swift */,
+				FAD3DE66251DCBB500578533 /* PostDetailViewController.swift */,
+			);
+			path = Forum;
+			sourceTree = "<group>";
+		};
+		FAD3DE57251DC8A500578533 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FAD3DE58251DC8B800578533 /* SettingViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		FAD3DE5A251DC8CC00578533 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FAD3DE5B251DC8D800578533 /* SettingTableViewCell.swift */,
+				FAD3DE5D251DC8DE00578533 /* SettingTableViewCell.xib */,
+				FAD3DE5F251DC8E600578533 /* SettingViewController.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		FAD3DE61251DC8EE00578533 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				FAD3DE62251DC8F300578533 /* AddViewController.xib */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1209,13 +1321,23 @@
 				22A6907A25188927000CE500 /* FeedCreateButtonCollectionViewCell.xib in Resources */,
 				22906757251B9A5900CDB190 /* FeedCommentTableViewCell.xib in Resources */,
 				22A6907025188263000CE500 /* FeedCommentViewController.xib in Resources */,
+
+				FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */,
+				FAD3DE60251DC8E600578533 /* SettingViewController.xib in Resources */,
+
 				FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */,
 				FAB5754F2519B0D7004FA45E /* TopicCellView.xib in Resources */,
 				FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */,
 				FAB5754E2519B0D7004FA45E /* ForumView.xib in Resources */,
 				FAB575502519B0D7004FA45E /* ForumGroupView.xib in Resources */,
+				FAD3DE46251D77AA00578533 /* ForumTopicView.xib in Resources */,
 				FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */,
+
 				22A6907525188555000CE500 /* FeedCreateViewController.xib in Resources */,
+
+				FAD3DE69251DCBD600578533 /* PostDetailViewController.xib in Resources */,
+				FAD3DE55251DC7E300578533 /* PostCmtTableViewCell.xib in Resources */,
+
 				FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */,
 				22A6906025185B4C000CE500 /* FeedHomeViewController.xib in Resources */,
 				22A6906625185D7D000CE500 /* FeedHomeTableViewCell.xib in Resources */,
@@ -1224,6 +1346,8 @@
 				22A6902225183EBD000CE500 /* ReuseFeedComment.xib in Resources */,
 				22B7E6EB251CE269001DFD31 /* ImageFeedCell.xib in Resources */,
 				FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */,
+				FAD3DE5E251DC8DF00578533 /* SettingTableViewCell.xib in Resources */,
+				FAD3DE63251DC8F300578533 /* AddViewController.xib in Resources */,
 				FAB575492519B0D4004FA45E /* GroupCellView.xib in Resources */,
 				22A6907F25188958000CE500 /* FeedLoadImageCollectionViewCell.xib in Resources */,
 				22A690442518486A000CE500 /* ReuseFeedCard.xib in Resources */,
@@ -1390,25 +1514,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				22906751251B96B600CDB190 /* FeedDetailTableViewCell.swift in Sources */,
 				22A6907E25188958000CE500 /* FeedLoadImageCollectionViewCell.swift in Sources */,
 				22A6906F25188263000CE500 /* FeedCommentViewController.swift in Sources */,
 				22A6907425188555000CE500 /* FeedCreateViewController.swift in Sources */,
+
+				FA5FA7AD251B48D6003F7B5F /* RegisterManager.swift in Sources */,
+				FAD3DE78251DD10B00578533 /* DateTimePickerEvent.swift in Sources */,
+				FAD3DE59251DC8B800578533 /* SettingViewController.swift in Sources */,
+				FAD3DE65251DC91A00578533 /* AddViewController.swift in Sources */,
+				FAD3DE51251DA8E400578533 /* ForumGroupController.swift in Sources */,
+				FAD3DE50251DA8E400578533 /* ForumTopicController.swift in Sources */,
+				FA5FA7AF251B48D6003F7B5F /* TokenManager.swift in Sources */,
+				FAD3DE5C251DC8D800578533 /* SettingTableViewCell.swift in Sources */,
+
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
+				FA5FA7AC251B48D6003F7B5F /* RegisterResponse.swift in Sources */,
 				FAB5754A2519B0D4004FA45E /* GroupCell.swift in Sources */,
+
 				22A6907925188927000CE500 /* FeedCreateButtonCollectionViewCell.swift in Sources */,
-				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,
-				22AC4166251DAB1B0096C475 /* ForumItem.swift in Sources */,
 				22A6905F25185B4C000CE500 /* FeedHomeViewController.swift in Sources */,
 				22A6906A251863EE000CE500 /* FeedDetailViewController.swift in Sources */,
-				22AC4164251DAAB20096C475 /* ForumController.swift in Sources */,
-				FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */,
-				FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */,
-				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* name.swift in Sources */,
-				FA85A6B1250BD03D0029A47A /* SignUpController.swift in Sources */,
 				FAB575432519B04B004FA45E /* ForumGroupController.swift in Sources */,
 				22AC4168251DCB3F0096C475 /* UITextView+extension.swift in Sources */,
 				22A69024251840EC000CE500 /* ReuseFeedComment.swift in Sources */,
@@ -1419,6 +1549,24 @@
 				22AEC456251C52F60024B282 /* UIView+extension.swift in Sources */,
 				22A6906525185D7D000CE500 /* FeedHomeTableViewCell.swift in Sources */,
 				22A6908325189E33000CE500 /* ShowImageViewController.swift in Sources */,
+
+				FA5FA7AE251B48D6003F7B5F /* TokenResponse.swift in Sources */,
+				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,
+				FA5FA7AA251B48D6003F7B5F /* LoginVForumManager.swift in Sources */,
+				FAD3DE79251DD10B00578533 /* DetailEvent.swift in Sources */,
+				FA5FA7AB251B48D6003F7B5F /* LoginResponse.swift in Sources */,
+				FAD3DE52251DA8E400578533 /* ForumController.swift in Sources */,
+				FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */,
+				FAD3DE72251DD10B00578533 /* CreationEventViewController.swift in Sources */,
+				FAD3DE47251D77AA00578533 /* PostPreviewCell.swift in Sources */,
+				FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */,
+				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
+				FAD3DE56251DC7E300578533 /* PostCmtTableViewCell.swift in Sources */,
+				FAD3DE67251DCBB500578533 /* PostDetailViewController.swift in Sources */,
+				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
+				FA85A6B1250BD03D0029A47A /* SignUpController.swift in Sources */,
+				FAD3DE74251DD10B00578533 /* RepeatPickerView.swift in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

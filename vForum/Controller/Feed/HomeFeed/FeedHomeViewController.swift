@@ -63,7 +63,9 @@ extension FeedHomeViewController: UITableViewDataSource {
                 self.indexImage[indexPath.row] = cell.reuseFeedCardView.index
             }
             cell.reuseFeedCardView.toZoomScene = {
-                self.navigationController?.pushViewController(ShowImageViewController(), animated: true)
+                let vc = ShowImageViewController()
+                vc.setImage(UIImage(named: "username")!)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             cell.reuseFeedCardView.commentAction = {
                 self.navigationController?.pushViewController(FeedDetailViewController(), animated: true)

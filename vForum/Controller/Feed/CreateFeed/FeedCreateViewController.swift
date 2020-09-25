@@ -30,6 +30,10 @@ class FeedCreateViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         setContraints()
         setLayer()
     }
@@ -173,5 +177,16 @@ extension FeedCreateViewController: UIImagePickerControllerDelegate, UINavigatio
 extension FeedCreateViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         txtViewContent.text = String()
+    }
+    
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+             return
+          }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 }

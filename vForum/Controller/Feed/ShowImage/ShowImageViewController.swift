@@ -13,7 +13,7 @@ class ShowImageViewController: UIViewController {
     var image: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = UIImage(named: "AppIcon")
+        imageView.image = image
         imageView.snp.makeConstraints{ (make)->Void in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview()
@@ -23,6 +23,6 @@ class ShowImageViewController: UIViewController {
     }
     
     func setImage(_ image: UIImage){
-        //imageView.image = image
+        self.image = image
     }
 }

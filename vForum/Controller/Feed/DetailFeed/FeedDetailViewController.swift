@@ -47,13 +47,10 @@ class FeedDetailViewController: UIViewController {
         reuseFeedCardDetail.toZoomScene = {
             let vcShowImageView = ShowImageViewController()
             //vcShowImageView.setImage(UIImage(named: "AppIcon")!)
+            vcShowImageView.image = UIImage(named: "username")
             self.navigationController?.pushViewController(vcShowImageView, animated: true)
         }
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     @IBAction func SHOWALLCMT(_ sender: Any) {

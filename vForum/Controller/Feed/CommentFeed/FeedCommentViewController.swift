@@ -32,6 +32,8 @@ class FeedCommentViewController: UIViewController {
 
     @IBAction func ADDCOMMENT(_ sender: Any) {
         txtviewAddCmt.text = String()
+        keyboardWillHide(notification: NSNotification(name: UIResponder.keyboardWillHideNotification, object: nil))
+        view.endEditing(true)
     }
 }
 

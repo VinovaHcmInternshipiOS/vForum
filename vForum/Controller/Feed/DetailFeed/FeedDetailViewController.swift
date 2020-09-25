@@ -18,6 +18,7 @@ class FeedDetailViewController: UIViewController {
     @IBOutlet weak var btnShowAllCmt: UIButton!
     @IBOutlet weak var heightTableView: NSLayoutConstraint!
     var number = 0
+    var isLiked = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,24 @@ class FeedDetailViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.number = 4
             self.tableViewSomeComments.reloadData()
+        }
+        reuseFeedCardDetail.commentAction = {
+            self.navigationController?.pushViewController(FeedCommentViewController(), animated: true)
+        }
+        reuseFeedCardDetail.clickLike = {
+            if self.isLiked {
+                self.reuseFeedCardDetail.imageLiked.setImage(UIImage(named: "unlike"), for: .normal)
+                self.isLiked = false
+            }
+            else {
+                self.reuseFeedCardDetail.imageLiked.setImage(UIImage(named: "like"), for: .normal)
+                self.isLiked = true
+            }
+        }
+        reuseFeedCardDetail.toZoomScene = {
+            let vcShowImageView = ShowImageViewController()
+            //vcShowImageView.setImage(UIImage(named: "AppIcon")!)
+            self.navigationController?.pushViewController(vcShowImageView, animated: true)
         }
         // Do any additional setup after loading the view.
     }
@@ -49,7 +68,6 @@ extension FeedDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedDetailTableViewCell") as? FeedDetailTableViewCell {
-
             return cell
         } else {
             return UITableViewCell()

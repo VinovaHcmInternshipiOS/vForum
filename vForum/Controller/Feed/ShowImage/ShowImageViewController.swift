@@ -9,22 +9,20 @@
 import UIKit
 
 class ShowImageViewController: UIViewController {
-
+    @IBOutlet weak var imageView: UIImageView!
+    var image: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("123333333333333333")
-        // Do any additional setup after loading the view.
+        imageView.image = UIImage(named: "AppIcon")
+        imageView.snp.makeConstraints{ (make)->Void in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(imageView.snp_width)
+        }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setImage(_ image: UIImage){
+        //imageView.image = image
     }
-    */
-
 }

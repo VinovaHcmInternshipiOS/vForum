@@ -11,6 +11,13 @@
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		5773BE85DC715A7E062FDD37 /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
 		76525AED92DEEB6D0032E877 /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
+		767D68C5251C48B800D79255 /* ForumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767D68C4251C48B800D79255 /* ForumController.swift */; };
+		76C8DD7D251D855E002BE591 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C8DD7B251D855D002BE591 /* AddViewController.xib */; };
+		76C8DD7E251D855E002BE591 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8DD7C251D855D002BE591 /* AddViewController.swift */; };
+		76C8DD83251D8573002BE591 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8DD81251D8573002BE591 /* PostDetailViewController.swift */; };
+		76C8DD84251D8573002BE591 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C8DD82251D8573002BE591 /* PostDetailViewController.xib */; };
+		76C8DD89251D857F002BE591 /* PostCmtTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C8DD87251D857F002BE591 /* PostCmtTableViewCell.xib */; };
+		76C8DD8A251D857F002BE591 /* PostCmtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8DD88251D857F002BE591 /* PostCmtTableViewCell.swift */; };
 		FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2102002510ACCC0003CC42 /* LoginView.xib */; };
 		FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA387F372519AF53006D46B2 /* AppController.swift */; };
 		FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */; };
@@ -26,9 +33,7 @@
 		FA8D3409250B54910070DD4A /* vForumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D3408250B54910070DD4A /* vForumTests.swift */; };
 		FA8D3414250B54910070DD4A /* vForumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D3413250B54910070DD4A /* vForumUITests.swift */; };
 		FAB575432519B04B004FA45E /* ForumGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB575412519B04B004FA45E /* ForumGroupController.swift */; };
-		FAB575442519B04B004FA45E /* ForumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB575422519B04B004FA45E /* ForumController.swift */; };
 		FAB575492519B0D4004FA45E /* GroupCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB575462519B0D1004FA45E /* GroupCellView.xib */; };
-		FAB5754A2519B0D4004FA45E /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB575482519B0D4004FA45E /* GroupCell.swift */; };
 		FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB575452519B0CF004FA45E /* TopicCell.swift */; };
 		FAB5754E2519B0D7004FA45E /* ForumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB575472519B0D2004FA45E /* ForumView.xib */; };
 		FAB5754F2519B0D7004FA45E /* TopicCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB5754B2519B0D5004FA45E /* TopicCellView.xib */; };
@@ -208,6 +213,13 @@
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
+		767D68C4251C48B800D79255 /* ForumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumController.swift; sourceTree = "<group>"; };
+		76C8DD7B251D855D002BE591 /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		76C8DD7C251D855D002BE591 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		76C8DD81251D8573002BE591 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		76C8DD82251D8573002BE591 /* PostDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
+		76C8DD87251D857F002BE591 /* PostCmtTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCmtTableViewCell.xib; sourceTree = "<group>"; };
+		76C8DD88251D857F002BE591 /* PostCmtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCmtTableViewCell.swift; sourceTree = "<group>"; };
 		7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum.debug.xcconfig"; path = "Target Support Files/Pods-vForum/Pods-vForum.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB369C9CCC03712780D89B2 /* Pods-vForum-vForumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.release.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A149E7CADE49BDFE86757CD9 /* Pods-vForum-vForumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.debug.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -233,11 +245,9 @@
 		FA8D3413250B54910070DD4A /* vForumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vForumUITests.swift; sourceTree = "<group>"; };
 		FA8D3415250B54910070DD4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAB575412519B04B004FA45E /* ForumGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumGroupController.swift; sourceTree = "<group>"; };
-		FAB575422519B04B004FA45E /* ForumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForumController.swift; path = ../../../../../Controller/ForumController.swift; sourceTree = "<group>"; };
 		FAB575452519B0CF004FA45E /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		FAB575462519B0D1004FA45E /* GroupCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCellView.xib; sourceTree = "<group>"; };
 		FAB575472519B0D2004FA45E /* ForumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumView.xib; sourceTree = "<group>"; };
-		FAB575482519B0D4004FA45E /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		FAB5754B2519B0D5004FA45E /* TopicCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCellView.xib; sourceTree = "<group>"; };
 		FAB5754C2519B0D7004FA45E /* ForumGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumGroupView.xib; sourceTree = "<group>"; };
 		FAB631AB2511B33100F603BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -285,7 +295,11 @@
 		3E32E6632516D26D00CCF3D4 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
-				FAB575422519B04B004FA45E /* ForumController.swift */,
+				76C8DD7C251D855D002BE591 /* AddViewController.swift */,
+				76C8DD7B251D855D002BE591 /* AddViewController.xib */,
+				76C8DD81251D8573002BE591 /* PostDetailViewController.swift */,
+				76C8DD82251D8573002BE591 /* PostDetailViewController.xib */,
+				767D68C4251C48B800D79255 /* ForumController.swift */,
 				FAB575412519B04B004FA45E /* ForumGroupController.swift */,
 			);
 			name = Forum;
@@ -335,12 +349,13 @@
 		3E32E6802516D2E700CCF3D4 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
-				FAB575482519B0D4004FA45E /* GroupCell.swift */,
 				FAB575462519B0D1004FA45E /* GroupCellView.xib */,
 				FAB5754C2519B0D7004FA45E /* ForumGroupView.xib */,
 				FAB575472519B0D2004FA45E /* ForumView.xib */,
 				FAB575452519B0CF004FA45E /* TopicCell.swift */,
 				FAB5754B2519B0D5004FA45E /* TopicCellView.xib */,
+				76C8DD88251D857F002BE591 /* PostCmtTableViewCell.swift */,
+				76C8DD87251D857F002BE591 /* PostCmtTableViewCell.xib */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -977,12 +992,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C8DD7D251D855E002BE591 /* AddViewController.xib in Resources */,
+				76C8DD84251D8573002BE591 /* PostDetailViewController.xib in Resources */,
 				FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */,
 				FAB5754F2519B0D7004FA45E /* TopicCellView.xib in Resources */,
 				FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */,
 				FAB5754E2519B0D7004FA45E /* ForumView.xib in Resources */,
 				FAB575502519B0D7004FA45E /* ForumGroupView.xib in Resources */,
 				FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */,
+				76C8DD89251D857F002BE591 /* PostCmtTableViewCell.xib in Resources */,
 				FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */,
 				FA8D33FB250B54910070DD4A /* Assets.xcassets in Resources */,
 				FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */,
@@ -1150,14 +1168,16 @@
 			files = (
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */,
+				76C8DD7E251D855E002BE591 /* AddViewController.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
-				FAB5754A2519B0D4004FA45E /* GroupCell.swift in Sources */,
+				76C8DD8A251D857F002BE591 /* PostCmtTableViewCell.swift in Sources */,
+				76C8DD83251D8573002BE591 /* PostDetailViewController.swift in Sources */,
 				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,
 				FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */,
-				FAB575442519B04B004FA45E /* ForumController.swift in Sources */,
 				FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
+				767D68C5251C48B800D79255 /* ForumController.swift in Sources */,
 				FA85A6B1250BD03D0029A47A /* SignUpController.swift in Sources */,
 				FAB575432519B04B004FA45E /* ForumGroupController.swift in Sources */,
 			);

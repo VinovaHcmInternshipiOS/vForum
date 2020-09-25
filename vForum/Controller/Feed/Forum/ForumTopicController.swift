@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SnapKit
 
 class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -11,5 +12,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         return UITableViewCell()
     }
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

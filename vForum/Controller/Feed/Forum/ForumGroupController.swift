@@ -27,7 +27,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as! TopicCell
         
         cell.initCell()
-        cell.setPostCount(12960)
+        cell.setPostCount(338960)
         cell.setTitle("iOS 14.0")
         cell.selectionStyle = .none
         
@@ -35,7 +35,11 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ForumTopicController(nibName: "ForumTopicView", bundle: nil)
         
+        vc.title = "Group name"
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

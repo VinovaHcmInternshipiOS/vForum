@@ -12,7 +12,6 @@ class FeedLoadImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var viewContain: UIView!
     @IBOutlet weak var imageUpload: UIImageView!
-    @IBOutlet weak var processAnimation: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
         setConstraints()
@@ -32,12 +31,6 @@ class FeedLoadImageCollectionViewCell: UICollectionViewCell {
             make.right.equalTo(viewContain)
             make.left.equalTo(viewContain)
             make.bottom.equalTo(viewContain)
-        }
-        processAnimation.snp.makeConstraints{ (make)->Void in
-            make.centerX.equalTo(viewContain)
-            make.centerY.equalTo(viewContain)
-            make.width.equalTo(viewContain).multipliedBy(0.4)
-            make.height.equalTo(viewContain).multipliedBy(0.4)
         }
     }
     

@@ -25,11 +25,6 @@
                                 <rect key="frame" x="20" y="-36" width="200" height="236"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Aj0-Pp-RlU">
-                                <rect key="frame" x="100" y="63" width="40" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
@@ -39,7 +34,6 @@
             <size key="customSize" width="200" height="200"/>
             <connections>
                 <outlet property="imageUpload" destination="N4d-zT-jLG" id="Hd9-sA-rLS"/>
-                <outlet property="processAnimation" destination="Aj0-Pp-RlU" id="5rB-vv-eLS"/>
                 <outlet property="viewContain" destination="EfM-sg-o6e" id="CJ2-ps-x9f"/>
             </connections>
             <point key="canvasLocation" x="246.37681159420291" y="38.169642857142854"/>

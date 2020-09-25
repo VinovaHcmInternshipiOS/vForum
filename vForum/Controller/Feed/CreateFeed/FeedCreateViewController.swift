@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedCreateViewController: UIViewController {
 
     @IBOutlet weak var viewContain: UIView!
     @IBOutlet weak var collectionViewAttchment: UICollectionView!
     @IBOutlet weak var txtViewContent: UITextView!
+    var imageArray = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
         txtViewContent.delegate = self
@@ -43,7 +45,7 @@ extension FeedCreateViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //TODO:
-        return 5
+        return imageArray.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,6 +54,7 @@ extension FeedCreateViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionViewAttchment.dequeueReusableCell(withReuseIdentifier: "FeedLoadImageCollectionViewCell", for: indexPath) as! FeedLoadImageCollectionViewCell
+            cell.imageUpload.image = imageArray[indexPath.row - 1]
             return cell
         }
     }
@@ -61,21 +64,11 @@ extension FeedCreateViewController: UICollectionViewDataSource {
             showActionSheet()
         }
     }
-    
-    
-    
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        for cell in collectionViewAttchment.visibleCells {
-//            if let indexPath = collectionViewAttchment.indexPath(for: cell) {
-//                index = indexPath.row
-//            }
-//        }
-//    }
 }
 
 extension FeedCreateViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
+        return CGSize(width: 2*collectionView.frame.width/5, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -89,7 +82,6 @@ extension FeedCreateViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedCreateViewController {
     @objc func CREATEDONE(sender: UIBarButtonItem) {
-        //TODO:
         self.navigationController?.pushViewController(FeedHomeViewController(), animated: true)
     }
     
@@ -151,6 +143,7 @@ extension FeedCreateViewController: UIImagePickerControllerDelegate, UINavigatio
 
             let imagePickerController = UIImagePickerController()
             imagePickerController.delegate = self
+            imagePickerController.allowsEditing = true
             imagePickerController.sourceType = sourceType
             self.present(imagePickerController, animated: true, completion: nil)
         }
@@ -158,13 +151,18 @@ extension FeedCreateViewController: UIImagePickerControllerDelegate, UINavigatio
 
     //MARK:- UIImagePickerViewDelegate.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
-        self.dismiss(animated: true) { [weak self] in
-
-            guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-//            //Setting image to your image view
-//            self?.profileImgView.image = image
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            selectedImageFromPicker = editedImage
         }
+        if let originImage = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
+            selectedImageFromPicker = originImage
+        }
+        if let selectedImage = selectedImageFromPicker {
+            imageArray.append(selectedImage)
+            collectionViewAttchment.reloadData()
+        }
+        self.dismiss(animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

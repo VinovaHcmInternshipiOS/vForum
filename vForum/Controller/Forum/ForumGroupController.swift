@@ -25,9 +25,9 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as! TopicCell
-        
+    
         cell.initCell()
-        cell.setPostCount(338960)
+        cell.setPostCount(1950)
         cell.setTitle("iOS 14.0")
         cell.selectionStyle = .none
         

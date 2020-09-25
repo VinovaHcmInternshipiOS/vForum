@@ -18,7 +18,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         GroupItemList.delegate = self
         GroupItemList.dataSource = self
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6

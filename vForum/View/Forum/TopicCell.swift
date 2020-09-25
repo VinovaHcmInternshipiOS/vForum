@@ -50,4 +50,8 @@ extension TopicCell {
     func setTitle(_ str: String) {
         Title.text = str
     }
+    
+    func setCreator(_ str: String) {
+        Username.text = "@" + str
+    }
 }

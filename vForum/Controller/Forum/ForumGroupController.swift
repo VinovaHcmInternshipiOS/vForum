@@ -5,7 +5,10 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var TopicList: UITableView!
     
-    var topicData: [String:String] = [:]
+    var titles:[String] = ["Help with UINavigationController", "iOS 14.0: Is it good?", "This is great", "Tutorials"]
+    var creators:[String] = ["aland","dominic","curtis","timon"]
+    var postCounts:[Int] = [35,950,1212,75560]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +21,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return titles.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -27,18 +30,19 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as! TopicCell
     
         cell.initCell()
-        cell.setPostCount(1950)
-        cell.setTitle("iOS 14.0")
+        cell.setTitle(titles[indexPath.row])
+        cell.setPostCount(postCounts[indexPath.row])
+        cell.setCreator(creators[indexPath.row])
         cell.selectionStyle = .none
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ForumTopicController(nibName: "ForumTopicView", bundle: nil)
+        let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
+        //vc.setTitle(titles[indexPath.row])
+        //vc.setSubtitle(name: creators[indexPath.row], date: "20/09/2020, 07:00")
         
-        vc.title = "Group name"
-        navigationController?.isNavigationBarHidden = true
         navigationController?.pushViewController(vc, animated: true)
     }
     

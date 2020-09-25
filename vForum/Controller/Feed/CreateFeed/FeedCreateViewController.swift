@@ -30,10 +30,7 @@ class FeedCreateViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+        self.txtViewContent.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         setContraints()
         setLayer()
     }
@@ -179,14 +176,7 @@ extension FeedCreateViewController: UITextViewDelegate {
         txtViewContent.text = String()
     }
     
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-             return
-          }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+    @objc func tapDone(sender: Any) {
+        self.view.endEditing(true)
     }
 }

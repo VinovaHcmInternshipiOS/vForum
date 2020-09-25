@@ -22,21 +22,46 @@ class ReuseFeedCard: UIView {
     @IBOutlet weak var lblCommentCount: UILabel!
     @IBOutlet weak var btnMore: UIButton!
     @IBOutlet weak var viewLine: UIView!
+    var clickLike: (()->Void)? = nil
+    var scrollAction: (()->Void)? = nil
+    var commentAction: (()->Void)? = nil
+    var toZoomScene: (()->Void)? = nil
+    var liked = true
+    var index = 0
+    var color = [UIColor.red, UIColor.green, UIColor.yellow]
     @IBAction func LIKEFEED(_ sender: Any) {
+        clickLike?()
     }
     @IBAction func COMMENTFEED(_ sender: Any) {
+        commentAction?()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
         setConstraint()
+        setUpView()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
         setConstraint()
+        setUpView()
+    }
+    
+    func setUpView() {
+        if liked {
+            imageLiked.setImage(UIImage(named: "like"), for: .normal)
+        }
+        else {
+            imageLiked.setImage(UIImage(named: "unlike"), for: .normal)
+        }
+        collectionviewImage.dataSource = self
+        collectionviewImage.delegate = self
+        pageControll.currentPage = index
+        collectionviewImage.scrollToItem(at: IndexPath(item: index, section: 0), at: .right, animated: false)
+        collectionviewImage.register(UINib(nibName: "ImageFeedCell", bundle: nil), forCellWithReuseIdentifier: "ImageFeedCell")
     }
     
     func commonInit() {
@@ -50,7 +75,56 @@ class ReuseFeedCard: UIView {
         let nib = UINib(nibName: "ReuseFeedCard", bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
+}
+
+
+extension ReuseFeedCard : UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageFeedCell", for: indexPath) as? ImageFeedCell {
+            cell.backgroundColor = color[indexPath.row]
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        toZoomScene?()
+    }
+}
+
+extension ReuseFeedCard : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0001
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0001
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        for cell in collectionviewImage.visibleCells {
+            if let indexPath = collectionviewImage.indexPath(for: cell) {
+                index = indexPath.row
+                pageControll.currentPage = index
+                scrollAction?()
+            }
+        }
+    }
+}
+
+extension ReuseFeedCard {
     func setConstraint()  {
         imageAvatar.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview().offset(10)

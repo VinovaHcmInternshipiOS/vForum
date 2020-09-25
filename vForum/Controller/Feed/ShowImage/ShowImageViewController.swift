@@ -12,7 +12,7 @@ class ShowImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("123333333333333333")
         // Do any additional setup after loading the view.
     }
 

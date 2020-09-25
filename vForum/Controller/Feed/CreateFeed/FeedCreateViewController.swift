@@ -37,6 +37,10 @@ extension FeedCreateViewController: UICollectionViewDelegate {
 }
 
 extension FeedCreateViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //TODO:
         return 5
@@ -57,12 +61,36 @@ extension FeedCreateViewController: UICollectionViewDataSource {
             showActionSheet()
         }
     }
+    
+    
+    
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        for cell in collectionViewAttchment.visibleCells {
+//            if let indexPath = collectionViewAttchment.indexPath(for: cell) {
+//                index = indexPath.row
+//            }
+//        }
+//    }
+}
+
+extension FeedCreateViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0001
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0001
+    }
 }
 
 extension FeedCreateViewController {
     @objc func CREATEDONE(sender: UIBarButtonItem) {
         //TODO:
-        self.navigationController?.pushViewController(FeedCreateViewController(), animated: true)
+        self.navigationController?.pushViewController(FeedHomeViewController(), animated: true)
     }
     
     func setContraints(){
@@ -90,7 +118,6 @@ extension FeedCreateViewController {
         txtViewContent.layer.borderColor = UIColor.gray.cgColor
         txtViewContent.layer.borderWidth = 0.5
         txtViewContent.layer.cornerRadius = 3
-        //txtViewContent.dropShadow()
     }
 }
 

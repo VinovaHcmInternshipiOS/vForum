@@ -12,6 +12,8 @@ import SnapKit
 class FeedHomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var likeStatus = Array(repeating: true, count: 20)
+    var indexImage = Array(repeating: 0, count: 20)
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FeedHomeTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedHomeTableViewCell")
@@ -39,13 +41,33 @@ class FeedHomeViewController: UIViewController {
 
 extension FeedHomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO:
-        return 10
+        return likeStatus.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedHomeTableViewCell") as? FeedHomeTableViewCell {
-            //TODO:
+            cell.reuseFeedCardView.liked = likeStatus[indexPath.row]
+            cell.reuseFeedCardView.index = indexImage[indexPath.row]
+            cell.reuseFeedCardView.setUpView()
+            cell.reuseFeedCardView.clickLike = {
+                if self.likeStatus[indexPath.row] {
+                    cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "unlike"), for: .normal)
+                    self.likeStatus[indexPath.row] = false
+                }
+                else {
+                    cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "like"), for: .normal)
+                    self.likeStatus[indexPath.row] = true
+                }
+            }
+            cell.reuseFeedCardView.scrollAction = {
+                self.indexImage[indexPath.row] = cell.reuseFeedCardView.index
+            }
+            cell.reuseFeedCardView.toZoomScene = {
+                self.navigationController?.pushViewController(ShowImageViewController(), animated: true)
+            }
+            cell.reuseFeedCardView.commentAction = {
+                self.navigationController?.pushViewController(FeedDetailViewController(), animated: true)
+            }
             return cell
         } else { return UITableViewCell()}
     }

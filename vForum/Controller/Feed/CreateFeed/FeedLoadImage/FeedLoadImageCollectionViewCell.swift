@@ -22,9 +22,10 @@ class FeedLoadImageCollectionViewCell: UICollectionViewCell {
     func setConstraints(){
         viewContain.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview()
-            make.right.equalToSuperview()
+            //make.right.equalToSuperview()
             make.left.equalToSuperview()
             make.bottom.equalToSuperview()
+            make.width.equalTo(viewContain.snp_height)
         }
         imageUpload.snp.makeConstraints{ (make)->Void in
             make.top.equalTo(viewContain)

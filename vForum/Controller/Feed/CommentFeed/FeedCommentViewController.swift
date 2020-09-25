@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 class FeedCommentViewController: UIViewController {
+    @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var tableViewCmts: UITableView!
     @IBOutlet weak var viewContain: UIView!
     @IBOutlet weak var txtviewAddCmt: UITextView!
@@ -24,10 +25,13 @@ class FeedCommentViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!]
         setConstraint()
         setLayer()
+        btnSendCmt.isEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+          NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @IBAction func ADDCOMMENT(_ sender: Any) {
-        //TODO:
+        txtviewAddCmt.text = String()
     }
 }
 
@@ -40,13 +44,11 @@ extension FeedCommentViewController: UITableViewDelegate {
 
 extension FeedCommentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO:
         return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCommentTableViewCell") as? FeedCommentTableViewCell {
-            //TODO:
             return cell
         } else { return UITableViewCell()}
     }
@@ -54,6 +56,12 @@ extension FeedCommentViewController: UITableViewDataSource {
 
 extension FeedCommentViewController {
     func setConstraint(){
+        viewBackground.snp.makeConstraints{ (make)->Void in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalToSuperview()
+        }
         tableViewCmts.snp.makeConstraints{ (make)->Void in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
@@ -92,5 +100,21 @@ extension FeedCommentViewController {
 extension FeedCommentViewController: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         txtviewAddCmt.text = String()
+        btnSendCmt.isEnabled = true
+        btnSendCmt.tintColor = .blue
     }
 }
+
+extension FeedCommentViewController {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+             return
+          }
+        self.view.frame.origin.y = 0 - keyboardSize.height
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+}
+

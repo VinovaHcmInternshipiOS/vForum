@@ -18,6 +18,7 @@
 		76C8DD84251D8573002BE591 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C8DD82251D8573002BE591 /* PostDetailViewController.xib */; };
 		76C8DD89251D857F002BE591 /* PostCmtTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76C8DD87251D857F002BE591 /* PostCmtTableViewCell.xib */; };
 		76C8DD8A251D857F002BE591 /* PostCmtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8DD88251D857F002BE591 /* PostCmtTableViewCell.swift */; };
+		76C8DDE6251D89F3002BE591 /* ForumItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C8DDCE251D89F3002BE591 /* ForumItem.swift */; };
 		FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2102002510ACCC0003CC42 /* LoginView.xib */; };
 		FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA387F372519AF53006D46B2 /* AppController.swift */; };
 		FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */; };
@@ -220,6 +221,7 @@
 		76C8DD82251D8573002BE591 /* PostDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
 		76C8DD87251D857F002BE591 /* PostCmtTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCmtTableViewCell.xib; sourceTree = "<group>"; };
 		76C8DD88251D857F002BE591 /* PostCmtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCmtTableViewCell.swift; sourceTree = "<group>"; };
+		76C8DDCE251D89F3002BE591 /* ForumItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumItem.swift; sourceTree = "<group>"; };
 		7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum.debug.xcconfig"; path = "Target Support Files/Pods-vForum/Pods-vForum.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB369C9CCC03712780D89B2 /* Pods-vForum-vForumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.release.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A149E7CADE49BDFE86757CD9 /* Pods-vForum-vForumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.debug.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				76C8DD82251D8573002BE591 /* PostDetailViewController.xib */,
 				767D68C4251C48B800D79255 /* ForumController.swift */,
 				FAB575412519B04B004FA45E /* ForumGroupController.swift */,
+				76C8DDCE251D89F3002BE591 /* ForumItem.swift */,
 			);
 			name = Forum;
 			path = Feed/Forum;
@@ -1166,6 +1169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C8DDE6251D89F3002BE591 /* ForumItem.swift in Sources */,
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */,
 				76C8DD7E251D855E002BE591 /* AddViewController.swift in Sources */,
@@ -1347,14 +1351,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GQFN859H4Q;
+				DEVELOPMENT_TEAM = 5HRXVSCKTK;
 				INFOPLIST_FILE = vForum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = trucdongtxtv.vForum;
+				PRODUCT_BUNDLE_IDENTIFIER = hoangnamVforum.vForum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1369,14 +1373,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GQFN859H4Q;
+				DEVELOPMENT_TEAM = 5HRXVSCKTK;
 				INFOPLIST_FILE = vForum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = trucdongtxtv.vForum;
+				PRODUCT_BUNDLE_IDENTIFIER = hoangnamVforum.vForum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

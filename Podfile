@@ -13,7 +13,7 @@ target 'vForum' do
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
-
+  pod 'DropDown'
   target 'vForumTests' do
     inherit! :search_paths
   end

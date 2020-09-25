@@ -1,3 +1,11 @@
+//
+//  ForumGroupController.swift
+//  vForum
+//
+//  Created by Phúc Lý on 9/25/20.
+//  Copyright © 2020 vinova.internship. All rights reserved.
+//
+
 import Foundation
 import UIKit
 
@@ -62,3 +70,5 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 }
+
+

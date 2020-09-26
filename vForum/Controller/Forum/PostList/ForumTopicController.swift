@@ -2,8 +2,11 @@ import Foundation
 import UIKit
 import Alamofire
 
-class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+
     @IBOutlet weak var postList: UITableView!
+    @IBOutlet weak var fakeNavigationBarTitle: UILabel!
+
     var postTitle: String = ""
     
     var topicTitleLineCount: Int = 0
@@ -83,12 +86,14 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         postList.dataSource = self
     }
     
+    // MARK: - GET DATA
     func getData() {
         
     }
 
     func setTitle(_ str: String) {
         topicTitle = str
+        fakeNavigationBarTitle.text = str
     }
 
     func setCreator(_ str: String) {
@@ -132,6 +137,10 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        fakeNavigationBarTitle.layer.opacity = scrollView.contentOffset.y >= 200 ? 1: scrollView.contentOffset.y / 200
+    }
+
     // TODO: BUGFIX
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

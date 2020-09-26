@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import FBSDKLoginKit
 import Firebase
+import FirebaseCore
 import GoogleSignIn
 import GoogleDataTransport
 import GoogleUtilities

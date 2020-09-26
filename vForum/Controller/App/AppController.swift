@@ -4,30 +4,43 @@ import UIKit
 class AppController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let forumVc = UINavigationController()
-        let forumMainVc = ForumController(nibName: "ForumView", bundle: nil)
-        
-        
-        forumVc.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
-        forumVc.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
-        
-        let settingsVc = SettingViewController(nibName: "SettingViewController", bundle: nil)
-        settingsVc.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
-        settingsVc.tabBarItem.image = UIImage(named: "set")
-        settingsVc.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
-        settingsVc.tabBarItem.selectedImage = UIImage(named: "set")
-        
-        forumVc.viewControllers = [forumMainVc]
-        forumVc.tabBarItem.image = UIImage(named: "home")
-        forumVc.tabBarItem.selectedImage = UIImage(named: "home")
-        
-        tabBar.isTranslucent = false
-        tabBar.tintColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00)
-        
-        
-        self.viewControllers = [forumVc, settingsVc]
+        setUpTabBar()
     }
     
-    
+    func setUpTabBar() {
+        
+        let forum = UINavigationController(rootViewController: ForumController(nibName: "ForumView", bundle: nil))
+        forum.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
+        forum.tabBarItem.image = UIImage(named: "home")
+        forum.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
+        forum.tabBarItem.selectedImage = UIImage(named: "home")
+        forum.tabBarItem.title = "Forum"
+        
+        let feed = UINavigationController(rootViewController: FeedHomeViewController(nibName: "FeedHomeViewController", bundle: nil))
+        feed.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
+        feed.tabBarItem.image = UIImage(named: "feed")
+        feed.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
+        feed.tabBarItem.selectedImage = UIImage(named: "feed")
+        feed.tabBarItem.title = "Feed"
+        
+        let event = UINavigationController(rootViewController: ListEventController())
+        event.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
+        event.tabBarItem.image = UIImage(named: "event")
+        event.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
+        event.tabBarItem.selectedImage = UIImage(named: "event")
+        event.tabBarItem.title = "Event"
+        
+        
+        let setting = UINavigationController(rootViewController: SettingViewController(nibName: "SettingViewController", bundle: nil))
+        setting.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
+        setting.tabBarItem.image = UIImage(named: "set")
+        setting.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
+        setting.tabBarItem.selectedImage = UIImage(named: "set")
+        setting.tabBarItem.title = "Setting"
+        
+        
+        self.viewControllers = [forum, feed, event, setting]
+        
+        
+    }
 }

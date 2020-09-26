@@ -140,8 +140,15 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         guard row == 4 else {
             return true
         }
+        let email = fields[2].TextField.text!
+        let emailPattern = "[a-z][a-z0-9]*@[a-z]+.[a-z]+"
+        
+        
+        
         let pass = fields[3].TextField.text!
         let retype = fields[4].TextField.text! + string
+        
+        
         
         if pass != retype {
             fields[4].RequiredFieldLabel.text! = "Incorrect password     "

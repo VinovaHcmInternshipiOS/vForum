@@ -49,6 +49,23 @@
 	<string>1041344389632391</string>
 	<key>FacebookDisplayName</key>
 	<string>VForum</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>https://localhost:4000/</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

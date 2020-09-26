@@ -20,6 +20,14 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         TopicList.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles.count
     }
@@ -39,7 +47,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
+        let vc = ForumTopicController(nibName: "ForumTopicView", bundle: nil)
         //vc.setTitle(titles[indexPath.row])
         //vc.setSubtitle(name: creators[indexPath.row], date: "20/09/2020, 07:00")
         

@@ -38,6 +38,8 @@
 		22AEC456251C52F60024B282 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC455251C52F60024B282 /* UIView+extension.swift */; };
 		22B7E6EA251CE269001DFD31 /* ImageFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7E6E8251CE269001DFD31 /* ImageFeedCell.swift */; };
 		22B7E6EB251CE269001DFD31 /* ImageFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B7E6E9251CE269001DFD31 /* ImageFeedCell.xib */; };
+		3E002925251EE9B800FF8004 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E002924251EE9B800FF8004 /* NotificationView.swift */; };
+		3E002928251EEA5500FF8004 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E002927251EEA5500FF8004 /* NotificationViewController.swift */; };
 		3E1C03B3251E3A7300E6AC39 /* CreationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C0390251E3A7300E6AC39 /* CreationEvent.swift */; };
 		3E1C03B4251E3A7300E6AC39 /* ListEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C03AC251E3A7300E6AC39 /* ListEvent.swift */; };
 		3E1C03B5251E3A7300E6AC39 /* DetailEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C03AD251E3A7300E6AC39 /* DetailEvent.swift */; };
@@ -313,6 +315,8 @@
 		22B7E6E8251CE269001DFD31 /* ImageFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedCell.swift; sourceTree = "<group>"; };
 		22B7E6E9251CE269001DFD31 /* ImageFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageFeedCell.xib; sourceTree = "<group>"; };
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
+		3E002924251EE9B800FF8004 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		3E002927251EEA5500FF8004 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		3E1C0390251E3A7300E6AC39 /* CreationEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationEvent.swift; sourceTree = "<group>"; };
 		3E1C03AC251E3A7300E6AC39 /* ListEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListEvent.swift; sourceTree = "<group>"; };
 		3E1C03AD251E3A7300E6AC39 /* DetailEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailEvent.swift; sourceTree = "<group>"; };
@@ -565,6 +569,22 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3E002923251EE98700FF8004 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				3E002924251EE9B800FF8004 /* NotificationView.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		3E002926251EEA3B00FF8004 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				3E002927251EEA5500FF8004 /* NotificationViewController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		3E1C03BB251E3A9400E6AC39 /* Event */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,13 +617,6 @@
 				22A6906125185D48000CE500 /* HomeFeed */,
 			);
 			path = Feed;
-			sourceTree = "<group>";
-		};
-		3E32E67D2516D28B00CCF3D4 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		3E32E67F2516D2C600CCF3D4 /* Authentication */ = {
@@ -656,13 +669,6 @@
 			children = (
 			);
 			path = Feed;
-			sourceTree = "<group>";
-		};
-		3E32E6832516D30000CCF3D4 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		3E32E6852516D31100CCF3D4 /* ReusableView */ = {
@@ -872,10 +878,10 @@
 		3E777D3D250B587B003F07E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3E002923251EE98700FF8004 /* Notification */,
 				FAD3DE5A251DC8CC00578533 /* Settings */,
 				3E32E68C2516D34E00CCF3D4 /* Authentication */,
 				3E32E6852516D31100CCF3D4 /* ReusableView */,
-				3E32E6832516D30000CCF3D4 /* Notification */,
 				3E32E6812516D2F100CCF3D4 /* Event */,
 				3E32E6822516D2F900CCF3D4 /* Feed */,
 				3E32E6802516D2E700CCF3D4 /* Forum */,
@@ -887,11 +893,11 @@
 		3E777D3E250B5882003F07E9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3E002926251EEA3B00FF8004 /* Notification */,
 				3E1C03BB251E3A9400E6AC39 /* Event */,
 				FAD3DE57251DC8A500578533 /* Settings */,
 				FA387F502519AF65006D46B2 /* App */,
 				3E32E67F2516D2C600CCF3D4 /* Authentication */,
-				3E32E67D2516D28B00CCF3D4 /* Notification */,
 				FAD3DE4C251DA8E400578533 /* Forum */,
 				3E32E67B2516D27600CCF3D4 /* Feed */,
 			);
@@ -1562,6 +1568,7 @@
 				FAD3DE50251DA8E400578533 /* ForumTopicController.swift in Sources */,
 				FA5FA7AF251B48D6003F7B5F /* TokenManager.swift in Sources */,
 				3E1C03B6251E3A7300E6AC39 /* DateTimePickerEvent.swift in Sources */,
+				3E002928251EEA5500FF8004 /* NotificationViewController.swift in Sources */,
 				FAD3DE5C251DC8D800578533 /* SettingTableViewCell.swift in Sources */,
 				3E1C03B3251E3A7300E6AC39 /* CreationEvent.swift in Sources */,
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
@@ -1597,6 +1604,7 @@
 				FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */,
 				3E1C03C5251E3D1E00E6AC39 /* DetailEventController.swift in Sources */,
 				3E1C03C1251E3CA700E6AC39 /* Event.swift in Sources */,
+				3E002925251EE9B800FF8004 /* NotificationView.swift in Sources */,
 				3E1C03C3251E3CBE00E6AC39 /* RepeatedlyEvent.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
 				FAD3DE56251DC7E300578533 /* PostCmtTableViewCell.swift in Sources */,

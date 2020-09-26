@@ -2,6 +2,14 @@ import Foundation
 import UIKit
 
 class AppController: UITabBarController {
+    private(set) var username: String = ""
+    private(set) var userId: String = ""
+
+    init(username: String, userId: String) {
+        self.username = username
+        self.userId = userId
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

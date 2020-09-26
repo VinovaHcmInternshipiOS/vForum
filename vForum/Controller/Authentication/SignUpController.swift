@@ -14,6 +14,16 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         navigationController!.popViewController(animated: true)
     }
     
+    @IBAction func signUp() {
+        // MARK: - SIGN UP, ADD ACCOUNT, AUTO LOGIN
+
+        let username = fields[0].textField.text!
+        let userId = ""
+
+        let vc = AppController(username: username, userId: userId)
+        navigationController!.pushViewController(vc, animated: false)
+    }
+
     var fields: [SignUpField] = []
     var fieldTitles: [String] = ["Username","Display name","Email","Password","Re-enter your password"]
     var fieldsRequired: [Bool] = [true, false, true, true, true]
@@ -141,9 +151,16 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
             return true
         }
         let email = fields[2].TextField.text!
-        let emailPattern = "[a-z][a-z0-9]*@[a-z]+.[a-z]+"
+        let emailPattern = "[a-z][a-z0-9_]*[@][a-z0-9]+.[a-z]+"
         
-        
+        if email.rangeOfString(emailPattern, options: .RegularExpressionSearch) == nil {
+            fields[2].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
+            fields[2].RequiredFieldLabel.alpha = 0
+        } else {
+            fields[2].Underline.backgroundColor = UIColor.systemRed
+            fields[2].RequiredFieldLabel.text! = "Invalid email address"
+            fields[2].RequiredFieldLabel.alpha = 1
+        }
         
         let pass = fields[3].TextField.text!
         let retype = fields[4].TextField.text! + string

@@ -1,10 +1,3 @@
-//
-//  SettingViewController.swift
-//  UiForum
-//
-//  Created by vinova on 25/09/2020.
-//
-
 import UIKit
 
 class SettingViewController: UIViewController {

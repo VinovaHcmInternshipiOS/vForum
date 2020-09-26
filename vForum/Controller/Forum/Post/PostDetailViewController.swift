@@ -1,10 +1,3 @@
-//
-//  PostDetailViewController.swift
-//  UiForum
-//
-//  Created by vinova on 21/09/2020.
-//
-
 import UIKit
 import SnapKit
 

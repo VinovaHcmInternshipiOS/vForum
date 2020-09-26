@@ -6,19 +6,21 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var GroupItemList: UITableView!
     
     var groupName = "GroupName"
-    var groupImageURLs:[String] = []
-    var groupLabels:[String] = []
-    var groupActivateTimes:[String] = []
+    var groupData: [[String:String]] = [[:]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getData()
+
         GroupItemList.register(UINib(nibName: "GroupCellView", bundle: nil), forCellReuseIdentifier: "GroupCell")
         
         GroupItemList.delegate = self
         GroupItemList.dataSource = self
     }
     
+    func getData() {
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6

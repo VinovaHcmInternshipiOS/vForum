@@ -25,4 +25,8 @@ class GroupCell: UITableViewCell {
         SelectBackground.isHidden = true
         selectionStyle = .none
     }
+
+    func setTitle(_ str: String) {
+        GroupLabel.text = str
+    }
 }

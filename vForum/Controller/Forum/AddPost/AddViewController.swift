@@ -1,10 +1,3 @@
-//
-//  AddViewController.swift
-//  UiForum
-//
-//  Created by vinova on 22/09/2020.
-//
-
 import UIKit
 import SnapKit
 

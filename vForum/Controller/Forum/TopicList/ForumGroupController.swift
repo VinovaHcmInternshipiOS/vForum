@@ -9,6 +9,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var postCounts:[Int] = [35,950]
     var topicData:[[String:String]] = []
+    var sortedTopicData:[[String:String]] = []
     
     // MARK: - ADD TOPIC
     @IBAction func addTopic() {
@@ -20,20 +21,21 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         let choiceBox = UIAlertController(title: "Sort posts", message: "", preferredStyle: .actionSheet)
         // MARK: -- SORT
         choiceBox.addAction(UIAlertAction(title: "Newest first", style: .default, handler: { action in
-                //myArray.sort{
-                    //(($0 as! Dictionary<String, AnyObject>)["d"] as? Int) < (($1 as! Dictionary<String, AnyObject>)["d"] as? Int)
-                //}
-                //TopicList.reloadData()
+                topicData.sort {
+                    (convertToDateTime($0["createdAt"]) > convertToDateTime($1["createdAt"]))
+                }
+                sortedTopicData = topicData
+                self.TopicList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Oldest first", style: .default, handler: { action in
-                // SORT BY OLDEST FIRST
-                //TopicList.reloadData()
+                topicData.sort {
+                    (convertToDateTime($0["createdAt"]) < convertToDateTime($1["createdAt"]))
+                }
+                self.TopicList.reloadData()
             })
         )
-        choiceBox.addAction(UIAlertAction(title: "Most active", style: .default, handler: { action in
-                // SORT BY NEWEST FIRST
-                //TopicList.reloadData()
+        choiceBox.addAction(UIAlertAction(title: "Most posts", style: .default, handler: { action in
                 print("yeet")
             })
         )
@@ -69,17 +71,28 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
             "_id":"blahblahblah",
             "name":"Topic title",
             "createdBy":"aland",
-            "createdAt":"22/09/2020, 18:54"
+            "createdAt":"2020-09-16T03:00:56.880Z"
         ])
         
         topicData.append([
             "_id":"blahblahblah",
             "name":"Another topic",
             "createdBy":"aland",
-            "createdAt":"01/09/2020, 18:54"
+            "createdAt":"2020-09-16T03:00:56.880Z"
         ])
+
+        sortedTopicData = topicData
     }
     
+    func convertToDateTime(_str: String)->Date {    
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormatter.date(from:isoDate)!
+
+        return date
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
@@ -93,7 +106,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topicData.count
+        return sortedTopicData.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -102,14 +115,12 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as! TopicCell
-    
-        print(topicData)
         
         cell.initCell()
             
-        cell.setTitle(topicData[indexPath.row]["name"] ?? "")
+        cell.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
         cell.setPostCount(postCounts[indexPath.row])
-        cell.setCreator(topicData[indexPath.row]["createdAt"] ?? "")
+        cell.setCreator(sortedTopicData[indexPath.row]["createdAt"] ?? "")
 
         cell.selectionStyle = .none
         
@@ -118,9 +129,9 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ForumTopicController(nibName: "ForumTopicView", bundle: nil)
-        vc.setTitle(topicData[indexPath.row]["name"] ?? "")
-        vc.setCreator(topicData[indexPath.row]["createdBy"] ?? "")
-        vc.setDateTime(topicData[indexPath.row]["createdAt"] ?? "")
+        vc.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
+        vc.setCreator(sortedTopicData[indexPath.row]["createdBy"] ?? "")
+        vc.setDateTime(sortedTopicData[indexPath.row]["createdAt"] ?? "")
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -132,9 +143,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TopicCell
-        
         cell.MainView.backgroundColor = UIColor.white
-        
     }
     
 }

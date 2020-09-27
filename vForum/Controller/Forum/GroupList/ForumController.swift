@@ -16,12 +16,26 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         GroupItemList.delegate = self
         GroupItemList.dataSource = self
+
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "add"), for: .normal)
+        btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btn.addTarget(self, action: #selector(addGroup), for: .touchUpInside)
+        
+        let item = UIBarButtonItem(customView: btn)
+
+        navigationController!.navigationBar.navigationItem.setRightBarButtonItems([item], animated: true)
     }
     
     func getData() {
         
     }
     
+    private @objc func addGroup() {
+        let vc = AddGroupController(nibName: "AddGroupView", bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }

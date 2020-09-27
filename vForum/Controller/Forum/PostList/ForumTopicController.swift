@@ -179,6 +179,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.setContent(sortedPostData[indexPath.row - 1]["description"]!)
             cell.setDateTime(sortedPostData[indexPath.row - 1]["createdAt"]!)
             cell.setCreator(sortedPostData[indexPath.row - 1]["createdBy"]!)
+            cell.setLikeCount(sortedPostData[indexPath.row - 1]["countLike"]!)
 
             return cell
         }
@@ -192,6 +193,13 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             //return cellHeights[indexPath.row - 1]
             return 250
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
+        vc.title = "Post"
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

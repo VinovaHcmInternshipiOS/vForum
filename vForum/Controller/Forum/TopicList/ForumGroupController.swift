@@ -12,12 +12,13 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     var sortedTopicData:[[String:String]] = []
     
     // MARK: - ADD TOPIC
-    @IBAction func addTopic() {
-
+    @objc func addTopic() {
+        let vc = AddTopicController(nibName: "AddTopicView", bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - SORT TOPIC
-    @IBAction func sortTopic() {
+    @objc func sortTopic() {
         let choiceBox = UIAlertController(title: "Sort posts", message: "", preferredStyle: .actionSheet)
         // MARK: -- SORT
         choiceBox.addAction(UIAlertAction(title: "Newest first", style: .default, handler: { action in
@@ -47,20 +48,19 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         getData()
         
-        
         let btn1 = UIButton(type: .custom)
         btn1.setImage(UIImage(named: "add"), for: .normal)
         btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        //btn1.addTarget(self, action: #selector(nil), for: .touchUpInside)
+        btn1.addTarget(self, action: #selector(addTopic), for: .touchUpInside)
         let item1 = UIBarButtonItem(customView: btn1)
 
         let btn2 = UIButton(type: .custom)
         btn2.setImage(UIImage(named: "sort"), for: .normal)
         btn2.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        //btn2.addTarget(self, action: #selector(nil), for: .touchUpInside)
+        btn2.addTarget(self, action: #selector(sortTopic), for: .touchUpInside)
         let item2 = UIBarButtonItem(customView: btn2)
 
-        navigationController?.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
+        navigationController!.navigationBar.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
 
         TopicList.backgroundColor = .clear
         TopicList.register(UINib(nibName: "TopicCellView", bundle: nil), forCellReuseIdentifier: "TopicCell")

@@ -17,7 +17,7 @@ class PostPreviewCell: UITableViewCell {
     
     private(set) var postId:String = ""
 
-    @IBAction func like(_ str: String) {
+    @IBAction func like() {
         // MARK: -- GET LIKE FROM SERVER
         let isLiked = false
 
@@ -44,9 +44,9 @@ class PostPreviewCell: UITableViewCell {
         
         Content.snp.makeConstraints{ (make)->Void in
             make.top.equalTo(DateTime.snp_bottom).offset(10)
-            //make.height.equalTo(CGFloat(100))
             make.left.equalToSuperview()
             make.right.equalToSuperview()
+            make.height.equalTo(CGFloat(50))
         }
     }
     
@@ -69,8 +69,11 @@ class PostPreviewCell: UITableViewCell {
     
     func setContent(_ str: String) {
         Content.text = str
-        Content.sizeToFit()
+        Content.updateConstraints{ (make)->Void in
+            make.height.equalTo(CGFloat(getContentLineCount*20))
+        }
     }
+
     func getContentLineCount()->Int {
         return Int(Content.contentSize.height / Content.font!.lineHeight)
     }
@@ -80,6 +83,10 @@ class PostPreviewCell: UITableViewCell {
     }
     func setCreator(_ str: String) {
         Username.text = str
+    }
+
+    func setLikeCount(_ str: String) {
+        LikeCount.text = str
     }
 
     func getCellHeight()->CGFloat {

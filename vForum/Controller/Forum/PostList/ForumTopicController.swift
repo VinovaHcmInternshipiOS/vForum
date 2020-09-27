@@ -5,14 +5,14 @@ import Alamofire
 class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     @IBOutlet weak var postList: UITableView!
-    @IBOutlet weak var fakeNavigationBarTitle: UILabel!
+    @IBOutlet weak var searchBar: UITextField!
 
     var postTitle: String = ""
     
     var topicTitleLineCount: Int = 0
 
     var cellHeights: [CGFloat] = []
-    private(set) var postData:[[String:String]] = [[:]]
+    private(set) var postData:[[String:String]] = []
     
     private(set) var topicTitle: String = ""
     private(set) var topicCreator: String = ""
@@ -26,27 +26,27 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func sort(_ sender: UIButton) {
-        let choiceBox = UIAlertController(title: "Sort posts", preferredStyle: .actionSheet)
+        let choiceBox = UIAlertController(title: "Sort posts", message: "", preferredStyle: .actionSheet)
         // MARK: -- SORT
-        choiceBox.addAction(UIAlertAction(title: "Newest first"), style: .default, handler: { action in 
+        choiceBox.addAction(UIAlertAction(title: "Newest first", style: .default, handler: { action in
                 //myArray.sort{
                     //(($0 as! Dictionary<String, AnyObject>)["d"] as? Int) < (($1 as! Dictionary<String, AnyObject>)["d"] as? Int)
                 //}
-                postList.reloadData()
-            }
+                //self.postList.reloadData()
+            })
         )
-        choiceBox.addAction(UIAlertAction(title: "Oldest first"), style: .default, handler: { action in 
+        choiceBox.addAction(UIAlertAction(title: "Oldest first", style: .default, handler: { action in
                 // SORT BY OLDEST FIRST
-                postList.reloadData()
-            }
+                //self.postList.reloadData()
+            })
         )
-        choiceBox.addAction(UIAlertAction(title: "Most active"), style: .default, handler: { action in 
+        choiceBox.addAction(UIAlertAction(title: "Most likes", style: .default, handler: { action in
                 // SORT BY NEWEST FIRST
-                postList.reloadData()
-            }
+                //xself.postList.reloadData()
+            })
         )
-        choiceBox.addAction(UIAlertAction(title: "Cancel"), style: .cancel, handler: nil)
-
+        choiceBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(choiceBox, animated: true)
     }
 
     @IBAction func goBack(_ sender: UIButton) {
@@ -56,6 +56,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
 
         postData.append([
             "title":"Post Title",
@@ -72,7 +73,28 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             "createdBy":"dominic",
             "_id":"12d342389cf29d"
         ])
+        
+        postData.append([
+            "title":"Post name to fit two lines omg please heck yes boi can we have more stuff",
+            "description":"Lorem ipsum donor amet boi",
+            "createdAt":"05/09/2020",
+            "createdBy":"dominic",
+            "_id":"12d342389cf29d"
+        ])
+        
+        postData.append([
+            "title":"Another iOS 14 description",
+            "description":"Lorem ipsum donor amet boi",
+            "createdAt":"05/09/2020",
+            "createdBy":"dominic",
+            "_id":"12d342389cf29d"
+        ])
 
+        cellHeights.append(0)
+        cellHeights.append(0)
+        cellHeights.append(0)
+        cellHeights.append(0)
+        
         getData()
         
         postList.rowHeight = UITableView.automaticDimension
@@ -93,7 +115,6 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func setTitle(_ str: String) {
         topicTitle = str
-        fakeNavigationBarTitle.text = str
     }
 
     func setCreator(_ str: String) {
@@ -121,35 +142,43 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.setDatetime(topicDateTime)
             
             topicTitleLineCount = cell.getTitleLineCount()
-             
+            cell.selectionStyle = .none
+            
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostPreviewCell
-            cellHeights.append(cell.getCellHeight())
+            
+            cellHeights[indexPath.row-1] = cell.getCellHeight()
 
-            cell.setTitle(postData[indexPath.row - 1]["title"])
-            cell.setContent(postData[indexPath.row - 1]["description"])
-            cell.setDateTime(postData[indexPath.row - 1]["createdAt"])
-            cell.setCreator(postData[indexPath.row - 1]["createdBy"])
+            cell.setTitle(postData[indexPath.row - 1]["title"]!)
+            cell.setContent(postData[indexPath.row - 1]["description"]!)
+            cell.setDateTime(postData[indexPath.row - 1]["createdAt"]!)
+            cell.setCreator(postData[indexPath.row - 1]["createdBy"]!)
 
             return cell
         }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        fakeNavigationBarTitle.layer.opacity = scrollView.contentOffset.y >= 200 ? 1: scrollView.contentOffset.y / 200
     }
 
     // TODO: BUGFIX
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         switch indexPath.row {
         case 0:
             return CGFloat(topicTitleLineCount * 30 + 60)
         default:
             return cellHeights[indexPath.row - 1]
-            //return 150
+            //return 350
         }
+    }
+}
+
+
+
+
+extension ForumTopicController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
     }
 }

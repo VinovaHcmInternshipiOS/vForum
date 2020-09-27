@@ -29,4 +29,8 @@ class GroupCell: UITableViewCell {
     func setTitle(_ str: String) {
         GroupLabel.text = str
     }
+    
+    func setTime(_ str: String) {
+        TimeLabel.text = str
+    }
 }

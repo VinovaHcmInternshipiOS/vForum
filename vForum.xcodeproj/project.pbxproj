@@ -40,6 +40,8 @@
 		FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB631AB2511B33100F603BE /* GoogleService-Info.plist */; };
 		FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB631AF2511E35B00F603BE /* LoginButton.swift */; };
 		FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */; };
+		FACCEFB7251FFABC0076ACBC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEF9D251FFABC0076ACBC /* AddViewController.swift */; };
+		FACCEFB8251FFABC0076ACBC /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFB6251FFABC0076ACBC /* PostDetailViewController.swift */; };
 		FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */; };
 		FAD3DE46251D77AA00578533 /* ForumTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE43251D77AA00578533 /* ForumTopicView.xib */; };
 		FAD3DE47251D77AA00578533 /* PostPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */; };
@@ -53,8 +55,6 @@
 		FAD3DE5E251DC8DF00578533 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE5D251DC8DE00578533 /* SettingTableViewCell.xib */; };
 		FAD3DE60251DC8E600578533 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE5F251DC8E600578533 /* SettingViewController.xib */; };
 		FAD3DE63251DC8F300578533 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE62251DC8F300578533 /* AddViewController.xib */; };
-		FAD3DE65251DC91A00578533 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE64251DC91900578533 /* AddViewController.swift */; };
-		FAD3DE67251DCBB500578533 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE66251DCBB500578533 /* PostDetailViewController.swift */; };
 		FAD3DE69251DCBD600578533 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */; };
 		FAD3DE7E251EAC3D00578533 /* TopicTitleCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE7D251EAC3D00578533 /* TopicTitleCellView.xib */; };
 		FAD3DE84251ECAA500578533 /* TopicTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE83251ECAA500578533 /* TopicTitleCell.swift */; };
@@ -269,6 +269,8 @@
 		FAB631AB2511B33100F603BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAB631AF2511E35B00F603BE /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFieldView.xib; sourceTree = "<group>"; };
+		FACCEF9D251FFABC0076ACBC /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		FACCEFB6251FFABC0076ACBC /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostPreviewCellView.xib; sourceTree = "<group>"; };
 		FAD3DE43251D77AA00578533 /* ForumTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumTopicView.xib; path = vForum/View/Forum/PostList/ForumTopicView.xib; sourceTree = SOURCE_ROOT; };
 		FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostPreviewCell.swift; path = vForum/View/Forum/PostList/PostPreviewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -282,8 +284,6 @@
 		FAD3DE5D251DC8DE00578533 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		FAD3DE5F251DC8E600578533 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		FAD3DE62251DC8F300578533 /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
-		FAD3DE64251DC91900578533 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		FAD3DE66251DCBB500578533 /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
 		FAD3DE7D251EAC3D00578533 /* TopicTitleCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicTitleCellView.xib; sourceTree = "<group>"; };
 		FAD3DE83251ECAA500578533 /* TopicTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTitleCell.swift; sourceTree = "<group>"; };
@@ -759,14 +759,30 @@
 			path = vForumUITests;
 			sourceTree = "<group>";
 		};
+		FACCEF9C251FFABC0076ACBC /* AddPost */ = {
+			isa = PBXGroup;
+			children = (
+				FACCEF9D251FFABC0076ACBC /* AddViewController.swift */,
+			);
+			path = AddPost;
+			sourceTree = "<group>";
+		};
+		FACCEFB5251FFABC0076ACBC /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				FACCEFB6251FFABC0076ACBC /* PostDetailViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		FAD3DE4C251DA8E400578533 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
+				FACCEF9C251FFABC0076ACBC /* AddPost */,
+				FACCEFB5251FFABC0076ACBC /* Post */,
 				FAD3DE81251EAEC800578533 /* GroupList */,
 				FAD3DE80251EAEB700578533 /* TopicList */,
 				FAD3DE7F251EAEA600578533 /* PostList */,
-				FAD3DE64251DC91900578533 /* AddViewController.swift */,
-				FAD3DE66251DCBB500578533 /* PostDetailViewController.swift */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -1297,8 +1313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5FA7AD251B48D6003F7B5F /* RegisterManager.swift in Sources */,
+				FACCEFB8251FFABC0076ACBC /* PostDetailViewController.swift in Sources */,
 				FAD3DE59251DC8B800578533 /* SettingViewController.swift in Sources */,
-				FAD3DE65251DC91A00578533 /* AddViewController.swift in Sources */,
+				FACCEFB7251FFABC0076ACBC /* AddViewController.swift in Sources */,
 				FAD3DE51251DA8E400578533 /* ForumGroupController.swift in Sources */,
 				FAD3DE50251DA8E400578533 /* ForumTopicController.swift in Sources */,
 				FA5FA7AF251B48D6003F7B5F /* TokenManager.swift in Sources */,
@@ -1319,7 +1336,6 @@
 				FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */,
 				FA8D33F2250B547C0070DD4A /* AppDelegate.swift in Sources */,
 				FAD3DE56251DC7E300578533 /* PostCmtTableViewCell.swift in Sources */,
-				FAD3DE67251DCBB500578533 /* PostDetailViewController.swift in Sources */,
 				FA8D33F4250B547C0070DD4A /* SceneDelegate.swift in Sources */,
 				FA85A6B1250BD03D0029A47A /* SignUpController.swift in Sources */,
 			);

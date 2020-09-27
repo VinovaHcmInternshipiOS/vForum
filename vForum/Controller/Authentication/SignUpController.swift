@@ -17,11 +17,12 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     @IBAction func signUp() {
         // MARK: - SIGN UP, ADD ACCOUNT, AUTO LOGIN
 
-        let username = fields[0].textField.text!
+        let username = fields[0].TextField.text!
         let userId = ""
 
-        let vc = AppController(username: username, userId: userId)
-        navigationController!.pushViewController(vc, animated: false)
+        let vc = AppController()
+        vc.setUser(username: "", userId: "")
+        navigationController?.pushViewController(vc, animated: false)
     }
 
     var fields: [SignUpField] = []
@@ -153,7 +154,7 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         let email = fields[2].TextField.text!
         let emailPattern = "[a-z][a-z0-9_]*[@][a-z0-9]+.[a-z]+"
         
-        if email.rangeOfString(emailPattern, options: .RegularExpressionSearch) == nil {
+        if email.range(of: emailPattern, options: .regularExpression) == nil {
             fields[2].Underline.backgroundColor = UIColor(red: 0.86, green: 0.85, blue: 0.93, alpha: 1.00)
             fields[2].RequiredFieldLabel.alpha = 0
         } else {

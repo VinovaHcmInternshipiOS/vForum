@@ -10,6 +10,8 @@ class PostPreviewCell: UITableViewCell {
     @IBOutlet weak var Content: UITextView!
     @IBOutlet weak var ViewMoreComments: UIButton!
 
+    @IBOutlet weak var LikeCount: UILabel!
+    
     @IBOutlet weak var DateTime: UILabel!
     @IBOutlet weak var LikeButton: UIButton!
     
@@ -21,24 +23,26 @@ class PostPreviewCell: UITableViewCell {
 
         switch isLiked {
             case true:
-                LikeButton.backgroundImage = UIImage(named: "notlike")
+                print("unlike")
                 // MARK: -- SEND UNLIKE TO SERVER
             default:
-                LikeButton.backgroundImage = UIImage(named: "like") 
+                print("like")
                 // MARK: -- SEND LIKE TO SERVER
         }
     }
     
-    init(postData: [String:String]) {
-        postId = postData["postId"]
+    func setData(postData: [String:String]) {
+        postId = postData["postId"]!
 
-        setTitle(postData["title"])
-        setDateTime(postData["createdAt"])
-        setContent(postData["description"])
+        setTitle(postData["title"]!)
+        setDateTime(postData["createdAt"]!)
+        setContent(postData["description"]!)
     }
 
     func setTitle(_ str: String) {
         PostTitle.text = str
+        // MARK: - SET HEIGHT
+        print(getTitleLineCount())
     }
     func getTitleLineCount()->Int {
         return Int(PostTitle.contentSize.height / PostTitle.font!.lineHeight)
@@ -46,13 +50,14 @@ class PostPreviewCell: UITableViewCell {
     
     func setContent(_ str: String) {
         Content.text = str
+        // MARK: - SET HEIGHT
     }
     func getContentLineCount()->Int {
         return Int(Content.contentSize.height / Content.font!.lineHeight)
     }
 
     func setDateTime(_ str:String) {
-        DateTime.text = str
+        DateTime?.text = str
     }
     func setCreator(_ str: String) {
         Username.text = str

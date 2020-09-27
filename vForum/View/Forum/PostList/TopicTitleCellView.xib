@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Another test" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Umu-nW-NKH">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Another test" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umu-nW-NKH">
                     <rect key="frame" x="15" y="12" width="385" height="52"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

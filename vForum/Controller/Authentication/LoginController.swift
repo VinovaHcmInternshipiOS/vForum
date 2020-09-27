@@ -205,8 +205,10 @@ extension LoginController {
         let manager = LoginVForumManager()
         //manager.login(url: "https://localhost:4000/v1/api/login", params: ["email": username, "password": password])
         
-        let vc = AppController(username: username, userId: userId)
-        navigationController!.pushViewController(vc, animated: false)
+        
+        let vc = AppController()
+        vc.setUser(username: "", userId: "")
+        navigationController?.pushViewController(vc, animated: false)
         
     }
 }
@@ -242,7 +244,10 @@ extension LoginController {
                 return
             }
             print(AccessToken.current?.tokenString ?? "Print fail")
-            self?.navigationController?.pushViewController(AppController(username: username, userId: userId), animated: false)
+            
+            let vc = AppController()
+            vc.setUser(username: "", userId: "")
+            self?.navigationController?.pushViewController(vc, animated: false)
         }
     }
     
@@ -270,7 +275,10 @@ extension LoginController {
         }
         print("\(String(describing: user.profile.name)) \n")
         print("\(String(describing: user.profile.email)) \n")
-        self.navigationController?.pushViewController(AppController(username: username, userId: userId), animated: false)
+        
+        let vc = AppController()
+        vc.setUser(username: "", userId: "")
+        self.navigationController?.pushViewController(vc, animated: false)
       }
     
           // Start Google OAuth2 Authentication

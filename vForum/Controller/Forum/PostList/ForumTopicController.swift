@@ -78,7 +78,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
         postData.append([
             "title":"Another iOS 14 description",
-            "description":"Lorem ipsum donor amet boi",
+            "description":"Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi",
             "createdAt":"2020-09-19T11:00:56.880Z",
             "createdBy":"dominic",
             "_id":"12d342389cf29d",
@@ -87,7 +87,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         
         postData.append([
             "title":"Post name to fit two lines omg please heck yes boi can we have more stuff",
-            "description":"Lorem ipsum donor amet boi",
+            "description":"Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi",
             "createdAt":"2020-09-25T12:00:56.880Z",
             "createdBy":"dominic",
             "_id":"12d342389cf29d",

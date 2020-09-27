@@ -60,7 +60,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         btn2.addTarget(self, action: #selector(sortTopic), for: .touchUpInside)
         let item2 = UIBarButtonItem(customView: btn2)
 
-        navigationController!.navigationBar.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
+        navigationController!.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
 
         TopicList.backgroundColor = .clear
         TopicList.register(UINib(nibName: "TopicCellView", bundle: nil), forCellReuseIdentifier: "TopicCell")
@@ -98,9 +98,9 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationController?.navigationBar.isHidden = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-    }
+    //override func viewWillDisappear(_ animated: Bool) {
+    //    navigationController?.navigationBar.isHidden = true
+    //}
     
     func getData() {
         

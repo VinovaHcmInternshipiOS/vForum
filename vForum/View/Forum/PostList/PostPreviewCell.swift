@@ -69,8 +69,8 @@ class PostPreviewCell: UITableViewCell {
     
     func setContent(_ str: String) {
         Content.text = str
-        Content.updateConstraints{ (make)->Void in
-            make.height.equalTo(CGFloat(getContentLineCount*20))
+        Content.snp.updateConstraints{ (make)->Void in
+            make.height.equalTo(CGFloat(getContentLineCount()*20))
         }
     }
 

@@ -24,14 +24,14 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         let item = UIBarButtonItem(customView: btn)
 
-        navigationController!.navigationBar.navigationItem.setRightBarButtonItems([item], animated: true)
+        navigationController!.navigationItem.rightBarButtonItem = item
     }
     
     func getData() {
         
     }
     
-    private @objc func addGroup() {
+    @objc func addGroup() {
         let vc = AddGroupController(nibName: "AddGroupView", bundle: nil)
         navigationController?.pushViewController(vc, animated: true)
     }

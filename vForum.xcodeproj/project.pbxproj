@@ -42,6 +42,11 @@
 		FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */; };
 		FACCEFB7251FFABC0076ACBC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEF9D251FFABC0076ACBC /* AddViewController.swift */; };
 		FACCEFB8251FFABC0076ACBC /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFB6251FFABC0076ACBC /* PostDetailViewController.swift */; };
+		FACCEFBB2520B1770076ACBC /* AddGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFBA2520B1770076ACBC /* AddGroupController.swift */; };
+		FACCEFBE2520B1890076ACBC /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFBD2520B1890076ACBC /* AddTopicController.swift */; };
+		FACCEFC52520B1AF0076ACBC /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC02520B1AE0076ACBC /* AddViewController.xib */; };
+		FACCEFC62520B1AF0076ACBC /* AddTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */; };
+		FACCEFC72520B1AF0076ACBC /* AddGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */; };
 		FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */; };
 		FAD3DE46251D77AA00578533 /* ForumTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE43251D77AA00578533 /* ForumTopicView.xib */; };
 		FAD3DE47251D77AA00578533 /* PostPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */; };
@@ -54,7 +59,6 @@
 		FAD3DE5C251DC8D800578533 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE5B251DC8D800578533 /* SettingTableViewCell.swift */; };
 		FAD3DE5E251DC8DF00578533 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE5D251DC8DE00578533 /* SettingTableViewCell.xib */; };
 		FAD3DE60251DC8E600578533 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE5F251DC8E600578533 /* SettingViewController.xib */; };
-		FAD3DE63251DC8F300578533 /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE62251DC8F300578533 /* AddViewController.xib */; };
 		FAD3DE69251DCBD600578533 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */; };
 		FAD3DE7E251EAC3D00578533 /* TopicTitleCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE7D251EAC3D00578533 /* TopicTitleCellView.xib */; };
 		FAD3DE84251ECAA500578533 /* TopicTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE83251ECAA500578533 /* TopicTitleCell.swift */; };
@@ -271,6 +275,11 @@
 		FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFieldView.xib; sourceTree = "<group>"; };
 		FACCEF9D251FFABC0076ACBC /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FACCEFB6251FFABC0076ACBC /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		FACCEFBA2520B1770076ACBC /* AddGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupController.swift; sourceTree = "<group>"; };
+		FACCEFBD2520B1890076ACBC /* AddTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
+		FACCEFC02520B1AE0076ACBC /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTopicView.xib; sourceTree = "<group>"; };
+		FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupView.xib; sourceTree = "<group>"; };
 		FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostPreviewCellView.xib; sourceTree = "<group>"; };
 		FAD3DE43251D77AA00578533 /* ForumTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumTopicView.xib; path = vForum/View/Forum/PostList/ForumTopicView.xib; sourceTree = SOURCE_ROOT; };
 		FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostPreviewCell.swift; path = vForum/View/Forum/PostList/PostPreviewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -283,7 +292,6 @@
 		FAD3DE5B251DC8D800578533 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		FAD3DE5D251DC8DE00578533 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		FAD3DE5F251DC8E600578533 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		FAD3DE62251DC8F300578533 /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
 		FAD3DE7D251EAC3D00578533 /* TopicTitleCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopicTitleCellView.xib; sourceTree = "<group>"; };
 		FAD3DE83251ECAA500578533 /* TopicTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicTitleCell.swift; sourceTree = "<group>"; };
@@ -355,10 +363,12 @@
 		3E32E6802516D2E700CCF3D4 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
+				FACCEFC32520B1AF0076ACBC /* AddGroup */,
+				FACCEFBF2520B1AE0076ACBC /* AddPost */,
+				FACCEFC12520B1AF0076ACBC /* AddTopic */,
 				FAD3DE7C251EABE000578533 /* PostList */,
 				FAD3DE7B251EAAB500578533 /* TopicList */,
 				FAD3DE7A251EAAA500578533 /* GroupList */,
-				FAD3DE61251DC8EE00578533 /* Add */,
 				FAD3DE82251EC8CE00578533 /* PostDetail */,
 			);
 			path = Forum;
@@ -775,10 +785,52 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		FACCEFB92520B1770076ACBC /* AddGroup */ = {
+			isa = PBXGroup;
+			children = (
+				FACCEFBA2520B1770076ACBC /* AddGroupController.swift */,
+			);
+			path = AddGroup;
+			sourceTree = "<group>";
+		};
+		FACCEFBC2520B1890076ACBC /* AddTopic */ = {
+			isa = PBXGroup;
+			children = (
+				FACCEFBD2520B1890076ACBC /* AddTopicController.swift */,
+			);
+			path = AddTopic;
+			sourceTree = "<group>";
+		};
+		FACCEFBF2520B1AE0076ACBC /* AddPost */ = {
+			isa = PBXGroup;
+			children = (
+				FACCEFC02520B1AE0076ACBC /* AddViewController.xib */,
+			);
+			path = AddPost;
+			sourceTree = "<group>";
+		};
+		FACCEFC12520B1AF0076ACBC /* AddTopic */ = {
+			isa = PBXGroup;
+			children = (
+				FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */,
+			);
+			path = AddTopic;
+			sourceTree = "<group>";
+		};
+		FACCEFC32520B1AF0076ACBC /* AddGroup */ = {
+			isa = PBXGroup;
+			children = (
+				FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */,
+			);
+			path = AddGroup;
+			sourceTree = "<group>";
+		};
 		FAD3DE4C251DA8E400578533 /* Forum */ = {
 			isa = PBXGroup;
 			children = (
+				FACCEFB92520B1770076ACBC /* AddGroup */,
 				FACCEF9C251FFABC0076ACBC /* AddPost */,
+				FACCEFBC2520B1890076ACBC /* AddTopic */,
 				FACCEFB5251FFABC0076ACBC /* Post */,
 				FAD3DE81251EAEC800578533 /* GroupList */,
 				FAD3DE80251EAEB700578533 /* TopicList */,
@@ -803,14 +855,6 @@
 				FAD3DE5F251DC8E600578533 /* SettingViewController.xib */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		FAD3DE61251DC8EE00578533 /* Add */ = {
-			isa = PBXGroup;
-			children = (
-				FAD3DE62251DC8F300578533 /* AddViewController.xib */,
-			);
-			path = Add;
 			sourceTree = "<group>";
 		};
 		FAD3DE7A251EAAA500578533 /* GroupList */ = {
@@ -1133,7 +1177,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FACCEFC52520B1AF0076ACBC /* AddViewController.xib in Resources */,
 				FAD3DE7E251EAC3D00578533 /* TopicTitleCellView.xib in Resources */,
+				FACCEFC62520B1AF0076ACBC /* AddTopicView.xib in Resources */,
 				FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */,
 				FAD3DE60251DC8E600578533 /* SettingViewController.xib in Resources */,
 				FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */,
@@ -1149,7 +1195,7 @@
 				FA8D33FB250B54910070DD4A /* Assets.xcassets in Resources */,
 				FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */,
 				FAD3DE5E251DC8DF00578533 /* SettingTableViewCell.xib in Resources */,
-				FAD3DE63251DC8F300578533 /* AddViewController.xib in Resources */,
+				FACCEFC72520B1AF0076ACBC /* AddGroupView.xib in Resources */,
 				FAB575492519B0D4004FA45E /* GroupCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1319,9 +1365,11 @@
 				FAD3DE51251DA8E400578533 /* ForumGroupController.swift in Sources */,
 				FAD3DE50251DA8E400578533 /* ForumTopicController.swift in Sources */,
 				FA5FA7AF251B48D6003F7B5F /* TokenManager.swift in Sources */,
+				FACCEFBB2520B1770076ACBC /* AddGroupController.swift in Sources */,
 				FAD3DE5C251DC8D800578533 /* SettingTableViewCell.swift in Sources */,
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */,
+				FACCEFBE2520B1890076ACBC /* AddTopicController.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
 				FA5FA7AC251B48D6003F7B5F /* RegisterResponse.swift in Sources */,
 				FAB5754A2519B0D4004FA45E /* GroupCell.swift in Sources */,

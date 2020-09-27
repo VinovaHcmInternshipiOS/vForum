@@ -31,26 +31,26 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         let choiceBox = UIAlertController(title: "Sort posts", message: "", preferredStyle: .actionSheet)
         // MARK: -- SORT
         choiceBox.addAction(UIAlertAction(title: "Newest first", style: .default, handler: { action in
-                postData.sort {
-                    (convertToDateTime($0["createdAt"]) > convertToDateTime($1["createdAt"]))
+                self.postData.sort {
+                    (self.convertToDateTime($0["createdAt"]!) > self.convertToDateTime($1["createdAt"]!))
                 }
-                sortedPostData = postData
+                self.sortedPostData = self.postData
                 self.postList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Oldest first", style: .default, handler: { action in
-                postData.sort {
-                    (convertToDateTime($0["createdAt"]) < convertToDateTime($1["createdAt"]))
+                self.postData.sort {
+                    (self.convertToDateTime($0["createdAt"]!) < self.convertToDateTime($1["createdAt"]!))
                 }
-                sortedPostData = postData
+                self.sortedPostData = self.postData
                 self.postList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Most likes", style: .default, handler: { action in
-                postData.sort {
-                    (Int($0["countLike"]) ?? 0 > Int($1["countLike"]) ?? 0)
+                self.postData.sort {
+                    (Int($0["countLike"]!) ?? 0 > Int($1["countLike"]!) ?? 0)
                 }
-                sortedPostData = postData
+                self.sortedPostData = self.postData
                 self.postList.reloadData()
             })
         )
@@ -81,7 +81,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             "description":"Lorem ipsum donor amet boi",
             "createdAt":"2020-09-19T11:00:56.880Z",
             "createdBy":"dominic",
-            "_id":"12d342389cf29d"
+            "_id":"12d342389cf29d",
             "countLike":"0"
         ])
         
@@ -90,7 +90,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             "description":"Lorem ipsum donor amet boi",
             "createdAt":"2020-09-25T12:00:56.880Z",
             "createdBy":"dominic",
-            "_id":"12d342389cf29d"
+            "_id":"12d342389cf29d",
             "countLike":"12"
         ])
         
@@ -99,7 +99,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             "description":"Lorem ipsum donor amet boi",
             "createdAt":"2020-09-30T15:00:56.880Z",
             "createdBy":"dominic",
-            "_id":"12d342389cf29d"
+            "_id":"12d342389cf29d",
             "countLike":"1950"
         ])
 
@@ -123,12 +123,11 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         postList.dataSource = self
     }
     
-    func convertToDateTime(_str: String)->Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let date = dateFormatter.date(from:isoDate)!
-
+    func convertToDateTime(_ str: String)->Date {
+        let dateFormatter = ISO8601DateFormatter()
+        let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        let date = dateFormatter.date(from: trimmedIsoString)!
+        
         return date
     }
 
@@ -174,7 +173,8 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostPreviewCell
             
             cellHeights[indexPath.row-1] = cell.getCellHeight()
-
+            
+            cell.setConstraints()
             cell.setTitle(sortedPostData[indexPath.row - 1]["title"]!)
             cell.setContent(sortedPostData[indexPath.row - 1]["description"]!)
             cell.setDateTime(sortedPostData[indexPath.row - 1]["createdAt"]!)
@@ -189,8 +189,8 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         case 0:
             return CGFloat(topicTitleLineCount * 30 + 60)
         default:
-            return cellHeights[indexPath.row - 1]
-            //return 350
+            //return cellHeights[indexPath.row - 1]
+            return 250
         }
     }
 }
@@ -199,11 +199,24 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
 extension ForumTopicController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var str = textField.text!
+        str = string.count == 0 ? String(str.dropLast()) : str + string
+        
+        print(str)
+        
+        if str == "" {
+            sortedPostData = postData
+        } else {
+            sortedPostData = postData.filter{ $0["title"]!.lowercased().contains(str.lowercased()) }
+        }
+        
+        postList.reloadData()
+        
+        return true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) {
-
+        
     }
 }

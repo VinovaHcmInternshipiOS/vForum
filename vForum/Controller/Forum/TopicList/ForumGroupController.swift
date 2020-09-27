@@ -21,17 +21,18 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         let choiceBox = UIAlertController(title: "Sort posts", message: "", preferredStyle: .actionSheet)
         // MARK: -- SORT
         choiceBox.addAction(UIAlertAction(title: "Newest first", style: .default, handler: { action in
-                topicData.sort {
-                    (convertToDateTime($0["createdAt"]) > convertToDateTime($1["createdAt"]))
+                self.topicData.sort {
+                    (self.convertToDateTime($0["createdAt"]!) > self.convertToDateTime($1["createdAt"]!))
                 }
-                sortedTopicData = topicData
+                self.sortedTopicData = self.topicData
                 self.TopicList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Oldest first", style: .default, handler: { action in
-                topicData.sort {
-                    (convertToDateTime($0["createdAt"]) < convertToDateTime($1["createdAt"]))
+                self.topicData.sort {
+                    (self.convertToDateTime($0["createdAt"]!) < self.convertToDateTime($1["createdAt"]!))
                 }
+                self.sortedTopicData = self.topicData
                 self.TopicList.reloadData()
             })
         )
@@ -84,11 +85,11 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         sortedTopicData = topicData
     }
     
-    func convertToDateTime(_str: String)->Date {    
+    func convertToDateTime(_ str: String)->Date {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let date = dateFormatter.date(from:isoDate)!
+        let date = dateFormatter.date(from: str)!
 
         return date
     }

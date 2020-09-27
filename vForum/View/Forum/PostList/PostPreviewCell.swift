@@ -31,6 +31,25 @@ class PostPreviewCell: UITableViewCell {
         }
     }
     
+    func setConstraints() {
+        Username.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(PostTitle.snp_bottom)
+            make.left.equalTo(PostTitle)
+        }
+        
+        DateTime.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(Username.snp_bottom)
+            make.left.equalTo(Username)
+        }
+        
+        Content.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(DateTime.snp_bottom).offset(10)
+            //make.height.equalTo(CGFloat(100))
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+        }
+    }
+    
     func setData(postData: [String:String]) {
         postId = postData["postId"]!
 
@@ -41,16 +60,16 @@ class PostPreviewCell: UITableViewCell {
 
     func setTitle(_ str: String) {
         PostTitle.text = str
-        // MARK: - SET HEIGHT
-        print(getTitleLineCount())
+        PostTitle.sizeToFit()
     }
+    
     func getTitleLineCount()->Int {
         return Int(PostTitle.contentSize.height / PostTitle.font!.lineHeight)
     }
     
     func setContent(_ str: String) {
         Content.text = str
-        // MARK: - SET HEIGHT
+        Content.sizeToFit()
     }
     func getContentLineCount()->Int {
         return Int(Content.contentSize.height / Content.font!.lineHeight)

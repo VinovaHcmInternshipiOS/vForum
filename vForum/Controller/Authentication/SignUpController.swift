@@ -151,7 +151,10 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         guard row == 4 else {
             return true
         }
-        let email = fields[2].TextField.text!
+        
+        var email = fields[2].TextField.text!
+        email = string.count == 0 ? String(email.dropLast()) : email + string
+        
         let emailPattern = "[a-z][a-z0-9_]*[@][a-z0-9]+.[a-z]+"
         
         if email.range(of: emailPattern, options: .regularExpression) == nil {
@@ -164,8 +167,9 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         }
         
         let pass = fields[3].TextField.text!
-        let retype = fields[4].TextField.text! + string
         
+        var retype = fields[4].TextField.text!
+        retype = string.count == 0 ? String(retype.dropLast()) : retype + string
         
         
         if pass != retype {

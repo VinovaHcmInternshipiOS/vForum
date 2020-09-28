@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class FeedHomeViewController: UIViewController {
 
@@ -52,10 +53,14 @@ extension FeedHomeViewController: UITableViewDataSource {
             cell.reuseFeedCardView.clickLike = {
                 if self.likeStatus[indexPath.row] {
                     cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "unlike"), for: .normal)
+                    cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
+                    //cell.reuseFeedCardView.likeCount -= 1
                     self.likeStatus[indexPath.row] = false
                 }
                 else {
                     cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "like"), for: .normal)
+                    cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
+                    //cell.reuseFeedCardView.likeCount += 1
                     self.likeStatus[indexPath.row] = true
                 }
             }
@@ -101,5 +106,12 @@ extension FeedHomeViewController {
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+}
+
+extension FeedHomeViewController {
+    func fetchApi(){
+        //AF.
+        //Alamofire.req
     }
 }

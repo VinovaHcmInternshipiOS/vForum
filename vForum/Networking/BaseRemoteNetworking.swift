@@ -91,7 +91,7 @@ extension RemoteAPIProvider {
                         
                         print("***********************RESPONSE***************************")
                         print("Path: \(url.absoluteString)")
-                        print("Data: ", response.value)
+                        print("Data: ", response.value!)
                         
                         if let error = response.error {
                             print("*ERROR: \(error)");

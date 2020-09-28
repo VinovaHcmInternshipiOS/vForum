@@ -10,6 +10,7 @@ class AppController: UITabBarController {
         
         let forumVc = UINavigationController()
         let forumMainVc = ForumController(nibName: "ForumView", bundle: nil)
+        forumMainVc.title = "vForum"
         
         forumVc.viewControllers = [forumMainVc]
         
@@ -31,6 +32,8 @@ class AppController: UITabBarController {
         
         self.viewControllers = [forumVc, settingsVc]
     }
+    
+    
     
     func setUser(username: String, userId: String) {
         self.username = username

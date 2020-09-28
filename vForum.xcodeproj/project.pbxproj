@@ -47,6 +47,7 @@
 		FACCEFC52520B1AF0076ACBC /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC02520B1AE0076ACBC /* AddViewController.xib */; };
 		FACCEFC62520B1AF0076ACBC /* AddTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */; };
 		FACCEFC72520B1AF0076ACBC /* AddGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */; };
+		FACCEFC92520E54E0076ACBC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFC82520E54E0076ACBC /* NetworkManager.swift */; };
 		FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */; };
 		FAD3DE46251D77AA00578533 /* ForumTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE43251D77AA00578533 /* ForumTopicView.xib */; };
 		FAD3DE47251D77AA00578533 /* PostPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */; };
@@ -280,6 +281,7 @@
 		FACCEFC02520B1AE0076ACBC /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTopicView.xib; sourceTree = "<group>"; };
 		FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupView.xib; sourceTree = "<group>"; };
+		FACCEFC82520E54E0076ACBC /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostPreviewCellView.xib; sourceTree = "<group>"; };
 		FAD3DE43251D77AA00578533 /* ForumTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumTopicView.xib; path = vForum/View/Forum/PostList/ForumTopicView.xib; sourceTree = SOURCE_ROOT; };
 		FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostPreviewCell.swift; path = vForum/View/Forum/PostList/PostPreviewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -621,6 +623,7 @@
 			children = (
 				FA8D33F1250B547C0070DD4A /* AppDelegate.swift */,
 				FA8D33F3250B547C0070DD4A /* SceneDelegate.swift */,
+				FACCEFC82520E54E0076ACBC /* NetworkManager.swift */,
 				FA8D33FA250B54910070DD4A /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -1372,6 +1375,7 @@
 				FACCEFBE2520B1890076ACBC /* AddTopicController.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
 				FA5FA7AC251B48D6003F7B5F /* RegisterResponse.swift in Sources */,
+				FACCEFC92520E54E0076ACBC /* NetworkManager.swift in Sources */,
 				FAB5754A2519B0D4004FA45E /* GroupCell.swift in Sources */,
 				FA5FA7AE251B48D6003F7B5F /* TokenResponse.swift in Sources */,
 				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,

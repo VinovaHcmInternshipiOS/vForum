@@ -6,8 +6,6 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var postList: UITableView!
     @IBOutlet weak var searchBar: UITextField!
-
-    var postTitle: String = ""
     
     var topicTitleLineCount: Int = 0
 
@@ -21,6 +19,9 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     private(set) var topicDateTime: String = ""
     private(set) var topicId: String = ""
     
+    
+    private(set) var topicCell: TopicTitleCell?
+    private(set) var postCells: [PostPreviewCell] = []
 
     @IBAction func add(_ sender: UIButton) {
         let vc = AddViewController(nibName: "AddViewController", bundle: nil)
@@ -31,26 +32,23 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         let choiceBox = UIAlertController(title: "Sort posts", message: "", preferredStyle: .actionSheet)
         // MARK: -- SORT
         choiceBox.addAction(UIAlertAction(title: "Newest first", style: .default, handler: { action in
-                self.postData.sort {
+                self.sortedPostData.sort {
                     (self.convertToDateTime($0["createdAt"]!) > self.convertToDateTime($1["createdAt"]!))
                 }
-                self.sortedPostData = self.postData
                 self.postList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Oldest first", style: .default, handler: { action in
-                self.postData.sort {
+                self.sortedPostData.sort {
                     (self.convertToDateTime($0["createdAt"]!) < self.convertToDateTime($1["createdAt"]!))
                 }
-                self.sortedPostData = self.postData
                 self.postList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Most likes", style: .default, handler: { action in
-                self.postData.sort {
-                    (Int($0["countLike"]!) ?? 0 > Int($1["countLike"]!) ?? 0)
+                self.sortedPostData.sort {
+                    (Int($0["countLike"]!) ?? 0) > (Int($1["countLike"]!) ?? 0)
                 }
-                self.sortedPostData = self.postData
                 self.postList.reloadData()
             })
         )
@@ -65,8 +63,149 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getData()
         searchBar.delegate = self
 
+        sortedPostData = postData
+
+        cellHeights.append(0)
+        cellHeights.append(0)
+        cellHeights.append(0)
+        cellHeights.append(0)
+        
+        postList.rowHeight = UITableView.automaticDimension
+        
+        postList.register(UINib(nibName: "PostPreviewCellView", bundle: nil), forCellReuseIdentifier: "Post")
+        postList.register(UINib(nibName: "TopicTitleCellView", bundle: nil), forCellReuseIdentifier: "TopicTitle")
+        
+        navigationController?.navigationBar.isHidden = true
+        
+        postList.delegate = self
+        postList.dataSource = self
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController!.isNavigationBarHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController!.isNavigationBarHidden = true
+    }
+    
+    func convertToDateTime(_ str: String)->Date {
+        let dateFormatter = ISO8601DateFormatter()
+        let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        let date = dateFormatter.date(from: trimmedIsoString)!
+        
+        return date
+    }
+
+    func setTitle(_ str: String) {
+        topicTitle = str
+    }
+
+    func setCreator(_ str: String) {
+        topicCreator = str
+    }
+    
+    func setDateTime(_ str: String) {
+        topicDateTime = str
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sortedPostData.count + 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TopicTitle", for: indexPath) as! TopicTitleCell
+
+            cell.backgroundColor = UIColor.clear
+
+            // MARK: -- ADD DATA
+            
+
+            cell.setTitle(topicTitle)
+            topicTitleLineCount = cell.getTitleLineCount()
+            cell.setCreator(topicCreator)
+            cell.setDatetime(topicDateTime)
+            
+            cell.selectionStyle = .none
+            
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostPreviewCell
+            
+            cellHeights[indexPath.row-1] = cell.getCellHeight()
+            cell.setConstraints()
+            
+            cell.setTitle(sortedPostData[indexPath.row - 1]["title"]!)
+            cell.setContent(sortedPostData[indexPath.row - 1]["description"]!)
+            cell.setDateTime(sortedPostData[indexPath.row - 1]["createdAt"]!)
+            cell.setCreator(sortedPostData[indexPath.row - 1]["createdBy"]!)
+            cell.setLikeCount(sortedPostData[indexPath.row - 1]["countLike"]!)
+
+            return cell
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return CGFloat(topicTitleLineCount * 30 + 60)
+        default:
+            return cellHeights[indexPath.row - 1]
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
+        vc.title = "Post"
+        
+        navigationController?.pushViewController(vc, animated: true)
+        navigationController!.isNavigationBarHidden = false
+    }
+}
+
+
+
+
+extension ForumTopicController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var str = textField.text!
+        str = string.count == 0 ? String(str.dropLast()) : str + string
+        
+        if str == "" {
+            sortedPostData = postData
+        } else {
+            sortedPostData = postData.filter{ $0["title"]!.lowercased().contains(str.lowercased()) }
+        }
+        
+        postList.reloadData()
+        
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) {
+        textField.endEditing(true)
+    }
+}
+
+
+
+
+// MARK: - GET DATA
+
+extension ForumTopicController {
+    func getData() {
         postData.append([
             "title":"Post Title",
             "description":"Lorem ipsum donor amet boi",
@@ -102,129 +241,5 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
             "_id":"12d342389cf29d",
             "countLike":"1950"
         ])
-
-        sortedPostData = postData
-
-        cellHeights.append(0)
-        cellHeights.append(0)
-        cellHeights.append(0)
-        cellHeights.append(0)
-        
-        getData()
-        
-        postList.rowHeight = UITableView.automaticDimension
-        postList.estimatedRowHeight = 250
-        
-        postList.register(UINib(nibName: "PostPreviewCellView", bundle: nil), forCellReuseIdentifier: "Post")
-        postList.register(UINib(nibName: "TopicTitleCellView", bundle: nil), forCellReuseIdentifier: "TopicTitle")
-        navigationController?.navigationBar.isHidden = true
-        
-        postList.delegate = self
-        postList.dataSource = self
-    }
-    
-    func convertToDateTime(_ str: String)->Date {
-        let dateFormatter = ISO8601DateFormatter()
-        let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
-        let date = dateFormatter.date(from: trimmedIsoString)!
-        
-        return date
-    }
-
-    // MARK: - GET DATA
-    func getData() {
-        
-    }
-
-    func setTitle(_ str: String) {
-        topicTitle = str
-    }
-
-    func setCreator(_ str: String) {
-        topicCreator = str
-    }
-    
-    func setDateTime(_ str: String) {
-        topicDateTime = str
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedPostData.count + 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TopicTitle", for: indexPath) as! TopicTitleCell
-
-            cell.backgroundColor = UIColor.clear
-
-            // MARK: -- ADD DATA
-
-            cell.setTitle(topicTitle)
-            cell.setCreator(topicCreator)
-            cell.setDatetime(topicDateTime)
-            
-            topicTitleLineCount = cell.getTitleLineCount()
-            cell.selectionStyle = .none
-            
-            return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostPreviewCell
-            
-            cellHeights[indexPath.row-1] = cell.getCellHeight()
-            
-            cell.setConstraints()
-            cell.setTitle(sortedPostData[indexPath.row - 1]["title"]!)
-            cell.setContent(sortedPostData[indexPath.row - 1]["description"]!)
-            cell.setDateTime(sortedPostData[indexPath.row - 1]["createdAt"]!)
-            cell.setCreator(sortedPostData[indexPath.row - 1]["createdBy"]!)
-            cell.setLikeCount(sortedPostData[indexPath.row - 1]["countLike"]!)
-
-            return cell
-        }
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return CGFloat(topicTitleLineCount * 30 + 60)
-        default:
-            //return cellHeights[indexPath.row - 1]
-            return 250
-        }
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
-        vc.title = "Post"
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-
-
-
-extension ForumTopicController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var str = textField.text!
-        str = string.count == 0 ? String(str.dropLast()) : str + string
-        
-        print(str)
-        
-        if str == "" {
-            sortedPostData = postData
-        } else {
-            sortedPostData = postData.filter{ $0["title"]!.lowercased().contains(str.lowercased()) }
-        }
-        
-        postList.reloadData()
-        
-        return true
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) {
-        
     }
 }

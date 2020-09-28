@@ -202,14 +202,31 @@ extension LoginController {
         let password = Password.text!
         let userId = ""
         
-        let manager = LoginVForumManager()
-        //manager.login(url: "https://localhost:4000/v1/api/login", params: ["email": username, "password": password])
+        let url : String = "http://localhost:4000/v1/api/login"
+        let parameter : [String : Any] = ["username": username,"password": password]
         
-        
+        let networkManager = NetworkManager.shared
+        networkManager.request(url, method: .post, parameters: parameter).responseJSON(completionHandler: {respond in
+            
+         switch respond.result {
+         case .success(let data):
+            print("s")
+            let vc = AppController()
+            vc.setUser(username: "", userId: "")
+            self.navigationController?.pushViewController(vc, animated: false)
+         case .failure(let err):
+            print("f")
+         }
+        })
         let vc = AppController()
         vc.setUser(username: "", userId: "")
         navigationController?.pushViewController(vc, animated: false)
-        
+    }
+    
+    func moveToMainScreen() {
+        let vc = AppController()
+        vc.setUser(username: "", userId: "")
+        navigationController?.pushViewController(vc, animated: false)
     }
 }
 

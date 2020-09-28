@@ -7,9 +7,43 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var TopicList: UITableView!
     @IBOutlet weak var SearchBar: UITextField!
     
-    var postCounts:[Int] = [35,950]
     var topicData:[[String:String]] = []
     var sortedTopicData:[[String:String]] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.isTranslucent = false
+        getData()
+        
+        let btn1 = UIButton(type: .system)
+        btn1.setImage(UIImage(named: "add"), for: .normal)
+        btn1.tintColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00)
+        
+        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btn1.addTarget(self, action: #selector(addTopic), for: .touchUpInside)
+        
+        let item1 = UIBarButtonItem(customView: btn1)
+        
+        let btn2 = UIButton(type: .system)
+        btn2.setImage(UIImage(named: "sort"), for: .normal)
+        btn2.tintColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00)
+        
+        btn2.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btn2.addTarget(self, action: #selector(sortTopic), for: .touchUpInside)
+        
+        let item2 = UIBarButtonItem(customView: btn2)
+
+        navigationItem.rightBarButtonItems = [item1, item2]
+
+        TopicList.backgroundColor = .clear
+        TopicList.register(UINib(nibName: "TopicCellView", bundle: nil), forCellReuseIdentifier: "TopicCell")
+        
+        TopicList.delegate = self
+        TopicList.dataSource = self
+
+        sortedTopicData = topicData
+    }
+    
     
     // MARK: - ADD TOPIC
     @objc func addTopic() {
@@ -19,91 +53,43 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
 
     // MARK: - SORT TOPIC
     @objc func sortTopic() {
-        let choiceBox = UIAlertController(title: "Sort posts", message: "", preferredStyle: .actionSheet)
+        let choiceBox = UIAlertController(title: "Sort topic", message: "", preferredStyle: .actionSheet)
         // MARK: -- SORT
         choiceBox.addAction(UIAlertAction(title: "Newest first", style: .default, handler: { action in
-                self.topicData.sort {
+                self.sortedTopicData.sort {
                     (self.convertToDateTime($0["createdAt"]!) > self.convertToDateTime($1["createdAt"]!))
                 }
-                self.sortedTopicData = self.topicData
                 self.TopicList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Oldest first", style: .default, handler: { action in
-                self.topicData.sort {
+                self.sortedTopicData.sort {
                     (self.convertToDateTime($0["createdAt"]!) < self.convertToDateTime($1["createdAt"]!))
                 }
-                self.sortedTopicData = self.topicData
                 self.TopicList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Most posts", style: .default, handler: { action in
-                print("yeet")
+                self.sortedTopicData.sort {
+                    (Int($0["postCount"]!) ?? 0) > (Int($1["postCount"]!) ?? 0)
+                }
+                self.TopicList.reloadData()
             })
         )
         choiceBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getData()
-        
-        let btn1 = UIButton(type: .custom)
-        btn1.setImage(UIImage(named: "add"), for: .normal)
-        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        btn1.addTarget(self, action: #selector(addTopic), for: .touchUpInside)
-        let item1 = UIBarButtonItem(customView: btn1)
-
-        let btn2 = UIButton(type: .custom)
-        btn2.setImage(UIImage(named: "sort"), for: .normal)
-        btn2.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        btn2.addTarget(self, action: #selector(sortTopic), for: .touchUpInside)
-        let item2 = UIBarButtonItem(customView: btn2)
-
-        navigationController!.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
-
-        TopicList.backgroundColor = .clear
-        TopicList.register(UINib(nibName: "TopicCellView", bundle: nil), forCellReuseIdentifier: "TopicCell")
-        
-        TopicList.delegate = self
-        TopicList.dataSource = self
-        
-        topicData.append([
-            "_id":"blahblahblah",
-            "name":"Topic title",
-            "createdBy":"aland",
-            "createdAt":"2020-09-16T03:00:56.880Z"
-        ])
-        
-        topicData.append([
-            "_id":"blahblahblah",
-            "name":"Another topic",
-            "createdBy":"aland",
-            "createdAt":"2020-09-16T03:00:56.880Z"
-        ])
-
-        sortedTopicData = topicData
+        self.present(choiceBox, animated: true)
     }
     
     func convertToDateTime(_ str: String)->Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let date = dateFormatter.date(from: str)!
-
+        let dateFormatter = ISO8601DateFormatter()
+        let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        let date = dateFormatter.date(from: trimmedIsoString)!
+        
         return date
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
-    }
-    
-    //override func viewWillDisappear(_ animated: Bool) {
-    //    navigationController?.navigationBar.isHidden = true
-    //}
-    
-    func getData() {
-        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,7 +106,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.initCell()
             
         cell.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
-        cell.setPostCount(postCounts[indexPath.row])
+        cell.setPostCount(Int(sortedTopicData[indexPath.row]["postCount"] ?? "") ?? 0)
         cell.setCreator(sortedTopicData[indexPath.row]["createdAt"] ?? "")
 
         cell.selectionStyle = .none
@@ -147,4 +133,37 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.MainView.backgroundColor = UIColor.white
     }
     
+}
+
+
+
+
+// MARK: - GET DATA
+
+extension ForumGroupController {
+    func getData() {
+        topicData.append([
+            "_id":"blahblahblah",
+            "name":"Topic title",
+            "createdBy":"aland",
+            "createdAt":"2020-09-25T18:00:56.880Z",
+            "postCount":"43"
+        ])
+        
+        topicData.append([
+            "_id":"blahblahblah",
+            "name":"A longer topic name to fit two lines omg this is cool",
+            "createdBy":"aland",
+            "createdAt":"2020-09-16T03:00:56.880Z",
+            "postCount":"250"
+        ])
+        
+        topicData.append([
+            "_id":"blahblahblah",
+            "name":"Three lines three lines three lines oh yes baby gotta extend this shit oh fuck how long is this",
+            "createdBy":"dominic",
+            "createdAt":"2020-10-03T21:56:00.330Z",
+            "postCount":"6350"
+        ])
+    }
 }

@@ -19,10 +19,16 @@ class PostDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imgTapped(tapGestureRecognizer:)))
         likeImgOutlet.isUserInteractionEnabled = true
         likeImgOutlet.addGestureRecognizer(tapGestureRecognizer)
         setUpItem()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController!.isNavigationBarHidden = false
     }
     
     @objc func imgTapped(tapGestureRecognizer: UITapGestureRecognizer){

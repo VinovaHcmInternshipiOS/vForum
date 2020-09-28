@@ -13,7 +13,7 @@ class GroupCell: UITableViewCell {
     @IBOutlet weak var CellEffect: UIImageView!
     @IBOutlet weak var SelectBackground: UIView!
     
-    var groupId:Int = -1
+    var groupId:String = ""
     
     func initCell() {
         CellView.layer.cornerRadius = 15
@@ -31,6 +31,37 @@ class GroupCell: UITableViewCell {
     }
     
     func setTime(_ str: String) {
-        TimeLabel.text = str
+        let date = convertToDateTime(str)
+        let dateInterval = Int(Date().timeIntervalSince(date))
+        
+        if dateInterval < 60 {
+            TimeLabel.text = "Created \(dateInterval) seconds ago"
+        }
+        else if dateInterval < 60*60 {
+            TimeLabel.text = "Created \(Int(dateInterval/60)) minutes ago"
+        }
+        else if dateInterval < 60*60*24 {
+            TimeLabel.text = "Created \(Int(dateInterval/60/60)) hours ago"
+        }
+        else if dateInterval < 60*60*24*30 {
+            TimeLabel.text = "Created \(Int(dateInterval/60/60/24)) days ago"
+        } else {
+            let format = DateFormatter()
+            format.dateFormat = "dd/MM/yyyy"
+            TimeLabel.text = "Created at \(format.string(from: date))"
+        }
     }
+    
+    func setId(_ str: String) {
+        groupId = str
+    }
+    
+    func convertToDateTime(_ str: String)->Date {
+        let dateFormatter = ISO8601DateFormatter()
+        let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        let date = dateFormatter.date(from: trimmedIsoString)!
+        
+        return date
+    }
+
 }

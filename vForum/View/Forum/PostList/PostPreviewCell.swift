@@ -34,7 +34,7 @@ class PostPreviewCell: UITableViewCell {
     func setConstraints() {
         Username.snp.makeConstraints{ (make)->Void in
             make.top.equalTo(PostTitle.snp_bottom)
-            make.left.equalTo(PostTitle)
+            make.left.equalTo(PostTitle).offset(5)
         }
         
         DateTime.snp.makeConstraints{ (make)->Void in
@@ -44,9 +44,13 @@ class PostPreviewCell: UITableViewCell {
         
         Content.snp.makeConstraints{ (make)->Void in
             make.top.equalTo(DateTime.snp_bottom).offset(10)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.height.equalTo(CGFloat(50))
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
+        
+        ViewMoreComments.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(Content.snp_bottom).offset(7)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -60,7 +64,10 @@ class PostPreviewCell: UITableViewCell {
 
     func setTitle(_ str: String) {
         PostTitle.text = str
+        let a = PostTitle.frame.width
         PostTitle.sizeToFit()
+        
+        PostTitle.layer.frame.size = CGSize(width: a, height: PostTitle.frame.height)
     }
     
     func getTitleLineCount()->Int {
@@ -69,9 +76,10 @@ class PostPreviewCell: UITableViewCell {
     
     func setContent(_ str: String) {
         Content.text = str
-        Content.snp.updateConstraints{ (make)->Void in
-            make.height.equalTo(CGFloat(getContentLineCount()*20))
-        }
+        let a = Content.frame.width
+        Content.sizeToFit()
+        
+        Content.layer.frame.size = CGSize(width: a, height: Content.frame.height)
     }
 
     func getContentLineCount()->Int {
@@ -81,15 +89,30 @@ class PostPreviewCell: UITableViewCell {
     func setDateTime(_ str:String) {
         DateTime?.text = str
     }
+    
     func setCreator(_ str: String) {
         Username.text = str
     }
 
-    func setLikeCount(_ str: String) {
-        LikeCount.text = str
+    func setLikeCount(_ c: String) {
+        if c.count <= 3 {
+            LikeCount.text = c
+            return
+        }
+        
+        let str = Array(c)
+        if c.count == 4 {
+            LikeCount.text = String(str[0]) + "." + String(str[1]) + "K"
+        }
+        else if c.count == 5 {
+            LikeCount.text = String(str[0]) + String(str[1]) + "K"
+        }
+        else if c.count == 6 {
+            LikeCount.text = String(str[0]) + String(str[1]) + String(str[2]) + "K"
+        }
     }
 
     func getCellHeight()->CGFloat {
-        return CGFloat(getTitleLineCount()*30 + getContentLineCount()*20 + 30)
+        return CGFloat(Content.contentSize.height + PostTitle.contentSize.height + 120)
     }
 }

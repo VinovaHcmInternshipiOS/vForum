@@ -58,7 +58,9 @@ class FeedDetailViewController: UIViewController {
     }
     
     @IBAction func SHOWALLCMT(_ sender: Any) {
-        self.navigationController?.pushViewController(FeedCommentViewController(), animated: true)
+        let vc = FeedCommentViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

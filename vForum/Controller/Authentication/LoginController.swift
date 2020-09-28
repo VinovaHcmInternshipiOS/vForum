@@ -11,6 +11,7 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
     
     let off = UIDevice.current.userInterfaceIdiom == .pad ? 250: 50
     
+    
     @IBOutlet weak var Logo: UIImageView!
     @IBOutlet weak var MainView: UIView!
     
@@ -185,15 +186,6 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
         return true
     }
 }
-
-
-
-
-
-
-
-
-
 // MARK: - PLACEHOLDER FUNCTIONS
 extension LoginController {
     @IBAction func PressLogin(_ sender: UIButton) {
@@ -210,15 +202,6 @@ extension LoginController {
         
     }
 }
-
-
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////
 // MARK: - FACEBOOK/GOOGLE
 
@@ -241,8 +224,11 @@ extension LoginController {
                 print("User cancelled login")
                 return
             }
-            print(AccessToken.current?.tokenString ?? "Print fail")
-            self?.navigationController?.pushViewController(AppController(), animated: false)
+            UserDefaults.standard.set(result.token?.tokenString, forKey: "accessToken")
+//            self?.defaults.set(result.token?.tokenString, forKey: "accessToken")
+//            let accessToken = ["AccessToken" : AccessToken.current?.tokenString]
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name.getAccessToken.rawValue), object: nil, userInfo: accessToken as [AnyHashable : Any])
+            self?.navigationController?.pushViewController(AppController(), animated: true)
         }
     }
     

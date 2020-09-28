@@ -38,6 +38,8 @@
 		22AEC456251C52F60024B282 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC455251C52F60024B282 /* UIView+extension.swift */; };
 		22B7E6EA251CE269001DFD31 /* ImageFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7E6E8251CE269001DFD31 /* ImageFeedCell.swift */; };
 		22B7E6EB251CE269001DFD31 /* ImageFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B7E6E9251CE269001DFD31 /* ImageFeedCell.xib */; };
+		22F65A202521D64B00C3BA2D /* NotificationName+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F65A1F2521D64B00C3BA2D /* NotificationName+extension.swift */; };
+		22F65A3B2521D64B00C3BA2D /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F65A3A2521D64B00C3BA2D /* UserDefault.swift */; };
 		3E002925251EE9B800FF8004 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E002924251EE9B800FF8004 /* NotificationView.swift */; };
 		3E002928251EEA5500FF8004 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E002927251EEA5500FF8004 /* NotificationViewController.swift */; };
 		3E1C03B3251E3A7300E6AC39 /* CreationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C0390251E3A7300E6AC39 /* CreationEvent.swift */; };
@@ -314,6 +316,8 @@
 		22AEC455251C52F60024B282 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		22B7E6E8251CE269001DFD31 /* ImageFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedCell.swift; sourceTree = "<group>"; };
 		22B7E6E9251CE269001DFD31 /* ImageFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageFeedCell.xib; sourceTree = "<group>"; };
+		22F65A1F2521D64B00C3BA2D /* NotificationName+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+extension.swift"; sourceTree = "<group>"; };
+		22F65A3A2521D64B00C3BA2D /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
 		3E002924251EE9B800FF8004 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		3E002927251EEA5500FF8004 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -556,6 +560,8 @@
 			children = (
 				22AEC455251C52F60024B282 /* UIView+extension.swift */,
 				22AC4167251DCB3F0096C475 /* UITextView+extension.swift */,
+				22F65A1F2521D64B00C3BA2D /* NotificationName+extension.swift */,
+				22F65A3A2521D64B00C3BA2D /* UserDefault.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1558,6 +1564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F65A3B2521D64B00C3BA2D /* UserDefault.swift in Sources */,
 				22906751251B96B600CDB190 /* FeedDetailTableViewCell.swift in Sources */,
 				22A6907E25188958000CE500 /* FeedLoadImageCollectionViewCell.swift in Sources */,
 				22A6906F25188263000CE500 /* FeedCommentViewController.swift in Sources */,
@@ -1613,6 +1620,7 @@
 				FAD3DE67251DCBB500578533 /* PostDetailViewController.swift in Sources */,
 				FA85A6B1250BD03D0029A47A /* SignUpController.swift in Sources */,
 				3EAEDDCB251DFBCC00BD6F9F /* ForumGroupController.swift in Sources */,
+				22F65A202521D64B00C3BA2D /* NotificationName+extension.swift in Sources */,
 				3E1C03B5251E3A7300E6AC39 /* DetailEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

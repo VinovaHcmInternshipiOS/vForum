@@ -12,13 +12,17 @@ import SnapKit
 class FeedHomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var likeStatus = Array(repeating: true, count: 20)
+    var accessToken = ""
+    var likeStatus = Array(repeating: false, count: 20)
     var indexImage = Array(repeating: 0, count: 20)
+    var likeCount = Array(repeating: 0, count: 20)
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "FeedHomeTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedHomeTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
+//        NotificationCenter.default.addObserver(self, selector: #selector(getAccessToken), name: NSNotification.Name(rawValue: NSNotification.Name.getAccessToken.rawValue), object: nil)
+        
         if #available(iOS 13.0, *) {
             let btnCreate = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(CREATEFEED))
             btnCreate.tintColor = .black
@@ -26,6 +30,7 @@ class FeedHomeViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        
         self.navigationItem.title = "Feed"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!]
         let leftItem = UIBarButtonItem(title: "Vforum",
@@ -35,7 +40,10 @@ class FeedHomeViewController: UIViewController {
         leftItem.tintColor = .black
         leftItem.titleTextAttributes(for: .normal)
         self.navigationItem.leftBarButtonItem = leftItem
+        accessToken = UserDefaults.standard.string(forKey: "accessToken") ?? ""
+        print(accessToken)
         setConstraint()
+        callAPI()
     }
 }
 
@@ -48,15 +56,20 @@ extension FeedHomeViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedHomeTableViewCell") as? FeedHomeTableViewCell {
             cell.reuseFeedCardView.liked = likeStatus[indexPath.row]
             cell.reuseFeedCardView.index = indexImage[indexPath.row]
+            cell.reuseFeedCardView.likeCount = likeCount[indexPath.row]
             cell.reuseFeedCardView.setUpView()
             cell.reuseFeedCardView.clickLike = {
                 if self.likeStatus[indexPath.row] {
-                    cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "unlike"), for: .normal)
+                    cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "notlike"), for: .normal)
+                    cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
                     self.likeStatus[indexPath.row] = false
+                    self.likeCount[indexPath.row] = self.likeCount[indexPath.row] > 0 ? self.likeCount[indexPath.row] - 1 : self.likeCount[indexPath.row]
                 }
                 else {
                     cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "like"), for: .normal)
+                    cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
                     self.likeStatus[indexPath.row] = true
+                    self.likeCount[indexPath.row] += 1
                 }
             }
             cell.reuseFeedCardView.scrollAction = {
@@ -101,5 +114,19 @@ extension FeedHomeViewController {
             make.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+    }
+}
+
+extension FeedHomeViewController {
+    @objc func getAccessToken(notification: Notification) {
+        if let data = notification.userInfo as? [String: Any] {
+            print(data)
+        }
+    }
+}
+
+extension FeedHomeViewController {
+    func callAPI(){
+        RemoteAPIProvider.testingMethod(accessToken, "http://localhost:4000/v1/api/feed")
     }
 }

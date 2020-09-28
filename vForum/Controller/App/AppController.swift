@@ -2,9 +2,10 @@ import Foundation
 import UIKit
 
 class AppController: UITabBarController {
+    var accessToken = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTabBar()
+        //setUpTabBar()
     }
     
     func setUpTabBar() {
@@ -15,7 +16,10 @@ class AppController: UITabBarController {
         forum.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
         forum.tabBarItem.selectedImage = UIImage(named: "home")
         
-        let feed = UINavigationController(rootViewController: FeedHomeViewController(nibName: "FeedHomeViewController", bundle: nil))
+        let vcFeed = FeedHomeViewController(nibName: "FeedHomeViewController", bundle: nil)
+        print(accessToken)
+        vcFeed.accessToken = accessToken
+        let feed = UINavigationController(rootViewController: vcFeed)
         feed.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
         feed.tabBarItem.image = UIImage(named: "feed")
         feed.tabBarItem.imageInsets = UIEdgeInsets(top: 7, left: 0, bottom: -7, right: 0)
@@ -41,7 +45,9 @@ class AppController: UITabBarController {
         
         
         self.viewControllers = [forum, feed, event, notification, setting]
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUpTabBar()
     }
 }

@@ -23,7 +23,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
         
-        RemoteAPIProvider.testingMethod()
+//        RemoteAPIProvider.testingMethod()
+        let remoteProvider = RemoteAPIProvider(configuration: AppsevicesConfiguration.deverloper)
+        remoteProvider.requestFreeJSON(target: GroupResult.group, accessToken: "") { (data) in
+            print(data)
+            do {
+                if let result = data["result"] {
+                    let dataResult = try JSONSerialization.data(withJSONObject: result, options: .fragmentsAllowed)
+                    let decodable = JSONDecoder()
+                    decodable.keyDecodingStrategy = .useDefaultKeys
+                    decodable.dateDecodingStrategy = .millisecondsSince1970
+                    
+                    let list: [Group]? = try decodable.decode([Group].self, from: dataResult)
+                    
+                    print(list)
+                }
+            }
+            catch let error {
+                print(error)
+            }
+        } reject: { (err) in
+            print(err.localizedDescription)
+        }
+//        remoteProvider.request(target: GroupResult.group, accessToken: "") { (returnData: [Group]?) in
+//            print(returnData?.count)
+//        } reject: { (Error) in
+//            print(Error)
+//        }
+
+        
         return true
     }
 

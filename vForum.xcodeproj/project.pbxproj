@@ -58,6 +58,8 @@
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		5773BE85DC715A7E062FDD37 /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
 		76525AED92DEEB6D0032E877 /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
+		767B1F992521E02A006CE89D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767B1F7F2521E02A006CE89D /* Api.swift */; };
+		767B1F9D2521E0BA006CE89D /* GroupResponds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767B1F9C2521E0BA006CE89D /* GroupResponds.swift */; };
 		FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2102002510ACCC0003CC42 /* LoginView.xib */; };
 		FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA387F372519AF53006D46B2 /* AppController.swift */; };
 		FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */; };
@@ -334,6 +336,8 @@
 		3EAEDDCA251DFBCC00BD6F9F /* ForumGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumGroupController.swift; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
+		767B1F7F2521E02A006CE89D /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		767B1F9C2521E0BA006CE89D /* GroupResponds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupResponds.swift; sourceTree = "<group>"; };
 		7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum.debug.xcconfig"; path = "Target Support Files/Pods-vForum/Pods-vForum.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB369C9CCC03712780D89B2 /* Pods-vForum-vForumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.release.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A149E7CADE49BDFE86757CD9 /* Pods-vForum-vForumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.debug.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -422,6 +426,8 @@
 		2247536D2514FD8A002C8C8A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				767B1F9C2521E0BA006CE89D /* GroupResponds.swift */,
+				767B1F7F2521E02A006CE89D /* Api.swift */,
 				224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */,
 			);
 			path = Networking;
@@ -1561,6 +1567,7 @@
 				22906751251B96B600CDB190 /* FeedDetailTableViewCell.swift in Sources */,
 				22A6907E25188958000CE500 /* FeedLoadImageCollectionViewCell.swift in Sources */,
 				22A6906F25188263000CE500 /* FeedCommentViewController.swift in Sources */,
+				767B1F992521E02A006CE89D /* Api.swift in Sources */,
 				22A6907425188555000CE500 /* FeedCreateViewController.swift in Sources */,
 				FA5FA7AD251B48D6003F7B5F /* RegisterManager.swift in Sources */,
 				FAD3DE59251DC8B800578533 /* SettingViewController.swift in Sources */,
@@ -1588,6 +1595,7 @@
 				2290675B251BA1EA00CDB190 /* FeedHomeImageCollectionViewCell.swift in Sources */,
 				22B7E6EA251CE269001DFD31 /* ImageFeedCell.swift in Sources */,
 				22A6902B25184857000CE500 /* ReuseFeedCard.swift in Sources */,
+				767B1F9D2521E0BA006CE89D /* GroupResponds.swift in Sources */,
 				22AEC456251C52F60024B282 /* UIView+extension.swift in Sources */,
 				22A6906525185D7D000CE500 /* FeedHomeTableViewCell.swift in Sources */,
 				22A6908325189E33000CE500 /* ShowImageViewController.swift in Sources */,

@@ -1,10 +1,23 @@
 import Foundation
 import UIKit
 
-class AppController: UITabBarController {
+/*class User {
     private(set) var username: String = ""
     private(set) var userId: String = ""
+    private(set) var accessToken: String = ""
+    private(set) var refreshToken: String = ""
+    private(set) var email: String = ""
+    
+    init(username: String = "", userId: String = "", accessToken: String = "", refreshToken: String = "", email: String = "") {
+        self.username = username
+        self.userId = userId
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        self.email = email
+    }
+}*/
 
+class AppController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,12 +44,5 @@ class AppController: UITabBarController {
         
         
         self.viewControllers = [forumVc, settingsVc]
-    }
-    
-    
-    
-    func setUser(username: String, userId: String) {
-        self.username = username
-        self.userId = userId
     }
 }

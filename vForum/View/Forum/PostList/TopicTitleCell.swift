@@ -22,7 +22,19 @@ class TopicTitleCell: UITableViewCell {
     }
     
     func setDatetime(_ str: String) {
-        datetime = str
+        let date = convertToDateTime(str)
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yyyy, HH:mm"
+        datetime = format.string(from: date)
+        
         Subtitle.text = "\(creator) · \(datetime)"
+    }
+    
+    func convertToDateTime(_ str: String)->Date {
+        let dateFormatter = ISO8601DateFormatter()
+        let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        let date = dateFormatter.date(from: trimmedIsoString)!
+        
+        return date
     }
 }

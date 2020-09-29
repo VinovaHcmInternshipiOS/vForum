@@ -9,8 +9,6 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var topicTitleLineCount: Int = 0
 
-    var cellHeights: [CGFloat] = []
-
     private(set) var postData:[[String:String]] = []
     private(set) var sortedPostData:[[String:String]] = []
     
@@ -20,8 +18,9 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     private(set) var topicId: String = ""
     
     
-    private(set) var topicCell: TopicTitleCell?
+    //private(set) var topicCell: TopicTitleCell?
     private(set) var postCells: [PostPreviewCell] = []
+    private(set) var postPrototypeCell: PostPreviewCell!
 
     @IBAction func add(_ sender: UIButton) {
         let vc = AddViewController(nibName: "AddViewController", bundle: nil)
@@ -67,16 +66,13 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.delegate = self
 
         sortedPostData = postData
-
-        cellHeights.append(0)
-        cellHeights.append(0)
-        cellHeights.append(0)
-        cellHeights.append(0)
         
         postList.rowHeight = UITableView.automaticDimension
         
         postList.register(UINib(nibName: "PostPreviewCellView", bundle: nil), forCellReuseIdentifier: "Post")
         postList.register(UINib(nibName: "TopicTitleCellView", bundle: nil), forCellReuseIdentifier: "TopicTitle")
+        
+        postPrototypeCell = postList.dequeueReusableCell(withIdentifier: "Post") as! PostPreviewCell
         
         navigationController?.navigationBar.isHidden = true
         
@@ -143,7 +139,6 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostPreviewCell
             
-            cellHeights[indexPath.row-1] = cell.getCellHeight()
             cell.setConstraints()
             
             cell.setTitle(sortedPostData[indexPath.row - 1]["title"]!)
@@ -162,7 +157,10 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         case 0:
             return CGFloat(topicTitleLineCount * 30 + 60)
         default:
-            return cellHeights[indexPath.row - 1]
+            postPrototypeCell.setTitle(sortedPostData[indexPath.row - 1]["title"]!)
+            postPrototypeCell.setContent(sortedPostData[indexPath.row - 1]["description"]!)
+            
+            return postPrototypeCell.getCellHeight()
         }
     }
 

@@ -45,6 +45,14 @@
                         <outlet property="textDropDelegate" destination="-1" id="FCS-zo-m5A"/>
                     </connections>
                 </textField>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ATT-F5-Ku0">
+                    <rect key="frame" x="0.0" y="25" width="342" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Male"/>
+                        <segment title="Female"/>
+                    </segments>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -53,6 +61,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="Label" destination="rwN-Ao-4cw" id="GMA-va-qfj"/>
+                <outlet property="MaleFemale" destination="ATT-F5-Ku0" id="bHC-wa-hVd"/>
                 <outlet property="RequiredFieldLabel" destination="MMy-iN-31U" id="Iwu-WS-Dle"/>
                 <outlet property="TextField" destination="L8k-oB-c12" id="D0o-5n-llS"/>
                 <outlet property="Underline" destination="Wig-km-euK" id="jgZ-PI-tRx"/>

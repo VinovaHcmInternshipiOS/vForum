@@ -7,6 +7,8 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var TopicList: UITableView!
     @IBOutlet weak var SearchBar: UITextField!
     
+    let def = UserDefaults.standard
+    
     var topicData:[[String:String]] = []
     var sortedTopicData:[[String:String]] = []
 
@@ -107,7 +109,8 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
             
         cell.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
         cell.setPostCount(Int(sortedTopicData[indexPath.row]["postCount"] ?? "") ?? 0)
-        cell.setCreator(sortedTopicData[indexPath.row]["createdAt"] ?? "")
+        cell.setCreator(sortedTopicData[indexPath.row]["createdBy"] ?? "")
+        cell.setDateTime(sortedTopicData[indexPath.row]["createdAt"] ?? "")
 
         cell.selectionStyle = .none
         
@@ -119,6 +122,8 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         vc.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
         vc.setCreator(sortedTopicData[indexPath.row]["createdBy"] ?? "")
         vc.setDateTime(sortedTopicData[indexPath.row]["createdAt"] ?? "")
+        
+        def.set(topicData[indexPath.row]["_id"], forKey: "topicId")
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -142,28 +147,44 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
 
 extension ForumGroupController {
     func getData() {
-        topicData.append([
-            "_id":"blahblahblah",
-            "name":"Topic title",
-            "createdBy":"aland",
-            "createdAt":"2020-09-25T18:00:56.880Z",
-            "postCount":"43"
-        ])
+        let networkManager = NetworkManager.shared
+        //print(def.string(forKey: "groupId")!)
         
-        topicData.append([
-            "_id":"blahblahblah",
-            "name":"A longer topic name to fit two lines omg this is cool",
-            "createdBy":"aland",
-            "createdAt":"2020-09-16T03:00:56.880Z",
-            "postCount":"250"
-        ])
+        let url : String = "http://localhost:4000/v1/api/group/\(def.string(forKey: "groupId")!)/topic"
+        let parameter : [String : Any] = [:]
         
-        topicData.append([
-            "_id":"blahblahblah",
-            "name":"Three lines three lines three lines oh yes baby gotta extend this shit oh fuck how long is this",
-            "createdBy":"dominic",
-            "createdAt":"2020-10-03T21:56:00.330Z",
-            "postCount":"6350"
-        ])
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
+        ]
+        
+        networkManager.request(url, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
+            
+            switch respond.result {
+            case .success(let JSON):
+                let parsed = JSON as! NSDictionary
+                
+                if parsed["result"] != nil {
+                    let result = parsed["result"] as! Array<NSDictionary>
+                    print(result)
+                    for x in result {
+                        self.topicData.append([
+                            "_id": String(describing: x["_id"]!),
+                            "name": String(describing: x["name"]!),
+                            "createdBy": String(describing: x["createdBy"]!),
+                            "createdAt": String(describing: x["createdAt"]!),
+                            "postCount":"43",
+                            "description":  String(describing: x["description"]!)
+                        ])
+                    }
+                }
+                
+                self.sortedTopicData = self.topicData
+                self.TopicList.reloadData()
+                
+            case .failure( _):
+                print("f")
+            }
+        })
     }
 }

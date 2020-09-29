@@ -32,7 +32,7 @@
                             <color key="textColor" red="0.1529411765" green="0.36470588240000001" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Help with UIViewController but two lines" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mG-HU-F6w">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Help with UIViewController but two lines" textAlignment="natural" selectable="NO" id="5mG-HU-F6w">
                             <rect key="frame" x="86" y="13" width="308" height="59"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="textColor" red="0.35686274509999999" green="0.3803921569" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

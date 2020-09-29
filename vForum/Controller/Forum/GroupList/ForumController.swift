@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import Alamofire
 
 class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var GroupItemList: UITableView!
@@ -8,10 +9,11 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     var groupName = "GroupName"
     var groupData: [[String:String]] = []
     
+    let def = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-        
         
         let btn1 = UIButton(type: .system)
         btn1.setImage(UIImage(named: "add"), for: .normal)
@@ -36,9 +38,9 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func addGroup() {
-        //let vc = AddGroupController(nibName: "AddGroupView", bundle: nil)
-        //navigationController?.pushViewController(vc, animated: true)
-        print("yeet")
+        let vc = AddGroupController(nibName: "AddGroupView", bundle: nil)
+        vc.modalPresentationStyle = .pageSheet
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +50,6 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
 
         cell.initCell()
@@ -60,7 +61,8 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ForumGroupController(nibName: "ForumGroupView", bundle: nil)
         
-        vc.title = "Group name"
+        vc.title = groupData[indexPath.row]["name"]
+        def.set(groupData[indexPath.row]["_id"], forKey: "groupId")
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -93,16 +95,37 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
 // MARK: - GET GROUP DATA
 extension ForumController {
     func getData() {
-        groupData.append([
-            "name": "HTML-123",
-            "_id": "5f5ad674672ec61dc0c05185",
-            "createdAt": "2020-09-28T01:44:20.987Z"
-        ])
+        let networkManager = NetworkManager.shared
         
-        groupData.append([
-            "name": "C++",
-            "_id": "5f5ad674672ec61dc0c05185",
-            "createdAt": "2020-09-11T01:44:20.987Z"
-        ])
+        let url : String = "http://localhost:4000/v1/api/group"
+        let parameter : [String : Any] = [:]
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(def.string(forKey: "accessToken")!)"
+        ]
+        
+        networkManager.request(url, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
+            
+            switch respond.result {
+            case .success(let JSON):
+                let parsed = JSON as! NSDictionary
+                
+                if parsed["result"] != nil {
+                    let result = parsed["result"] as! Array<NSDictionary>
+                    for x in result {
+                        self.groupData.append([
+                            "name": String(describing: x["name"]!),
+                            "_id": String(describing: x["_id"]!),
+                            "createdAt": String(describing: x["createdAt"]!)
+                        ])
+                    }
+                }
+                
+                self.GroupItemList.reloadData()
+                
+            case .failure( _):
+                print("f")
+            }
+        })
     }
 }

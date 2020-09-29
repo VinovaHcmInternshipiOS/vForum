@@ -27,6 +27,8 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
     @IBOutlet weak var btnLoginFacebook: UIButton!
     @IBOutlet weak var btnLoginGg: UIButton!
     
+    @IBOutlet weak var ErrorLabel: UILabel!
+    
     @IBAction func PressSignUp(_ sender: UIButton) {
         let vc = SignUpController(nibName: "SignUpView", bundle: nil)
         navigationController!.pushViewController(vc, animated: true)
@@ -34,6 +36,7 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ErrorLabel.isHidden = true
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -127,6 +130,10 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
             make.right.equalTo(MainView.snp_right).offset(-off-30)
             make.height.equalTo(CGFloat(46))
         }
+        ErrorLabel.snp.makeConstraints{ (make)->Void in
+            make.bottom.equalTo(UsernameFrame.snp_top).offset(-10)
+            make.centerX.equalToSuperview()
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -193,40 +200,58 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
 
 
 
-// MARK: - PLACEHOLDER FUNCTIONS
+// MARK: - LOGIN
 extension LoginController {
     @IBAction func PressLogin(_ sender: UIButton) {
         
         // MARK: - ADD AUTHENTICATION
-        let username = Username.text!
+        let email = Username.text!
         let password = Password.text!
-        let userId = ""
         
         let url : String = "http://localhost:4000/v1/api/login"
-        let parameter : [String : Any] = ["username": username,"password": password]
+        let parameter : [String : Any] = ["email": email,"password": password]
         
         let networkManager = NetworkManager.shared
         networkManager.request(url, method: .post, parameters: parameter).responseJSON(completionHandler: {respond in
             
-         switch respond.result {
-         case .success(let data):
-            print("s")
-            let vc = AppController()
-            vc.setUser(username: "", userId: "")
-            self.navigationController?.pushViewController(vc, animated: false)
-         case .failure(let err):
-            print("f")
-         }
+            switch respond.result {
+                case .success(let JSON):
+                    self.ErrorLabel.isHidden = true
+                    
+                    // MARK: - AUTHENTICATION
+                    let parsed = JSON as! NSDictionary
+                    //print(parsed)
+                    
+                    if parsed["result"] != nil && String(describing: parsed["result"]!) != "<null>" {
+                        let vc = AppController()
+                        
+                        let result = parsed["result"] as! NSDictionary
+                        //print(result)
+                        
+                        let def = UserDefaults.standard
+                        def.set(self.Password.text!, forKey: "email")
+                        def.set(result["userId"], forKey: "userId")
+                        def.set(result["role"], forKey: "role")
+                        def.set(result["accessToken"], forKey: "accessToken")
+                        def.set(result["refreshToken"], forKey: "refreshToken")
+                        
+                        self.navigationController?.pushViewController(vc, animated: false)
+                    }
+                    else {
+                        self.ErrorLabel.isHidden = false
+                        self.ErrorLabel.text! = String(describing: parsed["message"]!)
+                    }
+                    
+            case .failure( _):
+                    self.ErrorLabel.isHidden = false
+                }
         })
-        let vc = AppController()
-        vc.setUser(username: "", userId: "")
-        navigationController?.pushViewController(vc, animated: false)
-    }
-    
-    func moveToMainScreen() {
-        let vc = AppController()
-        vc.setUser(username: "", userId: "")
-        navigationController?.pushViewController(vc, animated: false)
+        
+        /* TEST ONLY
+            let vc = AppController()
+            vc.setUser(username: "", userId: "", token: "")
+            navigationController?.pushViewController(vc, animated: false)
+        */
     }
 }
 
@@ -252,7 +277,6 @@ extension LoginController {
                 print("\(String(describing: result))")
             })
             guard error == nil else {
-                    // Error occurred
                 print(error!.localizedDescription)
                 return
             }
@@ -263,7 +287,6 @@ extension LoginController {
             print(AccessToken.current?.tokenString ?? "Print fail")
             
             let vc = AppController()
-            vc.setUser(username: "", userId: "")
             self?.navigationController?.pushViewController(vc, animated: false)
         }
     }
@@ -294,7 +317,6 @@ extension LoginController {
         print("\(String(describing: user.profile.email)) \n")
         
         let vc = AppController()
-        vc.setUser(username: "", userId: "")
         self.navigationController?.pushViewController(vc, animated: false)
       }
     

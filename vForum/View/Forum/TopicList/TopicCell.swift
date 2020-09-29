@@ -10,6 +10,9 @@ class TopicCell: UITableViewCell {
     
     @IBOutlet weak var LatestPost: UITextView!
     @IBOutlet weak var PostCount: UILabel!
+    
+    var creator = ""
+    var datetime = ""
 }
 
 extension TopicCell {
@@ -52,6 +55,25 @@ extension TopicCell {
     }
     
     func setCreator(_ str: String) {
-        Username.text = "@" + str
+        creator = str
+        Username.text = "@\(creator) · \(datetime)"
+    }
+    
+    func setDateTime(_ str: String) {
+        let date = convertToDateTime(str)
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yyyy, HH:mm"
+        
+        datetime = format.string(from: date)
+        
+        Username.text = "@\(creator) · \(datetime)"
+    }
+    
+    func convertToDateTime(_ str: String)->Date {
+        let dateFormatter = ISO8601DateFormatter()
+        let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        let date = dateFormatter.date(from: trimmedIsoString)!
+        
+        return date
     }
 }

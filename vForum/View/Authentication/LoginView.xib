@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController" customModule="vForum" customModuleProvider="target">
             <connections>
+                <outlet property="ErrorLabel" destination="Ijb-qc-HzV" id="YmO-5S-72M"/>
                 <outlet property="LoginButton" destination="hAC-oS-F0L" id="q65-E7-6Qz"/>
                 <outlet property="Logo" destination="XfA-5n-PZJ" id="qMP-cW-6qy"/>
                 <outlet property="MainView" destination="iN0-l3-epB" id="gpK-7y-YMh"/>
@@ -34,7 +35,7 @@
                     <rect key="frame" x="70" y="291" width="274" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-Pt-PUr">
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-Pt-PUr">
                             <rect key="frame" x="56" y="0.0" width="218" height="47"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
@@ -116,6 +117,13 @@
                         <action selector="LOGINFACEBOOK:" destination="-1" eventType="touchUpInside" id="Mth-9E-D0X"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invalid username or password." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijb-qc-HzV">
+                    <rect key="frame" x="70" y="438" width="274" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.98823529409999999" green="0.96862745100000003" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

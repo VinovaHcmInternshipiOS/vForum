@@ -13,20 +13,9 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
     @IBAction func goBack() {
         navigationController!.popViewController(animated: true)
     }
-    
-    @IBAction func signUp() {
-        // MARK: - SIGN UP, ADD ACCOUNT, AUTO LOGIN
-
-        let username = fields[0].TextField.text!
-        let userId = ""
-
-        let vc = AppController()
-        vc.setUser(username: "", userId: "")
-        navigationController?.pushViewController(vc, animated: false)
-    }
 
     var fields: [SignUpField] = []
-    var fieldTitles: [String] = ["Username","Display name","Email","Password","Re-enter your password"]
+    var fieldTitles: [String] = ["Username","Gender","Email","Password","Re-enter your password"]
     var fieldsRequired: [Bool] = [true, false, true, true, true]
     
     let usernameFieldTag = 0
@@ -95,10 +84,14 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
         field.TextField.delegate = self
         field.TextField.tag = tag
         field.TextField.isEnabled = true
+        if tag != 1 {
+            field.MaleFemale.isHidden = true
+            field.TextField.isSecureTextEntry = passwordFieldTag.contains(tag)
+        } else {
+            field.TextField.isHidden = true
+        }
         
         field.contentView.isUserInteractionEnabled = false
-        
-        field.TextField.isSecureTextEntry = passwordFieldTag.contains(tag)
         
         field.Label.text! = fieldTitles[tag]
         field.required = fieldsRequired[tag]
@@ -240,5 +233,41 @@ class SignUpController: UIViewController, UICollectionViewDelegate, UICollection
 extension SignUpController {
     func isUsernameExist(_ str: String)->Bool {
         return false
+    }
+    
+    @IBAction func signUp() {
+        let displayname = fields[0].TextField.text!
+        let gender = fields[1].MaleFemale.selectedSegmentIndex == 0 ? "male" : "female"
+        let email = fields[2].TextField.text!
+        let password = fields[3].TextField.text!
+        //let userId = ""
+
+        let url : String = "http://localhost:4000/v1/api/signup"
+        let parameter : [String : Any] = ["email": email, "password": password, "display_name": displayname, "gender": gender]
+        
+        let networkManager = NetworkManager.shared
+        
+        networkManager.request(url, method: .post, parameters: parameter).responseJSON(completionHandler: {respond in
+            
+            switch respond.result {
+            case .success(let JSON):
+                let parsed = JSON as! NSDictionary
+                //print(parsed)
+                
+                if parsed["success"] != nil {
+                    let alert = UIAlertController(title: "Sign up successfully!", message: "Now login with your provided account.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController!.popViewController(animated: true)}))
+                    self.present(alert, animated: true)
+                }
+                else {
+                    let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                
+            case .failure( _):
+                print("f")
+            }
+        })
     }
 }

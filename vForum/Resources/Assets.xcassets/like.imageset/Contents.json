@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-love-96.png",
+      "filename" : "Like.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Like@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Like@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import FBSDKLoginKit
 import Firebase
+import FirebaseCore
 import GoogleSignIn
 import GoogleDataTransport
 import GoogleUtilities
@@ -190,17 +191,26 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
 
 
 
+
+
+
 // MARK: - PLACEHOLDER FUNCTIONS
 extension LoginController {
     @IBAction func PressLogin(_ sender: UIButton) {
         
         // MARK: - ADD AUTHENTICATION
+        let username = Username.text!
+        let password = Password.text!
+        
+        let manager = LoginVForumManager()
+        //manager.login(url: "http://localhost:4000/v1/api/login", params: ["email": username, "password": password])
         
         let vc = AppController()
         navigationController!.pushViewController(vc, animated: false)
         
     }
 }
+
 
 
 

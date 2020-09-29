@@ -1,8 +1,9 @@
 import UIKit
 import FBSDKCoreKit
 import Firebase
+import FirebaseCore
 import GoogleSignIn
-//import IQKeyboardManagerSwift
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -10,59 +11,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enable = true
         
         FirebaseApp.configure()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let rootVc = UINavigationController()
         let firstVc = LoginController(nibName: "LoginView", bundle: nil)
-        rootVc.viewControllers = [firstVc]
+        let rootVc = UINavigationController(rootViewController: firstVc)
         rootVc.isNavigationBarHidden = true
         
         window?.rootViewController = rootVc
         window?.makeKeyAndVisible()
         
-        RemoteAPIProvider.testingMethod()
+//        RemoteAPIProvider.testingMethod()
+        let remoteProvider = RemoteAPIProvider(configuration: AppsevicesConfiguration.deverloper)
+        remoteProvider.requestFreeJSON(target: GroupResult.group, accessToken: "") { (data) in
+            print(data)
+            do {
+                if let result = data["result"] {
+                    let dataResult = try JSONSerialization.data(withJSONObject: result, options: .fragmentsAllowed)
+                    let decodable = JSONDecoder()
+                    decodable.keyDecodingStrategy = .useDefaultKeys
+                    decodable.dateDecodingStrategy = .millisecondsSince1970
+                    
+                    let list: [Group]? = try decodable.decode([Group].self, from: dataResult)
+                    
+                    print(list)
+                }
+            }
+            catch let error {
+                print(error)
+            }
+        } reject: { (err) in
+            print(err.localizedDescription)
+        }
+//        remoteProvider.request(target: GroupResult.group, accessToken: "") { (returnData: [Group]?) in
+//            print(returnData?.count)
+//        } reject: { (Error) in
+//            print(Error)
+//        }
+
+        
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
-
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-    
     func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
         ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
         let handled = GIDSignIn.sharedInstance()?.handle(url) ?? false
         return handled
     }
 
-
-// Swift // // AppDelegate.swift
-//import UIKit
-//import FBSDKCoreKit
-//@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
-//func application( _ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? ) -> Bool {
-//    ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
-//    return true
-//}
-//func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
-//    ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
-//
-//    }
-//
-//}
 
 }

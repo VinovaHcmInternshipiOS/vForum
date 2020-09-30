@@ -24,12 +24,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="189"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testgroup" translatesAutoresizingMaskIntoConstraints="NO" id="PAI-DG-BsI">
-                            <rect key="frame" x="0.0" y="-41" width="414" height="276"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PAI-DG-BsI">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="235"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.1529411765" green="0.36470588240000001" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gFe-Ae-4Lf">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="376"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="235"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffd-ZA-JrP">
@@ -98,6 +99,5 @@
     <resources>
         <image name="add" width="40" height="40"/>
         <image name="sort" width="40" height="40"/>
-        <image name="testgroup" width="800" height="450"/>
     </resources>
 </document>

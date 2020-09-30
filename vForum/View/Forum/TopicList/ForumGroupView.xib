@@ -19,9 +19,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="testgroup" translatesAutoresizingMaskIntoConstraints="NO" id="PAI-DG-BsI">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PAI-DG-BsI">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.1079657912260274" green="0.28577161815068491" blue="0.55787136130136983" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3lB-Dx-YaD">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -43,7 +44,4 @@
             <point key="canvasLocation" x="221.73913043478262" y="105.80357142857143"/>
         </view>
     </objects>
-    <resources>
-        <image name="testgroup" width="800" height="450"/>
-    </resources>
 </document>

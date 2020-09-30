@@ -96,14 +96,12 @@ class AddViewController: UIViewController {
                     print(parsed)
                     
                     if parsed["result"] != nil && String(describing: parsed["result"]!) != "<null>" {
-                        self.navigationController!.popViewController(animated: true)
+                        self.navigationController?.popViewController(animated: true)
                     } else {
                         let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController!.popViewController(animated: true)}))
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true)
                     }
-                    
-                    
                     
                 case .failure( _):
                     print("f")
@@ -111,7 +109,33 @@ class AddViewController: UIViewController {
             })
             
         case "topic":
-            print("topic")
+            let url : String = "http://localhost:4000/v1/api/group/\(def.string(forKey: "groupId")!)/topic"
+            let parameter : [String : Any] = ["name": titleOutlet.text!, "description": descriptionOutlet.text!]
+            
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
+            ]
+            
+            networkManager.request(url, method: .post, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    print(parsed)
+                    
+                    if parsed["result"] != nil && String(describing: parsed["result"]!) != "<null>" {
+                        self.navigationController!.popViewController(animated: true)
+                    } else {
+                        let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
+                case .failure( _):
+                    print("f")
+                }
+            })
             
         default:
             print("error")

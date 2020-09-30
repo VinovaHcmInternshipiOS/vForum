@@ -19,10 +19,11 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     private(set) var topicDateTime: String = ""
     private(set) var topicId: String = ""
     
-    
-    //private(set) var topicCell: TopicTitleCell?
     private(set) var postCells: [PostPreviewCell] = []
     private(set) var postPrototypeCell: PostPreviewCell!
+    
+    //var deletePopupState:Int = 0
+    //var goToNextView: Bool = true
 
     @IBAction func add(_ sender: UIButton) {
         let vc = AddViewController(nibName: "AddViewController", bundle: nil)
@@ -65,15 +66,13 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-
-        sortedPostData = postData
         
         postList.rowHeight = UITableView.automaticDimension
         
         postList.register(UINib(nibName: "PostPreviewCellView", bundle: nil), forCellReuseIdentifier: "Post")
         postList.register(UINib(nibName: "TopicTitleCellView", bundle: nil), forCellReuseIdentifier: "TopicTitle")
         
-        postPrototypeCell = postList.dequeueReusableCell(withIdentifier: "Post") as! PostPreviewCell
+        postPrototypeCell = (postList.dequeueReusableCell(withIdentifier: "Post") as! PostPreviewCell)
         
         navigationController?.navigationBar.isHidden = true
         
@@ -93,7 +92,6 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         postData = []
         sortedPostData = []
         getData()
-        postList.reloadData()
     }
     
     func convertToDateTime(_ str: String)->Date {
@@ -171,11 +169,20 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //if goToNextView {
         let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
         vc.title = "Post"
         
+        let data = postData[indexPath.row]
+        //print(data["title"]!)
+        let title = data["title"]!
+        vc.setData(title: title, description: "", username: "", likeCount: "0")
+    
+        def.set(postData[indexPath.row]["_id"], forKey: "postId")
+        
         navigationController?.pushViewController(vc, animated: true)
         navigationController!.isNavigationBarHidden = false
+        //}
     }
 }
 
@@ -198,7 +205,7 @@ extension ForumTopicController: UITextFieldDelegate {
         return true
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) {
+    private func textFieldShouldReturn(_ textField: UITextField) {
         textField.endEditing(true)
     }
 }
@@ -228,7 +235,8 @@ extension ForumTopicController {
                 
                 if parsed["result"] != nil {
                     let result = parsed["result"] as! Array<NSDictionary>
-                    //print(result)
+                    
+                    self.postData = []
                     for x in result {
                         self.postData.append([
                             "title": String(describing: x["title"]!),
@@ -239,9 +247,9 @@ extension ForumTopicController {
                             "countLike":String(describing: x["countLike"]!)
                         ])
                     }
+                    self.sortedPostData = self.postData
                 }
                 
-                self.sortedPostData = self.postData
                 self.postList.reloadData()
                 
             case .failure( _):
@@ -250,3 +258,65 @@ extension ForumTopicController {
         })
     }
 }
+
+
+
+
+
+
+
+
+// DELETE POST
+/*
+extension ForumTopicController {
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        self.deletePopupState = 0
+        
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {}, completion: {action in
+            self.deletePopupState += 1
+            
+            if self.deletePopupState == 1 {
+                self.showDeletePopup(indexPath)
+            }
+        })
+    }
+    
+    func showDeletePopup(_ indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Delete post", message: "Are you sure you want to delete this topic?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
+            self.goToNextView = true
+        }))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+            let networkManager = NetworkManager.shared
+            
+            let url : String = "http://localhost:4000/v1/api/group/\(self.def.string(forKey: "groupId")!)/topic/\(self.def.string(forKey: "topicId")!)/post/\(String(describing: self.postData[indexPath.row]["_id"]!))"
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(String(describing: self.def.object(forKey: "accessToken")!))"
+            ]
+            
+            networkManager.request(url, method: .delete, parameters: [:], headers: headers).responseJSON(completionHandler: {respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    
+                    if parsed["result"] == nil {
+                        let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
+                    self.getData()
+                    
+                case .failure( _):
+                    print("f")
+                }
+            })
+            self.goToNextView = true
+        }))
+        self.present(alert, animated: true)
+        self.goToNextView = false
+    }
+}
+*/

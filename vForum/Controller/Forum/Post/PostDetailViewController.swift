@@ -1,11 +1,14 @@
 import UIKit
 import SnapKit
-
+import Alamofire
 
 class PostDetailViewController: UIViewController {
     
     let cmtCell = UINib(nibName: "PostCmtTableViewCell", bundle: nil)
     let cmts = ["cmt":1,"cmt2":2,"cmt3":1,"cmt4":2,"cmt5":1,"cmt6":2,"cmt7":1,"cmt8":2,"cmt9":2,"cmt10":2,"cmt11":2,"cmt12":2,"cmt13":1,"cmt14":2,"cmt15":1,"cmt16":2,"cmt17":1,"cmt18":2,"cmt19":2]
+    
+    var cmtData:[[String:String]] = []
+    
     @IBOutlet weak var scrollMainView: UIScrollView!
     @IBOutlet weak var mainViewOutlet: UIView!
     @IBOutlet weak var likeImgOutlet: UIImageView!
@@ -17,8 +20,34 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var addCmtOutlet: UITextField!
     @IBOutlet weak var cmtBtnOutlet: UIButton!
     
+    let def = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*let networkManager = NetworkManager.shared
+        
+        let url : String = "http://localhost:4000/v1/api/group/\(self.def.string(forKey: "groupId")!)/topic/\(self.def.string(forKey: "topicId")!)/post/\(self.def.string(forKey: "postId")!)/comment"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(String(describing: self.def.object(forKey: "accessToken")!))"
+        ]
+        
+        networkManager.request(url, parameters: [:], headers: headers).responseJSON(completionHandler: {respond in
+            
+            switch respond.result {
+            case .success(let JSON):
+                let parsed = JSON as! NSDictionary
+                
+                if parsed["result"] != nil {
+                    let res = parsed["result"] as! Array<NSDictionary>
+                    print(res)
+                }
+                
+            case .failure( _):
+                return
+            }
+        })*/
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imgTapped(tapGestureRecognizer:)))
         likeImgOutlet.isUserInteractionEnabled = true
@@ -29,6 +58,10 @@ class PostDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController!.isNavigationBarHidden = false
+    }
+    
+    func setData(title: String, description: String, username: String, likeCount: String) {
+        titlePostOutlet?.text = "23432"
     }
     
     @objc func imgTapped(tapGestureRecognizer: UITapGestureRecognizer){

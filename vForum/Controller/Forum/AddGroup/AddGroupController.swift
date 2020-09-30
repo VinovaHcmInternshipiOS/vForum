@@ -1,8 +1,9 @@
 import UIKit
 import SnapKit
+import Alamofire
 
 class AddGroupController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    let def = UserDefaults.standard
     
     @IBOutlet weak var AddImageButton: UIButton!
     @IBOutlet weak var BGImage: UIImageView!
@@ -18,10 +19,34 @@ class AddGroupController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func Submit(_ sender: UIButton) {
-        let groupName = GroupNameField.text!
-        // MARK: - ADD GROUP
+        let name = GroupNameField.text!
+        let networkManager = NetworkManager.shared
         
-        navigationController!.popViewController(animated: true)
+        let url : String = "http://localhost:4000/v1/api/group"
+        let parameter : [String : Any] = ["name": name]
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(def.string(forKey: "accessToken")!)"
+        ]
+        
+        networkManager.request(url, method: .post, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
+            
+            switch respond.result {
+            case .success(let JSON):
+                let parsed = JSON as! NSDictionary
+                if String(describing: parsed["success"]!) == "1" {
+                    self.navigationController!.popViewController(animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                print(parsed)
+                
+            case .failure( _):
+                print("f")
+            }
+        })
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

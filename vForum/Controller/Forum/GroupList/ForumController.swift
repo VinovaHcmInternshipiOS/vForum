@@ -9,11 +9,13 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     var groupName = "GroupName"
     var groupData: [[String:String]] = []
     
+    var deletePopupState: Int = 0
+    var goToNextView: Bool = true
+    
     let def = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
         
         let role = def.string(forKey: "role")!
         if role == "admin" {
@@ -37,6 +39,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        getData()
         navigationController!.isNavigationBarHidden = false
     }
     
@@ -62,21 +65,68 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ForumGroupController(nibName: "ForumGroupView", bundle: nil)
-        
-        vc.title = groupData[indexPath.row]["name"]
-        def.set(groupData[indexPath.row]["_id"], forKey: "groupId")
-        
-        navigationController?.pushViewController(vc, animated: true)
+        if goToNextView {
+            let vc = ForumGroupController(nibName: "ForumGroupView", bundle: nil)
+            
+            vc.title = groupData[indexPath.row]["name"]
+            def.set(groupData[indexPath.row]["_id"], forKey: "groupId")
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! GroupCell
+        deletePopupState = 0
         
         cell.SelectBackground.isHidden = false
         UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
             cell.CellEffect.frame.origin.x = -110
+        }, completion: {action in
+            guard self.def.string(forKey: "role")! == "admin" else {
+                return
+            }
+            self.deletePopupState += 1
+            
+            if self.deletePopupState == 1 {
+                self.showDeletePopup(indexPath)
+            }
         })
+        
+    }
+    
+    func showDeletePopup(_ indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Delete group", message: "This group will be deleted permanently.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
+            self.goToNextView = true
+        }))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+            let networkManager = NetworkManager.shared
+            
+            let url : String = "http://localhost:4000/v1/api/group/\(String(describing: self.groupData[indexPath.row]["_id"]!))"
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(String(describing: self.def.object(forKey: "accessToken")!))"
+            ]
+            
+            networkManager.request(url, method: .delete, parameters: [:], headers: headers).responseJSON(completionHandler: {respond in
+                
+                switch respond.result {
+                case .success(_):
+                    //let parsed = JSON as! NSDictionary
+                    //print(parsed)
+                    
+                    self.getData()
+                    self.GroupItemList.reloadData()
+                    
+                case .failure( _):
+                    print("f")
+                }
+            })
+            self.goToNextView = true
+        }))
+        self.present(alert, animated: true)
+        self.goToNextView = false
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
@@ -86,6 +136,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         UIView.animate(withDuration: 0.001, delay: 0, options: .curveEaseOut, animations: {
             cell.CellEffect.frame.origin.x = 220
         })
+        deletePopupState = -1
     }
 }
 
@@ -111,6 +162,7 @@ extension ForumController {
             
             switch respond.result {
             case .success(let JSON):
+                self.groupData = []
                 let parsed = JSON as! NSDictionary
                 
                 if parsed["result"] != nil {
@@ -124,11 +176,12 @@ extension ForumController {
                     }
                 }
                 
-                self.GroupItemList.reloadData()
                 
             case .failure( _):
                 print("f")
             }
+
+            self.GroupItemList.reloadData()
         })
     }
 }

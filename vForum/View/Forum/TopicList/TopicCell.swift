@@ -54,6 +54,10 @@ extension TopicCell {
         Title.text = str
     }
     
+    func setDescription(_ str: String) {
+        LatestPost.text = str
+    }
+    
     func setCreator(_ str: String) {
         creator = str
         Username.text = "@\(creator) · \(datetime)"

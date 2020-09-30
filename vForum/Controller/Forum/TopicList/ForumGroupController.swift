@@ -11,20 +11,15 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var topicData:[[String:String]] = []
     var sortedTopicData:[[String:String]] = []
+    
+    var deletePopupState:Int = 0
+    var goToNextView: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isTranslucent = false
-        getData()
         
-        let btn1 = UIButton(type: .system)
-        btn1.setImage(UIImage(named: "add"), for: .normal)
-        btn1.tintColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00)
-        
-        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        btn1.addTarget(self, action: #selector(addTopic), for: .touchUpInside)
-        
-        let item1 = UIBarButtonItem(customView: btn1)
+        let role = def.string(forKey: "role")!
         
         let btn2 = UIButton(type: .system)
         btn2.setImage(UIImage(named: "sort"), for: .normal)
@@ -34,16 +29,26 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         btn2.addTarget(self, action: #selector(sortTopic), for: .touchUpInside)
         
         let item2 = UIBarButtonItem(customView: btn2)
-
-        navigationItem.rightBarButtonItems = [item1, item2]
+        
+        if role == "admin" || role == "moderator" {
+            let btn1 = UIButton(type: .system)
+            btn1.setImage(UIImage(named: "add"), for: .normal)
+            btn1.tintColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00)
+            
+            btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            btn1.addTarget(self, action: #selector(addTopic), for: .touchUpInside)
+            
+            let item1 = UIBarButtonItem(customView: btn1)
+            navigationItem.rightBarButtonItems = [item1, item2]
+        } else {
+            navigationItem.rightBarButtonItems = [item2]
+        }
 
         TopicList.backgroundColor = .clear
         TopicList.register(UINib(nibName: "TopicCellView", bundle: nil), forCellReuseIdentifier: "TopicCell")
         
         TopicList.delegate = self
         TopicList.dataSource = self
-
-        sortedTopicData = topicData
     }
     
     
@@ -91,7 +96,13 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         return date
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         navigationController?.navigationBar.isHidden = false
     }
 
@@ -110,6 +121,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
             
         cell.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
         cell.setPostCount(Int(sortedTopicData[indexPath.row]["postCount"] ?? "") ?? 0)
+        cell.setDescription(sortedTopicData[indexPath.row]["description"] ?? "")
         cell.setCreator(sortedTopicData[indexPath.row]["createdBy"] ?? "")
         cell.setDateTime(sortedTopicData[indexPath.row]["createdAt"] ?? "")
 
@@ -119,24 +131,87 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ForumTopicController(nibName: "ForumTopicView", bundle: nil)
-        vc.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
-        vc.setCreator(sortedTopicData[indexPath.row]["createdBy"] ?? "")
-        vc.setDateTime(sortedTopicData[indexPath.row]["createdAt"] ?? "")
-        
-        def.set(topicData[indexPath.row]["_id"], forKey: "topicId")
-        
-        navigationController?.pushViewController(vc, animated: true)
+        if goToNextView {
+            print(indexPath.row, topicData.count)
+            def.set(sortedTopicData[indexPath.row]["_id"], forKey: "topicId")
+            
+            let vc = ForumTopicController(nibName: "ForumTopicView", bundle: nil)
+            vc.setTitle(sortedTopicData[indexPath.row]["name"] ?? "")
+            vc.setCreator(sortedTopicData[indexPath.row]["createdBy"] ?? "")
+            vc.setDateTime(sortedTopicData[indexPath.row]["createdAt"] ?? "")
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TopicCell
+        self.deletePopupState = 0
+        
         cell.MainView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
+            cell.MainView.backgroundColor = UIColor(white: 0.8, alpha: 1)
+        }, completion: {action in
+            
+            
+            // MARK: - GET USER ID
+            
+            
+            //guard self.def.string(forKey: "role")! == "admin" else {
+            //    return
+            //}
+            self.deletePopupState += 1
+            
+            if self.deletePopupState == 1 {
+                self.showDeletePopup(indexPath)
+            }
+        })
+    }
+    
+    func showDeletePopup(_ indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Delete topic", message: "Are you sure you want to delete this topic?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
+            self.goToNextView = true
+        }))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+            let networkManager = NetworkManager.shared
+            
+            let url : String = "http://localhost:4000/v1/api/group/\(self.def.string(forKey: "groupId")!)/topic/\(String(describing: self.topicData[indexPath.row]["_id"]!))"
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(self.def.string(forKey: "accessToken")!)"
+            ]
+            
+            networkManager.request(url, method: .delete, parameters: [:], headers: headers).responseJSON(completionHandler: {respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    print(parsed)
+                    
+                    if String(describing: parsed["success"]!) == "0" {
+                        let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                    
+                    self.getData()
+                    
+                case .failure( _):
+                    print("f")
+                }
+            })
+            self.goToNextView = true
+        }))
+        self.present(alert, animated: true)
+        self.goToNextView = false
     }
     
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TopicCell
         cell.MainView.backgroundColor = UIColor.white
+        
+        deletePopupState = -1
     }
     
 }
@@ -149,7 +224,6 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
 extension ForumGroupController {
     func getData() {
         let networkManager = NetworkManager.shared
-        //print(def.string(forKey: "groupId")!)
         
         let url : String = "http://localhost:4000/v1/api/group/\(def.string(forKey: "groupId")!)/topic"
         let parameter : [String : Any] = [:]
@@ -161,27 +235,49 @@ extension ForumGroupController {
         
         networkManager.request(url, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
             
+            //print(respond)
             switch respond.result {
             case .success(let JSON):
                 let parsed = JSON as! NSDictionary
+                //print(parsed)
                 
                 if parsed["result"] != nil {
                     let result = parsed["result"] as! Array<NSDictionary>
-                    //print(result)
+                    
                     for x in result {
-                        self.topicData.append([
-                            "_id": String(describing: x["_id"]!),
-                            "name": String(describing: x["name"]!),
-                            "createdBy": String(describing: x["createdBy"]!),
-                            "createdAt": String(describing: x["createdAt"]!),
-                            "postCount":"43",
-                            "description":  String(describing: x["description"]!)
-                        ])
+                        
+                        let topicUrl = "http://localhost:4000/v1/api/group/\(self.def.string(forKey: "groupId")!)/topic/\(String(describing: x["_id"]!))/post"
+                        
+                        networkManager.request(topicUrl, parameters: [:], headers: headers).responseJSON(completionHandler: {respond in
+                            
+                            switch respond.result {
+                            case .success(let JSON):
+                                let parsed = JSON as! NSDictionary
+                                
+                                if parsed["result"] != nil {
+                                    let res = parsed["result"] as! Array<NSDictionary>
+
+                                    self.topicData = []
+                                    self.topicData.append([
+                                        "_id": String(describing: x["_id"]!),
+                                        "name": String(describing: x["name"]!),
+                                        "createdBy": String(describing: x["createdBy"]!),
+                                        "createdAt": String(describing: x["createdAt"]!),
+                                        "postCount": String(res.count),
+                                        "description":  String(describing: x["description"]!)
+                                    ])
+                                    self.sortedTopicData = self.topicData
+                                } else {
+                                    print("nil")
+                                }
+                                self.TopicList.reloadData()
+                                
+                            case .failure( _):
+                                print("f")
+                            }
+                        })
                     }
                 }
-                
-                self.sortedTopicData = self.topicData
-                self.TopicList.reloadData()
                 
             case .failure( _):
                 print("f")

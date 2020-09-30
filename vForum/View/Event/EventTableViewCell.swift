@@ -21,13 +21,12 @@ extension EventTableViewCell {
         
         
         container.translatesAutoresizingMaskIntoConstraints = false
-        container.widthAnchor.constraint(equalToConstant: self.bounds.width ).isActive = true
-        container.heightAnchor.constraint(equalToConstant: self.bounds.height * 0.9).isActive = true
-        container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        container.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
+        container.topAnchor.constraint(equalTo: self.topAnchor, constant: marginSpace).isActive = true
+        container.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -marginSpace).isActive = true
+        container.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: marginSpace).isActive = true
+        container.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -marginSpace).isActive = true
         
-        container.center = self.center
         container.layer.cornerRadius = bounds.height * 0.1
     }
     
@@ -47,7 +46,7 @@ extension EventTableViewCell {
         
         
         title.textColor = .black
-        title.font = UIFont(name: "Futura", size: self.bounds.height * 0.5 * 0.7)
+        title.font = UIFont(name: "Futura", size: self.bounds.height * 0.5 )
         title.text = text
     }
         
@@ -66,7 +65,7 @@ extension EventTableViewCell {
         dateTime.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
         
         dateTime.textColor = .black
-        dateTime.font = UIFont(name: "Futura", size: self.bounds.height * 0.5 * 0.4)
+        dateTime.font = UIFont(name: "Futura", size: self.bounds.height * 0.5)
         dateTime.text = text
     }
     

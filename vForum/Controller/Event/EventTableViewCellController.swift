@@ -20,15 +20,10 @@ class EventTableViewCell: UITableViewCell {
             guard let event = event else {
                 return
             }
-            
-            initializeContainer()
-            
             guard let container = container else {
                 return
             }
-            
             let _img = UIImage(named: event.banner)
-            
             guard let image = _img else {
                 return
             }
@@ -36,14 +31,18 @@ class EventTableViewCell: UITableViewCell {
             container.backgroundColor = UIColor(patternImage: image)
             container.alpha = 0.2
             
-            initializeTitle(event.title)
-            initializeDateTime("\(event.getDate(from: event.startDate, format: "dd-MM-yyyy")) - \(event.getDate(from: event.endDate, format: "dd-MM-yyyy"))")
+            title?.text = event.title
+            dateTime?.text =  "\(event.getDate(from: event.startDate, format: "dd-MM-yyyy")) - \(event.getDate(from: event.endDate, format: "dd-MM-yyyy"))"
         }
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .white
+
+        initializeContainer()
+        initializeTitle("")
+        initializeDateTime("")
     }
 
     required init?(coder: NSCoder) {

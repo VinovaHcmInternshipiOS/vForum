@@ -69,6 +69,7 @@ extension CreationEventController {
         titleTextField.placeholder = "Title"
         titleTextField.layer.cornerRadius = self.view.bounds.height * 0.4 * 0.02
         titleTextField.backgroundColor = .white
+        titleTextField.delegate = self
         
         
         descriptionTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -76,6 +77,7 @@ extension CreationEventController {
         descriptionTextField.placeholder = "Description"
         descriptionTextField.layer.cornerRadius = self.view.bounds.height * 0.4 * 0.02
         descriptionTextField.backgroundColor = .white
+        descriptionTextField.delegate = self
         
         
         startDateLbl.translatesAutoresizingMaskIntoConstraints = false

@@ -57,6 +57,7 @@ class DateTimePickerEvent: UIViewController {
                 DispatchQueue.main.async {
                     self.closeVC()
                 }
+                return
             }
         }
         

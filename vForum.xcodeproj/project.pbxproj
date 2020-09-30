@@ -59,6 +59,7 @@
 		3E1C03C9251E3E0800E6AC39 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C03C8251E3E0800E6AC39 /* RemindViewController.swift */; };
 		3E1C03CB251E3E6D00E6AC39 /* CreationEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C03CA251E3E6D00E6AC39 /* CreationEventController.swift */; };
 		3E48805725246D7900BE6F47 /* EventTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E48805625246D7900BE6F47 /* EventTableViewCellController.swift */; };
+		3E4880722524823800BE6F47 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4880712524823800BE6F47 /* String+extension.swift */; };
 		3EAEDDCB251DFBCC00BD6F9F /* ForumGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EAEDDCA251DFBCC00BD6F9F /* ForumGroupController.swift */; };
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		5773BE85DC715A7E062FDD37 /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
@@ -343,6 +344,7 @@
 		3E1C03C8251E3E0800E6AC39 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		3E1C03CA251E3E6D00E6AC39 /* CreationEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationEventController.swift; sourceTree = "<group>"; };
 		3E48805625246D7900BE6F47 /* EventTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCellController.swift; sourceTree = "<group>"; };
+		3E4880712524823800BE6F47 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		3EAEDDCA251DFBCC00BD6F9F /* ForumGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumGroupController.swift; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 				22AC4167251DCB3F0096C475 /* UITextView+extension.swift */,
 				22F65A1F2521D64B00C3BA2D /* NotificationName+extension.swift */,
 				22F65A3A2521D64B00C3BA2D /* UserDefault.swift */,
+				3E4880712524823800BE6F47 /* String+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1614,6 +1617,7 @@
 				3E1C03B4251E3A7300E6AC39 /* ListEvent.swift in Sources */,
 				22A6907925188927000CE500 /* FeedCreateButtonCollectionViewCell.swift in Sources */,
 				3E1C03B9251E3A7300E6AC39 /* EventTableViewCell.swift in Sources */,
+				3E4880722524823800BE6F47 /* String+extension.swift in Sources */,
 				22A6905F25185B4C000CE500 /* FeedHomeViewController.swift in Sources */,
 				22A6906A251863EE000CE500 /* FeedDetailViewController.swift in Sources */,
 				22AC4168251DCB3F0096C475 /* UITextView+extension.swift in Sources */,

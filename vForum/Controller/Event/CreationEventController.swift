@@ -20,6 +20,7 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
     var collectionView: UICollectionView?
     var banner: String?
     var selectedIndex: IndexPath?
+    var saveBtn: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,9 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
         
         initializeInputTextArea()
         initializeCollectionView()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(CreationEventController.saveBarBtnPressed(_:)))
+        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(CreationEventController.saveBarBtnPressed(_:)))
+        saveBtn?.isEnabled = false
+        self.navigationItem.rightBarButtonItem = saveBtn
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -63,6 +66,13 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
         banner = EventManager.shared.listBanner[indexPath.row]
         selectedIndex = indexPath
         
+        if isEnoughInput() {
+            saveBtn?.isEnabled = true
+        }
+        else {
+            saveBtn?.isEnabled = false
+        }
+        
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }
@@ -71,15 +81,20 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
     @objc func moveToDateTimePicker(sender: UITapGestureRecognizer) {
         let datePicker = DateTimePickerEvent()
         datePicker.chooseDateTime = { startDate, endDate in
-//            let current = Calendar.current
             let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd-MM-yyyy 'T' HH:mm"
             
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .short
             
             self.startDateLbl?.text = dateFormatter.string(from: startDate)
             self.endDateLbl?.text = dateFormatter.string(from: endDate)
+            
+            if self.isEnoughInput() {
+                self.saveBtn?.isEnabled = true
+            }
+            else {
+                self.saveBtn?.isEnabled = false
+            }
             
         }
         present(datePicker, animated: true, completion: nil)
@@ -111,6 +126,45 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
             
         }
     }
+    
+    func isEnoughInput() -> Bool {
+        guard let title = titleTextField?.text, let description = descriptionTextField?.text, let startDate = startDateLbl?.text, let endDate = endDateLbl?.text, let banner = banner else {
+            return false
+        }
+        
+        if title.isEmpyOrSpacing() {
+            return false
+        }
+        if description.isEmpyOrSpacing() {
+            return false
+        }
+        if startDate == "dd-mm-yyyy" {
+            return false
+        }
+        if endDate == "dd-mm-yyyy" {
+            return false
+        }
+        
+        if banner.isEmpty {
+            return false
+        }
+        
+        return true
+    }
 
     
+}
+
+
+// TextField Delegate
+
+extension CreationEventController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if isEnoughInput() {
+            saveBtn?.isEnabled = true
+        }
+        else {
+            saveBtn?.isEnabled = false
+        }
+    }
 }

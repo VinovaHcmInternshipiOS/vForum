@@ -15,7 +15,7 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.setHidesBackButton(true, animated: true)
-        title = "Setting"
+        self.navigationItem.title = "Setting"
         tableView.register(UINib(nibName: "SettingTableViewCell", bundle: nil), forCellReuseIdentifier: "settingCell")
         tableView.delegate = self
         tableView.dataSource = self

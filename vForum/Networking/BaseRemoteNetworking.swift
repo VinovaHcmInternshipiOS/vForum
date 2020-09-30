@@ -50,7 +50,8 @@ struct RemoteAPIProvider {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 600
         configuration.timeoutIntervalForResource = 600
-        let alamoFireManager = Alamofire.Session(configuration: configuration)
+        let serverTrustManager = ServerTrustManager(evaluators: ["localhost": DisabledTrustEvaluator()])
+        let alamoFireManager = Alamofire.Session(configuration: configuration,serverTrustManager: serverTrustManager)
         return alamoFireManager
     }()
     
@@ -136,7 +137,7 @@ extension RemoteAPIProvider {
                         
                         print("***********************RESPONSE***************************")
                         print("Path: \(url.absoluteString)")
-                        print("Data: ", response.value)
+                        print("Data: ", response.value!)
                         
                         if let error = response.error {
                             print("*ERROR: \(error)");

@@ -32,8 +32,10 @@ class ReuseFeedCard: UIView {
     var likeCount = 0
     var commentCount = 0
     var color = [UIColor.red, UIColor.green, UIColor.yellow]
+    
     @IBAction func LIKEFEED(_ sender: Any) {
         clickLike?()
+        
     }
     @IBAction func COMMENTFEED(_ sender: Any) {
         commentAction?()
@@ -68,6 +70,7 @@ class ReuseFeedCard: UIView {
         pageControll.currentPage = index
         collectionviewImage.scrollToItem(at: IndexPath(item: index, section: 0), at: .right, animated: false)
         collectionviewImage.register(UINib(nibName: "ImageFeedCell", bundle: nil), forCellWithReuseIdentifier: "ImageFeedCell")
+        //TODO:
         lblLikeCount.text = "\(likeCount) like"
         lblCommentCount.text = "\(commentCount) comment"
     }
@@ -195,6 +198,15 @@ extension ReuseFeedCard {
             make.bottom.equalToSuperview()
         }
     }
+    
+//    func setLikeCount(_ state: Bool){
+//        likeCount = state ?  (likeCount > 0 ? likeCount - 1: likeCount) : likeCount + 1
+//        lblLikeCount.text = likeCount > 1 ? "\(likeCount) likes" : "\(likeCount) like"
+//    }
+//
+//    func setCommnentCount() {
+//        //TODO:
+//    }
 }
 
 extension ReuseFeedCard {

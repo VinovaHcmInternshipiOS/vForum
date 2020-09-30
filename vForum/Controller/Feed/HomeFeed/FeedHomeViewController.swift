@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class FeedHomeViewController: UIViewController {
 
@@ -60,14 +61,17 @@ extension FeedHomeViewController: UITableViewDataSource {
             cell.reuseFeedCardView.setUpView()
             cell.reuseFeedCardView.clickLike = {
                 if self.likeStatus[indexPath.row] {
-                    cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "notlike"), for: .normal)
-                    cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
+                    cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "unlike"), for: .normal)
+                    //cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
+                    //cell.reuseFeedCardView.likeCount -= 1
                     self.likeStatus[indexPath.row] = false
                     self.likeCount[indexPath.row] = self.likeCount[indexPath.row] > 0 ? self.likeCount[indexPath.row] - 1 : self.likeCount[indexPath.row]
                 }
                 else {
                     cell.reuseFeedCardView.imageLiked.setImage(UIImage(named: "like"), for: .normal)
-                    cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
+                    //cell.reuseFeedCardView.setLikeCount(self.likeStatus[indexPath.row])
+
+                    //cell.reuseFeedCardView.likeCount += 1
                     self.likeStatus[indexPath.row] = true
                     self.likeCount[indexPath.row] += 1
                 }
@@ -153,5 +157,10 @@ extension FeedHomeViewController {
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
+    }
+
+    func fetchApi(){
+        //AF.
+        //Alamofire.req
     }
 }

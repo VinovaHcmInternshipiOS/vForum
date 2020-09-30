@@ -12,6 +12,12 @@ class FeedLoadImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var viewContain: UIView!
     @IBOutlet weak var imageUpload: UIImageView!
+    @IBOutlet weak var btnDeleteImage: UIButton!
+    @IBOutlet weak var DELETEIMAGE: UIButton!
+    var deleteImage: (()->Void)? = nil
+    @IBAction func DELETEIMAGE(_ sender: Any) {
+        deleteImage?()
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         setConstraints()

@@ -87,6 +87,9 @@ extension FeedHomeViewController: UITableViewDataSource {
             cell.reuseFeedCardView.commentAction = {
                 self.navigationController?.pushViewController(FeedDetailViewController(), animated: true)
             }
+            cell.reuseFeedCardView.moreAction = {
+                self.showMoreSheet()
+            }
             return cell
         } else { return UITableViewCell()}
     }
@@ -128,5 +131,27 @@ extension FeedHomeViewController {
 extension FeedHomeViewController {
     func callAPI(){
         RemoteAPIProvider.testingMethod(accessToken, "http://localhost:4000/v1/api/feed")
+    }
+    
+    func showMoreSheet() {
+        let alert = UIAlertController(title: "More", message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction)in
+            print("User click Edit")
+        }))
+
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive , handler:{ (UIAlertAction)in
+            print("User click Delete")
+            self.tableView.reloadData()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Cancel")
+            self.tableView.reloadData()
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
 }

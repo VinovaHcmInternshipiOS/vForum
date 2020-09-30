@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2229C4622521D62E00C658A4 /* FeedEditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C4602521D62E00C658A4 /* FeedEditCardViewController.swift */; };
+		2229C4632521D62E00C658A4 /* FeedEditCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2229C4612521D62E00C658A4 /* FeedEditCardViewController.xib */; };
 		224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */; };
 		22906751251B96B600CDB190 /* FeedDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290674F251B96B600CDB190 /* FeedDetailTableViewCell.swift */; };
 		22906752251B96B600CDB190 /* FeedDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22906750251B96B600CDB190 /* FeedDetailTableViewCell.xib */; };
@@ -285,6 +287,8 @@
 
 /* Begin PBXFileReference section */
 		1B52730352233632F6981E74 /* Pods_vForumTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForumTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2229C4602521D62E00C658A4 /* FeedEditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEditCardViewController.swift; sourceTree = "<group>"; };
+		2229C4612521D62E00C658A4 /* FeedEditCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedEditCardViewController.xib; sourceTree = "<group>"; };
 		224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRemoteNetworking.swift; sourceTree = "<group>"; };
 		2290674F251B96B600CDB190 /* FeedDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailTableViewCell.swift; sourceTree = "<group>"; };
 		22906750251B96B600CDB190 /* FeedDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -423,6 +427,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2229C4462521D5E300C658A4 /* EditFeed */ = {
+			isa = PBXGroup;
+			children = (
+				2229C4602521D62E00C658A4 /* FeedEditCardViewController.swift */,
+				2229C4612521D62E00C658A4 /* FeedEditCardViewController.xib */,
+			);
+			path = EditFeed;
+			sourceTree = "<group>";
+		};
 		2247536D2514FD8A002C8C8A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +629,7 @@
 		3E32E67B2516D27600CCF3D4 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				2229C4462521D5E300C658A4 /* EditFeed */,
 				22A6908025189DD3000CE500 /* ShowImage */,
 				22A690712518853E000CE500 /* CreateFeed */,
 				22A6906C2518823E000CE500 /* CommentFeed */,
@@ -1374,6 +1388,7 @@
 			files = (
 				22A6906B251863EE000CE500 /* FeedDetailViewController.xib in Resources */,
 				22A6907A25188927000CE500 /* FeedCreateButtonCollectionViewCell.xib in Resources */,
+				2229C4632521D62E00C658A4 /* FeedEditCardViewController.xib in Resources */,
 				22906757251B9A5900CDB190 /* FeedCommentTableViewCell.xib in Resources */,
 				22A6907025188263000CE500 /* FeedCommentViewController.xib in Resources */,
 				FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */,
@@ -1570,6 +1585,7 @@
 				22A6906F25188263000CE500 /* FeedCommentViewController.swift in Sources */,
 				22A6907425188555000CE500 /* FeedCreateViewController.swift in Sources */,
 				FA5FA7AD251B48D6003F7B5F /* RegisterManager.swift in Sources */,
+				2229C4622521D62E00C658A4 /* FeedEditCardViewController.swift in Sources */,
 				FAD3DE59251DC8B800578533 /* SettingViewController.swift in Sources */,
 				FAD3DE65251DC91A00578533 /* AddViewController.swift in Sources */,
 				FAD3DE50251DA8E400578533 /* ForumTopicController.swift in Sources */,

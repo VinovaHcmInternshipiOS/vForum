@@ -32,7 +32,9 @@ class FeedDetailViewController: UIViewController {
             self.tableViewSomeComments.reloadData()
         }
         reuseFeedCardDetail.commentAction = {
-            self.navigationController?.pushViewController(FeedCommentViewController(), animated: true)
+            let vc = FeedCommentViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         reuseFeedCardDetail.clickLike = {
             if self.isLiked {
@@ -53,6 +55,9 @@ class FeedDetailViewController: UIViewController {
                 // Fallback on earlier versions
             }
             self.navigationController?.pushViewController(vcShowImageView, animated: true)
+        }
+        reuseFeedCardDetail.moreAction = {
+            self.showMoreSheet()
         }
         // Do any additional setup after loading the view.
     }
@@ -86,5 +91,29 @@ extension FeedDetailViewController: UITableViewDataSource {
 extension FeedDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension FeedDetailViewController {
+    func showMoreSheet() {
+        let alert = UIAlertController(title: "More", message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction)in
+            print("User click Edit")
+        }))
+
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive , handler:{ (UIAlertAction)in
+            print("User click Delete")
+            self.tableViewSomeComments.reloadData()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Cancel")
+            self.tableViewSomeComments.reloadData()
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
 }

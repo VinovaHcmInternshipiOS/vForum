@@ -9,18 +9,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReuseFeedComment" customModule="vForum" customModuleProvider="target">
             <connections>
+                <outlet property="LIKECOMMENT" destination="B88-ge-AB8" id="um1-Xl-Nuq"/>
+                <outlet property="btnMore" destination="Utz-fl-Ozd" id="81J-mB-lGg"/>
                 <outlet property="imageAva" destination="tn7-fk-eOo" id="Dsc-mr-pVc"/>
+                <outlet property="lblCommentLikeCount" destination="B7L-o6-Nj3" id="hBY-Xl-9uA"/>
                 <outlet property="lblContent" destination="swn-Fk-Tg3" id="brS-eI-Eie"/>
+                <outlet property="lblLikeComment" destination="B7L-o6-Nj3" id="TXa-J0-cep"/>
                 <outlet property="lblTime" destination="UKW-Re-ofe" id="NI1-SW-ljs"/>
                 <outlet property="lblUsername" destination="2PX-Ld-0el" id="fQX-TW-ZFc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="873" height="159"/>
+            <rect key="frame" x="0.0" y="0.0" width="863" height="146"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PX-Ld-0el">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PX-Ld-0el">
                     <rect key="frame" x="50" y="10" width="79" height="24"/>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                     <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Content...Content...Content...Content... Content...Content...Content...Content...Content...Content... Content...Content..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swn-Fk-Tg3">
-                    <rect key="frame" x="50" y="39" width="813" height="110"/>
+                    <rect key="frame" x="50" y="39" width="803" height="69"/>
                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -45,26 +49,57 @@
                         <constraint firstAttribute="width" constant="30" id="d1F-yh-r0H"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B88-ge-AB8">
+                    <rect key="frame" x="50" y="113" width="22" height="23"/>
+                    <state key="normal" image="notlike"/>
+                    <connections>
+                        <action selector="LIKECOMMENTACTION:" destination="-1" eventType="touchUpInside" id="zwF-bN-N14"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7L-o6-Nj3">
+                    <rect key="frame" x="82" y="117.5" width="34.5" height="18.5"/>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utz-fl-Ozd">
+                    <rect key="frame" x="834" y="10" width="24" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="YOn-HJ-qTr"/>
+                    </constraints>
+                    <state key="normal" image="menu_detail"/>
+                    <connections>
+                        <action selector="MORE:" destination="-1" eventType="touchUpInside" id="2Ev-1s-q1F"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="swn-Fk-Tg3" secondAttribute="bottom" constant="10" id="5mS-1T-ibM"/>
+                <constraint firstItem="B7L-o6-Nj3" firstAttribute="bottom" secondItem="B88-ge-AB8" secondAttribute="bottom" id="1QT-VV-zVR"/>
+                <constraint firstItem="B88-ge-AB8" firstAttribute="leading" secondItem="swn-Fk-Tg3" secondAttribute="leading" id="1e2-tY-U0D"/>
+                <constraint firstItem="Utz-fl-Ozd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="9QT-eo-MKM"/>
                 <constraint firstItem="2PX-Ld-0el" firstAttribute="leading" secondItem="tn7-fk-eOo" secondAttribute="trailing" constant="10" id="Avf-Y0-1pg"/>
                 <constraint firstItem="UKW-Re-ofe" firstAttribute="leading" secondItem="2PX-Ld-0el" secondAttribute="trailing" constant="10" id="BCl-Di-6tj"/>
                 <constraint firstAttribute="trailing" secondItem="swn-Fk-Tg3" secondAttribute="trailing" constant="10" id="EDx-ve-WAh"/>
                 <constraint firstItem="swn-Fk-Tg3" firstAttribute="top" secondItem="2PX-Ld-0el" secondAttribute="bottom" constant="5" id="Gqr-I1-kkx"/>
                 <constraint firstItem="swn-Fk-Tg3" firstAttribute="leading" secondItem="2PX-Ld-0el" secondAttribute="leading" id="Kwj-1c-NFH"/>
+                <constraint firstItem="B7L-o6-Nj3" firstAttribute="leading" secondItem="B88-ge-AB8" secondAttribute="trailing" constant="10" id="NhI-NW-fnT"/>
                 <constraint firstItem="tn7-fk-eOo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Xdh-Gl-1bN"/>
+                <constraint firstItem="B88-ge-AB8" firstAttribute="top" secondItem="swn-Fk-Tg3" secondAttribute="bottom" constant="5" id="ZHk-hO-4Nq"/>
                 <constraint firstItem="UKW-Re-ofe" firstAttribute="centerY" secondItem="2PX-Ld-0el" secondAttribute="centerY" id="aFx-CX-zEW"/>
                 <constraint firstItem="2PX-Ld-0el" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="cHC-Ds-9G7"/>
+                <constraint firstAttribute="trailing" secondItem="Utz-fl-Ozd" secondAttribute="trailing" constant="5" id="nkJ-kC-Sce"/>
+                <constraint firstAttribute="bottom" secondItem="B88-ge-AB8" secondAttribute="bottom" constant="10" id="nmo-go-oYs"/>
                 <constraint firstItem="tn7-fk-eOo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="oBg-YX-faH"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UKW-Re-ofe" secondAttribute="trailing" constant="5" id="wfz-Uy-MO5"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UKW-Re-ofe" secondAttribute="trailing" constant="10" id="wfz-Uy-MO5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="161.59420289855075" y="-84.040178571428569"/>
+            <point key="canvasLocation" x="151.44927536231884" y="-84.375"/>
         </view>
     </objects>
     <resources>
         <image name="avatar" width="512" height="512"/>
+        <image name="menu_detail" width="24" height="24"/>
+        <image name="notlike" width="21.5" height="23"/>
     </resources>
 </document>

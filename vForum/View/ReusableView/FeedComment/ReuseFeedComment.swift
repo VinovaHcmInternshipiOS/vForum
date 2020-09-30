@@ -11,10 +11,23 @@ import SnapKit
 
 @IBDesignable
 class ReuseFeedComment: UIView {
+    @IBOutlet weak var lblLikeComment: UILabel!
     @IBOutlet weak var imageAva: UIImageView!
     @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblContent: UILabel!
+    @IBOutlet weak var LIKECOMMENT: UIButton!
+    @IBOutlet weak var lblCommentLikeCount: UILabel!
+    var likeComment: (()->Void)? = nil
+    var moreAction: (()->Void)? = nil
+    @IBOutlet weak var btnMore: UIButton!
+    
+    @IBAction func LIKECOMMENTACTION(_ sender: Any) {
+        likeComment?()
+    }
+    @IBAction func MORE(_ sender: Any) {
+        moreAction?()
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

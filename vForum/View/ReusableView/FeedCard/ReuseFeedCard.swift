@@ -26,6 +26,7 @@ class ReuseFeedCard: UIView {
     var scrollAction: (()->Void)? = nil
     var commentAction: (()->Void)? = nil
     var toZoomScene: (()->Void)? = nil
+    var moreAction: (()->Void)? = nil
     var liked = true
     var index = 0
     var likeCount = 0
@@ -36,6 +37,9 @@ class ReuseFeedCard: UIView {
     }
     @IBAction func COMMENTFEED(_ sender: Any) {
         commentAction?()
+    }
+    @IBAction func MORE(_ sender: Any) {
+        moreAction?()
     }
     
     required init?(coder aDecoder: NSCoder) {

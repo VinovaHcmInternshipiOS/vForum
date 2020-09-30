@@ -45,7 +45,6 @@ extension FeedCreateViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //TODO:
         return imageArray.count + 1
     }
     
@@ -56,6 +55,10 @@ extension FeedCreateViewController: UICollectionViewDataSource {
         } else {
             let cell = collectionViewAttchment.dequeueReusableCell(withReuseIdentifier: "FeedLoadImageCollectionViewCell", for: indexPath) as! FeedLoadImageCollectionViewCell
             cell.imageUpload.image = imageArray[indexPath.row - 1]
+            cell.deleteImage = {
+                self.imageArray.remove(at: indexPath.row - 1)
+                collectionView.reloadData()
+            }
             return cell
         }
     }
@@ -73,11 +76,11 @@ extension FeedCreateViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0001
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0001
+        return 10
     }
 }
 
@@ -138,7 +141,6 @@ extension FeedCreateViewController: UIImagePickerControllerDelegate, UINavigatio
     }
     
     private func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
-
         //Check is source type available
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
 
@@ -153,11 +155,11 @@ extension FeedCreateViewController: UIImagePickerControllerDelegate, UINavigatio
     //MARK:- UIImagePickerViewDelegate.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var selectedImageFromPicker: UIImage?
-        if let editedImage = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            selectedImageFromPicker = editedImage
-        }
         if let originImage = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerOriginalImage")] as? UIImage {
             selectedImageFromPicker = originImage
+        }
+        if let editedImage = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
+            selectedImageFromPicker = editedImage
         }
         if let selectedImage = selectedImageFromPicker {
             imageArray.append(selectedImage)

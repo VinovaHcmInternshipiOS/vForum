@@ -54,7 +54,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7Xk-ga-1k0">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7Xk-ga-1k0">
                     <rect key="frame" x="0.0" y="109" width="414" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -69,6 +69,9 @@
                     <rect key="frame" x="358" y="0.0" width="56" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="menu_detail"/>
+                    <connections>
+                        <action selector="MORE:" destination="-1" eventType="touchUpInside" id="3OZ-Fq-BPg"/>
+                    </connections>
                 </button>
                 <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Meg-EV-3vo">
                     <rect key="frame" x="184" y="502" width="46" height="37"/>
@@ -121,7 +124,7 @@
     <resources>
         <image name="avatar" width="512" height="512"/>
         <image name="comment" width="96" height="96"/>
-        <image name="like" width="96" height="96"/>
+        <image name="like" width="23.5" height="24"/>
         <image name="menu_detail" width="24" height="24"/>
     </resources>
 </document>

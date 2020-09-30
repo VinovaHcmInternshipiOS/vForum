@@ -113,7 +113,7 @@ extension RemoteAPIProvider {
         
 //        headerDict["Authorization"] = "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV4dF92aW5vdmEiLCJVc2VySWQiOiI1IiwibmJmIjoxNTk4OTQ2MTk3LCJleHAiOjE2MzA0ODIxOTcsImlhdCI6MTU5ODk0NjE5N30.azI5UfK3lQ9siUpMa7IdJn3DLoqWpYNmAaOkqw8tt4g"
         
-        headerDict["Authorization"] = "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZiZmQ5ZTRjMDFiYjQxODhjMTEyYzciLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiZGlzcGxheV9uYW1lIjoiMTIzNDU2Nzg5IiwiaWF0IjoxNjAxMjY3Mzc3LCJleHAiOjE2MDEyNzA5Nzd9.JgJ7IlZV5L9BIyhPLyZ2FIQdZf1SwcF2H-ryubQ2d6M"
+        headerDict["Authorization"] = "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZiZmQ5ZTRjMDFiYjQxODhjMTEyYzciLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiZGlzcGxheV9uYW1lIjoiMTIzNDU2Nzg5IiwiaWF0IjoxNjAxMjcxMzQzLCJleHAiOjE2MDEyNzQ5NDN9.o4UDNy3ddBDz2eaJh0LRadLgNapL7HlyG6BRXguJlCA"
         let encoding = JSONEncoding.default
         URLCache.shared.removeAllCachedResponses()
         //Log.debug("Request with target \(target) \n -> URL: \(url) \n -> Method: \(method) \n -> Params: \(String(describing: params)) \n ->Header: \(headers) \n ->Encoding: \(encoding)")

@@ -42,9 +42,7 @@
 		FACCEFB7251FFABC0076ACBC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEF9D251FFABC0076ACBC /* AddViewController.swift */; };
 		FACCEFB8251FFABC0076ACBC /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFB6251FFABC0076ACBC /* PostDetailViewController.swift */; };
 		FACCEFBB2520B1770076ACBC /* AddGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFBA2520B1770076ACBC /* AddGroupController.swift */; };
-		FACCEFBE2520B1890076ACBC /* AddTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFBD2520B1890076ACBC /* AddTopicController.swift */; };
 		FACCEFC52520B1AF0076ACBC /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC02520B1AE0076ACBC /* AddViewController.xib */; };
-		FACCEFC62520B1AF0076ACBC /* AddTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */; };
 		FACCEFC72520B1AF0076ACBC /* AddGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */; };
 		FACCEFC92520E54E0076ACBC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFC82520E54E0076ACBC /* NetworkManager.swift */; };
 		FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */; };
@@ -275,9 +273,7 @@
 		FACCEF9D251FFABC0076ACBC /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FACCEFB6251FFABC0076ACBC /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		FACCEFBA2520B1770076ACBC /* AddGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupController.swift; sourceTree = "<group>"; };
-		FACCEFBD2520B1890076ACBC /* AddTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTopicController.swift; sourceTree = "<group>"; };
 		FACCEFC02520B1AE0076ACBC /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
-		FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTopicView.xib; sourceTree = "<group>"; };
 		FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupView.xib; sourceTree = "<group>"; };
 		FACCEFC82520E54E0076ACBC /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostPreviewCellView.xib; sourceTree = "<group>"; };
@@ -365,8 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				FACCEFC32520B1AF0076ACBC /* AddGroup */,
-				FACCEFBF2520B1AE0076ACBC /* AddPost */,
-				FACCEFC12520B1AF0076ACBC /* AddTopic */,
+				FACCEFBF2520B1AE0076ACBC /* AddPostTopic */,
 				FAD3DE7C251EABE000578533 /* PostList */,
 				FAD3DE7B251EAAB500578533 /* TopicList */,
 				FAD3DE7A251EAAA500578533 /* GroupList */,
@@ -769,12 +764,12 @@
 			path = vForumUITests;
 			sourceTree = "<group>";
 		};
-		FACCEF9C251FFABC0076ACBC /* AddPost */ = {
+		FACCEF9C251FFABC0076ACBC /* AddPostTopic */ = {
 			isa = PBXGroup;
 			children = (
 				FACCEF9D251FFABC0076ACBC /* AddViewController.swift */,
 			);
-			path = AddPost;
+			path = AddPostTopic;
 			sourceTree = "<group>";
 		};
 		FACCEFB5251FFABC0076ACBC /* Post */ = {
@@ -793,28 +788,12 @@
 			path = AddGroup;
 			sourceTree = "<group>";
 		};
-		FACCEFBC2520B1890076ACBC /* AddTopic */ = {
-			isa = PBXGroup;
-			children = (
-				FACCEFBD2520B1890076ACBC /* AddTopicController.swift */,
-			);
-			path = AddTopic;
-			sourceTree = "<group>";
-		};
-		FACCEFBF2520B1AE0076ACBC /* AddPost */ = {
+		FACCEFBF2520B1AE0076ACBC /* AddPostTopic */ = {
 			isa = PBXGroup;
 			children = (
 				FACCEFC02520B1AE0076ACBC /* AddViewController.xib */,
 			);
-			path = AddPost;
-			sourceTree = "<group>";
-		};
-		FACCEFC12520B1AF0076ACBC /* AddTopic */ = {
-			isa = PBXGroup;
-			children = (
-				FACCEFC22520B1AF0076ACBC /* AddTopicView.xib */,
-			);
-			path = AddTopic;
+			path = AddPostTopic;
 			sourceTree = "<group>";
 		};
 		FACCEFC32520B1AF0076ACBC /* AddGroup */ = {
@@ -829,8 +808,7 @@
 			isa = PBXGroup;
 			children = (
 				FACCEFB92520B1770076ACBC /* AddGroup */,
-				FACCEF9C251FFABC0076ACBC /* AddPost */,
-				FACCEFBC2520B1890076ACBC /* AddTopic */,
+				FACCEF9C251FFABC0076ACBC /* AddPostTopic */,
 				FACCEFB5251FFABC0076ACBC /* Post */,
 				FAD3DE81251EAEC800578533 /* GroupList */,
 				FAD3DE80251EAEB700578533 /* TopicList */,
@@ -1179,7 +1157,6 @@
 			files = (
 				FACCEFC52520B1AF0076ACBC /* AddViewController.xib in Resources */,
 				FAD3DE7E251EAC3D00578533 /* TopicTitleCellView.xib in Resources */,
-				FACCEFC62520B1AF0076ACBC /* AddTopicView.xib in Resources */,
 				FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */,
 				FAD3DE60251DC8E600578533 /* SettingViewController.xib in Resources */,
 				FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */,
@@ -1369,7 +1346,6 @@
 				FAD3DE5C251DC8D800578533 /* SettingTableViewCell.swift in Sources */,
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
 				FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */,
-				FACCEFBE2520B1890076ACBC /* AddTopicController.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
 				FA5FA7AC251B48D6003F7B5F /* RegisterResponse.swift in Sources */,
 				FACCEFC92520E54E0076ACBC /* NetworkManager.swift in Sources */,

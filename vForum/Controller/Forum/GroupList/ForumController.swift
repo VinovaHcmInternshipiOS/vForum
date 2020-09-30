@@ -15,16 +15,19 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         getData()
         
-        let btn1 = UIButton(type: .system)
-        btn1.setImage(UIImage(named: "add"), for: .normal)
-        btn1.tintColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00)
-        
-        btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        btn1.addTarget(self, action: #selector(addGroup), for: .touchUpInside)
-        
-        let item1 = UIBarButtonItem(customView: btn1)
+        let role = def.string(forKey: "role")!
+        if role == "admin" {
+            let btn1 = UIButton(type: .system)
+            btn1.setImage(UIImage(named: "add"), for: .normal)
+            btn1.tintColor = UIColor(red: 0.15, green: 0.36, blue: 0.68, alpha: 1.00)
+            
+            btn1.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            btn1.addTarget(self, action: #selector(addGroup), for: .touchUpInside)
+            
+            let item1 = UIBarButtonItem(customView: btn1)
 
-        navigationItem.rightBarButtonItems = [item1]
+            navigationItem.rightBarButtonItems = [item1]
+        }
         
         GroupItemList.register(UINib(nibName: "GroupCellView", bundle: nil), forCellReuseIdentifier: "GroupCell")
         

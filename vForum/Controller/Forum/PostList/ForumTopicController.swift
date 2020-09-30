@@ -7,6 +7,8 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var postList: UITableView!
     @IBOutlet weak var searchBar: UITextField!
     
+    let def = UserDefaults.standard
+    
     var topicTitleLineCount: Int = 0
 
     private(set) var postData:[[String:String]] = []
@@ -62,7 +64,6 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
         searchBar.delegate = self
 
         sortedPostData = postData
@@ -88,6 +89,11 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController!.isNavigationBarHidden = true
+        
+        postData = []
+        sortedPostData = []
+        getData()
+        postList.reloadData()
     }
     
     func convertToDateTime(_ str: String)->Date {
@@ -204,40 +210,43 @@ extension ForumTopicController: UITextFieldDelegate {
 
 extension ForumTopicController {
     func getData() {
-        postData.append([
-            "title":"Post Title",
-            "description":"Lorem ipsum donor amet boi",
-            "createdAt":"2020-09-16T03:00:56.880Z",
-            "createdBy":"dominic",
-            "_id":"12d342389cf29d",
-            "countLike":"232"
-        ])
-
-        postData.append([
-            "title":"Another iOS 14 description",
-            "description":"Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi",
-            "createdAt":"2020-09-19T11:00:56.880Z",
-            "createdBy":"dominic",
-            "_id":"12d342389cf29d",
-            "countLike":"0"
-        ])
+        let networkManager = NetworkManager.shared
         
-        postData.append([
-            "title":"Post name to fit two lines omg please heck yes boi can we have more stuff",
-            "description":"Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi Lorem ipsum donor amet boi",
-            "createdAt":"2020-09-25T12:00:56.880Z",
-            "createdBy":"dominic",
-            "_id":"12d342389cf29d",
-            "countLike":"12"
-        ])
+        let url : String = "http://localhost:4000/v1/api/group/\(def.string(forKey: "groupId")!)/topic/\(def.string(forKey: "topicId")!)/post"
+        let parameter : [String : Any] = [:]
         
-        postData.append([
-            "title":"Another iOS 14 description",
-            "description":"Lorem ipsum donor amet boi",
-            "createdAt":"2020-09-30T15:00:56.880Z",
-            "createdBy":"dominic",
-            "_id":"12d342389cf29d",
-            "countLike":"1950"
-        ])
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
+        ]
+        
+        networkManager.request(url, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
+            
+            switch respond.result {
+            case .success(let JSON):
+                let parsed = JSON as! NSDictionary
+                
+                if parsed["result"] != nil {
+                    let result = parsed["result"] as! Array<NSDictionary>
+                    //print(result)
+                    for x in result {
+                        self.postData.append([
+                            "title": String(describing: x["title"]!),
+                            "description": String(describing: x["description"]!),
+                            "createdAt":String(describing: x["createdAt"]!),
+                            "createdBy":String(describing: x["createdBy"]!),
+                            "_id":String(describing: x["_id"]!),
+                            "countLike":String(describing: x["countLike"]!)
+                        ])
+                    }
+                }
+                
+                self.sortedPostData = self.postData
+                self.postList.reloadData()
+                
+            case .failure( _):
+                print("f")
+            }
+        })
     }
 }

@@ -14,6 +14,8 @@ class DateTimePickerEvent: UIViewController {
     var cancelBtn: UIButton?
     var saveBtn: UIButton?
     
+    var isSorting: Bool?
+    var sortDateTime: ((Date, Date) -> Void)?
     var chooseDateTime: ((Date, Date) -> Void)?
     
     // Start DateTime Area
@@ -47,6 +49,17 @@ class DateTimePickerEvent: UIViewController {
         guard let startDate = startDateTimePicker?.date, let endDate = endDateTimePicker?.date else {
             return
         }
+        
+        if let isSorting = isSorting, let sortDateTime = sortDateTime {
+            if isSorting == true {
+                sortDateTime(startDate, endDate)
+                
+                DispatchQueue.main.async {
+                    self.closeVC()
+                }
+            }
+        }
+        
         if let chooseDateTime = chooseDateTime {
             chooseDateTime(startDate, endDate)
             

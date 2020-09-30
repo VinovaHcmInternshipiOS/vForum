@@ -76,7 +76,11 @@ class ListEventController: UIViewController {
     @objc func sortDateBtnPressed(_ sender: UIButton) {
         let datePickerView = DateTimePickerEvent()
         datePickerView.modalPresentationStyle = .popover
-        
+        datePickerView.isSorting = true
+        datePickerView.sortDateTime = { (from, to) in
+            self.listEvent = EventManager.shared.getEvents(from: from, to: to)
+            self.tableView?.reloadData()
+        }
         self.present(datePickerView, animated: true, completion: nil)
     }
 }

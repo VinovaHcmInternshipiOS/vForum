@@ -16,10 +16,14 @@ class EventManager {
     
     let nameFile = "DummyEventData"
     
-    
-    
     func getEvents() -> [Event] {
         return listEvent
+    }
+    
+    func getEvents(from: Date, to: Date) -> [Event] {
+        return listEvent.filter { (event) -> Bool in
+            return event.startDate >= from && event.endDate <= to
+        }
     }
     
     func getEvent(_id: Int) -> Event{

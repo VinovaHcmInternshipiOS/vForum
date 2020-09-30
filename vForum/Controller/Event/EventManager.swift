@@ -26,6 +26,24 @@ class EventManager {
         }
     }
     
+    func getNewestEvents() -> [Event] {
+        return listEvent.sorted { (a, b) -> Bool in
+            return a.startDate > b.startDate
+        }
+    }
+    
+    func getOldestEvents() -> [Event] {
+        return listEvent.sorted { (a, b) -> Bool in
+            return a.startDate < b.startDate
+        }
+    }
+    
+    func getPassedEvents() -> [Event] {
+        return listEvent.filter { (event) -> Bool in
+            return event.endDate < Date()
+        }
+    }
+
     func getEvent(_id: Int) -> Event{
         return listEvent[_id]
     }

@@ -64,11 +64,23 @@ class ListEventController: UIViewController {
         isDrop = true
         dropDown.anchorView = sender
         dropDown.dataSource =  ["Passed", "Oldest", "Newest"]
-        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height) //6
-        dropDown.show() //7
-        dropDown.selectionAction = { [weak self] (index: Int, item: String) in //8
+        dropDown.bottomOffset = CGPoint(x: 0, y: sender.frame.size.height)
+        dropDown.show()
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
           guard let _ = self else { return }
-          sender.setTitle(item, for: .normal) //9
+          sender.setTitle(item, for: .normal)
+            if item == "Passed" {
+                self?.listEvent = EventManager.shared.getPassedEvents()
+                self?.tableView?.reloadData()
+            }
+            else if item == "Oldest" {
+                self?.listEvent = EventManager.shared.getOldestEvents()
+                self?.tableView?.reloadData()
+            }
+            else if item == "Newest" {
+                self?.listEvent = EventManager.shared.getNewestEvents()
+                self?.tableView?.reloadData()
+            }
             self?.isDrop = false
         }
     }

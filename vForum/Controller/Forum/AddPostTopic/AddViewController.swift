@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Alamofire
 
 class AddViewController: UIViewController {
     @IBOutlet weak var scrollMainViewOutlet: UIScrollView!
@@ -8,6 +9,10 @@ class AddViewController: UIViewController {
     @IBOutlet weak var titleOutlet: UITextField!
     @IBOutlet weak var descriptionOutlet: UITextView!
     @IBOutlet weak var mainViewOutlet: UIView!
+    
+    let def = UserDefaults.standard
+    
+    var mode = "post"
     
     @IBAction func cancel(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -67,6 +72,49 @@ class AddViewController: UIViewController {
             make.top.equalTo(titleOutlet.snp_bottom).offset(10)
             make.leading.equalTo(mainViewOutlet).offset(10)
             make.trailing.equalTo(mainViewOutlet).offset(-10)
+        }
+    }
+    
+    @IBAction func save(_ sender: Any) {
+        let networkManager = NetworkManager.shared
+        
+        switch mode {
+        case "post":
+            let url : String = "http://localhost:4000/v1/api/group/\(def.string(forKey: "groupId")!)/topic/\(def.string(forKey: "topicId")!)/post"
+            let parameter : [String : Any] = ["title": titleOutlet.text!, "description": descriptionOutlet.text!]
+            
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
+            ]
+            
+            networkManager.request(url, method: .post, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    print(parsed)
+                    
+                    if parsed["result"] != nil && String(describing: parsed["result"]!) != "<null>" {
+                        self.navigationController!.popViewController(animated: true)
+                    } else {
+                        let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.navigationController!.popViewController(animated: true)}))
+                        self.present(alert, animated: true)
+                    }
+                    
+                    
+                    
+                case .failure( _):
+                    print("f")
+                }
+            })
+            
+        case "topic":
+            print("topic")
+            
+        default:
+            print("error")
         }
     }
 }

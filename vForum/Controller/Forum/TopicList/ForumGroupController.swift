@@ -49,7 +49,8 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - ADD TOPIC
     @objc func addTopic() {
-        let vc = AddTopicController(nibName: "AddTopicView", bundle: nil)
+        let vc = AddViewController(nibName: "AddViewController", bundle: nil)
+        vc.mode = "topic"
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -166,7 +167,7 @@ extension ForumGroupController {
                 
                 if parsed["result"] != nil {
                     let result = parsed["result"] as! Array<NSDictionary>
-                    print(result)
+                    //print(result)
                     for x in result {
                         self.topicData.append([
                             "_id": String(describing: x["_id"]!),

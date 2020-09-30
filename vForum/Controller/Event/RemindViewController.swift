@@ -9,8 +9,19 @@
 import Foundation
 import UIKit
 
+class RemindViewController: UIViewController {
+    
+    var tableView: UITableView?
+    var chose: RepeatedlyEvent?
+    var options: [RepeatedlyEvent] = [.hourly, .daily, .weekly, .monthly, ._3months, ._6months, .yearly]
+    
+    var changeRemindTime: ((RepeatedlyEvent) -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initializeTableView(&tableView)
+    }
 
-extension RemindViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }

@@ -9,27 +9,7 @@
 import Foundation
 import UIKit
 
-class CreationEventController: UIViewController {
-//    let saveBarBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(CreationEventViewController.saveBarBtnPressed(_:)))
-    var addEvent: ((Event) -> Void)?
-    
-    var titleTextField: UITextField?
-    var descriptionTextField: UITextField?
-    var startDateLbl: UILabel?
-    var endDateLbl: UILabel?
-    var collectionView: UICollectionView?
-    var banner: String?
-    var selectedIndex: IndexPath?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
-        initializeInputTextArea()
-        initializeCollectionView()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(CreationEventController.saveBarBtnPressed(_:)))
-    }
+extension CreationEventController {
     
     func initializeCollectionView() {
         let layout = UICollectionViewFlowLayout()

@@ -9,35 +9,8 @@
 import Foundation
 import UIKit
 
-class DateTimePickerEvent: UIViewController {
-    var picker : UIDatePicker?
-    var cancelBtn: UIButton?
-    var saveBtn: UIButton?
-    
-    var chooseDateTime: ((Date, Date) -> Void)?
-    
-    // Start DateTime Area
-    var startDateTimeStackView: UIStackView?
-    var startDateTimeLabel: UILabel?
-    var startDateTimePicker: UIDatePicker?
-    
-    // End DateTime Area
-    var endDateTimeStackView: UIStackView?
-    var endDateTimeLabel: UILabel?
-    var endDateTimePicker: UIDatePicker?
-    
-   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
-        initializeCancelBtn(&cancelBtn)
-        initializeSaveBtn(&saveBtn)
-        initilizeDateTimeArea(stackView: &startDateTimeStackView, label: &startDateTimeLabel, datePicker: &startDateTimePicker, self.view.bounds.height * 0.1, "From: ")
-        initilizeDateTimeArea(stackView: &endDateTimeStackView, label: &endDateTimeLabel, datePicker: &endDateTimePicker, self.view.bounds.height * 0.5, "End: ")
-        
-    }
+
+extension DateTimePickerEvent {
     
     func initializeCancelBtn(_ cancelBtn: inout UIButton?) {
         cancelBtn = UIButton()

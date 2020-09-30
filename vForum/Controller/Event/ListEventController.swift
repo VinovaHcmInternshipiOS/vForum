@@ -10,7 +10,27 @@ import Foundation
 import UIKit
 import DropDown
 
-extension ListEventController {
+class ListEventController: UIViewController {
+    var dropDown: DropDown?
+    var isDrop: Bool = false
+    var sortTypeBtn: UIButton?
+    var sortDateBtn: UIButton?
+    var tableView: UITableView?
+    var navBarHeight: CGFloat = 70.0
+    var refreshControl: UIRefreshControl = UIRefreshControl()
+    
+    var listEvent: [Event] = EventManager.shared.getEvents()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        initializeSortTypeBtn(&sortTypeBtn)
+        initializeSortDateBtn(&sortDateBtn)
+        initializeTableView(&tableView)
+        initializeAddEventBtn()
+        
+    }
     // Detect touch to turn off drop down
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

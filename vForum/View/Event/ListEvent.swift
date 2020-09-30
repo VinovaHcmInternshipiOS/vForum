@@ -10,29 +10,7 @@ import Foundation
 import UIKit
 import DropDown
 
-class ListEventController: UIViewController {
-    var dropDown: DropDown?
-    var isDrop: Bool = false
-    var sortTypeBtn: UIButton?
-    var sortDateBtn: UIButton?
-    var tableView: UITableView?
-    var navBarHeight: CGFloat = 70.0
-    var refreshControl: UIRefreshControl = UIRefreshControl()
-    
-    var listEvent: [Event] = EventManager.shared.getEvents()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        initializeSortTypeBtn(&sortTypeBtn)
-        initializeSortDateBtn(&sortDateBtn)
-        initializeTableView(&tableView)
-        initializeAddEventBtn()
-        
-    }
-    
-    
+extension ListEventController {
     // Add Bar Button
     func initializeAddEventBtn() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ListEventController.addEventBtnPressed(_:)))

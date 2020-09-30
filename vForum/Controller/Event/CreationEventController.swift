@@ -9,7 +9,27 @@
 import Foundation
 import UIKit
 
-extension CreationEventController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CreationEventController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    var addEvent: ((Event) -> Void)?
+    
+    var titleTextField: UITextField?
+    var descriptionTextField: UITextField?
+    var startDateLbl: UILabel?
+    var endDateLbl: UILabel?
+    var collectionView: UICollectionView?
+    var banner: String?
+    var selectedIndex: IndexPath?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        initializeInputTextArea()
+        initializeCollectionView()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(CreationEventController.saveBarBtnPressed(_:)))
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.bounds.width * 0.25, height: self.view.bounds.width * 0.25)

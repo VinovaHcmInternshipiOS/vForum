@@ -20,4 +20,11 @@ extension String {
         }
         return true
     }
+    
+    func toDate() -> Date? {
+        let df = DateFormatter()
+        df.dateFormat = "d/M/yy hh:mm"
+        let date = df.date(from: self)
+        return date
+    }
 }

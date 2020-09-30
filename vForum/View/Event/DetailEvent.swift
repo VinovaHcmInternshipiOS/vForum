@@ -89,8 +89,8 @@ extension DetailEventController {
         
     }
     
-    func initializeTitleLbl(_ title: inout UILabel?, _ text: String) {
-        title = UILabel()
+    func initializeTitleLbl(_ title: inout UITextField?, _ text: String) {
+        title = UITextField()
         guard let title = title, let banner = bannerImgView else {
             return
         }
@@ -135,6 +135,7 @@ extension DetailEventController {
         let height = self.view.bounds.height * 0.15
         
         stack = UIStackView()
+        let button = UIButton()
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
         label.textAlignment = .center
         label.text = textLbl
@@ -150,7 +151,7 @@ extension DetailEventController {
         stack.addArrangedSubview(timeLabel)
         stack.addArrangedSubview(dateLabel)
         view.addSubview(stack)
-        
+        view.addSubview(button)
         
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -162,10 +163,24 @@ extension DetailEventController {
         else if side == .right {
             stack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         }
-        
         stack.axis = .vertical
         stack.alignment = .center
         stack.distribution = .fill
+        
+//        button.backgroundColor = .yellow
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: width).isActive = true
+        button.heightAnchor.constraint(equalToConstant: height).isActive = true
+        button.topAnchor.constraint(equalTo: descriptionTxtView.bottomAnchor).isActive = true
+        if side == .left {
+            button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            button.tag = 0
+        }
+        else if side == .right {
+            button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            button.tag = 1
+        }
+        button.addTarget(self, action: #selector(DetailEventController.editDateTimeButonPressed(_:)), for: .touchUpInside)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -191,7 +206,7 @@ extension DetailEventController {
             return
         }
         timeLabel.textAlignment = .center
-        timeLabel.text = "\(event?.getHour(from: date) ?? 0) : \(event?.getMinute(from: date) ?? 0)"
+        timeLabel.text = "\(event?.getHour(from: date) ?? 0):\(event?.getMinute(from: date) ?? 0)"
         dateLabel.textAlignment = .center
         dateLabel.text = event?.getDate(from: date, format: "dd-MM-yyyy")
         

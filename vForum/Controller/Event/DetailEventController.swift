@@ -15,12 +15,13 @@ class DetailEventController: UIViewController {
         case right, left
     }
     var blueColor: UIColor? = UIColor(red: 39/255, green: 93/255, blue: 173/255, alpha: 1.0)
-
+    
+    
     var event: Event?
     var cancelBtn: UIButton?
     var saveBtn: UIButton?
     var bannerImgView: UIImageView?
-    var titleLbl: UILabel?
+    var titleLbl: UITextField?
     var descriptionTxtView: UITextView?
     var startStackView: UIStackView?
     var startDateLbl: UILabel?
@@ -63,5 +64,20 @@ class DetailEventController: UIViewController {
     func closeVC() {
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func editDateTimeButonPressed(_ sender: UIButton) {
+        let dateTimePicker = DateTimePickerEvent()
+        guard let startDateLbl = startDateLbl, let startTimeLbl = startTimeLbl, let endDateLbl = endDateLbl, let endTimeLbl = endTimeLbl else {
+            return
+        }
+        let startString: String = startDateLbl.text! + " " + startTimeLbl.text!
+        let endString: String = endDateLbl.text! + " " + endTimeLbl.text!
+        
+        guard let from = startString.toDate(), let to = endString.toDate() else {
+            return
+        }
+        dateTimePicker.startDateTimePicker?.date = from
+        dateTimePicker.endDateTimePicker?.date = to
     }
 }

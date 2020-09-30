@@ -41,7 +41,12 @@ class ListEventController: UIViewController {
     
     @objc func addEventBtnPressed(_ sender: UIBarButtonItem) {
         let creationEvent = CreationEventController()
-
+        creationEvent.addEvent = { (event) in
+            self.sortTypeBtn?.setTitle("Sorting", for: .normal)
+            self.listEvent.removeAll()
+            self.listEvent = EventManager.shared.getEvents()
+            self.tableView?.reloadData()
+        }
         self.navigationController?.pushViewController(creationEvent, animated: true)
     }
     

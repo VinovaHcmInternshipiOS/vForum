@@ -99,7 +99,11 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
             return
         }
         
-        EventManager.shared.createEvent(title: title, description: description, startDate: start, endDate: end, banner: banner)
+        let event = EventManager.shared.createEvent(title: title, description: description, startDate: start, endDate: end, banner: banner)
+        
+        if let addEvent = addEvent {
+            addEvent(event)
+        }
         
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: true)

@@ -48,10 +48,11 @@ class EventManager {
         return listEvent[_id]
     }
     
-    func createEvent(title: String, description: String, startDate: Date, endDate: Date, banner: String) {
+    func createEvent(title: String, description: String, startDate: Date, endDate: Date, banner: String) -> Event {
         let event = Event(_id: listEvent.count, title: title, description: description, startDate: startDate, endDate: endDate, banner: banner)
         
         listEvent.append(event)
+        return event
     }
     
     func deleteEvent(_id: Int){

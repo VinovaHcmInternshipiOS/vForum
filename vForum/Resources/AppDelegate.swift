@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        RemoteAPIProvider.testingMethod()
         let remoteProvider = RemoteAPIProvider(configuration: AppsevicesConfiguration.deverloper)
-        remoteProvider.requestFreeJSON(target: GroupResult.group, accessToken: "") { (data) in
+        remoteProvider.requestFreeJSON(target: GroupResult.group, accessToken: "", fullfill: { (data) in
             print(data)
             do {
                 if let result = data["result"] {
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             catch let error {
                 print(error)
             }
-        } reject: { (err) in
+        }) { (err) in
             print(err.localizedDescription)
         }
 //        remoteProvider.request(target: GroupResult.group, accessToken: "") { (returnData: [Group]?) in

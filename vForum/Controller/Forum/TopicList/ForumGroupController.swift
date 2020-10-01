@@ -7,8 +7,6 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var TopicList: UITableView!
     
-    
-    
     let def = UserDefaults.standard
     
     var topicData:[[String:String]] = []
@@ -281,5 +279,23 @@ extension ForumGroupController {
                 print("f")
             }
         })
+    }
+}
+
+
+
+extension ForumGroupController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        /*var str = searchBar.text!
+        str = searchTes.count == 0 ? String(str.dropLast()) : str + string
+        
+        if str == "" {
+            sortedTopicData = topicData
+        } else {
+            sortedPostData = topicData.filter{ $0["name"]!.lowercased().contains(str.lowercased()) }
+        }
+        
+        TopicList.reloadData()*/
+        print(searchText)
     }
 }

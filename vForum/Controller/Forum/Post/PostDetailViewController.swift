@@ -3,7 +3,6 @@ import SnapKit
 import Alamofire
 
 class PostDetailViewController: UIViewController {
-    
     let cmtCell = UINib(nibName: "PostCmtTableViewCell", bundle: nil)
     let cmts = ["cmt":1,"cmt2":2,"cmt3":1,"cmt4":2,"cmt5":1,"cmt6":2,"cmt7":1,"cmt8":2,"cmt9":2,"cmt10":2,"cmt11":2,"cmt12":2,"cmt13":1,"cmt14":2,"cmt15":1,"cmt16":2,"cmt17":1,"cmt18":2,"cmt19":2]
     

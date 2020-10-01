@@ -18,6 +18,7 @@ class FeedEditCardViewController: UIViewController {
     var imageArray = [UIImage]()
     var urlArray = [String]()
     var reload: (()->Void)? = nil
+    var a: String?
     var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZiZmQ5ZTRjMDFiYjQxODhjMTEyYzciLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiZGlzcGxheV9uYW1lIjoiMTIzNDU2Nzg5IiwiaWF0IjoxNjAxNDc0NTM0LCJleHAiOjE2MDIwNzkzMzR9.Mk4ukqvcqYqJ2aOJadNe4TlvXMY5j7AifCCzZANSkK4"
     
     override func viewDidLoad() {
@@ -37,6 +38,7 @@ class FeedEditCardViewController: UIViewController {
         self.txtView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         setContraints()
         setLayer()
+        self.txtView.text = a
     }
     
     @objc func tapDone(sender: Any) {

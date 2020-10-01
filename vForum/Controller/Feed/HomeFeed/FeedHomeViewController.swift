@@ -150,7 +150,7 @@ extension FeedHomeViewController {
                 self.tableView.reloadData()
             }
             vc.imageArray = imageArray
-            vc.txtView.text = description
+            vc.a = description
             self.navigationController?.pushViewController(vc, animated: true)
         }))
 

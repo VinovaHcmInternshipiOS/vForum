@@ -58,4 +58,11 @@ class EventManager {
     func deleteEvent(_id: Int){
         listEvent.remove(at: _id)
     }
+    
+    func updateEvent(id : Int, title: String, description: String, startDate: Date, endDate: Date) {
+        listEvent[id].title = title
+        listEvent[id].description = description
+        listEvent[id].startDate = startDate
+        listEvent[id].endDate = endDate
+    }
 }

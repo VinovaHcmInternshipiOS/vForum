@@ -121,8 +121,12 @@ extension ListEventController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailEvent = DetailEventController()
-        detailEvent.modalPresentationStyle = .popover
+        detailEvent.modalPresentationStyle = .fullScreen
         detailEvent.event = listEvent[indexPath.row]
+        detailEvent.editEvent  = {
+            self.listEvent = EventManager.shared.getEvents()
+            self.tableView?.reloadData()
+        }
         DispatchQueue.main.async {
             self.present(detailEvent, animated: true, completion: nil)
         }

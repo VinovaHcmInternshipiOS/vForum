@@ -28,7 +28,7 @@ extension DetailEventController {
             return
         }
         initializeBanner(&bannerImgView, event.banner)
-        initializeTitleLbl(&titleLbl, event.title)
+        initializeTitleLbl(&titleTxtField, event.title)
         initializeDescriptionTxtView(&descriptionTxtView, event.description)
         initializeDateTimeArea(&startStackView, &startDateLbl, &startTimeLbl, "From: ", side: .left)
         initializeDateTimeArea(&endStackView, &endDateLbl, &endTimeLbl, "End: ", side: .right)
@@ -46,7 +46,7 @@ extension DetailEventController {
         
         cancelBtn.translatesAutoresizingMaskIntoConstraints = false
         cancelBtn.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        cancelBtn.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        cancelBtn.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.04).isActive = true
         cancelBtn.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.2).isActive = true
         cancelBtn.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.06).isActive = true
         
@@ -65,11 +65,11 @@ extension DetailEventController {
         
         saveBtn.translatesAutoresizingMaskIntoConstraints = false
         saveBtn.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        saveBtn.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        saveBtn.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.04).isActive = true
         saveBtn.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.2).isActive = true
         saveBtn.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.06).isActive = true
         
-        saveBtn.setTitle("Save", for: .normal)
+        saveBtn.setTitle("Edit", for: .normal)
         saveBtn.setTitleColor(blueColor, for: .normal)
         saveBtn.titleLabel?.font = UIFont(name: "Futura", size: self.view.bounds.height * 0.06 * 0.4)
         saveBtn.addTarget(self, action: #selector(saveBtnPressed(_:)), for: .touchUpInside)
@@ -106,6 +106,7 @@ extension DetailEventController {
         title.textColor = .black
         title.font = UIFont(name: "Futura", size: self.view.bounds.height * 0.05 * 0.9)
         title.text = text
+        title.isEnabled = self.isEditing
         
         
     }
@@ -113,7 +114,7 @@ extension DetailEventController {
     
     func initializeDescriptionTxtView(_ descriptionTxtView: inout UITextView?, _ text: String) {
         descriptionTxtView = UITextView(frame: .zero)
-        guard let descriptionTxtView = descriptionTxtView, let titleLbl = titleLbl else {
+        guard let descriptionTxtView = descriptionTxtView, let titleTxtField = titleTxtField else {
             return
         }
         self.view.addSubview(descriptionTxtView)
@@ -122,11 +123,12 @@ extension DetailEventController {
         descriptionTxtView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.view.bounds.width * 0.1).isActive = true
         descriptionTxtView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         descriptionTxtView.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.15).isActive = true
-        descriptionTxtView.topAnchor.constraint(equalTo: titleLbl.bottomAnchor).isActive = true
+        descriptionTxtView.topAnchor.constraint(equalTo: titleTxtField.bottomAnchor).isActive = true
         
         descriptionTxtView.textColor = .black
         descriptionTxtView.font = UIFont(name: "Futura", size: self.view.bounds.height * 0.05 * 0.5)
         descriptionTxtView.text = text
+        descriptionTxtView.isEditable = self.isEditing
     }
     
     func initializeDateTimeArea(_ stack: inout UIStackView?, _ dateLabel: inout UILabel?, _ timeLabel: inout UILabel?, _ textLbl: String, side: SideDateTimeEvent) {
@@ -228,7 +230,7 @@ extension DetailEventController {
         cell.textLabel?.text = event?.repeated.toString()
         cell.textLabel?.textAlignment = .left
         cell.textLabel?.textColor = UIColor(red: 171/255, green: 169/255, blue: 195/255, alpha: 1.0)
-        cell.accessoryType = .disclosureIndicator
+        cell.accessoryType = self.isEditing ? .disclosureIndicator : .none
         
         view.addSubview(cell)
         view.addSubview(button)

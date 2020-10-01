@@ -21,7 +21,7 @@ extension DateTimePickerEvent {
         
         cancelBtn.translatesAutoresizingMaskIntoConstraints = false
         cancelBtn.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        cancelBtn.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        cancelBtn.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.04).isActive = true
         cancelBtn.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.2).isActive = true
         cancelBtn.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.06).isActive = true
         
@@ -40,7 +40,7 @@ extension DateTimePickerEvent {
         
         saveBtn.translatesAutoresizingMaskIntoConstraints = false
         saveBtn.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        saveBtn.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        saveBtn.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.04).isActive = true
         saveBtn.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.2).isActive = true
         saveBtn.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.06).isActive = true
         
@@ -53,7 +53,7 @@ extension DateTimePickerEvent {
     func initilizeDateTimeArea(stackView: inout UIStackView?, label: inout UILabel?, datePicker: inout UIDatePicker?, _ topConstant: CGFloat, _ textLabel: String) {
         stackView = UIStackView(frame: .zero)
         label = UILabel()
-        datePicker = UIDatePicker()
+//        datePicker = UIDatePicker()
         
         guard let stackView = stackView, let label = label, let datePicker = datePicker else {
             return

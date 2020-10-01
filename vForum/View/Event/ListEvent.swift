@@ -34,7 +34,7 @@ extension ListEventController {
         tableView.addSubview(refreshControl)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.1 + navBarHeight).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.bounds.height * 0.05 + navBarHeight).isActive = true
         tableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         tableView.heightAnchor.constraint(equalToConstant: self.view.bounds.height * 0.9 - navBarHeight).isActive = true
         tableView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
@@ -44,7 +44,7 @@ extension ListEventController {
     // Sort Type Button
     func initializeSortTypeBtn(_ sortType: inout UIButton?) {
         
-        sortType = UIButton(frame: CGRect(x: 0, y: navBarHeight, width: view.bounds.width * 0.4, height: view.bounds.height * 0.1))
+        sortType = UIButton(frame: CGRect(x: 0, y: navBarHeight, width: view.bounds.width * 0.4, height: view.bounds.height * 0.05))
         
         guard let sortType = sortType else {
             return
@@ -61,13 +61,13 @@ extension ListEventController {
     // Sort Date Button
     func initializeSortDateBtn(_ sortDate: inout UIButton?) {
         
-        sortDate = UIButton(frame: CGRect(x: view.bounds.width * 0.5, y: navBarHeight, width: view.bounds.width * 0.4, height: view.bounds.height * 0.1))// getSortDate(self.view, "15 April")
+        sortDate = UIButton(frame: CGRect(x: view.bounds.width * 0.5, y: navBarHeight, width: view.bounds.width * 0.4, height: view.bounds.height * 0.05))// getSortDate(self.view, "15 April")
         
         guard let sortDate = sortDate else {
             return
         }
         
-        sortDate.setTitle("15 April", for: .normal)
+        sortDate.setTitle("Date-Date", for: .normal)
         sortDate.titleLabel?.textAlignment = .center
         sortDate.setTitleColor(UIColor(red: 171/255, green: 169/255, blue: 195/255, alpha: 1.0), for: .normal)
         sortDate.addTarget(self, action: #selector(sortDateBtnPressed(_:)), for: .touchUpInside)

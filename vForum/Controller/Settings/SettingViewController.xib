@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="UiForum" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarUImg" destination="hWx-TH-YVm" id="Sp3-AD-PGr"/>
+                <outlet property="displaynameLbl" destination="eMZ-fB-a3X" id="Jqn-IF-SIE"/>
+                <outlet property="emailLbl" destination="7pk-S3-7Sb" id="0wI-Po-wRW"/>
+                <outlet property="roleLbl" destination="4IU-EK-MRJ" id="elw-Fy-V0Q"/>
+                <outlet property="tableView" destination="SKp-Ko-k11" id="JSO-xc-1nv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-Ko-k11">
+                    <rect key="frame" x="0.0" y="184" width="414" height="678"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="hWx-TH-YVm">
+                    <rect key="frame" x="10" y="54" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="EbN-2r-YD9"/>
+                        <constraint firstAttribute="height" constant="100" id="cmI-Kc-Qgx"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pk-S3-7Sb">
+                    <rect key="frame" x="120" y="54" width="284" height="22.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="z4X-AH-SWs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMZ-fB-a3X">
+                    <rect key="frame" x="120" y="81.5" width="284" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="alu-qX-9cx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                    <color key="textColor" red="0.1529411765" green="0.36470588240000001" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Role" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IU-EK-MRJ">
+                    <rect key="frame" x="120" y="106.5" width="284" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="ouE-Gr-6YF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="4IU-EK-MRJ" firstAttribute="leading" secondItem="7pk-S3-7Sb" secondAttribute="leading" id="1vJ-0I-p95"/>
+                <constraint firstItem="7pk-S3-7Sb" firstAttribute="leading" secondItem="hWx-TH-YVm" secondAttribute="trailing" constant="10" id="C98-3o-toO"/>
+                <constraint firstItem="7pk-S3-7Sb" firstAttribute="top" secondItem="hWx-TH-YVm" secondAttribute="top" id="Ewn-Ms-TC4"/>
+                <constraint firstItem="SKp-Ko-k11" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MAg-MV-0iz"/>
+                <constraint firstItem="SKp-Ko-k11" firstAttribute="top" secondItem="hWx-TH-YVm" secondAttribute="bottom" constant="30" id="XEf-Up-nwl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4IU-EK-MRJ" secondAttribute="trailing" constant="10" id="YN5-KU-w71"/>
+                <constraint firstItem="4IU-EK-MRJ" firstAttribute="top" secondItem="eMZ-fB-a3X" secondAttribute="bottom" constant="5" id="a6R-8t-lnM"/>
+                <constraint firstAttribute="trailing" secondItem="SKp-Ko-k11" secondAttribute="trailing" id="drp-SI-n2x"/>
+                <constraint firstItem="SKp-Ko-k11" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="gKR-M4-iNB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eMZ-fB-a3X" secondAttribute="trailing" constant="10" id="ge4-jc-lhc"/>
+                <constraint firstItem="hWx-TH-YVm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="nsl-Bv-UsE"/>
+                <constraint firstItem="eMZ-fB-a3X" firstAttribute="leading" secondItem="7pk-S3-7Sb" secondAttribute="leading" id="pJ4-Hb-xM5"/>
+                <constraint firstItem="hWx-TH-YVm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="pN7-MT-p0u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7pk-S3-7Sb" secondAttribute="trailing" constant="10" id="rht-Ea-eUF"/>
+                <constraint firstItem="eMZ-fB-a3X" firstAttribute="top" secondItem="7pk-S3-7Sb" secondAttribute="bottom" constant="5" id="uUC-Mq-A8y"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="54.910714285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="avatar" width="483" height="715"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

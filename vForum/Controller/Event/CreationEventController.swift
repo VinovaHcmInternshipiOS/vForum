@@ -13,6 +13,7 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
 
     var addEvent: ((Event) -> Void)?
     
+    let stack = UIStackView()
     var titleTextField: UITextField?
     var descriptionTextField: UITextField?
     var startDateLbl: UILabel?
@@ -20,18 +21,19 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
     var collectionView: UICollectionView?
     var banner: String?
     var selectedIndex: IndexPath?
-    var saveBtn: UIBarButtonItem?
+    var cancelBtn: UIButton?
+    var saveBtn: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
+        initializeCancelBtn(&cancelBtn)
+        initializeSaveBtn(&saveBtn)
         initializeInputTextArea()
         initializeCollectionView()
-        saveBtn = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(CreationEventController.saveBarBtnPressed(_:)))
         saveBtn?.isEnabled = false
-        self.navigationItem.rightBarButtonItem = saveBtn
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -68,9 +70,11 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
         
         if isEnoughInput() {
             saveBtn?.isEnabled = true
+            saveBtn?.setTitleColor(UIColor(red: 39/255, green: 93/255, blue: 173/255, alpha: 1.0), for: .normal)
         }
         else {
             saveBtn?.isEnabled = false
+            saveBtn?.setTitleColor(.lightGray, for: .normal)
         }
         
         DispatchQueue.main.async {
@@ -79,7 +83,28 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @objc func moveToDateTimePicker(sender: UITapGestureRecognizer) {
+        guard let startDateLbl = startDateLbl, let endDateLbl = endDateLbl else {
+            return
+        }
+        guard let startText = startDateLbl.text, let endText = endDateLbl.text else {
+            return
+        }
+        
         let datePicker = DateTimePickerEvent()
+        datePicker.modalPresentationStyle = .fullScreen
+        datePicker.startDateTimePicker = UIDatePicker()
+        datePicker.endDateTimePicker = UIDatePicker()
+        if startDateLbl.text != "dd-mm-yyyy" {
+            if let from = startText.toDate() {
+                datePicker.startDateTimePicker?.date = from
+            }
+        }
+        if endDateLbl.text != "dd-mm-yyyy" {
+            if let to = endText.toDate() {
+                datePicker.endDateTimePicker?.date = to
+            }
+        }
+        
         datePicker.chooseDateTime = { startDate, endDate in
             let dateFormatter = DateFormatter()
             
@@ -91,16 +116,22 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
             
             if self.isEnoughInput() {
                 self.saveBtn?.isEnabled = true
+                self.saveBtn?.setTitleColor(UIColor(red: 39/255, green: 93/255, blue: 173/255, alpha: 1.0), for: .normal)
             }
             else {
                 self.saveBtn?.isEnabled = false
+                self.saveBtn?.setTitleColor(.lightGray, for: .normal)
             }
             
         }
         present(datePicker, animated: true, completion: nil)
     }
     
-    @objc func saveBarBtnPressed(_ sender: UIBarButtonItem) {
+    @objc func cancelBtnPressed(_ sender: UIButton) {
+        closeVC()
+    }
+    
+    @objc func saveBtnPressed(_ sender: UIBarButtonItem) {
         
         guard let title = titleTextField?.text, let description = descriptionTextField?.text, let startDate = startDateLbl?.text, let endDate = endDateLbl?.text, let banner = banner else {
             return
@@ -125,6 +156,11 @@ class CreationEventController: UIViewController, UICollectionViewDelegate, UICol
             self.dismiss(animated: true, completion: nil)
             
         }
+    }
+    
+    func closeVC() {
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func isEnoughInput() -> Bool {
@@ -162,9 +198,11 @@ extension CreationEventController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if isEnoughInput() {
             saveBtn?.isEnabled = true
+            saveBtn?.setTitleColor(UIColor(red: 39/255, green: 93/255, blue: 173/255, alpha: 1.0), for: .normal)
         }
         else {
             saveBtn?.isEnabled = false
+            saveBtn?.setTitleColor(.lightGray, for: .normal)
         }
     }
 }

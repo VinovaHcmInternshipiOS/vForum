@@ -41,13 +41,16 @@ class ListEventController: UIViewController {
     
     @objc func addEventBtnPressed(_ sender: UIBarButtonItem) {
         let creationEvent = CreationEventController()
+        creationEvent.modalPresentationStyle = .fullScreen
         creationEvent.addEvent = { (event) in
             self.sortTypeBtn?.setTitle("Sorting", for: .normal)
             self.listEvent.removeAll()
             self.listEvent = EventManager.shared.getEvents()
             self.tableView?.reloadData()
         }
-        self.navigationController?.pushViewController(creationEvent, animated: true)
+        DispatchQueue.main.async {
+            self.present(creationEvent, animated: true, completion: nil)
+        }
     }
     
     @objc func refresh(_ sender: UIRefreshControl) {

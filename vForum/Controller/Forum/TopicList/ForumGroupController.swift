@@ -286,16 +286,14 @@ extension ForumGroupController {
 
 extension ForumGroupController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        /*var str = searchBar.text!
-        str = searchTes.count == 0 ? String(str.dropLast()) : str + string
+        var str = searchText
         
         if str == "" {
             sortedTopicData = topicData
         } else {
-            sortedPostData = topicData.filter{ $0["name"]!.lowercased().contains(str.lowercased()) }
+            sortedTopicData = topicData.filter{ $0["name"]!.lowercased().contains(str.lowercased()) }
         }
         
-        TopicList.reloadData()*/
-        print(searchText)
+        TopicList.reloadData()
     }
 }

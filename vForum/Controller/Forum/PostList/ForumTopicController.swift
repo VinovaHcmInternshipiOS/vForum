@@ -186,13 +186,14 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         //if goToNextView {
         let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
         vc.title = "Post"
+        print(sortedPostData, indexPath.row - 1)
         
-        let data = sortedPostData[indexPath.row]
+        let data = sortedPostData[indexPath.row-1]
         //print(data["title"]!)
         let title = data["title"]!
         vc.setData(title: title, description: "", username: "", likeCount: "0")
     
-        def.set(sortedPostData[indexPath.row]["_id"], forKey: "postId")
+        def.set(sortedPostData[indexPath.row - 1]["_id"], forKey: "postId")
         
         navigationController?.pushViewController(vc, animated: true)
         navigationController!.isNavigationBarHidden = false
@@ -202,7 +203,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
 
-
+// SEARCH BAR 
 extension ForumTopicController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var str = textField.text!

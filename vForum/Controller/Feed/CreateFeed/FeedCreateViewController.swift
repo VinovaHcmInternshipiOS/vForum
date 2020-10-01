@@ -18,6 +18,9 @@ class FeedCreateViewController: UIViewController {
     var imageArray = [UIImage]()
     let storage = Storage.storage().reference()
     var urlArray = [String]()
+    let remoteProvider = RemoteAPIProvider(configuration: FeedAppServerConfiguration.allTime)
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZiZmQ5ZTRjMDFiYjQxODhjMTEyYzciLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiZGlzcGxheV9uYW1lIjoiMTIzNDU2Nzg5IiwiaWF0IjoxNjAxNDc0NTM0LCJleHAiOjE2MDIwNzkzMzR9.Mk4ukqvcqYqJ2aOJadNe4TlvXMY5j7AifCCzZANSkK4"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtViewContent.delegate = self
@@ -209,16 +212,22 @@ extension FeedCreateViewController {
                     if (self.urlArray.count == self.imageArray.count) {
 
                         DispatchQueue.main.async {
-                            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaa Upload Success!")
-                        }
-                        DispatchQueue.main.async {
-                            for i in self.urlArray{
-                                print("bbbbbbbbbbbbbbbbbbbbbbb \(i)")
-                            }
+                            self.createFeedAPI(self.txtViewContent.text, self.urlArray)
+                            AlertView.showAlert(view: self, message: "Create Feed Success", title: "Success")
                         }
                     }
                 })
             })
+        }
+    }
+}
+
+extension FeedCreateViewController {
+    func createFeedAPI(_ description: String,_ attachments: [String]){
+        remoteProvider.requestFreeJSON(target: FeedMethod.createFeed(description: description, attachments: attachments), accessToken: self.token, fullfill: { (data) in
+            print(data)})
+        { (err) in
+            AlertView.showAlert(view: self, message: err.localizedDescription, title: "Error")
         }
     }
 }

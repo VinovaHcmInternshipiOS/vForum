@@ -37,7 +37,13 @@
 		22A6908325189E33000CE500 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A6908125189E33000CE500 /* ShowImageViewController.swift */; };
 		22A6908425189E33000CE500 /* ShowImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A6908225189E33000CE500 /* ShowImageViewController.xib */; };
 		22AC4168251DCB3F0096C475 /* UITextView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AC4167251DCB3F0096C475 /* UITextView+extension.swift */; };
+		22AD51A12524F81F006C563C /* NoCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AD519F2524F81F006C563C /* NoCommentTableViewCell.swift */; };
+		22AD51A22524F81F006C563C /* NoCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22AD51A02524F81F006C563C /* NoCommentTableViewCell.xib */; };
 		22AEC456251C52F60024B282 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AEC455251C52F60024B282 /* UIView+extension.swift */; };
+		22B0E98F2524500200968FED /* FeedCallAPIMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0E98E2524500200968FED /* FeedCallAPIMethod.swift */; };
+		22B0E9AA2524502100968FED /* FeedParseDataMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0E9A92524502100968FED /* FeedParseDataMethod.swift */; };
+		22B0E9AC252466C200968FED /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0E9AB252466C200968FED /* AlertMessage.swift */; };
+		22B0E9AE2524916000968FED /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0E9AD2524916000968FED /* String+extension.swift */; };
 		22B7E6EA251CE269001DFD31 /* ImageFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B7E6E8251CE269001DFD31 /* ImageFeedCell.swift */; };
 		22B7E6EB251CE269001DFD31 /* ImageFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B7E6E9251CE269001DFD31 /* ImageFeedCell.xib */; };
 		22F65A202521D64B00C3BA2D /* NotificationName+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F65A1F2521D64B00C3BA2D /* NotificationName+extension.swift */; };
@@ -319,7 +325,13 @@
 		22A6908125189E33000CE500 /* ShowImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
 		22A6908225189E33000CE500 /* ShowImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowImageViewController.xib; sourceTree = "<group>"; };
 		22AC4167251DCB3F0096C475 /* UITextView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+extension.swift"; sourceTree = "<group>"; };
+		22AD519F2524F81F006C563C /* NoCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCommentTableViewCell.swift; sourceTree = "<group>"; };
+		22AD51A02524F81F006C563C /* NoCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoCommentTableViewCell.xib; sourceTree = "<group>"; };
 		22AEC455251C52F60024B282 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		22B0E98E2524500200968FED /* FeedCallAPIMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCallAPIMethod.swift; sourceTree = "<group>"; };
+		22B0E9A92524502100968FED /* FeedParseDataMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParseDataMethod.swift; sourceTree = "<group>"; };
+		22B0E9AB252466C200968FED /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		22B0E9AD2524916000968FED /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		22B7E6E8251CE269001DFD31 /* ImageFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFeedCell.swift; sourceTree = "<group>"; };
 		22B7E6E9251CE269001DFD31 /* ImageFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageFeedCell.xib; sourceTree = "<group>"; };
 		22F65A1F2521D64B00C3BA2D /* NotificationName+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+extension.swift"; sourceTree = "<group>"; };
@@ -446,6 +458,8 @@
 				767B1F9C2521E0BA006CE89D /* GroupResponds.swift */,
 				767B1F7F2521E02A006CE89D /* Api.swift */,
 				224753852514FDA6002C8C8A /* BaseRemoteNetworking.swift */,
+				22B0E98E2524500200968FED /* FeedCallAPIMethod.swift */,
+				22B0E9A92524502100968FED /* FeedParseDataMethod.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -519,6 +533,7 @@
 		22A69067251863C5000CE500 /* DetailFeed */ = {
 			isa = PBXGroup;
 			children = (
+				22AD51BC2524F828006C563C /* FeedNoCommentTableViewCell */,
 				22906737251B967E00CDB190 /* FeedDetailTableCell */,
 				22A69068251863EE000CE500 /* FeedDetailViewController.swift */,
 				22A69069251863EE000CE500 /* FeedDetailViewController.xib */,
@@ -574,6 +589,15 @@
 			path = ShowImage;
 			sourceTree = "<group>";
 		};
+		22AD51BC2524F828006C563C /* FeedNoCommentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				22AD519F2524F81F006C563C /* NoCommentTableViewCell.swift */,
+				22AD51A02524F81F006C563C /* NoCommentTableViewCell.xib */,
+			);
+			path = FeedNoCommentTableViewCell;
+			sourceTree = "<group>";
+		};
 		22AEC43D251C52D70024B282 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +605,8 @@
 				22AC4167251DCB3F0096C475 /* UITextView+extension.swift */,
 				22F65A1F2521D64B00C3BA2D /* NotificationName+extension.swift */,
 				22F65A3A2521D64B00C3BA2D /* UserDefault.swift */,
+				22B0E9AB252466C200968FED /* AlertMessage.swift */,
+				22B0E9AD2524916000968FED /* String+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1392,6 +1418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AD51A22524F81F006C563C /* NoCommentTableViewCell.xib in Resources */,
 				22A6906B251863EE000CE500 /* FeedDetailViewController.xib in Resources */,
 				22A6907A25188927000CE500 /* FeedCreateButtonCollectionViewCell.xib in Resources */,
 				2229C4632521D62E00C658A4 /* FeedEditCardViewController.xib in Resources */,
@@ -1620,19 +1647,24 @@
 				22A6902B25184857000CE500 /* ReuseFeedCard.swift in Sources */,
 				767B1F9D2521E0BA006CE89D /* GroupResponds.swift in Sources */,
 				22AEC456251C52F60024B282 /* UIView+extension.swift in Sources */,
+				22B0E9AA2524502100968FED /* FeedParseDataMethod.swift in Sources */,
 				22A6906525185D7D000CE500 /* FeedHomeTableViewCell.swift in Sources */,
 				22A6908325189E33000CE500 /* ShowImageViewController.swift in Sources */,
 				FA5FA7AE251B48D6003F7B5F /* TokenResponse.swift in Sources */,
 				FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */,
 				FA5FA7AA251B48D6003F7B5F /* LoginVForumManager.swift in Sources */,
 				3E1C03CB251E3E6D00E6AC39 /* CreationEventController.swift in Sources */,
+				22B0E9AC252466C200968FED /* AlertMessage.swift in Sources */,
 				FA5FA7AB251B48D6003F7B5F /* LoginResponse.swift in Sources */,
 				3E1C03C7251E3D9300E6AC39 /* DateTimePickerEventController.swift in Sources */,
 				FAD3DE52251DA8E400578533 /* ForumController.swift in Sources */,
 				3E1C03BD251E3AC900E6AC39 /* ListEventController.swift in Sources */,
+				22B0E98F2524500200968FED /* FeedCallAPIMethod.swift in Sources */,
 				FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */,
 				FAD3DE47251D77AA00578533 /* PostPreviewCell.swift in Sources */,
 				FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */,
+				22B0E9AE2524916000968FED /* String+extension.swift in Sources */,
+				22AD51A12524F81F006C563C /* NoCommentTableViewCell.swift in Sources */,
 				3E1C03C5251E3D1E00E6AC39 /* DetailEventController.swift in Sources */,
 				3E1C03C1251E3CA700E6AC39 /* Event.swift in Sources */,
 				3E002925251EE9B800FF8004 /* NotificationView.swift in Sources */,

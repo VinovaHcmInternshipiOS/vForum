@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 ////        RemoteAPIProvider.testingMethod()
 //        let remoteProvider = RemoteAPIProvider(configuration: AppsevicesConfiguration.deverloper)
-//        remoteProvider.requestFreeJSON(target: GroupResult.group, accessToken: "") { (data) in
+//        remoteProvider.requestFreeJSON(target: GroupResult.group, accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0NDJkZTExZDBkMjY3MzcwNTNmYjgiLCJlbWFpbCI6ImN1cnRpc0BnbWFpbC5jb20iLCJyb2xlIjoibWVtYmVyIiwiZGlzcGxheV9uYW1lIjoiY3VydGlzIiwiaWF0IjoxNjAxNDU0ODI3LCJleHAiOjE2MDE0NTg0Mjd9.PQCLSEEbhdm21r4jri8tYYxbo-Bm88rqkdNIWjfLtPA", fullfill: { (data) in
 //            print(data)
 //            do {
 //                if let result = data["result"] {
@@ -33,25 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                    let decodable = JSONDecoder()
 //                    decodable.keyDecodingStrategy = .useDefaultKeys
 //                    decodable.dateDecodingStrategy = .millisecondsSince1970
-//                    
 //                    let list: [Group]? = try decodable.decode([Group].self, from: dataResult)
-//                    
 //                    print(list)
 //                }
 //            }
 //            catch let error {
 //                print(error)
 //            }
-//        } reject: { (err) in
+//            }) { (err) in
 //            print(err.localizedDescription)
 //        }
-//        remoteProvider.request(target: GroupResult.group, accessToken: "") { (returnData: [Group]?) in
-//            print(returnData?.count)
-//        } reject: { (Error) in
-//            print(Error)
-//        }
-
-        
+////        remoteProvider.request(target: GroupResult.group, accessToken: "") { (returnData: [Group]?) in
+////            print(returnData?.count)
+////        } reject: { (Error) in
+////            print(Error)
+////        }
+////
+////
         return true
     }
 

@@ -13,7 +13,7 @@ enum GroupResult : TargetType {
     var path: String {
         switch self {
         case .group:
-            return "/group"
+            return "/feed"
         default:
             return ""
         }
@@ -40,7 +40,8 @@ enum GroupResult : TargetType {
     var headers: [String : String]? {
         switch self {
         case .group:
-            return ["Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZiMDBiZjc2ZTA0NTNiOGI1YzdkZWQiLCJlbWFpbCI6Imh1eW5odm9ob2FuZ25hbTcxNEBnbWFpbC5jb20iLCJyb2xlIjoibWVtYmVyIiwiZGlzcGxheV9uYW1lIjoiaG9hbmduYW12aW5vdmEiLCJpYXQiOjE2MDEyODQ0ODAsImV4cCI6MTYwMTI4ODA4MH0.61yqj3w-0NnzpVtQMwHLGmrQok5npuN2Ybyo8gj1rvQ"]
+            return nil
+//            return ["Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0NDJkZTExZDBkMjY3MzcwNTNmYjgiLCJlbWFpbCI6ImN1cnRpc0BnbWFpbC5jb20iLCJyb2xlIjoibWVtYmVyIiwiZGlzcGxheV9uYW1lIjoiY3VydGlzIiwiaWF0IjoxNjAxNDU0ODI3LCJleHAiOjE2MDE0NTg0Mjd9.PQCLSEEbhdm21r4jri8tYYxbo-Bm88rqkdNIWjfLtPA"]
         default:
             return nil
         }

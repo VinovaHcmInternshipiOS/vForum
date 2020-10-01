@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import SnapKit
 import Alamofire
+import SVProgressHUD
 
 class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var GroupItemList: UITableView!
@@ -16,6 +17,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         
         let role = def.string(forKey: "role")!
         if role == "admin" {
@@ -38,7 +40,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         getData()
         navigationController!.isNavigationBarHidden = false
     }
@@ -96,13 +98,15 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func showDeletePopup(_ indexPath: IndexPath) {
+        
         let alert = UIAlertController(title: "Delete group", message: "This group will be deleted permanently.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
             self.goToNextView = true
         }))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
             let networkManager = NetworkManager.shared
-            
+
+            SVProgressHUD.show()
             let url : String = "http://localhost:4000/v1/api/group/\(String(describing: self.groupData[indexPath.row]["_id"]!))"
             
             let headers: HTTPHeaders = [
@@ -118,6 +122,8 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
                     
                     self.getData()
                     self.GroupItemList.reloadData()
+
+                    SVProgressHUD.dismiss()
                     
                 case .failure( _):
                     print("f")
@@ -182,6 +188,7 @@ extension ForumController {
             }
 
             self.GroupItemList.reloadData()
+            SVProgressHUD.dismiss()
         })
     }
 }

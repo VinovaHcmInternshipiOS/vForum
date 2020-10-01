@@ -18,9 +18,9 @@
                 <outlet property="listCmtOutlet" destination="U7B-kS-96L" id="Jop-Dq-MkK"/>
                 <outlet property="mainViewOutlet" destination="Vvf-Ve-WAl" id="8NE-B7-EbU"/>
                 <outlet property="scrollMainView" destination="0ng-5W-qns" id="lFE-UI-Vtr"/>
-                <outlet property="titlePostOutlet" destination="0Cd-nd-oJV" id="er5-lI-lW9"/>
+                <outlet property="titlePostOutlet" destination="0Cd-nd-oJV" id="Y6y-xr-lk2"/>
                 <outlet property="userOutlet" destination="Phk-G4-2cy" id="Paz-pL-tVI"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="fzd-ga-2wc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="Qg6-cx-fDE"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

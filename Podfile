@@ -11,6 +11,7 @@ target 'vForum' do
   pod 'GoogleSignIn'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
+  pod 'SVProgressHUD'
 
   target 'vForumTests' do
     inherit! :search_paths

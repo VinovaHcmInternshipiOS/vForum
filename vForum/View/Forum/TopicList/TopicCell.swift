@@ -25,6 +25,7 @@ extension TopicCell {
     }
     
     func setPostCount(_ count: Int) {
+        /*
         guard count >= 1000 else {
             PostCount.text = String(count)
             return
@@ -40,13 +41,14 @@ extension TopicCell {
         else if count < 1000000 {
             PostCount.text = String(str[0]) + String(str[1]) + String(str[2]) + "K"
         }
+ */
     }
     
     func initCell() {
         backgroundColor = .clear
         MainView.layer.cornerRadius = 8
         
-        PostCount.layer.cornerRadius = 22.5
+        //PostCount.layer.cornerRadius = 22.5
         uncheck()
     }
     

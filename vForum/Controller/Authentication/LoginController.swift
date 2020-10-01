@@ -5,6 +5,7 @@ import Firebase
 import GoogleSignIn
 import GoogleDataTransport
 import GoogleUtilities
+import SVProgressHUD
 
 class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     
@@ -203,7 +204,7 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
 // MARK: - LOGIN
 extension LoginController {
     @IBAction func PressLogin(_ sender: UIButton) {
-        
+        SVProgressHUD.show()
         // MARK: - ADD AUTHENTICATION
         let email = Username.text!
         let password = Password.text!
@@ -238,6 +239,7 @@ extension LoginController {
                         self.navigationController?.pushViewController(vc, animated: false)
                     }
                     else {
+                        SVProgressHUD.dismiss()
                         self.ErrorLabel.isHidden = false
                         self.ErrorLabel.text! = String(describing: parsed["message"]!)
                     }

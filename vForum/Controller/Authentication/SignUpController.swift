@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 class SignUpController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextFieldDelegate {
     
@@ -236,6 +237,7 @@ extension SignUpController {
     }
     
     @IBAction func signUp() {
+        SVProgressHUD.show()
         let displayname = fields[0].TextField.text!
         let gender = fields[1].MaleFemale.selectedSegmentIndex == 0 ? "male" : "female"
         let email = fields[2].TextField.text!
@@ -252,7 +254,8 @@ extension SignUpController {
             switch respond.result {
             case .success(let JSON):
                 let parsed = JSON as! NSDictionary
-                //print(parsed)
+                
+                SVProgressHUD.dismiss()
                 
                 if parsed["success"] != nil {
                     let alert = UIAlertController(title: "Sign up successfully!", message: "Now login with your provided account.", preferredStyle: .alert)

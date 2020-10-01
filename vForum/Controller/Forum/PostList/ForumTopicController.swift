@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import SVProgressHUD
 
 class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
@@ -217,6 +218,7 @@ extension ForumTopicController: UITextFieldDelegate {
 
 extension ForumTopicController {
     func getData() {
+        SVProgressHUD.show()
         let networkManager = NetworkManager.shared
         
         let url : String = "http://localhost:4000/v1/api/group/\(def.string(forKey: "groupId")!)/topic/\(def.string(forKey: "topicId")!)/post"
@@ -248,9 +250,10 @@ extension ForumTopicController {
                         ])
                     }
                     self.sortedPostData = self.postData
+                    self.postList.reloadData()
                 }
+                SVProgressHUD.dismiss()
                 
-                self.postList.reloadData()
                 
             case .failure( _):
                 print("f")

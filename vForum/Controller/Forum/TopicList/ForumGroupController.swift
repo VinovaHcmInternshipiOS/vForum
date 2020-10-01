@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import SVProgressHUD
 
 class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,6 +18,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         navigationController?.navigationBar.isTranslucent = false
         
         let role = def.string(forKey: "role")!
@@ -77,13 +79,13 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.TopicList.reloadData()
             })
         )
-        choiceBox.addAction(UIAlertAction(title: "Most posts", style: .default, handler: { action in
+        /*choiceBox.addAction(UIAlertAction(title: "Most posts", style: .default, handler: { action in
                 self.sortedTopicData.sort {
                     (Int($0["postCount"]!) ?? 0) > (Int($1["postCount"]!) ?? 0)
                 }
                 self.TopicList.reloadData()
             })
-        )
+        )*/
         choiceBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(choiceBox, animated: true)
     }
@@ -132,7 +134,6 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if goToNextView {
-            print(indexPath.row, topicData.count)
             def.set(sortedTopicData[indexPath.row]["_id"], forKey: "topicId")
             
             let vc = ForumTopicController(nibName: "ForumTopicView", bundle: nil)
@@ -175,6 +176,7 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
         }))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
             let networkManager = NetworkManager.shared
+            SVProgressHUD.show()
             
             let url : String = "http://localhost:4000/v1/api/group/\(self.def.string(forKey: "groupId")!)/topic/\(String(describing: self.topicData[indexPath.row]["_id"]!))"
             
@@ -188,6 +190,8 @@ class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDa
                 case .success(let JSON):
                     let parsed = JSON as! NSDictionary
                     print(parsed)
+
+                    SVProgressHUD.dismiss()
                     
                     if String(describing: parsed["success"]!) == "0" {
                         let alert = UIAlertController(title: "Error!", message: String(describing: parsed["message"]!), preferredStyle: .alert)
@@ -235,19 +239,20 @@ extension ForumGroupController {
         
         networkManager.request(url, parameters: parameter, headers: headers).responseJSON(completionHandler: {respond in
             
-            //print(respond)
             switch respond.result {
             case .success(let JSON):
                 let parsed = JSON as! NSDictionary
-                //print(parsed)
                 
                 if parsed["result"] != nil {
+                    //print(parsed)
+                    self.topicData = []
                     let result = parsed["result"] as! Array<NSDictionary>
                     
                     for x in result {
                         
+                        /*
                         let topicUrl = "http://localhost:4000/v1/api/group/\(self.def.string(forKey: "groupId")!)/topic/\(String(describing: x["_id"]!))/post"
-                        
+                        //print("adadadadadadada")
                         networkManager.request(topicUrl, parameters: [:], headers: headers).responseJSON(completionHandler: {respond in
                             
                             switch respond.result {
@@ -256,28 +261,20 @@ extension ForumGroupController {
                                 
                                 if parsed["result"] != nil {
                                     let res = parsed["result"] as! Array<NSDictionary>
-
-                                    self.topicData = []
-                                    self.topicData.append([
-                                        "_id": String(describing: x["_id"]!),
-                                        "name": String(describing: x["name"]!),
-                                        "createdBy": String(describing: x["createdBy"]!),
-                                        "createdAt": String(describing: x["createdAt"]!),
-                                        "postCount": String(res.count),
-                                        "description":  String(describing: x["description"]!)
-                                    ])
-                                    self.sortedTopicData = self.topicData
-                                } else {
-                                    print("nil")
-                                }
-                                self.TopicList.reloadData()
-                                
-                            case .failure( _):
-                                print("f")
-                            }
-                        })
+                        */
+                        self.topicData.append([
+                            "_id": String(describing: x["_id"]!),
+                            "name": String(describing: x["name"]!),
+                            "createdBy": String(describing: x["createdBy"]!),
+                            "createdAt": String(describing: x["createdAt"]!),
+                            "postCount": "0",
+                            "description":  String(describing: x["description"]!)
+                        ])
                     }
+                    self.sortedTopicData = self.topicData
+                    self.TopicList.reloadData()
                 }
+                SVProgressHUD.dismiss()
                 
             case .failure( _):
                 print("f")

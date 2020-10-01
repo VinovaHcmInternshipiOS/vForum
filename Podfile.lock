@@ -100,6 +100,7 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.10)
   - SnapKit (4.2.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
@@ -109,6 +110,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - IQKeyboardManagerSwift
   - SnapKit (~> 4.0)
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -132,6 +134,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SnapKit
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
@@ -154,7 +157,8 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 9341f3a4310956671db25a9d6c94ea87267940e8
+PODFILE CHECKSUM: 7b5f61b0cd73560d0ee6aa3bc0bcf6321e900fc3
 
 COCOAPODS: 1.9.3

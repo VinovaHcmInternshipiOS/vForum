@@ -6,7 +6,8 @@ import SVProgressHUD
 class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var TopicList: UITableView!
-    @IBOutlet weak var SearchBar: UITextField!
+    
+    
     
     let def = UserDefaults.standard
     

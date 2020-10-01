@@ -95,6 +95,17 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         getData()
     }
     
+    @objc func viewMoreCmt(sender : UIButton){
+        let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
+        vc.title = "Post"
+        let data = postData[sender.tag]
+        let title = data["title"]!
+        vc.setData(title: title, description: "", username: "", likeCount: "0")
+        def.set(postData[sender.tag]["_id"], forKey: "postId")
+        navigationController?.pushViewController(vc, animated: true)
+        navigationController!.isNavigationBarHidden = false
+    }
+    
     func convertToDateTime(_ str: String)->Date {
         let dateFormatter = ISO8601DateFormatter()
         let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
@@ -143,7 +154,9 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostPreviewCell
-            
+
+            cell.ViewMoreComments.addTarget(self, action: #selector(viewMoreCmt), for: .touchUpInside)
+                  cell.ViewMoreComments.tag = indexPath.row - 1
             cell.setConstraints()
             
             cell.setTitle(sortedPostData[indexPath.row - 1]["title"]!)

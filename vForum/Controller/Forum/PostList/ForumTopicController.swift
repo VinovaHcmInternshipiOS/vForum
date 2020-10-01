@@ -99,8 +99,10 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
         vc.title = "Post"
         let data = postData[sender.tag]
-        let title = data["title"]!
-        vc.setData(title: title, description: "", username: "", likeCount: "0")
+        //print(data["title"]!)
+        if let title = data["title"] , let description = data["description"] , let user = data["createdBy"], let countLike = data["countLike"] {
+            vc.setData(title: title, description: description, username: "@" + user, likeCount: Int(countLike)!)
+        }
         def.set(postData[sender.tag]["_id"], forKey: "postId")
         navigationController?.pushViewController(vc, animated: true)
         navigationController!.isNavigationBarHidden = false

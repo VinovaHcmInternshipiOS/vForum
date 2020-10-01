@@ -25,6 +25,12 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
     @IBOutlet weak var SignUpButton: UIButton!
     @IBOutlet weak var LoginButton: UIButton!
     
+    @IBOutlet weak var ShowPasswordButton: UIButton!
+    
+    @IBAction func showPassword() {
+        Password.isSecureTextEntry = !Password.isSecureTextEntry
+    }
+    
     @IBOutlet weak var btnLoginFacebook: UIButton!
     @IBOutlet weak var btnLoginGg: UIButton!
     
@@ -105,7 +111,13 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
             make.top.equalTo(PasswordFrame)
             make.bottom.equalTo(PasswordFrame)
             make.left.equalTo(PasswordIcon.snp_right).offset(10)
-            make.right.equalTo(PasswordFrame)
+            make.right.equalTo(PasswordFrame).offset(-50)
+        }
+        ShowPasswordButton.snp.makeConstraints{ (make)->Void in
+            make.top.equalTo(PasswordFrame)
+            make.bottom.equalTo(PasswordFrame)
+            make.width.equalTo(CGFloat(40))
+            make.right.equalTo(PasswordFrame).offset(-7)
         }
         LoginButton.snp.makeConstraints{ (make)->Void in
             make.top.equalTo(PasswordFrame.snp_bottom).offset(off-20)

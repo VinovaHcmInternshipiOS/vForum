@@ -24,6 +24,7 @@ class PostDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titlePostOutlet?.text = "23432"
         
         /*let networkManager = NetworkManager.shared
         
@@ -61,7 +62,7 @@ class PostDetailViewController: UIViewController {
     }
     
     func setData(title: String, description: String, username: String, likeCount: String) {
-        titlePostOutlet?.text = "23432"
+        //titlePostOutlet?.text = "23432"
     }
     
     @objc func imgTapped(tapGestureRecognizer: UITapGestureRecognizer){

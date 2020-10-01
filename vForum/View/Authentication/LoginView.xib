@@ -17,6 +17,7 @@
                 <outlet property="Password" destination="rMj-Hs-EsH" id="lwx-nH-36K"/>
                 <outlet property="PasswordFrame" destination="bzY-lO-ORv" id="bT2-Gv-97C"/>
                 <outlet property="PasswordIcon" destination="PQP-ug-v5O" id="aio-gP-M8c"/>
+                <outlet property="ShowPasswordButton" destination="gMu-ed-Dc0" id="m6d-ul-WkK"/>
                 <outlet property="SignUpButton" destination="6Jl-we-O9s" id="aBU-Yn-5mh"/>
                 <outlet property="Username" destination="0Ar-Pt-PUr" id="tJU-jh-ogd"/>
                 <outlet property="UsernameFrame" destination="Gfm-bl-sTN" id="rcN-CG-JtA"/>
@@ -62,6 +63,17 @@
                             <rect key="frame" x="8" y="0.0" width="25" height="47"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMu-ed-Dc0">
+                            <rect key="frame" x="224" y="7" width="40" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                            <state key="normal" title="Show">
+                                <color key="titleColor" red="0.10796579119999999" green="0.28577161820000002" blue="0.55787136130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="showPassword" destination="-1" eventType="touchUpInside" id="dp8-Dn-a3H"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>

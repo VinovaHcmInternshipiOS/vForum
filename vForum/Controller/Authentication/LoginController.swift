@@ -45,7 +45,7 @@ class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate 
         super.viewDidLoad()
         ErrorLabel.isHidden = true
         
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        //GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().presentingViewController = self
         

@@ -174,12 +174,13 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
         vc.title = "Post"
         
-        let data = postData[indexPath.row]
+        let data = postData[indexPath.row - 1]
         //print(data["title"]!)
-        let title = data["title"]!
-        vc.setData(title: title, description: "", username: "", likeCount: "0")
-    
-        def.set(postData[indexPath.row]["_id"], forKey: "postId")
+        if let title = data["title"] , let description = data["description"] , let user = data["createdBy"], let countLike = data["countLike"] {
+            vc.setData(title: title, description: description, username: "@" + user, likeCount: Int(countLike)!)
+        }
+        
+        def.set(postData[indexPath.row - 1]["_id"], forKey: "postId")
         
         navigationController?.pushViewController(vc, animated: true)
         navigationController!.isNavigationBarHidden = false
@@ -323,3 +324,4 @@ extension ForumTopicController {
     }
 }
 */
+

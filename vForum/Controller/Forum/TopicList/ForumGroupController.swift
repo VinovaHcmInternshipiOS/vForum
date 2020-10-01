@@ -282,3 +282,22 @@ extension ForumGroupController {
         })
     }
 }
+
+
+extension ForumGroupController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        var str = searchText
+        
+        if str == "" {
+            sortedTopicData = topicData
+        } else {
+            sortedTopicData = topicData.filter{ $0["name"]!.lowercased().contains(str.lowercased()) }
+        }
+        
+        TopicList.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+}

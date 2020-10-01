@@ -11,6 +11,13 @@
 		4F8D28662B34615817DB8098 /* Pods_vForum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8991A6ABA10F3FB245D45E2 /* Pods_vForum.framework */; };
 		5773BE85DC715A7E062FDD37 /* Pods_vForumTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B52730352233632F6981E74 /* Pods_vForumTests.framework */; };
 		76525AED92DEEB6D0032E877 /* Pods_vForum_vForumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */; };
+		76669FA32525BE590020A68E /* ForumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76669FA22525BE590020A68E /* ForumView.xib */; };
+		76669FA92525BE6F0020A68E /* ForumGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76669FA82525BE6F0020A68E /* ForumGroupView.xib */; };
+		76669FAF2525BE7E0020A68E /* ForumTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76669FAE2525BE7E0020A68E /* ForumTopicView.xib */; };
+		769B004925259AA2006DCCCC /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769B002B25259AA1006DCCCC /* InfoViewController.swift */; };
+		769B004A25259AA2006DCCCC /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769B004625259AA1006DCCCC /* InfoViewController.xib */; };
+		769B004B25259AA2006DCCCC /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769B004725259AA2006DCCCC /* InfoTableViewCell.swift */; };
+		769B004C25259AA2006DCCCC /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 769B004825259AA2006DCCCC /* InfoTableViewCell.xib */; };
 		FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2102002510ACCC0003CC42 /* LoginView.xib */; };
 		FA387F4F2519AF53006D46B2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA387F372519AF53006D46B2 /* AppController.swift */; };
 		FA3E56F2250CF86500AA2FD8 /* SignUpField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E56F1250CF86500AA2FD8 /* SignUpField.swift */; };
@@ -33,9 +40,7 @@
 		FAB575492519B0D4004FA45E /* GroupCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB575462519B0D1004FA45E /* GroupCellView.xib */; };
 		FAB5754A2519B0D4004FA45E /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB575482519B0D4004FA45E /* GroupCell.swift */; };
 		FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB575452519B0CF004FA45E /* TopicCell.swift */; };
-		FAB5754E2519B0D7004FA45E /* ForumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB575472519B0D2004FA45E /* ForumView.xib */; };
 		FAB5754F2519B0D7004FA45E /* TopicCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB5754B2519B0D5004FA45E /* TopicCellView.xib */; };
-		FAB575502519B0D7004FA45E /* ForumGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB5754C2519B0D7004FA45E /* ForumGroupView.xib */; };
 		FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB631AB2511B33100F603BE /* GoogleService-Info.plist */; };
 		FAB631B02511E35B00F603BE /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB631AF2511E35B00F603BE /* LoginButton.swift */; };
 		FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */; };
@@ -46,7 +51,6 @@
 		FACCEFC72520B1AF0076ACBC /* AddGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */; };
 		FACCEFC92520E54E0076ACBC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACCEFC82520E54E0076ACBC /* NetworkManager.swift */; };
 		FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */; };
-		FAD3DE46251D77AA00578533 /* ForumTopicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3DE43251D77AA00578533 /* ForumTopicView.xib */; };
 		FAD3DE47251D77AA00578533 /* PostPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */; };
 		FAD3DE50251DA8E400578533 /* ForumTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE4D251DA8E400578533 /* ForumTopicController.swift */; };
 		FAD3DE51251DA8E400578533 /* ForumGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3DE4E251DA8E400578533 /* ForumGroupController.swift */; };
@@ -63,6 +67,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		769B004425259AA1006DCCCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA85A68F250B76560029A47A /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E97D43C46A45EE515A4DA3AF94398441;
+			remoteInfo = SVProgressHUD;
+		};
 		FA85A698250B76560029A47A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA85A68F250B76560029A47A /* Pods.xcodeproj */;
@@ -232,6 +243,13 @@
 		296FABA32C8AFF516C4F6ECE /* Pods-vForumTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.release.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.release.xcconfig"; sourceTree = "<group>"; };
 		5268B64A82D9D6D3982A5A87 /* Pods_vForum_vForumUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vForum_vForumUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C5E303BF3D636102AE4981 /* Pods-vForumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForumTests.debug.xcconfig"; path = "Target Support Files/Pods-vForumTests/Pods-vForumTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76669FA22525BE590020A68E /* ForumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumView.xib; sourceTree = "<group>"; };
+		76669FA82525BE6F0020A68E /* ForumGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumGroupView.xib; sourceTree = "<group>"; };
+		76669FAE2525BE7E0020A68E /* ForumTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumTopicView.xib; sourceTree = "<group>"; };
+		769B002B25259AA1006DCCCC /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		769B004625259AA1006DCCCC /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		769B004725259AA2006DCCCC /* InfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		769B004825259AA2006DCCCC /* InfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		7EFB8B6E3D9E2893A8EA223D /* Pods-vForum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum.debug.xcconfig"; path = "Target Support Files/Pods-vForum/Pods-vForum.debug.xcconfig"; sourceTree = "<group>"; };
 		8EB369C9CCC03712780D89B2 /* Pods-vForum-vForumUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.release.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A149E7CADE49BDFE86757CD9 /* Pods-vForum-vForumUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vForum-vForumUITests.debug.xcconfig"; path = "Target Support Files/Pods-vForum-vForumUITests/Pods-vForum-vForumUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,10 +281,8 @@
 		FA8D3415250B54910070DD4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAB575452519B0CF004FA45E /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicCell.swift; sourceTree = "<group>"; };
 		FAB575462519B0D1004FA45E /* GroupCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCellView.xib; sourceTree = "<group>"; };
-		FAB575472519B0D2004FA45E /* ForumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumView.xib; sourceTree = "<group>"; };
 		FAB575482519B0D4004FA45E /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		FAB5754B2519B0D5004FA45E /* TopicCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicCellView.xib; sourceTree = "<group>"; };
-		FAB5754C2519B0D7004FA45E /* ForumGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForumGroupView.xib; sourceTree = "<group>"; };
 		FAB631AB2511B33100F603BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAB631AF2511E35B00F603BE /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		FABF8578250F4F3D000B20B6 /* SignUpFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpFieldView.xib; sourceTree = "<group>"; };
@@ -277,7 +293,6 @@
 		FACCEFC42520B1AF0076ACBC /* AddGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddGroupView.xib; sourceTree = "<group>"; };
 		FACCEFC82520E54E0076ACBC /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostPreviewCellView.xib; sourceTree = "<group>"; };
-		FAD3DE43251D77AA00578533 /* ForumTopicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForumTopicView.xib; path = vForum/View/Forum/PostList/ForumTopicView.xib; sourceTree = SOURCE_ROOT; };
 		FAD3DE44251D77AA00578533 /* PostPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostPreviewCell.swift; path = vForum/View/Forum/PostList/PostPreviewCell.swift; sourceTree = SOURCE_ROOT; };
 		FAD3DE4D251DA8E400578533 /* ForumTopicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTopicController.swift; sourceTree = "<group>"; };
 		FAD3DE4E251DA8E400578533 /* ForumGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumGroupController.swift; sourceTree = "<group>"; };
@@ -705,6 +720,7 @@
 				FA85A6A1250B76560029A47A /* Pods_vForumTests.framework */,
 				FAB6318F2511ABBE00F603BE /* FBLPromises.framework */,
 				FA85A6A3250B76560029A47A /* SnapKit.framework */,
+				769B004525259AA1006DCCCC /* SVProgressHUD.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -838,7 +854,7 @@
 		FAD3DE7A251EAAA500578533 /* GroupList */ = {
 			isa = PBXGroup;
 			children = (
-				FAB575472519B0D2004FA45E /* ForumView.xib */,
+				76669FA22525BE590020A68E /* ForumView.xib */,
 				FAB575482519B0D4004FA45E /* GroupCell.swift */,
 				FAB575462519B0D1004FA45E /* GroupCellView.xib */,
 			);
@@ -848,7 +864,7 @@
 		FAD3DE7B251EAAB500578533 /* TopicList */ = {
 			isa = PBXGroup;
 			children = (
-				FAB5754C2519B0D7004FA45E /* ForumGroupView.xib */,
+				76669FA82525BE6F0020A68E /* ForumGroupView.xib */,
 				FAB575452519B0CF004FA45E /* TopicCell.swift */,
 				FAB5754B2519B0D5004FA45E /* TopicCellView.xib */,
 			);
@@ -858,7 +874,7 @@
 		FAD3DE7C251EABE000578533 /* PostList */ = {
 			isa = PBXGroup;
 			children = (
-				FAD3DE43251D77AA00578533 /* ForumTopicView.xib */,
+				76669FAE2525BE7E0020A68E /* ForumTopicView.xib */,
 				FAD3DE7D251EAC3D00578533 /* TopicTitleCellView.xib */,
 				FAD3DE83251ECAA500578533 /* TopicTitleCell.swift */,
 				FAD3DE42251D77AA00578533 /* PostPreviewCellView.xib */,
@@ -894,6 +910,10 @@
 		FAD3DE82251EC8CE00578533 /* PostDetail */ = {
 			isa = PBXGroup;
 			children = (
+				769B004725259AA2006DCCCC /* InfoTableViewCell.swift */,
+				769B004825259AA2006DCCCC /* InfoTableViewCell.xib */,
+				769B002B25259AA1006DCCCC /* InfoViewController.swift */,
+				769B004625259AA1006DCCCC /* InfoViewController.xib */,
 				FAD3DE54251DC7E300578533 /* PostCmtTableViewCell.swift */,
 				FAD3DE53251DC7E300578533 /* PostCmtTableViewCell.xib */,
 				FAD3DE68251DCBD600578533 /* PostDetailViewController.xib */,
@@ -1015,6 +1035,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		769B004525259AA1006DCCCC /* SVProgressHUD.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SVProgressHUD.framework;
+			remoteRef = 769B004425259AA1006DCCCC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		FA85A699250B76560029A47A /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1155,24 +1182,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76669FA92525BE6F0020A68E /* ForumGroupView.xib in Resources */,
 				FACCEFC52520B1AF0076ACBC /* AddViewController.xib in Resources */,
 				FAD3DE7E251EAC3D00578533 /* TopicTitleCellView.xib in Resources */,
 				FAD3DE45251D77AA00578533 /* PostPreviewCellView.xib in Resources */,
 				FAD3DE60251DC8E600578533 /* SettingViewController.xib in Resources */,
 				FAB631AC2511B33100F603BE /* GoogleService-Info.plist in Resources */,
+				76669FAF2525BE7E0020A68E /* ForumTopicView.xib in Resources */,
 				FAB5754F2519B0D7004FA45E /* TopicCellView.xib in Resources */,
 				FA8D33FE250B54910070DD4A /* LaunchScreen.storyboard in Resources */,
-				FAB5754E2519B0D7004FA45E /* ForumView.xib in Resources */,
-				FAB575502519B0D7004FA45E /* ForumGroupView.xib in Resources */,
-				FAD3DE46251D77AA00578533 /* ForumTopicView.xib in Resources */,
 				FA2102012510ACCC0003CC42 /* LoginView.xib in Resources */,
 				FAD3DE69251DCBD600578533 /* PostDetailViewController.xib in Resources */,
 				FAD3DE55251DC7E300578533 /* PostCmtTableViewCell.xib in Resources */,
+				76669FA32525BE590020A68E /* ForumView.xib in Resources */,
 				FA697CE6250F167900AF9717 /* SignUpView.xib in Resources */,
 				FA8D33FB250B54910070DD4A /* Assets.xcassets in Resources */,
 				FABF8579250F4F3D000B20B6 /* SignUpFieldView.xib in Resources */,
+				769B004C25259AA2006DCCCC /* InfoTableViewCell.xib in Resources */,
 				FAD3DE5E251DC8DF00578533 /* SettingTableViewCell.xib in Resources */,
 				FACCEFC72520B1AF0076ACBC /* AddGroupView.xib in Resources */,
+				769B004A25259AA2006DCCCC /* InfoViewController.xib in Resources */,
 				FAB575492519B0D4004FA45E /* GroupCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1345,7 +1374,9 @@
 				FACCEFBB2520B1770076ACBC /* AddGroupController.swift in Sources */,
 				FAD3DE5C251DC8D800578533 /* SettingTableViewCell.swift in Sources */,
 				224753862514FDA6002C8C8A /* BaseRemoteNetworking.swift in Sources */,
+				769B004925259AA2006DCCCC /* InfoViewController.swift in Sources */,
 				FAB5754D2519B0D7004FA45E /* TopicCell.swift in Sources */,
+				769B004B25259AA2006DCCCC /* InfoTableViewCell.swift in Sources */,
 				FA8D33F6250B547C0070DD4A /* LoginController.swift in Sources */,
 				FA5FA7AC251B48D6003F7B5F /* RegisterResponse.swift in Sources */,
 				FACCEFC92520E54E0076ACBC /* NetworkManager.swift in Sources */,

@@ -9,6 +9,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var groupName = "GroupName"
     var groupData: [[String:String]] = []
+    var sortedGroupData: [[String:String]] = []
     
     var deletePopupState: Int = 0
     var goToNextView: Bool = true
@@ -52,7 +53,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupData.count
+        return sortedGroupData.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -61,8 +62,8 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath) as! GroupCell
 
         cell.initCell()
-        cell.setTitle(groupData[indexPath.row]["name"]!)
-        cell.setTime(groupData[indexPath.row]["createdAt"]!)
+        cell.setTitle(sortedGroupData[indexPath.row]["name"]!)
+        cell.setTime(sortedGroupData[indexPath.row]["createdAt"]!)
         return cell
     }
     
@@ -70,8 +71,8 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
         if goToNextView {
             let vc = ForumGroupController(nibName: "ForumGroupView", bundle: nil)
             
-            vc.title = groupData[indexPath.row]["name"]
-            def.set(groupData[indexPath.row]["_id"], forKey: "groupId")
+            vc.title = sortedGroupData[indexPath.row]["name"]
+            def.set(sortedGroupData[indexPath.row]["_id"], forKey: "groupId")
             
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -107,7 +108,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
             let networkManager = NetworkManager.shared
 
             SVProgressHUD.show()
-            let url : String = "http://localhost:4000/v1/api/group/\(String(describing: self.groupData[indexPath.row]["_id"]!))"
+            let url : String = "http://localhost:4000/v1/api/group/\(String(describing: self.sortedGroupData[indexPath.row]["_id"]!))"
             
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(String(describing: self.def.object(forKey: "accessToken")!))"
@@ -117,12 +118,8 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 switch respond.result {
                 case .success(_):
-                    //let parsed = JSON as! NSDictionary
-                    //print(parsed)
-                    
                     self.getData()
-                    self.GroupItemList.reloadData()
-
+                    //self.GroupItemList.reloadData()
                     SVProgressHUD.dismiss()
                     
                 case .failure( _):
@@ -186,9 +183,28 @@ extension ForumController {
             case .failure( _):
                 print("f")
             }
-
+            self.sortedGroupData = self.groupData
             self.GroupItemList.reloadData()
             SVProgressHUD.dismiss()
         })
+    }
+}
+
+
+extension ForumController: UISearchBarDelegate, UITextFieldDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let str = searchText
+        
+        if str == "" {
+            sortedGroupData = groupData
+        } else {
+            sortedGroupData = groupData.filter{ $0["name"]!.lowercased().contains(str.lowercased()) }
+        }
+        
+        GroupItemList.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

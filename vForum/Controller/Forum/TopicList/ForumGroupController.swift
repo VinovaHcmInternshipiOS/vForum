@@ -6,7 +6,6 @@ import SVProgressHUD
 class ForumGroupController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var TopicList: UITableView!
-    @IBOutlet weak var SearchBar: UITextField!
     
     let def = UserDefaults.standard
     
@@ -267,13 +266,16 @@ extension ForumGroupController {
                             "name": String(describing: x["name"]!),
                             "createdBy": String(describing: x["createdBy"]!),
                             "createdAt": String(describing: x["createdAt"]!),
-                            "postCount": "0",
+                            //"postCount": "0",
                             "description":  String(describing: x["description"]!)
                         ])
                     }
-                    self.sortedTopicData = self.topicData
-                    self.TopicList.reloadData()
+                } else {
+                    self.topicData = []
                 }
+
+                self.sortedTopicData = self.topicData
+                self.TopicList.reloadData()
                 SVProgressHUD.dismiss()
                 
             case .failure( _):
@@ -282,6 +284,7 @@ extension ForumGroupController {
         })
     }
 }
+
 
 
 extension ForumGroupController: UISearchBarDelegate {

@@ -120,6 +120,7 @@ class ForumController: UIViewController, UITableViewDelegate, UITableViewDataSou
                 case .success(_):
                     self.getData()
                     //self.GroupItemList.reloadData()
+
                     SVProgressHUD.dismiss()
                     
                 case .failure( _):

@@ -95,6 +95,17 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         getData()
     }
     
+    @objc func viewMoreCmt(sender : UIButton){
+        let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
+        vc.title = "Post"
+        let data = postData[sender.tag]
+        let title = data["title"]!
+        vc.setData(title: title, description: "", username: "", likeCount: "0")
+        def.set(postData[sender.tag]["_id"], forKey: "postId")
+        navigationController?.pushViewController(vc, animated: true)
+        navigationController!.isNavigationBarHidden = false
+    }
+    
     func convertToDateTime(_ str: String)->Date {
         let dateFormatter = ISO8601DateFormatter()
         let trimmedIsoString = str.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
@@ -143,7 +154,9 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostPreviewCell
-            
+
+            cell.ViewMoreComments.addTarget(self, action: #selector(viewMoreCmt), for: .touchUpInside)
+                  cell.ViewMoreComments.tag = indexPath.row - 1
             cell.setConstraints()
             
             cell.setTitle(sortedPostData[indexPath.row - 1]["title"]!)
@@ -173,7 +186,9 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         //if goToNextView {
         let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
         vc.title = "Post"
+        print(sortedPostData, indexPath.row - 1)
         
+
         let data = postData[indexPath.row - 1]
         //print(data["title"]!)
         if let title = data["title"] , let description = data["description"] , let user = data["createdBy"], let countLike = data["countLike"] {
@@ -181,6 +196,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         def.set(postData[indexPath.row - 1]["_id"], forKey: "postId")
+
         
         navigationController?.pushViewController(vc, animated: true)
         navigationController!.isNavigationBarHidden = false
@@ -190,7 +206,7 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
 
-
+// SEARCH BAR 
 extension ForumTopicController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var str = textField.text!
@@ -207,8 +223,9 @@ extension ForumTopicController: UITextFieldDelegate {
         return true
     }
 
-    private func textFieldShouldReturn(_ textField: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField)->Bool {
         textField.endEditing(true)
+        return true
     }
 }
 

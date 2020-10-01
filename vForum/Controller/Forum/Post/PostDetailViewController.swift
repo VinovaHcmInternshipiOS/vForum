@@ -4,7 +4,6 @@ import Alamofire
 import SVProgressHUD
 
 class PostDetailViewController: UIViewController {
-    
     let cmtCell = UINib(nibName: "PostCmtTableViewCell", bundle: nil)
 
     private(set) var postData:[[String:String]] = []

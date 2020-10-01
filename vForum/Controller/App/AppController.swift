@@ -18,7 +18,7 @@ class AppController: UITabBarController {
         
         let vcFeed = FeedHomeViewController(nibName: "FeedHomeViewController", bundle: nil)
         print(accessToken)
-        vcFeed.accessToken = accessToken
+        //vcFeed.accessToken = accessToken
         let feed = UINavigationController(rootViewController: vcFeed)
         feed.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
         feed.tabBarItem.image = UIImage(named: "feed")

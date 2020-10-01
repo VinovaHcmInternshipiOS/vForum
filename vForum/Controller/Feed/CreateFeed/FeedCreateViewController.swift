@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class FeedCreateViewController: UIViewController {
 
@@ -15,6 +16,8 @@ class FeedCreateViewController: UIViewController {
     @IBOutlet weak var collectionViewAttchment: UICollectionView!
     @IBOutlet weak var txtViewContent: UITextView!
     var imageArray = [UIImage]()
+    let storage = Storage.storage().reference()
+    var urlArray = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         txtViewContent.delegate = self
@@ -86,6 +89,7 @@ extension FeedCreateViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedCreateViewController {
     @objc func CREATEDONE(sender: UIBarButtonItem) {
+        uploadFirebase()
         self.navigationController?.pushViewController(FeedHomeViewController(), animated: true)
     }
     
@@ -180,5 +184,41 @@ extension FeedCreateViewController: UITextViewDelegate {
     
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
+    }
+}
+
+extension FeedCreateViewController {
+    func uploadFirebase(){
+        for img in imageArray{
+            let imageUUID = UUID().uuidString
+            
+            storage.child("FeedImage/\(imageUUID).png").putData(img.pngData()!, metadata: nil, completion: { _, error in
+                
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                self.storage.child("FeedImage/\(imageUUID).png").downloadURL(completion: {url, error in
+                    guard let url = url, error == nil else {
+                        print(error!)
+                        return
+                    }
+                    let urlString = url.absoluteString
+                    self.urlArray.append(urlString)
+                    
+                    if (self.urlArray.count == self.imageArray.count) {
+
+                        DispatchQueue.main.async {
+                            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaa Upload Success!")
+                        }
+                        DispatchQueue.main.async {
+                            for i in self.urlArray{
+                                print("bbbbbbbbbbbbbbbbbbbbbbb \(i)")
+                            }
+                        }
+                    }
+                })
+            })
+        }
     }
 }

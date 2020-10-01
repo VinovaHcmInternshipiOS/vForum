@@ -1,16 +1,15 @@
 //
-//  FeedCommentTableViewCell.swift
+//  NoCommentTableViewCell.swift
 //  vForum
 //
-//  Created by CATALINA-ADMIN on 9/23/20.
+//  Created by CATALINA-ADMIN on 10/1/20.
 //  Copyright © 2020 vinova.internship. All rights reserved.
 //
 
 import UIKit
 
-class FeedCommentTableViewCell: UITableViewCell {
+class NoCommentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var reuseComment: ReuseFeedComment!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

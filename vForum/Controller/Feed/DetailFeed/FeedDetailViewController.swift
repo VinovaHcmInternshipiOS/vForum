@@ -76,6 +76,9 @@ extension FeedDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedDetailTableViewCell") as? FeedDetailTableViewCell {
+            cell.reuseComment.moreAction = {
+                self.showMoreSheetComment()
+            }
             return cell
         } else {
             return UITableViewCell()
@@ -96,6 +99,28 @@ extension FeedDetailViewController: UITableViewDelegate {
 
 extension FeedDetailViewController {
     func showMoreSheet() {
+        let alert = UIAlertController(title: "More", message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction)in
+            print("User click Edit")
+        }))
+
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive , handler:{ (UIAlertAction)in
+            print("User click Delete")
+            self.tableViewSomeComments.reloadData()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Cancel")
+            self.tableViewSomeComments.reloadData()
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    
+    func showMoreSheetComment() {
         let alert = UIAlertController(title: "More", message: nil, preferredStyle: .actionSheet)
 
         alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction)in

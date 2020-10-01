@@ -41,8 +41,8 @@
                                         <constraint firstAttribute="height" constant="100" id="n4b-XJ-033"/>
                                     </constraints>
                                 </tableView>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeM-T8-DKa">
-                                    <rect key="frame" x="23" y="708" width="139" height="33"/>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeM-T8-DKa">
+                                    <rect key="frame" x="23" y="708" width="383" height="33"/>
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
                                     <state key="normal" title="Show all comments">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

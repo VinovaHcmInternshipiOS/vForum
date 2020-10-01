@@ -50,8 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        } reject: { (Error) in
 //            print(Error)
 //        }
-
-        
+////        remoteProvider.request(target: GroupResult.group, accessToken: "") { (returnData: [Group]?) in
+////            print(returnData?.count)
+////        } reject: { (Error) in
+////            print(Error)
+////        }
+////
+////
         return true
     }
 

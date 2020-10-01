@@ -32,6 +32,7 @@ class ReuseFeedCard: UIView {
     var likeCount = 0
     var commentCount = 0
     var color = [UIColor.red, UIColor.green, UIColor.yellow]
+    var imageArray: [UIImage]?
     
     @IBAction func LIKEFEED(_ sender: Any) {
         clickLike?()
@@ -70,9 +71,10 @@ class ReuseFeedCard: UIView {
         pageControll.currentPage = index
         collectionviewImage.scrollToItem(at: IndexPath(item: index, section: 0), at: .right, animated: false)
         collectionviewImage.register(UINib(nibName: "ImageFeedCell", bundle: nil), forCellWithReuseIdentifier: "ImageFeedCell")
-        //TODO:
+        pageControll.numberOfPages = imageArray?.count ?? 0
         lblLikeCount.text = "\(likeCount) like"
         lblCommentCount.text = "\(commentCount) comment"
+        lblContent.numberOfLines = 0
     }
     
     func commonInit() {
@@ -88,19 +90,18 @@ class ReuseFeedCard: UIView {
     }
 }
 
-
 extension ReuseFeedCard : UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return imageArray?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageFeedCell", for: indexPath) as? ImageFeedCell {
-            cell.backgroundColor = color[indexPath.row]
+            cell.imageView.image = imageArray?[indexPath.row]
             return cell
         }
         return UICollectionViewCell()
@@ -160,6 +161,7 @@ extension ReuseFeedCard {
         lblContent.snp.makeConstraints{ (make)->Void in
             make.top.equalTo(imageAvatar.snp_bottom).offset(10)
             make.left.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-30)
         }
         collectionviewImage.snp.makeConstraints{ (make)->Void in
             make.top.equalTo(lblContent.snp_bottom).offset(10)
@@ -198,15 +200,6 @@ extension ReuseFeedCard {
             make.bottom.equalToSuperview()
         }
     }
-    
-//    func setLikeCount(_ state: Bool){
-//        likeCount = state ?  (likeCount > 0 ? likeCount - 1: likeCount) : likeCount + 1
-//        lblLikeCount.text = likeCount > 1 ? "\(likeCount) likes" : "\(likeCount) like"
-//    }
-//
-//    func setCommnentCount() {
-//        //TODO:
-//    }
 }
 
 extension ReuseFeedCard {
@@ -217,5 +210,11 @@ extension ReuseFeedCard {
     
     func setCommentCount() {
         //TODO:
+    }
+    
+    func setData(_ image: [UIImage]?){
+        imageArray = image
+        pageControll.numberOfPages = imageArray?.count ?? 0
+        collectionviewImage.reloadData()
     }
 }

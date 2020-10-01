@@ -15,11 +15,13 @@ class FeedCommentViewController: UIViewController {
     @IBOutlet weak var viewContain: UIView!
     @IBOutlet weak var txtviewAddCmt: UITextView!
     @IBOutlet weak var btnSendCmt: UIButton!
+    var commentArray: [FeedComment]?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewCmts.delegate = self
         tableViewCmts.dataSource = self
         tableViewCmts.register(UINib(nibName: "FeedCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedCommentTableViewCell")
+        tableViewCmts.register(UINib(nibName: "NoCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "NoCommentTableViewCell")
         txtviewAddCmt.delegate = self
         self.navigationItem.title = "Comment"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Futura", size: 20)!]
@@ -28,7 +30,6 @@ class FeedCommentViewController: UIViewController {
         btnSendCmt.isEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        //self.tabBarController?.tabBar.isHidden = true
     }
 
     @IBAction func ADDCOMMENT(_ sender: Any) {
@@ -41,20 +42,31 @@ class FeedCommentViewController: UIViewController {
 
 extension FeedCommentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-        
+        return commentArray == nil ? tableView.layer.frame.height : UITableView.automaticDimension
     }
 }
 
 extension FeedCommentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return commentArray?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCommentTableViewCell") as? FeedCommentTableViewCell {
-            return cell
-        } else { return UITableViewCell()}
+        if commentArray == nil {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "NoCommentTableViewCell") as? NoCommentTableViewCell {
+                return cell
+            } else { return UITableViewCell()}
+        }
+        else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCommentTableViewCell") as? FeedCommentTableViewCell {
+                cell.reuseComment.lblUsername.text = self.commentArray?[indexPath.row].createdBy
+                cell.reuseComment.lblContent.text = self.commentArray?[indexPath.row].description
+                cell.reuseComment.moreAction = {
+                    self.showMoreSheetComment()
+                }
+                return cell
+            } else { return UITableViewCell()}
+        }
     }
 }
 
@@ -122,3 +134,31 @@ extension FeedCommentViewController {
     }
 }
 
+extension FeedCommentViewController {
+    func showMoreSheetComment() {
+        let alert = UIAlertController(title: "More Action", message: nil, preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Edit", style: .default , handler:{ (UIAlertAction)in
+            print("User click Edit")
+        }))
+
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive , handler:{ (UIAlertAction)in
+            print("User click Delete")
+            self.tableViewCmts.reloadData()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Cancel")
+            self.tableViewCmts.reloadData()
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    
+//    func setData(_ comment: [FeedComment]?){
+//        commentArray = comment
+//        tableViewCmts.reloadData()
+//    }
+}

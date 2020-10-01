@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class FeedCreateViewController: UIViewController {
 
@@ -15,6 +16,11 @@ class FeedCreateViewController: UIViewController {
     @IBOutlet weak var collectionViewAttchment: UICollectionView!
     @IBOutlet weak var txtViewContent: UITextView!
     var imageArray = [UIImage]()
+    let storage = Storage.storage().reference()
+    var urlArray = [String]()
+    let remoteProvider = RemoteAPIProvider(configuration: FeedAppServerConfiguration.allTime)
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZiZmQ5ZTRjMDFiYjQxODhjMTEyYzciLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiZGlzcGxheV9uYW1lIjoiMTIzNDU2Nzg5IiwiaWF0IjoxNjAxNDc0NTM0LCJleHAiOjE2MDIwNzkzMzR9.Mk4ukqvcqYqJ2aOJadNe4TlvXMY5j7AifCCzZANSkK4"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         txtViewContent.delegate = self
@@ -86,6 +92,7 @@ extension FeedCreateViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedCreateViewController {
     @objc func CREATEDONE(sender: UIBarButtonItem) {
+        uploadFirebase()
         self.navigationController?.pushViewController(FeedHomeViewController(), animated: true)
     }
     
@@ -180,5 +187,47 @@ extension FeedCreateViewController: UITextViewDelegate {
     
     @objc func tapDone(sender: Any) {
         self.view.endEditing(true)
+    }
+}
+
+extension FeedCreateViewController {
+    func uploadFirebase(){
+        for img in imageArray{
+            let imageUUID = UUID().uuidString
+            
+            storage.child("FeedImage/\(imageUUID).png").putData(img.pngData()!, metadata: nil, completion: { _, error in
+                
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                self.storage.child("FeedImage/\(imageUUID).png").downloadURL(completion: {url, error in
+                    guard let url = url, error == nil else {
+                        print(error!)
+                        return
+                    }
+                    let urlString = url.absoluteString
+                    self.urlArray.append(urlString)
+                    
+                    if (self.urlArray.count == self.imageArray.count) {
+
+                        DispatchQueue.main.async {
+                            self.createFeedAPI(self.txtViewContent.text, self.urlArray)
+                            AlertView.showAlert(view: self, message: "Create Feed Success", title: "Success")
+                        }
+                    }
+                })
+            })
+        }
+    }
+}
+
+extension FeedCreateViewController {
+    func createFeedAPI(_ description: String,_ attachments: [String]){
+        remoteProvider.requestFreeJSON(target: FeedMethod.createFeed(description: description, attachments: attachments), accessToken: self.token, fullfill: { (data) in
+            print(data)})
+        { (err) in
+            AlertView.showAlert(view: self, message: err.localizedDescription, title: "Error")
+        }
     }
 }

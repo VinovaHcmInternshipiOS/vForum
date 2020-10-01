@@ -15,4 +15,8 @@ class FeedHomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        reuseFeedCardView.collectionviewImage.reloadData()
+    }
 }

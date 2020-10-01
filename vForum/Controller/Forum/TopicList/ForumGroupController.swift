@@ -266,13 +266,16 @@ extension ForumGroupController {
                             "name": String(describing: x["name"]!),
                             "createdBy": String(describing: x["createdBy"]!),
                             "createdAt": String(describing: x["createdAt"]!),
-                            "postCount": "0",
+                            //"postCount": "0",
                             "description":  String(describing: x["description"]!)
                         ])
                     }
-                    self.sortedTopicData = self.topicData
-                    self.TopicList.reloadData()
+                } else {
+                    self.topicData = []
                 }
+
+                self.sortedTopicData = self.topicData
+                self.TopicList.reloadData()
                 SVProgressHUD.dismiss()
                 
             case .failure( _):
@@ -295,5 +298,9 @@ extension ForumGroupController: UISearchBarDelegate {
         }
         
         TopicList.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

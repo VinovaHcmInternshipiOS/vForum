@@ -187,12 +187,12 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         let vc = PostDetailViewController(nibName: "PostDetailViewController", bundle: nil)
         vc.title = "Post"
         
-        let data = postData[indexPath.row]
+        let data = sortedPostData[indexPath.row]
         //print(data["title"]!)
         let title = data["title"]!
         vc.setData(title: title, description: "", username: "", likeCount: "0")
     
-        def.set(postData[indexPath.row]["_id"], forKey: "postId")
+        def.set(sortedPostData[indexPath.row]["_id"], forKey: "postId")
         
         navigationController?.pushViewController(vc, animated: true)
         navigationController!.isNavigationBarHidden = false
@@ -219,8 +219,9 @@ extension ForumTopicController: UITextFieldDelegate {
         return true
     }
 
-    private func textFieldShouldReturn(_ textField: UITextField) {
+    func textFieldShouldReturn(_ textField: UITextField)->Bool {
         textField.endEditing(true)
+        return true
     }
 }
 

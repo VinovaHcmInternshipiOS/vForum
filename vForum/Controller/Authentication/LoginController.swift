@@ -6,6 +6,7 @@ import GoogleSignIn
 import GoogleDataTransport
 import GoogleUtilities
 import SVProgressHUD
+import Alamofire
 
 class LoginController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     
@@ -225,59 +226,45 @@ extension LoginController {
         let parameter : [String : Any] = ["email": email,"password": password]
         
         let networkManager = NetworkManager.shared
-        networkManager.request(url, method: .post, parameters: parameter).responseJSON(completionHandler: {respond in
+        networkManager.request(url, method: .post, parameters: parameter).responseJSON(completionHandler: { [self]respond in
             
             switch respond.result {
-                case .success(let JSON):
-                    self.ErrorLabel.isHidden = true
+            case .success(let JSON):
+                self.ErrorLabel.isHidden = true
+                
+                // MARK: - AUTHENTICATION
+                let parsed = JSON as! NSDictionary
+                //print(parsed)
+                
+                if parsed["result"] != nil && String(describing: parsed["result"]!) != "<null>" {
+                    let vc = AppController()
                     
-                    // MARK: - AUTHENTICATION
-                    let parsed = JSON as! NSDictionary
-                    //print(parsed)
+                    let result = parsed["result"] as! NSDictionary
+                    //print(result)
                     
-                    if parsed["result"] != nil && String(describing: parsed["result"]!) != "<null>" {
-                        let vc = AppController()
-                        
-                        let result = parsed["result"] as! NSDictionary
-                        //print(result)
-                        
-                        let def = UserDefaults.standard
-                        def.set(self.Password.text!, forKey: "email")
-                        def.set(result["userId"], forKey: "userId")
-                        def.set(result["role"], forKey: "role")
-                        def.set(result["accessToken"], forKey: "accessToken")
-                        def.set(result["refreshToken"], forKey: "refreshToken")
-                        
-                        self.navigationController?.pushViewController(vc, animated: false)
-                    }
-                    else {
-                        SVProgressHUD.dismiss()
-                        self.ErrorLabel.isHidden = false
-                        self.ErrorLabel.text! = String(describing: parsed["message"]!)
-                    }
-                    
-            case .failure( _):
-                    self.ErrorLabel.isHidden = false
+                    let def = UserDefaults.standard
+                    def.set(self.Password.text!, forKey: "email")
+                    def.set(result["userId"], forKey: "userId")
+                    def.set(result["role"], forKey: "role")
+                    def.set(result["accessToken"], forKey: "accessToken")
+                    def.set(result["refreshToken"], forKey: "refreshToken")
+                    infoUser()
+                    self.navigationController?.pushViewController(vc, animated: false)
                 }
+                else {
+                    SVProgressHUD.dismiss()
+                    self.ErrorLabel.isHidden = false
+                    self.ErrorLabel.text! = String(describing: parsed["message"]!)
+                }
+                
+            case .failure( _):
+                SVProgressHUD.dismiss()
+                self.ErrorLabel.isHidden = false
+            }
         })
-        
-        /* TEST ONLY
-            let vc = AppController()
-            vc.setUser(username: "", userId: "", token: "")
-            navigationController?.pushViewController(vc, animated: false)
-        */
     }
 }
 
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////
 // MARK: - FACEBOOK/GOOGLE
 
 extension LoginController {
@@ -346,5 +333,33 @@ extension LoginController {
     func sign(_ signIn: GIDSignIn?, dismiss viewController: UIViewController?) {
         // Close OAuth2 authentication window
         dismiss(animated: true) {() -> Void in }
+    }
+    
+    func infoUser(){
+        if let accesstoken = UserDefaults.standard.string(forKey: "accessToken") {
+            let networkManager = NetworkManager.shared
+            let url : String = "http://localhost:4000/v1/api/info"
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(accesstoken)"
+            ]
+            networkManager.request(url,method: .get, headers: headers).responseJSON(completionHandler: { respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    
+                    if let result = parsed["result"] as? [String:Any] {
+                        let displayName = result["display_name"]
+                        let _id = result["_id"]
+                        UserDefaults.standard.setValue(displayName, forKey: "infoDisplay_name")
+                        UserDefaults.standard.setValue(_id, forKey: "infoId")
+                    }
+                    
+                case .failure( let erro):
+                    print(erro.localizedDescription)
+                }
+            })
+        }
+        
     }
 }

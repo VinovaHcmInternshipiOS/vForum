@@ -100,8 +100,8 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         vc.title = "Post"
         let data = postData[sender.tag]
         //print(data["title"]!)
-        if let title = data["title"] , let description = data["description"] , let user = data["createdBy"], let countLike = data["countLike"] {
-            vc.setData(title: title, description: description, username: "@" + user, likeCount: Int(countLike)!)
+        if let title = data["title"] , let description = data["description"] , let user = data["createdBy"], let countLike = data["countLike"],let postId = data["_id"] {
+            vc.setData(title: title, description: description, username: "@" + user, likeCount: Int(countLike)!,postId: postId)
         }
         def.set(postData[sender.tag]["_id"], forKey: "postId")
         navigationController?.pushViewController(vc, animated: true)
@@ -190,11 +190,10 @@ class ForumTopicController: UIViewController, UITableViewDelegate, UITableViewDa
         vc.title = "Post"
         print(sortedPostData, indexPath.row - 1)
         
-
         let data = postData[indexPath.row - 1]
         //print(data["title"]!)
-        if let title = data["title"] , let description = data["description"] , let user = data["createdBy"], let countLike = data["countLike"] {
-            vc.setData(title: title, description: description, username: "@" + user, likeCount: Int(countLike)!)
+        if let title = data["title"] , let description = data["description"] , let user = data["createdBy"], let countLike = data["countLike"], let postId = data["_id"] {
+            vc.setData(title: title, description: description, username: "@" + user, likeCount: Int(countLike)!,postId: postId)
         }
         
         def.set(postData[indexPath.row - 1]["_id"], forKey: "postId")

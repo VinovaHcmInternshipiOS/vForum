@@ -10,6 +10,7 @@ class PostDetailViewController: UIViewController {
     
     var flag = 0
     var cmtData:[[String:String]] = []
+    var postId : String = ""
     var likeCount = 0
     var cmt : String? = nil
     var user = ""
@@ -45,22 +46,15 @@ class PostDetailViewController: UIViewController {
         navigationController!.isNavigationBarHidden = false
     }
     
-    func setData(title: String, description: String, username: String, likeCount: Int) {
+    func setData(title: String, description: String, username: String, likeCount: Int, postId : String) {
         titleText = title
         descriptionText = description
         user = username
+        self.postId = postId
         self.likeCount = likeCount
     }
     @IBAction func cmtThisPost(_ sender: Any) {
-        if let cmt = cmt {
-            postData.append(["createdBy": user, "description": cmt])
-            tableViewheight = 0
-            caculateHeightText(tableView.bounds.size)
-            tableView.reloadData()
-            addCmtTextField.text = nil
-            cmtBtn.isEnabled = false
-            cmtBtn.titleLabel?.textColor = #colorLiteral(red: 0.727089107, green: 0.7231606245, blue: 0.8079829812, alpha: 1)
-        }
+        addComment()
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -85,46 +79,7 @@ class PostDetailViewController: UIViewController {
     }
 
     private func caculateHeightText(_ size : CGSize){
-        var cmts = [["@timon","@Dominic","@curtis","@curtis"],["tôi nghĩ nó không thể sử dụng", """
-     var htmlString = “<html><body> <b>  HTML in UILabel is here…. </b> </body></html>”
-     var attrStr: NSAttributedString? = nil
-     do {
-     if let data = htmlString.data(using: .unicode) {
-     attrStr = try NSAttributedString(data: data, options: [
-     NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html.rawValue
-     ], documentAttributes: nil)
-     }
-     } catch {
-     }
-     var yourLabel = UILabel()
-     yourLabel.attributedText = attrStr
-     bạn có thế thử như thế này
-     ""","""
-     let yourLabel: UILabel = UILabel()
-     yourLabel.frame = CGRect(x: 50, y: 150, width: 200, height: 21)
-     yourLabel.backgroundColor = UIColor.orange
-     yourLabel.textColor = UIColor.black
-     yourLabel.textAlignment = NSTextAlignment.center
-     yourLabel.text = "test label"
-     self.view.addSubview(yourLabel)
-     tôi đã thử và đã thành công
-     ""","""
-     var htmlString = “<html><body> <b>  HTML in UILabel is here…. </b> </body></html>”
-     var attrStr: NSAttributedString? = nil
-     do {
-     if let data = htmlString.data(using: .unicode) {
-     attrStr = try NSAttributedString(data: data, options: [
-     NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html.rawValue
-     ], documentAttributes: nil)
-     }
-     } catch {
-     }
-     var yourLabel = UILabel()
-     yourLabel.attributedText = attrStr
-     bạn có thế thử như thế này
-     """]]
-    
-        
+
         if flag <= postData.count - 1 {
     
             for text in postData {
@@ -144,6 +99,8 @@ class PostDetailViewController: UIViewController {
         }
     }
     
+    
+    
 //MARK:- Add GestureRecognizer
     private func addGestureRecognizer(){
         let tapAvtGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imgTapped(tapGestureRecognizer:)))
@@ -159,13 +116,13 @@ class PostDetailViewController: UIViewController {
         if let tappedImage = tapGestureRecognizer.view as? UIImageView {
             if tappedImage.tag == 0 {
                 tappedImage.image = UIImage(named: "like")
+                like()
                 likeCount += 1
                 tappedImage.tag = 1
             } else {
                 tappedImage.image = UIImage(named: "notlike")
-                if likeCount >= 0 {
-                    likeCount -= 1
-                }
+                dislike()
+                likeCount -= 1
                 tappedImage.tag = 0
             }
             countLikeLbl.text = String(likeCount)
@@ -348,43 +305,134 @@ extension UIViewController {
 // MARK: - GET DATA
 
 extension PostDetailViewController {
+    
     func getData() {
-        SVProgressHUD.show()
+        if let groupId = def.string(forKey: "groupId"),let topicId = def.string(forKey: "topicId"){
+            SVProgressHUD.show()
+            let networkManager = NetworkManager.shared
+            
+            let url : String = "http://localhost:4000/v1/api/group/\(groupId)/topic/\(topicId)/post"
+            
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
+            ]
+            
+            networkManager.request(url, headers: headers).responseJSON(completionHandler: {respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    
+                    if parsed["result"] != nil {
+                        let data = parsed["result"] as! Array<NSDictionary>
+                        let result = data[0]["commentsPost"] as! Array<NSDictionary>
+                        
+                        self.postData = []
+                        for x in result {
+                            self.postData.append([
+                                "createdBy": String(describing: x["createdBy"]!),
+                                "description": String(describing: x["description"]!)
+                            ])
+                        }
+                        
+                        self.tableView.reloadData()
+                    }
+                    SVProgressHUD.dismiss()
+                    
+                    
+                case .failure( _):
+                    SVProgressHUD.dismiss()
+                    print("f")
+                }
+            })
+        }
+        
+    }
+    
+    func addComment(){
+        if let groupId = def.string(forKey: "groupId"),let topicId = def.string(forKey: "topicId"),let cmt = self.cmt ,let userCmt = def.string(forKey: "infoDisplay_name"){
+            SVProgressHUD.show()
+            let networkManager = NetworkManager.shared
+            let url : String = "http://localhost:4000/v1/api/group/\(groupId)/topic/\(topicId)/post/\(postId)/comment"
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
+            ]
+            let param = ["description":"\(cmt)"]
+            networkManager.request(url,method: .post,parameters: param, headers: headers).responseJSON(completionHandler: { [self]respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    
+                    if parsed["result"] != nil {
+                        self.postData.append(["createdBy": userCmt, "description": cmt])
+                        self.tableViewheight = 0
+                        self.caculateHeightText(tableView.bounds.size)
+                        self.tableView.reloadData()
+                        self.addCmtTextField.text = nil
+                        self.cmtBtn.isEnabled = false
+                        self.cmtBtn.titleLabel?.textColor = #colorLiteral(red: 0.727089107, green: 0.7231606245, blue: 0.8079829812, alpha: 1)
+                        
+                        self.tableView.reloadData()
+                    }
+                    SVProgressHUD.dismiss()
+                case .failure( let erro):
+                    SVProgressHUD.dismiss()
+                    print(erro.localizedDescription)
+                }
+            })
+        }
+        }
+    
+    func like(){
+        if let groupId = def.string(forKey: "groupId"),let topicId = def.string(forKey: "topicId"){
+            SVProgressHUD.show()
+            let networkManager = NetworkManager.shared
+            let url : String = "http://localhost:4000/v1/api/group/\(groupId)/topic/\(topicId)/post/\(postId)/addlike"
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
+            ]
+            networkManager.request(url,method: .patch, headers: headers).responseJSON( completionHandler: { respond in
+                
+                switch respond.result {
+                case .success(let JSON):
+                    let parsed = JSON as! NSDictionary
+                    
+                    if parsed["result"] != nil {
+                    }
+                    
+                case .failure( let erro):
+                    print(erro.localizedDescription)
+                }
+            })
+        }
+        
+    }
+    
+    func dislike(){
+    if let groupId = def.string(forKey: "groupId"),let topicId = def.string(forKey: "topicId"){
+        
         let networkManager = NetworkManager.shared
-        
-        let url : String = "http://localhost:4000/v1/api/group/\(def.string(forKey: "groupId")!)/topic/\(def.string(forKey: "topicId")!)/post"
-        
+        let url : String = "http://localhost:4000/v1/api/group/\(groupId)/topic/\(topicId)/post/\(postId)/minuslike"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(String(describing: def.object(forKey: "accessToken")!))"
         ]
-        
-        networkManager.request(url, headers: headers).responseJSON(completionHandler: {respond in
+        networkManager.request(url,method: .patch, headers: headers).responseJSON(completionHandler: {respond in
             
             switch respond.result {
             case .success(let JSON):
                 let parsed = JSON as! NSDictionary
-                
                 if parsed["result"] != nil {
-                    let data = parsed["result"] as! Array<NSDictionary>
-                    let result = data[0]["commentsPost"] as! Array<NSDictionary>
                     
-                    self.postData = []
-                    for x in result {
-                        self.postData.append([
-                            "createdBy": String(describing: x["createdBy"]!),
-                            "description": String(describing: x["description"]!)
-                        ])
-                    }
-                    
-                    self.tableView.reloadData()
                 }
-                SVProgressHUD.dismiss()
                 
-                
-            case .failure( _):
-                print("f")
+            case .failure( let erro):
+                print(erro.localizedDescription)
             }
         })
     }
+    
+}
+        
 }
 
